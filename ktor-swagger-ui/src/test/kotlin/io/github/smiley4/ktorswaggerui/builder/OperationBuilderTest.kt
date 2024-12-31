@@ -18,6 +18,7 @@ import io.kotest.matchers.maps.shouldBeEmpty
 import io.kotest.matchers.maps.shouldHaveSize
 import io.kotest.matchers.nulls.shouldNotBeNull
 import io.kotest.matchers.shouldBe
+import io.kotest.matchers.shouldNotBe
 import io.ktor.http.*
 import io.swagger.v3.oas.models.Operation
 import io.swagger.v3.oas.models.media.Schema
@@ -226,7 +227,10 @@ class OperationBuilderTest : StringSpec({
                         param.allowReserved shouldBe null
                         param.schema
                             .also { it.shouldNotBeNull() }
-                            ?.also { it.type = "string" }
+                            ?.also {
+                                it.type = "string"
+                                it.format shouldBe null
+                            }
                         param.example shouldBe null
                         param.examples shouldBe null
                         param.content shouldBe null
@@ -246,7 +250,10 @@ class OperationBuilderTest : StringSpec({
                         param.allowReserved shouldBe null
                         param.schema
                             .also { it.shouldNotBeNull() }
-                            ?.also { it.type = "integer" }
+                            ?.also {
+                                it.type = "integer"
+                                it.format shouldNotBe null
+                            }
                         param.example shouldBe null
                         param.examples shouldBe null
                         param.content shouldBe null
@@ -288,7 +295,11 @@ class OperationBuilderTest : StringSpec({
                                         .also { it.shouldNotBeNull() }
                                         ?.also { schema ->
                                             schema.types shouldContainExactlyInAnyOrder setOf("array")
-                                            schema.items.also { item -> item.types shouldContainExactlyInAnyOrder setOf("string") }
+                                            schema.items.also { item ->
+                                                item.types shouldContainExactlyInAnyOrder setOf(
+                                                    "string"
+                                                )
+                                            }
                                         }
                                     mediaType.example shouldBe null
                                     mediaType.examples shouldBe null
@@ -861,16 +872,17 @@ class OperationBuilderTest : StringSpec({
     "custom body schema" {
         val config = PluginConfigDsl().also {
             it.schemas {
-                schema("myCustomSchema", SwaggerTypeDescriptor(
-                    Schema<Any>().also { schema ->
-                        schema.type = "object"
-                        schema.properties = mapOf(
-                            "custom" to Schema<Any>().also { prop ->
-                                prop.type = "string"
-                            }
-                        )
-                    }
-                ))
+                schema(
+                    "myCustomSchema", SwaggerTypeDescriptor(
+                        Schema<Any>().also { schema ->
+                            schema.type = "object"
+                            schema.properties = mapOf(
+                                "custom" to Schema<Any>().also { prop ->
+                                    prop.type = "string"
+                                }
+                            )
+                        }
+                    ))
             }
         }
         val route = RouteMeta(
@@ -918,16 +930,17 @@ class OperationBuilderTest : StringSpec({
     "custom multipart-body schema" {
         val config = PluginConfigDsl().also {
             it.schemas {
-                schema("myCustomSchema", SwaggerTypeDescriptor(
-                    Schema<Any>().also { schema ->
-                        schema.type = "object"
-                        schema.properties = mapOf(
-                            "custom" to Schema<Any>().also { prop ->
-                                prop.type = "string"
-                            }
-                        )
-                    }
-                ))
+                schema(
+                    "myCustomSchema", SwaggerTypeDescriptor(
+                        Schema<Any>().also { schema ->
+                            schema.type = "object"
+                            schema.properties = mapOf(
+                                "custom" to Schema<Any>().also { prop ->
+                                    prop.type = "string"
+                                }
+                            )
+                        }
+                    ))
             }
         }
         val route = RouteMeta(
@@ -988,7 +1001,10 @@ class OperationBuilderTest : StringSpec({
         private val defaultPluginConfig = PluginConfigDsl()
 
 
-        private fun schemaContext(routes: List<RouteMeta>, pluginConfig: PluginConfigDsl = defaultPluginConfig): SchemaContext {
+        private fun schemaContext(
+            routes: List<RouteMeta>,
+            pluginConfig: PluginConfigDsl = defaultPluginConfig
+        ): SchemaContext {
             val pluginConfigData = pluginConfig.build(PluginConfigData.DEFAULT)
             return SchemaContextImpl(pluginConfigData.schemaConfig).also {
                 it.addGlobal(pluginConfigData.schemaConfig)
@@ -996,7 +1012,10 @@ class OperationBuilderTest : StringSpec({
             }
         }
 
-        private fun exampleContext(routes: List<RouteMeta>, pluginConfig: PluginConfigDsl = defaultPluginConfig): ExampleContext {
+        private fun exampleContext(
+            routes: List<RouteMeta>,
+            pluginConfig: PluginConfigDsl = defaultPluginConfig
+        ): ExampleContext {
             val pluginConfigData = pluginConfig.build(PluginConfigData.DEFAULT)
             return ExampleContextImpl(pluginConfigData.exampleConfig.exampleEncoder).also {
                 it.addShared(pluginConfigData.exampleConfig)

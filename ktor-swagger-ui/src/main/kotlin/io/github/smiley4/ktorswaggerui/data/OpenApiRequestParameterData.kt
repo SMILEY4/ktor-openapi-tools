@@ -8,6 +8,7 @@ import io.swagger.v3.oas.models.parameters.Parameter
 data class OpenApiRequestParameterData(
     val name: String,
     val type: TypeDescriptor,
+    val format: String?,
     val location: ParameterLocation,
     val description: String?,
     val example: ExampleDescriptor?,

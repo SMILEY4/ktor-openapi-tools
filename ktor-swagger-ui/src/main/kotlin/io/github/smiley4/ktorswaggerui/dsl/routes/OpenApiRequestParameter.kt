@@ -34,6 +34,10 @@ class OpenApiRequestParameter(
      */
     var description: String? = null
 
+    /**
+     * The format of the parameter
+     */
+    val format: String? = null
 
     /**
      * An example value for this parameter
@@ -113,6 +117,7 @@ class OpenApiRequestParameter(
     fun build() = OpenApiRequestParameterData(
         name = name,
         type = type,
+        format = format,
         location = location,
         description = description,
         example = example,

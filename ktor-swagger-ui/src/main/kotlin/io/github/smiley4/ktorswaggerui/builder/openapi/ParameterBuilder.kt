@@ -32,6 +32,7 @@ class ParameterBuilder(
             it.example = parameter.example?.let { e -> exampleContext.getExample(e).value }
             it.allowReserved = parameter.allowReserved
             it.schema = schemaContext.getSchema(parameter.type)
+                .also { schema -> schema.format = parameter.format ?: schema.format }
             it.style = parameter.style
         }
 
