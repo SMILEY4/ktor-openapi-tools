@@ -14,7 +14,7 @@ import io.github.smiley4.schemakenerator.reflection.processReflection
 import io.github.smiley4.schemakenerator.swagger.compileReferencingRoot
 import io.github.smiley4.schemakenerator.swagger.data.TitleType
 import io.github.smiley4.schemakenerator.swagger.generateSwaggerSchema
-import io.github.smiley4.schemakenerator.swagger.withAutoTitle
+import io.github.smiley4.schemakenerator.swagger.withTitle
 import io.ktor.server.application.Application
 import io.ktor.server.application.install
 import io.ktor.server.engine.embeddedServer
@@ -57,7 +57,7 @@ private fun Application.myModule() {
                     .processReflection()
                     .connectSubTypes() // connect the supertypes with their subtypes
                     .generateSwaggerSchema()
-                    .withAutoTitle(TitleType.SIMPLE)
+                    .withTitle(TitleType.SIMPLE)
                     .compileReferencingRoot()
             }
 

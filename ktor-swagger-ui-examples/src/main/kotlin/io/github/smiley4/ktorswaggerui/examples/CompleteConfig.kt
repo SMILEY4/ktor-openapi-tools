@@ -157,7 +157,7 @@ private fun Application.myModule() {
             summary = "hello world route"
             description = "A Hello-World route as an example."
             tags("hello", "example")
-            specName = io.github.smiley4.ktoropenapi.config.OpenApiPluginConfig.DEFAULT_SPEC_ID
+            specName = OpenApiPluginConfig.DEFAULT_SPEC_ID
             deprecated = false
             hidden = false
             protected = false
