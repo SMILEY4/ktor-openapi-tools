@@ -63,7 +63,7 @@ private fun Application.myModule() {
             request {
                 multipartBody {
                     mediaTypes(ContentType.MultiPart.FormData)
-                    part<File>("first-image",) {
+                    part<File>("first-image") {
                         mediaTypes(
                             ContentType.Image.PNG,
                             ContentType.Image.JPEG,

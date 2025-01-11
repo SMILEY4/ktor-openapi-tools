@@ -101,7 +101,7 @@ class OpenApiPluginConfig {
 
 
     /**
-     * Assigns routes without an [io.github.smiley4.ktoropenapi.dsl.routes.RouteConfig.specName]] to a specified openapi-spec.
+     * Assigns routes without an [io.github.smiley4.ktoropenapi.config.RouteConfig.specName]] to a specified openapi-spec.
      */
     var specAssigner: SpecAssigner? = OpenApiPluginData.DEFAULT.specAssigner
 
