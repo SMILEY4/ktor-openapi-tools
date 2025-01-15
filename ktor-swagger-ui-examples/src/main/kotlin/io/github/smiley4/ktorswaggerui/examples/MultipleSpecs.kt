@@ -6,7 +6,6 @@ import io.github.smiley4.ktorswaggerui.dsl.routing.route
 import io.github.smiley4.ktorswaggerui.routing.openApiSpec
 import io.github.smiley4.ktorswaggerui.routing.swaggerUI
 import io.ktor.server.application.Application
-import io.ktor.server.application.call
 import io.ktor.server.application.install
 import io.ktor.server.engine.embeddedServer
 import io.ktor.server.netty.Netty
@@ -39,7 +38,7 @@ private fun Application.myModule() {
             }
         }
         // assign all unassigned routes to spec "v2" (here only route '/greet')
-        specAssigner = {_, _ -> "version2"}
+        specAssigner = { _, _ -> "version2" }
     }
 
     routing {
@@ -68,7 +67,6 @@ private fun Application.myModule() {
             }
         }
 
-
         // version 1.0 routes
         route("v1", {
             specId = "version1"
@@ -77,6 +75,9 @@ private fun Application.myModule() {
             // "hello"-route in version 1.0
             get("hello", {
                 description = "Version 1 'Hello World'"
+                request {
+                    queryParameter<List<String>>("name")
+                }
             }) {
                 call.respondText("Hello World!")
             }
@@ -91,6 +92,9 @@ private fun Application.myModule() {
             // "hello"-route in version 2.0
             get("hello", {
                 description = "Version 2 'Hello World'"
+                request {
+                    queryParameter<List<String>>("name")
+                }
             }) {
                 call.respondText("Hello World! (improved)")
             }
@@ -100,6 +104,9 @@ private fun Application.myModule() {
         // unassigned route
         get("greet", {
             description = "Alternative route not manually assigned to any spec."
+            request {
+                queryParameter<List<String>>("name")
+            }
         }) {
             call.respondText("Alternative Hello World!")
         }

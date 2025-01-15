@@ -1,6 +1,7 @@
 package io.github.smiley4.ktorswaggerui.dsl.config
 
 import io.github.smiley4.ktorswaggerui.data.DataUtils.merge
+import io.github.smiley4.ktorswaggerui.data.DataUtils.mergeDefault
 import io.github.smiley4.ktorswaggerui.data.OutputFormat
 import io.github.smiley4.ktorswaggerui.data.PathFilter
 import io.github.smiley4.ktorswaggerui.data.PluginConfigData
@@ -166,7 +167,7 @@ class PluginConfigDsl {
             swagger = swaggerUI.build(base.swagger),
             securityConfig = securityConfig,
             tagsConfig = tags.build(base.tagsConfig),
-            schemaConfig = schemaConfig.build(securityConfig),
+            schemaConfig = schemaConfig.build(base.schemaConfig, securityConfig),
             exampleConfig = exampleConfig.build(securityConfig),
             specAssigner = merge(base.specAssigner, specAssigner) ?: PluginConfigData.DEFAULT.specAssigner,
             pathFilter = merge(base.pathFilter, pathFilter) ?: PluginConfigData.DEFAULT.pathFilter,
@@ -180,7 +181,7 @@ class PluginConfigDsl {
             },
             specConfigs = mutableMapOf(),
             postBuild = merge(base.postBuild, postBuild),
-            outputFormat = outputFormat
+            outputFormat = mergeDefault(base.outputFormat, outputFormat, PluginConfigData.DEFAULT.outputFormat)
         ).also {
             specConfigs.forEach { (specId, config) ->
                 it.specConfigs[specId] = config.build(it)

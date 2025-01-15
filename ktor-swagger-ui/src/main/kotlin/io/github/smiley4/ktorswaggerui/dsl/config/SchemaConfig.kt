@@ -1,6 +1,7 @@
 package io.github.smiley4.ktorswaggerui.dsl.config
 
 import io.github.smiley4.ktorswaggerui.data.*
+import io.github.smiley4.ktorswaggerui.data.DataUtils.mergeDefault
 import io.github.smiley4.ktorswaggerui.dsl.OpenApiDslMarker
 import io.github.smiley4.schemakenerator.swagger.data.CompiledSwaggerSchema
 import io.swagger.v3.oas.models.media.Schema
@@ -87,10 +88,16 @@ class SchemaConfig {
      * Build the data object for this config.
      * @param securityConfig configuration that might contain additional schemas
      */
-    fun build(securityConfig: SecurityData) = SchemaConfigData(
-        generator = generator,
-        schemas = schemas,
-        overwrite = overwrite,
+    fun build(base: SchemaConfigData, securityConfig: SecurityData) = SchemaConfigData(
+        generator = mergeDefault(base.generator, generator, SchemaConfigData.DEFAULT.generator),
+        schemas = mutableMapOf<String, TypeDescriptor>().apply {
+            this.putAll(base.schemas)
+            this.putAll(schemas)
+        },
+        overwrite = mutableMapOf<KType, TypeDescriptor>().apply {
+            this.putAll(base.overwrite)
+            this.putAll(overwrite)
+        },
         securitySchemas = securityConfig.defaultUnauthorizedResponse?.body?.let { body ->
             when (body) {
                 is OpenApiSimpleBodyData -> listOf(body.type)

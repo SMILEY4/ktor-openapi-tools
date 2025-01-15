@@ -1,6 +1,5 @@
 package io.github.smiley4.ktorswaggerui.data
 
-import io.github.smiley4.schemakenerator.core.addDiscriminatorProperty
 import io.github.smiley4.schemakenerator.core.connectSubTypes
 import io.github.smiley4.schemakenerator.core.handleNameAnnotation
 import io.github.smiley4.schemakenerator.reflection.collectSubTypes

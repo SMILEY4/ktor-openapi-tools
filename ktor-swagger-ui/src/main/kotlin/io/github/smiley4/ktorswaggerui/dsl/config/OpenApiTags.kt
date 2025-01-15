@@ -1,6 +1,7 @@
 package io.github.smiley4.ktorswaggerui.dsl.config
 
 import io.github.smiley4.ktorswaggerui.data.DataUtils.merge
+import io.github.smiley4.ktorswaggerui.data.DataUtils.mergeDefault
 import io.github.smiley4.ktorswaggerui.data.PluginConfigData
 import io.github.smiley4.ktorswaggerui.data.TagData
 import io.github.smiley4.ktorswaggerui.data.TagGenerator
@@ -39,7 +40,7 @@ class OpenApiTags {
             addAll(base.tags)
             addAll(tags.map { it.build(TagData.DEFAULT) })
         },
-        generator = merge(base.generator, tagGenerator) ?: TagsData.DEFAULT.generator,
+        generator = mergeDefault(base.generator, tagGenerator, TagsData.DEFAULT.generator)
     )
 
 }
