@@ -14,6 +14,7 @@ import io.github.smiley4.schemakenerator.swagger.compileReferencingRoot
 import io.github.smiley4.schemakenerator.swagger.data.TitleType
 import io.github.smiley4.schemakenerator.swagger.generateSwaggerSchema
 import io.github.smiley4.schemakenerator.swagger.withAutoTitle
+import io.github.smiley4.schemakenerator.swagger.withTitle
 import io.ktor.http.ContentType
 import io.ktor.http.HttpStatusCode
 import io.ktor.server.application.Application
@@ -116,11 +117,11 @@ private fun Application.myModule() {
                 type
                     .processReflection()
                     .generateSwaggerSchema()
-                    .withAutoTitle(TitleType.SIMPLE)
+                    .withTitle(TitleType.SIMPLE)
                     .compileReferencingRoot()
             }
             overwrite<File>(Schema<Any>().also {
-                it.type = "string"
+                it.types = setOf("string")
                 it.format = "binary"
             })
         }

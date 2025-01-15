@@ -38,7 +38,7 @@ private fun Application.myModule() {
 
             // add a swagger schema to the component-section of the api-spec with the id "swagger-schema"
             schema("swagger-schema", Schema<Any>().also {
-                it.type = "number"
+                it.types = setOf("number")
                 it.title = "Custom Type"
             })
 
@@ -48,7 +48,7 @@ private fun Application.myModule() {
             // overwrite 'LocalDateTime' with custom schema (root only)
             overwrite<LocalDateTime>(Schema<Any>().also {
                 it.title = "timestamp"
-                it.type = "integer"
+                it.types = setOf("integer")
             })
 
             // customized schema generation pipeline

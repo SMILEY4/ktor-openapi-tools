@@ -1,6 +1,7 @@
 package io.github.smiley4.ktorswaggerui.examples
 
 import io.github.smiley4.ktorswaggerui.SwaggerUI
+import io.github.smiley4.ktorswaggerui.data.array
 import io.github.smiley4.ktorswaggerui.dsl.routing.post
 import io.github.smiley4.ktorswaggerui.routing.openApiSpec
 import io.github.smiley4.ktorswaggerui.routing.swaggerUI
@@ -28,7 +29,7 @@ private fun Application.myModule() {
         schemas {
             // overwrite type "File" with custom schema for binary data
             overwrite<File>(Schema<Any>().also {
-                it.type = "string"
+                it.types = setOf("string")
                 it.format = "binary"
             })
         }
@@ -59,7 +60,7 @@ private fun Application.myModule() {
             call.respond(HttpStatusCode.NotImplemented, "...")
         }
 
-        // upload multiple files
+        // upload multiple (two) files
         post("multipart", {
             request {
                 multipartBody {
@@ -84,6 +85,24 @@ private fun Application.myModule() {
             call.respond(HttpStatusCode.NotImplemented, "...")
         }
 
+        // upload multiple (any amount of) files
+        post("list", {
+            request {
+                multipartBody {
+                    mediaTypes(ContentType.MultiPart.FormData)
+                    part("images", array<File>()) {
+                        mediaTypes(
+                            ContentType.Image.PNG,
+                            ContentType.Image.JPEG,
+                            ContentType.Image.SVG
+                        )
+                    }
+                }
+            }
+        }) {
+            call.respond(HttpStatusCode.NotImplemented, "...")
+        }
+        
     }
 
 }

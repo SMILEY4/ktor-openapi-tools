@@ -66,7 +66,7 @@ class ContentBuilder(
     private fun buildMultipartMediaType(body: OpenApiMultipartBodyData): MediaType {
         return MediaType().also { mediaType ->
             mediaType.schema = Schema<Any>().also { schema ->
-                schema.type = "object"
+                schema.types = setOf("object")
                 schema.properties = mutableMapOf<String?, Schema<*>?>().also { props ->
                     body.parts.forEach { part ->
                         props[part.name] = schemaContext.getSchema(part.type)
