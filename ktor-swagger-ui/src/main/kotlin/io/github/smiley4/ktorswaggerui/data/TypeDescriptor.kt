@@ -15,7 +15,6 @@ sealed interface TypeDescriptor
  */
 class SwaggerTypeDescriptor(val schema: Schema<*>) : TypeDescriptor
 
-
 /**
  * Describes a type from a kotlin [KType]
  */

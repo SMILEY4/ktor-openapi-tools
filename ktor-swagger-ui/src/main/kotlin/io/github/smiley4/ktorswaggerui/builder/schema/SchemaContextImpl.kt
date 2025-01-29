@@ -120,6 +120,9 @@ class SchemaContextImpl(private val schemaConfig: SchemaConfigData) : SchemaCont
                             is OpenApiMultipartBodyData -> {
                                 body.parts.forEach { part ->
                                     descriptors.add(part.type)
+                                    part.headers.forEach { (_, header) ->
+                                        header.type?.also { descriptors.add(it) }
+                                    }
                                 }
                             }
                         }
