@@ -8,6 +8,7 @@ import io.ktor.http.ContentType
 data class OpenApiMultipartPartData(
     val name: String,
     val type: TypeDescriptor,
+    val required: Boolean,
     val mediaTypes: Set<ContentType>,
     val headers: Map<String, OpenApiHeaderData>,
 )

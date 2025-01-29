@@ -25,6 +25,11 @@ class OpenApiMultipartPart(
 ) {
 
     /**
+     * Whether this part is required
+     */
+    var required: Boolean = false
+
+    /**
      * Specific content types for this part
      */
     var mediaTypes: Collection<ContentType> = setOf()
@@ -83,6 +88,7 @@ class OpenApiMultipartPart(
     fun build() = OpenApiMultipartPartData(
         name = name,
         type = type,
+        required = required,
         mediaTypes = mediaTypes.toSet(),
         headers = headers.mapValues { it.value.build() }
     )

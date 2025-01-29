@@ -72,6 +72,7 @@ class ContentBuilder(
                         props[part.name] = schemaContext.getSchema(part.type)
                     }
                 }
+                schema.required = body.parts.filter { it.required }.map { it.name }
             }
             mediaType.encoding = buildMultipartEncoding(body)
         }
