@@ -17,7 +17,7 @@ class SchemaConfig {
     /**
      * The json-schema generator for all schemas. See https://github.com/SMILEY4/schema-kenerator/wiki for more information.
      */
-    var generator: (type: InputType) -> CompiledSwaggerSchema = SchemaConfigData.DEFAULT.generator
+    var generator: GenericSchemaGenerator = SchemaConfigData.DEFAULT.generator
 
     private val schemas = mutableMapOf<String, TypeDescriptor>()
 

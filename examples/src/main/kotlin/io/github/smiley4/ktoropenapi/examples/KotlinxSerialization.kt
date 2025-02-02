@@ -1,7 +1,8 @@
 package io.github.smiley4.ktoropenapi.examples
 
 import io.github.smiley4.ktoropenapi.OpenApi
-import io.github.smiley4.ktoropenapi.config.kotlinxExampleEncoder
+import io.github.smiley4.ktoropenapi.config.ExampleEncoder
+import io.github.smiley4.ktoropenapi.config.SchemaGenerator
 import io.github.smiley4.ktoropenapi.get
 import io.github.smiley4.ktoropenapi.openApi
 import io.github.smiley4.ktorredoc.redoc
@@ -29,19 +30,12 @@ private fun Application.myModule() {
 
     install(OpenApi) {
         schemas {
-            // configure the schema generator to use kotlinx-serializer
-            // (see https://github.com/SMILEY4/schema-kenerator/wiki for more information)
-            generator = { type ->
-                type
-                    .analyzeTypeUsingKotlinxSerialization()
-                    .generateSwaggerSchema()
-                    .withTitle(TitleType.SIMPLE)
-                    .compileReferencingRoot()
-            }
+            // configure the schema generator to use the default kotlinx-serializer
+            generator = SchemaGenerator.kotlinx
         }
         examples {
             // configure the example encoder to encode kotlin objects using kotlinx-serializer
-            exampleEncoder = kotlinxExampleEncoder
+            exampleEncoder = ExampleEncoder.kotlinx
         }
     }
 

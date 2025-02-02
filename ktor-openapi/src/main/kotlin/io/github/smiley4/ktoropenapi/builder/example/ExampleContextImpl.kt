@@ -2,7 +2,7 @@ package io.github.smiley4.ktoropenapi.builder.example
 
 import io.github.smiley4.ktoropenapi.builder.route.RouteMeta
 import io.github.smiley4.ktoropenapi.config.ExampleDescriptor
-import io.github.smiley4.ktoropenapi.config.ExampleEncoder
+import io.github.smiley4.ktoropenapi.config.GenericExampleEncoder
 import io.github.smiley4.ktoropenapi.config.RefExampleDescriptor
 import io.github.smiley4.ktoropenapi.config.SwaggerExampleDescriptor
 import io.github.smiley4.ktoropenapi.config.TypeDescriptor
@@ -13,7 +13,7 @@ import io.swagger.v3.oas.models.examples.Example
 /**
  * Implementation of an [ExampleContext].
  */
-internal class ExampleContextImpl(private val encoder: ExampleEncoder?) : ExampleContext {
+internal class ExampleContextImpl(private val encoder: GenericExampleEncoder) : ExampleContext {
 
     private val rootExamples = mutableMapOf<ExampleDescriptor, Example>()
     private val componentExamples = mutableMapOf<String, Example>()
@@ -82,9 +82,7 @@ internal class ExampleContextImpl(private val encoder: ExampleEncoder?) : Exampl
     private fun generateExample(exampleDescriptor: ExampleDescriptor, type: TypeDescriptor?): Example {
         return when (exampleDescriptor) {
             is ValueExampleDescriptor -> Example().also {
-                it.value =
-                    if (encoder != null) encoder.invoke(type, exampleDescriptor.value)
-                    else exampleDescriptor.value
+                it.value = encoder(type, exampleDescriptor.value)
                 it.summary = exampleDescriptor.summary
                 it.description = exampleDescriptor.description
             }

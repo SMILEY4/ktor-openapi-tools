@@ -121,7 +121,7 @@ internal class SchemaContextImpl(private val schemaConfig: SchemaConfigData) : S
         return schemaConfig.generator(KTypeInput(type))
     }
 
-    private fun generateSchema(descriptor: SerialDescriptor,): CompiledSwaggerSchema {
+    private fun generateSchema(descriptor: SerialDescriptor): CompiledSwaggerSchema {
         return schemaConfig.generator(SerialDescriptorInput(descriptor))
     }
 

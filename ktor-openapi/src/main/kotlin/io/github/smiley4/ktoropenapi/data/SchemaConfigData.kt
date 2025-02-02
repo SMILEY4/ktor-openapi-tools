@@ -1,17 +1,8 @@
 package io.github.smiley4.ktoropenapi.data
 
+import io.github.smiley4.ktoropenapi.config.GenericSchemaGenerator
+import io.github.smiley4.ktoropenapi.config.SchemaGenerator
 import io.github.smiley4.ktoropenapi.config.TypeDescriptor
-import io.github.smiley4.schemakenerator.core.addMissingSupertypeSubtypeRelations
-import io.github.smiley4.schemakenerator.core.data.InputType
-import io.github.smiley4.schemakenerator.core.handleNameAnnotation
-import io.github.smiley4.schemakenerator.reflection.analyseTypeUsingReflection
-import io.github.smiley4.schemakenerator.reflection.collectSubTypes
-import io.github.smiley4.schemakenerator.swagger.compileReferencingRoot
-import io.github.smiley4.schemakenerator.swagger.data.CompiledSwaggerSchema
-import io.github.smiley4.schemakenerator.swagger.data.TitleType
-import io.github.smiley4.schemakenerator.swagger.generateSwaggerSchema
-import io.github.smiley4.schemakenerator.swagger.handleCoreAnnotations
-import io.github.smiley4.schemakenerator.swagger.withTitle
 import kotlin.reflect.KType
 
 /**
@@ -19,24 +10,14 @@ import kotlin.reflect.KType
  */
 internal data class SchemaConfigData(
     val schemas: Map<String, TypeDescriptor>,
-    val generator: (type: InputType) -> CompiledSwaggerSchema,
+    val generator: GenericSchemaGenerator,
     val overwrite: Map<KType, TypeDescriptor>,
     val securitySchemas: List<TypeDescriptor>
 ) {
     companion object {
         val DEFAULT = SchemaConfigData(
             schemas = emptyMap(),
-            generator = { type ->
-                type
-                    .collectSubTypes()
-                    .analyseTypeUsingReflection()
-                    .addMissingSupertypeSubtypeRelations()
-                    .handleNameAnnotation()
-                    .generateSwaggerSchema()
-                    .handleCoreAnnotations()
-                    .withTitle(TitleType.SIMPLE)
-                    .compileReferencingRoot()
-            },
+            generator = SchemaGenerator.reflection,
             overwrite = emptyMap(),
             securitySchemas = emptyList()
         )
