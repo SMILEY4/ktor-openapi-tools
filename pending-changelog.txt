@@ -1,3 +1,14 @@
+
+- upgrade schema kenerator to ???
+
+- support for documenting webhooks
+
+- more configuration options for swagger and redoc
+
+- TypesafeRouting plugin
+    - improved support for TypesafeRouting plugin
+    - automatically detect path and query parameters
+
 - renamed typalias `ExampleEncoder` to `GenericExampleEncoder`
 - moved default example encoder to `ExampleEncoder.internal`
 - moved `kotlinxExampleEncoder` to ExampleEncoder.kotlinx
