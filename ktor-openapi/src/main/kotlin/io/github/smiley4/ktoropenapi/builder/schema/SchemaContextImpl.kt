@@ -142,6 +142,9 @@ internal class SchemaContextImpl(private val schemaConfig: SchemaConfigData) : S
                             is MultipartBodyData -> {
                                 body.parts.forEach { part ->
                                     descriptors.add(part.type)
+                                    part.headers.forEach { (_, header) ->
+                                        header.type?.also { descriptors.add(it) }
+                                    }
                                 }
                             }
                         }

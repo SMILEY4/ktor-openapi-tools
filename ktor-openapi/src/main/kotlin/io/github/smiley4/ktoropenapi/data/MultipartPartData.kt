@@ -9,6 +9,7 @@ import io.ktor.http.ContentType
 internal data class MultipartPartData(
     val name: String,
     val type: TypeDescriptor,
+    val required: Boolean,
     val mediaTypes: Set<ContentType>,
     val headers: Map<String, HeaderData>,
 )
