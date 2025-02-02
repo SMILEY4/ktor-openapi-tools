@@ -19,7 +19,6 @@ plugins {
 
 repositories {
     mavenCentral()
-    mavenLocal() // todo: remove after releasing schema-kenerator 1.7.0
 }
 
 dependencies {

@@ -9,7 +9,6 @@ plugins {
 }
 
 repositories {
-    mavenLocal() // todo: remove after releasing schema-kenerator 1.7.0
     mavenCentral()
 }
 
@@ -24,6 +23,9 @@ dependencies {
     implementation("io.ktor:ktor-server-netty-jvm:$versionKtor")
     implementation("io.ktor:ktor-server-content-negotiation:$versionKtor")
     implementation("io.ktor:ktor-serialization-jackson:$versionKtor")
+    implementation("io.ktor:ktor-serialization-kotlinx-json:$versionKtor")
+
+
     implementation("io.ktor:ktor-server-auth:$versionKtor")
     implementation("io.ktor:ktor-server-call-logging:$versionKtor")
     implementation("io.ktor:ktor-server-test-host:$versionKtor")
