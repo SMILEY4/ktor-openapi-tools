@@ -17,7 +17,7 @@ internal data class SchemaConfigData(
     companion object {
         val DEFAULT = SchemaConfigData(
             schemas = emptyMap(),
-            generator = SchemaGenerator.reflection,
+            generator = SchemaGenerator.reflection(),
             overwrite = emptyMap(),
             securitySchemas = emptyList()
         )

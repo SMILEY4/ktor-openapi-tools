@@ -17,20 +17,23 @@ object ExampleEncoder {
     /**
      * Default [GenericExampleEncoder] using internal swagger serializer to encode example object.
      */
-    val internal: GenericExampleEncoder = { _, example ->
+    fun internal(): GenericExampleEncoder = { _, example ->
         example
     }
 
     /**
      * [GenericExampleEncoder] using kotlinx-serialization to encode example objects.
+     * @param json the kotlinx json serializer to use for encoding objects to json. Set `null` to use default kotlinx json serializer.
      */
-    val kotlinx: GenericExampleEncoder = { type, example ->
-        if (type is KTypeDescriptor) {
-            val jsonString = Json.encodeToString(serializer(type.type), example)
-            val jsonObj = jacksonObjectMapper().readValue(jsonString, object : TypeReference<Any>() {})
-            jsonObj
-        } else {
-            example
+    fun kotlinx(json: Json? = null): GenericExampleEncoder = { type, example ->
+        when(type) {
+            is KTypeDescriptor -> {
+                val jsonEncoder = json ?: Json
+                val jsonString = jsonEncoder.encodeToString(serializer(type.type), example)
+                val jsonObj = jacksonObjectMapper().readValue(jsonString, object : TypeReference<Any>() {})
+                jsonObj
+            }
+            else -> example
         }
     }
 

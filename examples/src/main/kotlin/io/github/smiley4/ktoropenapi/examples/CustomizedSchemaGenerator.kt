@@ -1,11 +1,13 @@
 package io.github.smiley4.ktoropenapi.examples
 
 import io.github.smiley4.ktoropenapi.OpenApi
+import io.github.smiley4.ktoropenapi.config.SchemaGenerator
 import io.github.smiley4.ktoropenapi.get
 import io.github.smiley4.ktoropenapi.openApi
 import io.github.smiley4.ktorredoc.redoc
 import io.github.smiley4.ktorswaggerui.swaggerUI
 import io.github.smiley4.schemakenerator.serialization.analyzeTypeUsingKotlinxSerialization
+import io.github.smiley4.schemakenerator.swagger.RequiredHandling
 import io.github.smiley4.schemakenerator.swagger.compileReferencingRoot
 import io.github.smiley4.schemakenerator.swagger.data.TitleType
 import io.github.smiley4.schemakenerator.swagger.generateSwaggerSchema
@@ -29,16 +31,28 @@ private fun Application.myModule() {
     // Install and configure the "SwaggerUI"-Plugin
     install(OpenApi) {
         schemas {
-            // replace default schema-generator with customized one
+            // replace default schema-generator with configurable pre-defined generator, or ...
+            generator = SchemaGenerator.kotlinx {
+                nullables = RequiredHandling.NON_REQUIRED
+                optionals = RequiredHandling.REQUIRED
+                title = TitleType.SIMPLE
+                explicitNullTypes = false
+            }
+            // ... replace default schema-generator with completely custom generator
             generator = { type ->
                 type
                     // process type using kotlinx-serialization instead of reflection
                     // requires additional dependency "io.github.smiley4:schema-kenerator-kotlinx-serialization:<VERSION>"
                     // see https://github.com/SMILEY4/schema-kenerator for more information
                     .analyzeTypeUsingKotlinxSerialization()
-                    .generateSwaggerSchema()
+                    .generateSwaggerSchema {
+                        nullables = RequiredHandling.NON_REQUIRED
+                        optionals = RequiredHandling.REQUIRED
+                    }
                     .withTitle(TitleType.SIMPLE)
-                    .compileReferencingRoot()
+                    .compileReferencingRoot(
+                        explicitNullTypes = false
+                    )
             }
         }
     }
