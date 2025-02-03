@@ -19,22 +19,22 @@ fun main() {
 
 private fun Application.myModule() {
 
-    // Install the "SwaggerUI"-Plugin and use the default configuration
+    // Install the Op lugin and use the default configuration
     install(OpenApi)
 
     routing {
 
-        // Create a route for the openapi-spec file.
+        // Create a route for the OpenAPI spec file.
         // This route will not be included in the spec.
         route("api.json") {
             openApi()
         }
-        // Create a route for the swagger-ui using the openapi-spec at "/api.json".
+        // Create a route for the Swagger UI using the OpenAPI spec at "/api.json".
         // This route will not be included in the spec.
         route("swagger") {
             swaggerUI("/api.json")
         }
-        // Create a route for redoc using the openapi-spec at "/api.json".
+        // Create a route for ReDoc using the OpenAPI spec at "/api.json".
         // This route will not be included in the spec.
         route("redoc") {
             redoc("/api.json")

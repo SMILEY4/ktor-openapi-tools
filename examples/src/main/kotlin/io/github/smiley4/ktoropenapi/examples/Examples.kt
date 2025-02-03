@@ -21,7 +21,7 @@ fun main() {
 
 private fun Application.myModule() {
 
-    // Install and customize the "SwaggerUI"-Plugin
+    // Install and customize the OpenApi plugin
     install(OpenApi) {
         examples {
 
@@ -53,7 +53,7 @@ private fun Application.myModule() {
 
     routing {
 
-        // add the routes for  the api-spec, swagger-ui and redoc
+        // add the routes for  the OpenAPI spec, Swagger UI and ReDoc
         route("swagger") {
             swaggerUI("/api.json")
         }
@@ -91,7 +91,7 @@ private fun Application.myModule() {
         get("reference-shared", {
             request {
                 body<MyExampleClass> {
-                    // reference two shared examples specified in the plugin-config (and placed in the component section)
+                    // reference two shared examples specified in the plugin config (and placed in the component section)
                     exampleRef("Example 1", "Shared A")
                     exampleRef("Example 2", "Shared B")
                 }

@@ -26,7 +26,7 @@ fun main() {
 
 private fun Application.myModule() {
 
-    // Install the "SwaggerUI"-Plugin and use the default configuration
+    // Install the OpenApi plugin and use the default configuration
     install(OpenApi)
 
     install(ContentNegotiation) {
@@ -41,7 +41,7 @@ private fun Application.myModule() {
 
     routing {
 
-        // add the routes for  the api-spec, swagger-ui and redoc
+        // add the routes for OpenAPI spec, Swagger UI and ReDoc
         route("swagger") {
             swaggerUI("/api.json")
         }
@@ -56,7 +56,7 @@ private fun Application.myModule() {
         post("calculate", {
             // information about the request
             request {
-                // specify the schema of the request-body and some additional information
+                // specify the schema of the request body and some additional information
                 body<Calculation> {
                     description = "the requested operation and values to perform the operation on"
                     required = true
@@ -64,15 +64,15 @@ private fun Application.myModule() {
             }
             // information the possible responses
             response {
-                // document the "200 OK"-response
+                // document the "200 OK" response
                 code(HttpStatusCode.OK) {
                     description = "Calculation was performed successfully."
-                    // specify the schema of the response-body and some additional information
+                    // specify the schema of the response body and some additional information
                     body<CalculationResult> {
                         description = "the result of an operation together with the original request"
                     }
                 }
-                // document the "422 UnprocessableEntity"-response
+                // document the "422 Unprocessable Entity" response
                 code(HttpStatusCode.UnprocessableEntity) {
                     description = "The requested calculation could not be performed, e.g. due to division by zero."
                 }

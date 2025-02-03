@@ -20,7 +20,7 @@ fun main() {
 
 private fun Application.myModule() {
 
-    // Install and configure the "OpenApi"-Plugin
+    // Install and configure the "OpenApi" Plugin
     install(OpenApi) {
         // configure basic information about the api
         info {
@@ -45,17 +45,17 @@ private fun Application.myModule() {
 
     routing {
 
-        // Create a route for the openapi-spec file.
+        // Create a route for the openapi spec file.
         // This route will not be included in the spec.
         route("api.json") {
             openApi()
         }
-        // Create a route for the swagger-ui using the openapi-spec at "/api.json".
+        // Create a route for the Swagger UI using the openapi spec at "/api.json".
         // This route will not be included in the spec.
         route("swagger") {
             swaggerUI("/api.json")
         }
-        // Create a route for redoc using the openapi-spec at "/api.json".
+        // Create a route for redoc using the OpenAPI spec at "/api.json".
         // This route will not be included in the spec.
         route("redoc") {
             redoc("/api.json")
@@ -67,7 +67,7 @@ private fun Application.myModule() {
             description = "A Hello-World route"
             // information about the request
             request {
-                // information about the query-parameter "name" of type "string"
+                // information about the query parameter "name" of type "string"
                 queryParameter<String>("name") {
                     description = "the name to greet"
                 }

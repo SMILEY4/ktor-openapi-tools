@@ -43,7 +43,7 @@ private fun Application.myModule() {
 
     routing {
 
-        // add the routes for  the api-spec, swagger-ui and redoc
+        // add the routes for the OpenAPI spec, Swagger UI and ReDoc
         route("swagger") {
             swaggerUI("/api.json")
         }

@@ -20,57 +20,57 @@ fun main() {
 
 private fun Application.myModule() {
 
-    // Install and configure the "SwaggerUI"-Plugin
+    // Install and configure the OpenAPI plugin
     install(OpenApi) {
         // "global" configuration for all specs
         info {
             title = "Example API"
         }
-        // configuration specific for spec "v1", overwrites global config
+        // configuration specific for spec "version1", overwrites global config
         spec("version1") {
             info {
                 version = "1.0"
             }
         }
-        // configuration specific for spec "v2", overwrites global config
+        // configuration specific for spec "version2", overwrites global config
         spec("version2") {
             info {
                 version = "2.0"
             }
         }
-        // assign all unassigned routes to spec "v2" (here only route '/greet')
+        // assign all unassigned routes to spec "version2" (here only route '/greet')
         specAssigner = { _, _ -> "version2" }
     }
 
     routing {
 
-        // add routes for "v1"-spec and swagger-ui
+        // add routes for "version1" spec, Swagger UI and ReDoc
         route("v1") {
-            // api-spec containing all routes assigned to "v1"
+            // OpenAPI spec containing all routes assigned to "version1"
             route("api.json") {
                 openApi("version1")
             }
-            // swagger-ui using '/v1/api.json'
+            // Swagger UI using '/v1/api.json'
             route("swagger") {
                 swaggerUI("/v1/api.json")
             }
-            // redoc using '/v1/api.json'
+            // ReDoc using '/v1/api.json'
             route("redoc") {
                 redoc("/v1/api.json")
             }
         }
 
-        // add routes for "v2"-spec and swagger-ui
+        // add routes for "version2" spec, Swagger UI and ReDoc
         route("v2") {
-            // api-spec containing all routes assigned to "v2"
+            // OpenAPI spec containing all routes assigned to "version2"
             route("api.json") {
                 openApi("version2")
             }
-            // swagger-ui using '/v2/api.json'
+            // Swagger UI using '/v2/api.json'
             route("swagger") {
                 swaggerUI("/v2/api.json")
             }
-            // redoc using '/v2/api.json'
+            // ReDoc using '/v2/api.json'
             route("swagger") {
                 redoc("/v2/api.json")
             }
@@ -81,7 +81,7 @@ private fun Application.myModule() {
             specName = "version1"
         }) {
 
-            // "hello"-route in version 1.0
+            // "hello" route in version 1.0
             get("hello", {
                 description = "Version 1 'Hello World'"
             }) {
@@ -95,7 +95,7 @@ private fun Application.myModule() {
             specName = "version2"
         }) {
 
-            // "hello"-route in version 2.0
+            // "hello" route in version 2.0
             get("hello", {
                 description = "Version 2 'Hello World'"
             }) {

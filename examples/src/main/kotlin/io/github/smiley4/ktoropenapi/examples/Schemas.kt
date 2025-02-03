@@ -32,17 +32,17 @@ fun main() {
 
 private fun Application.myModule() {
 
-    // Install and customize the "SwaggerUI"-Plugin
+    // Install and customize the OpenApi Plugin
     install(OpenApi) {
         schemas {
 
-            // add a swagger schema to the component-section of the api-spec with the id "swagger-schema"
+            // add a swagger schema to the component section of the api spec with the id "swagger-schema"
             schema("swagger-schema", Schema<Any>().also {
                 it.type = "number"
                 it.title = "Custom Type"
             })
 
-            // add a type to the component-section of the api-spec with the id "type-schema"
+            // add a type to the component section of the api spec with the id "type-schema"
             schema<MySchemaClass>("type-schema")
 
             // overwrite 'LocalDateTime' with custom schema (root only)
@@ -67,7 +67,7 @@ private fun Application.myModule() {
 
     routing {
 
-        // add the routes for  the api-spec, swagger-ui and redoc
+        // add the routes for  the api spec, swagger-ui and redoc
         route("swagger") {
             swaggerUI("/api.json")
         }
@@ -91,7 +91,7 @@ private fun Application.myModule() {
 
         get("global-swagger-schema", {
             request {
-                // reference and use the schema from the component-section with the id "swagger-schema"
+                // reference and use the schema from the component section with the id "swagger-schema"
                 body(ref("swagger-schema"))
             }
         }) {
@@ -101,7 +101,7 @@ private fun Application.myModule() {
 
         get("global-type-schema", {
             request {
-                // reference and use the schema from the component-section with the id "type-schema"
+                // reference and use the schema from the component section with the id "type-schema"
                 body(ref("type-schema"))
             }
         }) {

@@ -22,7 +22,7 @@ fun main() {
 
 
 /**
- * Uses the OpenApi-Example "petstore-simple" to demonstrate ktor with swagger-ui
+ * Uses the OpenAPI example "petstore simple" to demonstrate ktor with swagger-ui
  * https://github.com/OAI/OpenAPI-Specification/blob/main/examples/v2.0/json/petstore-simple.json
  */
 private fun Application.myModule() {
@@ -64,7 +64,7 @@ private fun Application.myModule() {
 
     routing {
 
-        // add the routes for  the api-spec, swagger-ui and redoc
+        // add the routes for OpenAPI spec, Swagger UI and ReDoc
         route("swagger") {
             swaggerUI("/api.json")
         }
@@ -258,10 +258,7 @@ private fun Application.myModule() {
                 }) {
                     call.respond(HttpStatusCode.NotImplemented, Unit)
                 }
-
             }
         }
-
     }
-
 }

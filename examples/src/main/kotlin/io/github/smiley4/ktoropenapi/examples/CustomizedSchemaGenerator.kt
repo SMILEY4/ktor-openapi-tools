@@ -28,7 +28,7 @@ fun main() {
 
 private fun Application.myModule() {
 
-    // Install and configure the "SwaggerUI"-Plugin
+    // Install and configure the OpenApi plugin
     install(OpenApi) {
         schemas {
             // replace default schema-generator with configurable pre-defined generator, or ...
@@ -41,9 +41,6 @@ private fun Application.myModule() {
             // ... replace default schema-generator with completely custom generator
             generator = { type ->
                 type
-                    // process type using kotlinx-serialization instead of reflection
-                    // requires additional dependency "io.github.smiley4:schema-kenerator-kotlinx-serialization:<VERSION>"
-                    // see https://github.com/SMILEY4/schema-kenerator for more information
                     .analyzeTypeUsingKotlinxSerialization()
                     .generateSwaggerSchema {
                         nullables = RequiredHandling.NON_REQUIRED
@@ -59,7 +56,7 @@ private fun Application.myModule() {
 
     routing {
 
-        // add the routes for  the api-spec, swagger-ui and redoc
+        // add the routes for  the OpenAPI spec, Swagger UI and ReDoc
         route("swagger") {
             swaggerUI("/api.json")
         }

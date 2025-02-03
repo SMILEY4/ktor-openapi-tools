@@ -23,7 +23,7 @@ fun main() {
 
 private fun Application.myModule() {
 
-    // Install the "SwaggerUI"-Plugin and use the default configuration
+    // Install the OpenAPI plugin and use the default configuration
     install(OpenApi) {
         schemas {
             // overwrite type "File" with custom schema for binary data
@@ -36,7 +36,7 @@ private fun Application.myModule() {
 
     routing {
 
-        // add the routes for  the api-spec, swagger-ui and redoc
+        // add the routes for  the OpenAPI spec, Swagger UI and ReDoc
         route("swagger") {
             swaggerUI("/api.json")
         }
