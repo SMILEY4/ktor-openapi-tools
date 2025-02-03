@@ -121,7 +121,7 @@ internal class SchemaContextImpl(private val schemaConfig: SchemaConfigData) : S
         return schemaConfig.generator(KTypeInput(type))
     }
 
-    private fun generateSchema(descriptor: SerialDescriptor,): CompiledSwaggerSchema {
+    private fun generateSchema(descriptor: SerialDescriptor): CompiledSwaggerSchema {
         return schemaConfig.generator(SerialDescriptorInput(descriptor))
     }
 
@@ -142,6 +142,9 @@ internal class SchemaContextImpl(private val schemaConfig: SchemaConfigData) : S
                             is MultipartBodyData -> {
                                 body.parts.forEach { part ->
                                     descriptors.add(part.type)
+                                    part.headers.forEach { (_, header) ->
+                                        header.type?.also { descriptors.add(it) }
+                                    }
                                 }
                             }
                         }

@@ -1,16 +1,12 @@
 package io.github.smiley4.ktoropenapi.examples
 
 import io.github.smiley4.ktoropenapi.OpenApi
-import io.github.smiley4.ktoropenapi.config.kotlinxExampleEncoder
+import io.github.smiley4.ktoropenapi.config.ExampleEncoder
+import io.github.smiley4.ktoropenapi.config.SchemaGenerator
 import io.github.smiley4.ktoropenapi.get
 import io.github.smiley4.ktoropenapi.openApi
 import io.github.smiley4.ktorredoc.redoc
 import io.github.smiley4.ktorswaggerui.swaggerUI
-import io.github.smiley4.schemakenerator.serialization.analyzeTypeUsingKotlinxSerialization
-import io.github.smiley4.schemakenerator.swagger.compileReferencingRoot
-import io.github.smiley4.schemakenerator.swagger.data.TitleType
-import io.github.smiley4.schemakenerator.swagger.generateSwaggerSchema
-import io.github.smiley4.schemakenerator.swagger.withTitle
 import io.ktor.http.HttpStatusCode
 import io.ktor.server.application.Application
 import io.ktor.server.application.install
@@ -20,6 +16,7 @@ import io.ktor.server.response.respondText
 import io.ktor.server.routing.route
 import io.ktor.server.routing.routing
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.Json
 
 fun main() {
     embeddedServer(Netty, port = 8080, host = "localhost", module = Application::myModule).start(wait = true)
@@ -27,21 +24,20 @@ fun main() {
 
 private fun Application.myModule() {
 
+    val json = Json {
+        prettyPrint = true
+        encodeDefaults = true
+        explicitNulls = false
+    }
+
     install(OpenApi) {
         schemas {
-            // configure the schema generator to use kotlinx-serializer
-            // (see https://github.com/SMILEY4/schema-kenerator/wiki for more information)
-            generator = { type ->
-                type
-                    .analyzeTypeUsingKotlinxSerialization()
-                    .generateSwaggerSchema()
-                    .withTitle(TitleType.SIMPLE)
-                    .compileReferencingRoot()
-            }
+            // configure the schema generator to use the default kotlinx-serializer
+            generator = SchemaGenerator.kotlinx(json)
         }
         examples {
             // configure the example encoder to encode kotlin objects using kotlinx-serializer
-            exampleEncoder = kotlinxExampleEncoder
+            exampleEncoder = ExampleEncoder.kotlinx(json)
         }
     }
 

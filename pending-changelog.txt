@@ -1,0 +1,18 @@
+
+- upgrade schema kenerator to ???
+
+- support for documenting webhooks
+
+- more configuration options for swagger and redoc
+
+- TypesafeRouting plugin
+    - improved support for TypesafeRouting plugin
+    - automatically detect path and query parameters
+
+- renamed typalias `ExampleEncoder` to `GenericExampleEncoder`
+- moved default example encoder to `ExampleEncoder.internal`
+- moved `kotlinxExampleEncoder` to ExampleEncoder.kotlinx
+- added typealias `GenericSchemaGenerator` for schema generation function
+- create pre-defined configurable example encoders for internal swagger encoder and kotlinx-serialization
+- create pre-defined configurable schema generators for reflection and kotlinx-serialization
+- kotlinx-serialization schema generator and example encoder can be easily configured using the same kotlinx Json object (also used for serializing real ktor requests and responses)

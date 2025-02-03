@@ -1,7 +1,6 @@
 package io.github.smiley4.ktoropenapi.builder
 
 import io.github.oshai.kotlinlogging.KotlinLogging
-import io.github.smiley4.ktoropenapi.OpenApiPlugin.config
 import io.github.smiley4.ktoropenapi.builder.example.ExampleContext
 import io.github.smiley4.ktoropenapi.builder.example.ExampleContextImpl
 import io.github.smiley4.ktoropenapi.builder.openapi.ComponentsBuilder
