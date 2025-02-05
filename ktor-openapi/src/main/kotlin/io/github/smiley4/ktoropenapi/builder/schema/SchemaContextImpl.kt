@@ -57,14 +57,9 @@ internal class SchemaContextImpl(private val schemaConfig: SchemaConfigData) : S
     private fun generateSchema(typeDescriptor: TypeDescriptor): CompiledSwaggerSchema {
         return when (typeDescriptor) {
             is KTypeDescriptor -> {
-                if (schemaConfig.overwrite.containsKey(typeDescriptor.type)) {
-                    generateSchema(schemaConfig.overwrite[typeDescriptor.type]!!)
-                } else {
-                    generateSchema(typeDescriptor.type)
-                }
+                generateSchema(typeDescriptor.type)
             }
             is SerialTypeDescriptor -> {
-                // todo: support schemaConfig.overwrite
                 generateSchema(typeDescriptor.descriptor)
             }
             is SwaggerTypeDescriptor -> {

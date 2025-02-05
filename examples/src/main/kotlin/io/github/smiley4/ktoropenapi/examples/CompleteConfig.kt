@@ -113,10 +113,6 @@ private fun Application.myModule() {
                     .withTitle(TitleType.SIMPLE)
                     .compileReferencingRoot()
             }
-            overwrite<File>(Schema<Any>().also {
-                it.type = "string"
-                it.format = "binary"
-            })
         }
         examples {
             example("Id 1") {

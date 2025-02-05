@@ -11,14 +11,12 @@ import kotlin.reflect.KType
 internal data class SchemaConfigData(
     val schemas: Map<String, TypeDescriptor>,
     val generator: GenericSchemaGenerator,
-    val overwrite: Map<KType, TypeDescriptor>,
     val securitySchemas: List<TypeDescriptor>
 ) {
     companion object {
         val DEFAULT = SchemaConfigData(
             schemas = emptyMap(),
             generator = SchemaGenerator.reflection(),
-            overwrite = emptyMap(),
             securitySchemas = emptyList()
         )
     }

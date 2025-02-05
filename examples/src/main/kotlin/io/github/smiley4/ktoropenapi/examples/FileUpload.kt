@@ -1,6 +1,7 @@
 package io.github.smiley4.ktoropenapi.examples
 
 import io.github.smiley4.ktoropenapi.OpenApi
+import io.github.smiley4.ktoropenapi.config.SchemaGenerator
 import io.github.smiley4.ktoropenapi.post
 import io.github.smiley4.ktoropenapi.openApi
 import io.github.smiley4.ktorredoc.redoc
@@ -14,7 +15,6 @@ import io.ktor.server.netty.Netty
 import io.ktor.server.response.respond
 import io.ktor.server.routing.route
 import io.ktor.server.routing.routing
-import io.swagger.v3.oas.models.media.Schema
 import java.io.File
 
 fun main() {
@@ -27,10 +27,9 @@ private fun Application.myModule() {
     install(OpenApi) {
         schemas {
             // overwrite type "File" with custom schema for binary data
-            overwrite<File>(Schema<Any>().also {
-                it.type = "string"
-                it.format = "binary"
-            })
+            generator = SchemaGenerator.reflection {
+                overwrite(SchemaGenerator.TypeOverwrites.File())
+            }
         }
     }
 

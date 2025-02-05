@@ -50,6 +50,7 @@ object SchemaGenerator {
 
     /**
      * A pre-built [GenericSchemaGenerator] using reflection to analyze types and generate the schemas
+     * @param config the configuration of the schema generation
      */
     fun reflection(config: ReflectionConfig.() -> Unit = {}): GenericSchemaGenerator {
         val configInstance = ReflectionConfig().apply(config)
@@ -91,6 +92,10 @@ object SchemaGenerator {
         }
     }
 
+
+    /**
+     * The configuration for a pre-built schema generator using reflection for type analysis.
+     */
     class ReflectionConfig {
 
         /**
@@ -187,7 +192,7 @@ object SchemaGenerator {
 
 
         /**
-         * Add a new custom type for types matched by the given matcher.
+         * Add a new custom analyzer for types matched by the given matcher.
          * Modules overwrite previous modules when matching the same type.
          */
         fun customAnalyzer(matcher: ReflectionTypeMatcher, provider: ReflectionCustomProvider) {
@@ -233,7 +238,7 @@ object SchemaGenerator {
         /**
          * Specify the schema for the matching type. Overwrites default schema generation
          */
-        fun overwrite(module: BasicSchemaOverwriteModule)  {
+        fun overwrite(module: SchemaOverwriteModule) {
             analyzerModules.add(module)
             generationModules.add(module)
         }
@@ -276,6 +281,10 @@ object SchemaGenerator {
         }
     }
 
+
+    /**
+     * The configuration for a pre-built schema generator using kotlinx-serialization for type analysis.
+     */
     class KotlinxSerializationConfig {
 
         /**
@@ -422,6 +431,15 @@ object SchemaGenerator {
 
 
         /**
+         * Specify the schema for the matching type. Overwrites default schema generation
+         */
+        fun overwrite(module: SchemaOverwriteModule) {
+            analyzerModules.add(module)
+            generationModules.add(module)
+        }
+
+
+        /**
          * Initialize this schema generator config using the given kotlinx json serializer and match its behavior as close as possible.
          * @param json the kotlinx json serializer
          */
@@ -435,7 +453,12 @@ object SchemaGenerator {
 
     object TypeOverwrites {
 
-        class JavaUuid : BasicSchemaOverwriteModule(
+        /**
+         * Custom analysis and schema generation module for handling [java.util.UUID].
+         * Generates a swagger schema with type = "string" and format = "uuid".
+         * Can be registered in the config for [SchemaGenerator.reflection] or [SchemaGenerator.kotlinx]
+         */
+        class JavaUuid : SchemaOverwriteModule(
             identifier = java.util.UUID::class.qualifiedName!!,
             schema = {
                 Schema<Any>().also {
@@ -445,7 +468,13 @@ object SchemaGenerator {
             },
         )
 
-        class KotlinUuid : BasicSchemaOverwriteModule(
+
+        /**
+         * Custom analysis and schema generation module for handling [kotlin.uuid.Uuid].
+         * Generates a swagger schema with type = "string" and format = "uuid".
+         * Can be registered in the config for [SchemaGenerator.reflection] or [SchemaGenerator.kotlinx]
+         */
+        class KotlinUuid : SchemaOverwriteModule(
             identifier = kotlin.uuid.Uuid::class.qualifiedName!!,
             schema = {
                 Schema<Any>().also {
@@ -455,7 +484,13 @@ object SchemaGenerator {
             },
         )
 
-        class File : BasicSchemaOverwriteModule(
+
+        /**
+         * Custom analysis and schema generation module for handling [java.io.File].
+         * Generates a swagger schema with type = "string" and format = "binary".
+         * Can be registered in the config for [SchemaGenerator.reflection] or [SchemaGenerator.kotlinx]
+         */
+        class File : SchemaOverwriteModule(
             identifier = java.io.File::class.qualifiedName!!,
             schema = {
                 Schema<Any>().also {
@@ -465,7 +500,13 @@ object SchemaGenerator {
             },
         )
 
-        class Instant : BasicSchemaOverwriteModule(
+
+        /**
+         * Custom analysis and schema generation module for handling [java.time.Instant].
+         * Generates a swagger schema with type = "string" and format = "date-time".
+         * Can be registered in the config for [SchemaGenerator.reflection] or [SchemaGenerator.kotlinx]
+         */
+        class Instant : SchemaOverwriteModule(
             identifier = java.time.Instant::class.qualifiedName!!,
             schema = {
                 Schema<Any>().also {
@@ -475,7 +516,13 @@ object SchemaGenerator {
             },
         )
 
-        class LocalDateTime : BasicSchemaOverwriteModule(
+
+        /**
+         * Custom analysis and schema generation module for handling [java.time.LocalDateTime].
+         * Generates a swagger schema with type = "string" and format = "date-time".
+         * Can be registered in the config for [SchemaGenerator.reflection] or [SchemaGenerator.kotlinx]
+         */
+        class LocalDateTime : SchemaOverwriteModule(
             identifier = java.time.LocalDateTime::class.qualifiedName!!,
             schema = {
                 Schema<Any>().also {
@@ -485,7 +532,13 @@ object SchemaGenerator {
             },
         )
 
-        class LocalDate : BasicSchemaOverwriteModule(
+
+        /**
+         * Custom analysis and schema generation module for handling [java.time.LocalDate].
+         * Generates a swagger schema with type = "string" and format = "date".
+         * Can be registered in the config for [SchemaGenerator.reflection] or [SchemaGenerator.kotlinx]
+         */
+        class LocalDate : SchemaOverwriteModule(
             identifier = java.time.LocalDate::class.qualifiedName!!,
             schema = {
                 Schema<Any>().also {

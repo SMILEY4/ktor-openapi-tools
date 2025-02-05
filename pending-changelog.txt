@@ -14,7 +14,7 @@
     - create pre-defined configurable schema generators for reflection and kotlinx-serialization
     - kotlinx-serialization schema generator can be configured using the kotlinx "Json" object (also used for serializing real ktor requests and responses)
     - added pre-defined custom analysis and schema generation modules (SchemaGenerator.TypeOverwrites.XYZ) for common types
-
+    - remove old "type overwrites" (no longer necessary due to more powerful and flexible schema generator)
 
 - example encoding
     - renamed typalias `ExampleEncoder` to `GenericExampleEncoder`
@@ -28,4 +28,3 @@ TODO
 - schema generation
     - simplify config
     - more/simpler support for custom code
-- remove type overwrites from plugin -> no longer needed with customizable

@@ -18,7 +18,7 @@ import kotlinx.serialization.descriptors.nonNullOriginal
 import kotlin.reflect.KClass
 import kotlin.reflect.KType
 
-open class BasicSchemaOverwriteModule(
+open class SchemaOverwriteModule(
     val identifier: String,
     val schema: () -> Schema<*>
 ) : ReflectionTypeAnalyzerModule, SerializationTypeAnalyzerModule, SwaggerSchemaGenerationModule {
