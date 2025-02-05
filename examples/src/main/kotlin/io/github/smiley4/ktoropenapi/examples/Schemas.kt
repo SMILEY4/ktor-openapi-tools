@@ -2,6 +2,7 @@ package io.github.smiley4.ktoropenapi.examples
 
 import com.fasterxml.jackson.annotation.JsonSubTypes
 import io.github.smiley4.ktoropenapi.OpenApi
+import io.github.smiley4.ktoropenapi.config.SchemaGenerator
 import io.github.smiley4.ktoropenapi.config.anyOf
 import io.github.smiley4.ktoropenapi.config.array
 import io.github.smiley4.ktoropenapi.config.ref
@@ -9,13 +10,6 @@ import io.github.smiley4.ktoropenapi.get
 import io.github.smiley4.ktoropenapi.openApi
 import io.github.smiley4.ktorredoc.redoc
 import io.github.smiley4.ktorswaggerui.swaggerUI
-import io.github.smiley4.schemakenerator.core.addMissingSupertypeSubtypeRelations
-import io.github.smiley4.schemakenerator.jackson.collectJacksonSubTypes
-import io.github.smiley4.schemakenerator.reflection.analyseTypeUsingReflection
-import io.github.smiley4.schemakenerator.swagger.compileReferencingRoot
-import io.github.smiley4.schemakenerator.swagger.data.TitleType
-import io.github.smiley4.schemakenerator.swagger.generateSwaggerSchema
-import io.github.smiley4.schemakenerator.swagger.withTitle
 import io.ktor.server.application.Application
 import io.ktor.server.application.install
 import io.ktor.server.engine.embeddedServer
@@ -45,21 +39,10 @@ private fun Application.myModule() {
             // add a type to the component section of the api spec with the id "type-schema"
             schema<MySchemaClass>("type-schema")
 
-            // overwrite 'LocalDateTime' with custom schema (root only)
-            overwrite<LocalDateTime>(Schema<Any>().also {
-                it.title = "timestamp"
-                it.type = "integer"
-            })
-
-            // customized schema generation pipeline
-            generator = { type ->
-                type
-                    .collectJacksonSubTypes(typeProcessing = { types -> types.analyseTypeUsingReflection() }) // include types from jackson subtype-annotation
-                    .analyseTypeUsingReflection()
-                    .addMissingSupertypeSubtypeRelations()
-                    .generateSwaggerSchema()
-                    .withTitle(TitleType.SIMPLE)
-                    .compileReferencingRoot()
+            // customized schema generation
+            generator = SchemaGenerator.reflection {
+                // overwrite default schema generation with one specific for LocalDateTime that correctly handles "type" and "format"
+                overwrite(SchemaGenerator.TypeOverwrites.LocalDateTime())
             }
 
         }

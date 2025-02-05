@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalUuidApi::class)
+
 package io.github.smiley4.ktoropenapi.config
 
 import io.github.smiley4.schemakenerator.core.addDiscriminatorProperty
@@ -5,26 +7,39 @@ import io.github.smiley4.schemakenerator.core.addMissingSupertypeSubtypeRelation
 import io.github.smiley4.schemakenerator.core.data.InputType
 import io.github.smiley4.schemakenerator.core.handleNameAnnotation
 import io.github.smiley4.schemakenerator.reflection.analyseTypeUsingReflection
+import io.github.smiley4.schemakenerator.reflection.analyzer.ReflectionCustomProvider
+import io.github.smiley4.schemakenerator.reflection.analyzer.ReflectionTypeAnalyzerModule
+import io.github.smiley4.schemakenerator.reflection.analyzer.ReflectionTypeMatcher
+import io.github.smiley4.schemakenerator.reflection.analyzer.SimpleTypeAnalyzerModule
 import io.github.smiley4.schemakenerator.reflection.analyzer.TypeCategoryAnalyzer.Companion.DEFAULT_PRIMITIVE_TYPES
 import io.github.smiley4.schemakenerator.reflection.collectSubTypes
 import io.github.smiley4.schemakenerator.reflection.data.EnumConstType
 import io.github.smiley4.schemakenerator.serialization.addJsonClassDiscriminatorProperty
 import io.github.smiley4.schemakenerator.serialization.analyzeTypeUsingKotlinxSerialization
+import io.github.smiley4.schemakenerator.serialization.analyzer.KotlinxSerializationCustomProvider
+import io.github.smiley4.schemakenerator.serialization.analyzer.KotlinxSerializationTypeMatcher
+import io.github.smiley4.schemakenerator.serialization.analyzer.SerializationTypeAnalyzerModule
+import io.github.smiley4.schemakenerator.serialization.analyzer.SimpleSerializationTypeAnalyzerModule
+import io.github.smiley4.schemakenerator.serialization.analyzer.fullName
 import io.github.smiley4.schemakenerator.swagger.RequiredHandling
 import io.github.smiley4.schemakenerator.swagger.compileReferencingRoot
 import io.github.smiley4.schemakenerator.swagger.data.CompiledSwaggerSchema
 import io.github.smiley4.schemakenerator.swagger.data.RefType
 import io.github.smiley4.schemakenerator.swagger.data.TitleType
 import io.github.smiley4.schemakenerator.swagger.generateSwaggerSchema
+import io.github.smiley4.schemakenerator.swagger.generator.SwaggerSchemaGenerationModule
 import io.github.smiley4.schemakenerator.swagger.handleCoreAnnotations
 import io.github.smiley4.schemakenerator.swagger.handleSchemaAnnotations
 import io.github.smiley4.schemakenerator.swagger.mergePropertyAttributesIntoType
 import io.github.smiley4.schemakenerator.swagger.withTitle
+import io.swagger.v3.oas.models.media.Schema
+import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.modules.SerializersModule
 import kotlin.reflect.KClass
 import kotlin.reflect.KType
 import kotlin.reflect.typeOf
+import kotlin.uuid.ExperimentalUuidApi
 
 /**
  * Function to generate swagger schemas for any given type
@@ -49,6 +64,7 @@ object SchemaGenerator {
                     includeStatic = configInstance.includeStatic
                     primitiveTypes = configInstance.primitiveTypes
                     enumConstType = configInstance.enumConstType
+                    modules.addAll(configInstance.analyzerModules)
                 }
                 .addMissingSupertypeSubtypeRelations()
                 .handleNameAnnotation()
@@ -59,6 +75,7 @@ object SchemaGenerator {
                 .generateSwaggerSchema {
                     optionals = configInstance.optionals
                     nullables = configInstance.nullables
+                    customModules.addAll(configInstance.generationModules)
                 }
                 .handleCoreAnnotations()
                 .handleSchemaAnnotations()
@@ -81,30 +98,36 @@ object SchemaGenerator {
          */
         var includeGetters: Boolean = false
 
+
         /**
          * Whether to include weak getters as members of classes (see [io.github.smiley4.schemakenerator.core.data.MemberKind.WEAK_GETTER]).
          */
         var includeWeakGetters: Boolean = false
+
 
         /**
          * Whether to include functions as members of classes (see [io.github.smiley4.schemakenerator.core.data.MemberKind.FUNCTION]).
          */
         var includeFunctions: Boolean = false
 
+
         /**
          * Whether to include hidden (e.g. private) members
          */
         var includeHidden: Boolean = false
+
 
         /**
          * Whether to include static members
          */
         var includeStatic: Boolean = false
 
+
         /**
          * The list of types that are considered "primitive types"
          */
         var primitiveTypes: MutableSet<KClass<*>> = DEFAULT_PRIMITIVE_TYPES.toMutableSet()
+
 
         /**
          * Whether to use "toString" for enum values or the declared "name"
@@ -129,6 +152,7 @@ object SchemaGenerator {
          */
         var nullables: RequiredHandling = RequiredHandling.NON_REQUIRED
 
+
         /**
          * Whether to explicitly include "null" types for nullable properties.
          */
@@ -140,10 +164,79 @@ object SchemaGenerator {
          */
         var title: TitleType? = TitleType.SIMPLE
 
+
         /**
          * The format of the reference paths.
          */
         var referencePath: RefType = RefType.OPENAPI_FULL
+
+
+        /**
+         * List of additional/custom [ReflectionTypeAnalyzerModule] to use for analysis.
+         */
+        var analyzerModules = mutableListOf<ReflectionTypeAnalyzerModule>()
+
+
+        /**
+         * Adds a new [ReflectionTypeAnalyzerModule].
+         * Modules overwrite previous modules when matching the same type.
+         */
+        fun customAnalyzer(module: ReflectionTypeAnalyzerModule) {
+            analyzerModules.add(module)
+        }
+
+
+        /**
+         * Add a new custom type for types matched by the given matcher.
+         * Modules overwrite previous modules when matching the same type.
+         */
+        fun customAnalyzer(matcher: ReflectionTypeMatcher, provider: ReflectionCustomProvider) {
+            analyzerModules.add(SimpleTypeAnalyzerModule(matcher, provider))
+        }
+
+
+        /**
+         * Add a custom type overwriting the given type.
+         * Modules overwrite previous modules when matching the same type.
+         */
+        fun customAnalyzer(clazz: KClass<*>, provider: ReflectionCustomProvider) {
+            customAnalyzer(
+                { _: KType, c: KClass<*> -> c == clazz },
+                provider
+            )
+        }
+
+
+        /**
+         * Add a custom type overwriting the given type.
+         * Modules overwrite previous modules when matching the same type.
+         */
+        inline fun <reified T> customAnalyzer(noinline provider: ReflectionCustomProvider) {
+            customAnalyzer(typeOf<T>().classifier!! as KClass<*>, provider)
+        }
+
+
+        /**
+         * List of additional/custom [ReflectionTypeAnalyzerModule] to use for schema generation.
+         */
+        val generationModules = mutableListOf<SwaggerSchemaGenerationModule>()
+
+
+        /**
+         * Add a custom schema generation module.
+         */
+        fun customGenerator(module: SwaggerSchemaGenerationModule) {
+            generationModules.add(module)
+        }
+
+
+        /**
+         * Specify the schema for the matching type. Overwrites default schema generation
+         */
+        fun overwrite(module: BasicSchemaOverwriteModule)  {
+            analyzerModules.add(module)
+            generationModules.add(module)
+        }
 
     }
 
@@ -153,19 +246,21 @@ object SchemaGenerator {
      */
     fun kotlinx(json: Json? = null, config: KotlinxSerializationConfig.() -> Unit = {}): GenericSchemaGenerator {
         val configInstance = KotlinxSerializationConfig()
-            .apply { if(json != null) useKotlinxConfig(json) }
+            .apply { if (json != null) useKotlinxConfig(json) }
             .apply(config)
         return { type ->
             type
                 .analyzeTypeUsingKotlinxSerialization {
                     serializersModule = configInstance.serializersModule
                     knownNotParameterized = configInstance.knownNotParameterized
+                    customModules.addAll(configInstance.analyzerModules)
                 }
                 .addJsonClassDiscriminatorProperty()
                 .handleNameAnnotation()
                 .generateSwaggerSchema {
                     optionals = configInstance.optionals
                     nullables = configInstance.nullables
+                    customModules.addAll(configInstance.generationModules)
                 }
                 .handleCoreAnnotations()
                 .handleSchemaAnnotations()
@@ -195,6 +290,7 @@ object SchemaGenerator {
          */
         var knownNotParameterized = mutableSetOf<String>()
 
+
         /**
          * Mark the type with the given full/qualified name as "not parameterized", i.e. as not having any generic type parameters.
          * This helps the type processing step to determine whether two types are truly the same and may fix issues encountered with types.
@@ -202,6 +298,7 @@ object SchemaGenerator {
         fun markNotParameterized(name: String) {
             knownNotParameterized.add(name)
         }
+
 
         /**
          * Mark the given type as "not parameterized", i.e as not having any generic type parameters.
@@ -212,6 +309,7 @@ object SchemaGenerator {
             markNotParameterized(clazz.qualifiedName ?: clazz.java.name)
         }
 
+
         /**
          * Mark the given type as "not parameterized", i.e as not having any generic type parameters.
          * This helps the type processing step to determine whether two types are truly the same.
@@ -221,25 +319,30 @@ object SchemaGenerator {
             markNotParameterized(clazz.qualifiedName ?: clazz.java.name)
         }
 
+
         /**
          * Whether optional properties are treated as "required". An optional parameter is one that has a default value specified.
          */
         var optionals: RequiredHandling = RequiredHandling.REQUIRED
+
 
         /**
          * Whether nullable properties are treated as "required"
          */
         var nullables: RequiredHandling = RequiredHandling.NON_REQUIRED
 
+
         /**
          * Whether to explicitly include "null" types for nullable properties.
          */
         var explicitNullTypes: Boolean = true
 
+
         /**
          * The format of the titles. Set `null` to not include titles in the schemas.
          */
         var title: TitleType? = TitleType.SIMPLE
+
 
         /**
          * The format of the reference paths.
@@ -248,14 +351,149 @@ object SchemaGenerator {
 
 
         /**
+         * List of additional/custom [SerializationTypeAnalyzerModule] to use for analysis.
+         */
+        var analyzerModules = mutableListOf<SerializationTypeAnalyzerModule>()
+
+
+        /**
+         * Adds a new [SerializationTypeAnalyzerModule].
+         * Modules overwrite previous modules when matching the same type.
+         */
+        fun customAnalyzer(module: SerializationTypeAnalyzerModule) {
+            analyzerModules.add(module)
+        }
+
+
+        /**
+         * Add a new custom type for types matched by the given matcher.
+         * Modules overwrite previous modules when matching the same type.
+         */
+        fun customAnalyzer(matcher: KotlinxSerializationTypeMatcher, provider: KotlinxSerializationCustomProvider) {
+            customAnalyzer(SimpleSerializationTypeAnalyzerModule(matcher, provider))
+        }
+
+
+        /**
+         * Add a new custom type for types matched by the given serial name.
+         * Modules overwrite previous modules when matching the same type.
+         */
+        fun customAnalyzer(serializerName: String, provider: KotlinxSerializationCustomProvider) {
+            customAnalyzer(
+                { descriptor: SerialDescriptor -> descriptor.fullName() == serializerName },
+                provider
+            )
+        }
+
+
+        /**
+         * Add a custom type overwriting the given type.
+         * Modules overwrite previous modules when matching the same type.
+         */
+        fun customAnalyzer(type: KClass<*>, provider: KotlinxSerializationCustomProvider) {
+            customAnalyzer(
+                { descriptor: SerialDescriptor -> descriptor.fullName() == (type.qualifiedName ?: type.java.name) },
+                provider
+            )
+        }
+
+
+        /**
+         * Add a custom type overwriting the given type.
+         * Modules overwrite previous modules when matching the same type.
+         */
+        inline fun <reified T> customAnalyzer(noinline provider: KotlinxSerializationCustomProvider) {
+            customAnalyzer(typeOf<T>().classifier!! as KClass<*>, provider)
+        }
+
+
+        /**
+         * List of additional/custom [ReflectionTypeAnalyzerModule] to use for schema generation.
+         */
+        val generationModules = mutableListOf<SwaggerSchemaGenerationModule>()
+
+
+        /**
+         * Add a custom schema generation module.
+         */
+        fun customGenerator(module: SwaggerSchemaGenerationModule) {
+            generationModules.add(module)
+        }
+
+
+        /**
          * Initialize this schema generator config using the given kotlinx json serializer and match its behavior as close as possible.
          * @param json the kotlinx json serializer
          */
         fun useKotlinxConfig(json: Json) {
             serializersModule = json.serializersModule
-            optionals = if(json.configuration.encodeDefaults) RequiredHandling.REQUIRED else RequiredHandling.NON_REQUIRED
-            nullables = if(json.configuration.explicitNulls) RequiredHandling.REQUIRED else RequiredHandling.NON_REQUIRED
+            optionals = if (json.configuration.encodeDefaults) RequiredHandling.REQUIRED else RequiredHandling.NON_REQUIRED
+            nullables = if (json.configuration.explicitNulls) RequiredHandling.REQUIRED else RequiredHandling.NON_REQUIRED
         }
+
+    }
+
+    object TypeOverwrites {
+
+        class JavaUuid : BasicSchemaOverwriteModule(
+            identifier = java.util.UUID::class.qualifiedName!!,
+            schema = {
+                Schema<Any>().also {
+                    it.types = setOf("string")
+                    it.format = "uuid"
+                }
+            },
+        )
+
+        class KotlinUuid : BasicSchemaOverwriteModule(
+            identifier = kotlin.uuid.Uuid::class.qualifiedName!!,
+            schema = {
+                Schema<Any>().also {
+                    it.types = setOf("string")
+                    it.format = "uuid"
+                }
+            },
+        )
+
+        class File : BasicSchemaOverwriteModule(
+            identifier = java.io.File::class.qualifiedName!!,
+            schema = {
+                Schema<Any>().also {
+                    it.types = setOf("string")
+                    it.format = "binary"
+                }
+            },
+        )
+
+        class Instant : BasicSchemaOverwriteModule(
+            identifier = java.time.Instant::class.qualifiedName!!,
+            schema = {
+                Schema<Any>().also {
+                    it.types = setOf("string")
+                    it.format = "date-time"
+                }
+            },
+        )
+
+        class LocalDateTime : BasicSchemaOverwriteModule(
+            identifier = java.time.LocalDateTime::class.qualifiedName!!,
+            schema = {
+                Schema<Any>().also {
+                    it.types = setOf("string")
+                    it.format = "date-time"
+                }
+            },
+        )
+
+        class LocalDate : BasicSchemaOverwriteModule(
+            identifier = java.time.LocalDate::class.qualifiedName!!,
+            schema = {
+                Schema<Any>().also {
+                    it.types = setOf("string")
+                    it.format = "date"
+                }
+            },
+        )
 
     }
 
