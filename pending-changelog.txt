@@ -22,9 +22,3 @@
     - moved `kotlinxExampleEncoder` to ExampleEncoder.kotlinx
     - create pre-defined configurable example encoders for internal swagger encoder and kotlinx-serialization
     - kotlinx-serialization example encoder can be configured using the kotlinx "Json" object (also used for serializing real ktor requests and responses)
-
-
-TODO
-- schema generation
-    - simplify config
-    - more/simpler support for custom code
