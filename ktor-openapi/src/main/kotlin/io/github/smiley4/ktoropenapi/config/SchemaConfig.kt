@@ -1,9 +1,6 @@
 package io.github.smiley4.ktoropenapi.config
 
 import io.github.smiley4.ktoropenapi.data.*
-import io.github.smiley4.schemakenerator.core.data.AnnotationData
-import io.github.smiley4.schemakenerator.core.data.InputType
-import io.github.smiley4.schemakenerator.swagger.data.CompiledSwaggerSchema
 import io.swagger.v3.oas.models.media.Schema
 import kotlin.reflect.KType
 import kotlin.reflect.typeOf
@@ -20,47 +17,6 @@ class SchemaConfig {
     var generator: GenericSchemaGenerator = SchemaConfigData.DEFAULT.generator
 
     private val schemas = mutableMapOf<String, TypeDescriptor>()
-
-    private val overwrite = mutableMapOf<KType, TypeDescriptor>()
-
-
-    /**
-     * Overwrite the given [type] with the given [replacement].
-     * When the type is specified as the type of a schema, the replacement is used instead.
-     * This only works for "root"-types and not types of e.g. nested fields.
-     */
-    fun overwrite(type: KType, replacement: TypeDescriptor) {
-        overwrite[type] = replacement
-    }
-
-    /**
-     * Overwrite the given type [T] with the given [replacement].
-     * When the type is specified as the type of a schema, the replacement is used instead.
-     * This only works for "root"-types and not types of e.g. nested fields.
-     */
-    inline fun <reified T> overwrite(replacement: TypeDescriptor) = overwrite(typeOf<T>(), replacement)
-
-    /**
-     * Overwrite the given type [T] with the given [replacement].
-     * When the type is specified as the type of a schema, the replacement is used instead.
-     * This only works for "root"-types and not types of e.g. nested fields.
-     */
-    inline fun <reified T> overwrite(replacement: Schema<*>) = overwrite(typeOf<T>(), SwaggerTypeDescriptor(replacement))
-
-    /**
-     * Overwrite the given type [T] with the given [replacement].
-     * When the type is specified as the type of a schema, the replacement is used instead.
-     * This only works for "root"-types and not types of e.g. nested fields.
-     */
-    inline fun <reified T> overwrite(replacement: KType) = overwrite(typeOf<T>(), KTypeDescriptor(replacement))
-
-    /**
-     * Overwrite the given type [T] with the given replacement [R].
-     * When the type is specified as the type of a schema, the replacement is used instead.
-     * This only works for "root"-types and not types of e.g. nested fields.
-     */
-    inline fun <reified T, reified R> overwrite() = overwrite(typeOf<T>(), KTypeDescriptor(typeOf<R>()))
-
 
     /**
      * Add a shared schema that can be referenced by all routes by the given id.
@@ -91,7 +47,6 @@ class SchemaConfig {
     internal fun build(securityConfig: SecurityData) = SchemaConfigData(
         generator = generator,
         schemas = schemas,
-        overwrite = overwrite,
         securitySchemas = securityConfig.defaultUnauthorizedResponse?.body?.let { body ->
             when (body) {
                 is SimpleBodyData -> listOf(body.type)
