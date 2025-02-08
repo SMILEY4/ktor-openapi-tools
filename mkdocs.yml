@@ -44,6 +44,8 @@ theme:
 
 plugins:
   - search
+  - privacy
+
 markdown_extensions:
   # Python Markdown
   - abbr
