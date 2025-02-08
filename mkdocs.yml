@@ -1,110 +1,23 @@
+# Project Information
+# https://www.mkdocs.org/user-guide/configuration/#project-information
 site_name: Ktor Swagger UI
 site_url: https://smiley4.github.io/ktor-swagger-ui/
+site_description: Kotlin Ktor plugin to generate OpenAPI and provide Swagger UI
+
+# Repository
 repo_name: ktor-swagger-ui
 repo_url: https://github.com/SMILEY4/ktor-swagger-ui
-theme:
-  name: material
-  palette:
-    # Palette toggle for automatic mode
-    - media: "(prefers-color-scheme)"
-      toggle:
-        icon: material/brightness-auto
-        name: Switch to light mode
 
-    # Palette toggle for light mode
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
-      toggle:
-        icon: material/brightness-7
-        name: Switch to dark mode
 
-    # Palette toggle for dark mode
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
-      toggle:
-        icon: material/brightness-4
-        name: Switch to system preference
-  icon:
-    repo: fontawesome/brands/github
-  features:
-    - navigation.tracking
-    - navigation.tabs
-    - navigation.tabs.sticky
-    - navigation.expand
-    - navigation.top
-    - navigation.footer
-    - navigation.indexes
-    - search.suggest
-    - search.highlight
-    - search.share
-    - content.code.copy
-    - content.code.annotate
-
-plugins:
-  - search
-  - privacy
-
-markdown_extensions:
-  # Python Markdown
-  - abbr
-  - admonition
-  - attr_list
-  - def_list
-  - footnotes
-  - md_in_html
-  - tables
-  - toc:
-      permalink: true
-
-  # Python Markdown Extensions
-  - pymdownx.arithmatex:
-      generic: true
-  - pymdownx.betterem:
-      smart_enable: all
-  - pymdownx.caret
-  - pymdownx.details
-  - pymdownx.emoji:
-      emoji_index: !!python/name:material.extensions.emoji.twemoji
-      emoji_generator: !!python/name:material.extensions.emoji.to_svg
-  - pymdownx.highlight:
-      line_spans: __span
-      pygments_lang_class: true
-  - pymdownx.inlinehilite
-  - pymdownx.keys
-  - pymdownx.mark
-  - pymdownx.smartsymbols
-  - pymdownx.snippets:
-      base_path: ['examples/src/main/kotlin/io/github/smiley4/ktoropenapi/examples']
-      dedent_subsections: True
-  - pymdownx.superfences
-  - pymdownx.tabbed:
-      alternate_style: true
-  - pymdownx.tasklist:
-      custom_checkbox: true
-  - pymdownx.tilde
-
-extra:
-  version:
-    provider: mike
-
-# https://www.mkdocs.org/user-guide/configuration/#validation
-validation:
-  not_found: info
-  omitted_files: warn
-  absolute_links: warn
-  unrecognized_links: warn
-#  anchors: warn
-
+# Documentation Layout
+# https://www.mkdocs.org/user-guide/configuration/#documentation-layout
 nav:
+  - Home: home.md
   - Getting Started:
       - Introduction: index.md
       - Installation: installation.md
       - Quickstart: quickstart.md
   - User Guide:
-#      - Configuration:
-#          - OpenAPI: user-guide/configuration/openapi.md
-#          - Swagger UI: user-guide/configuration/swagger-ui.md
-#          - ReDoc: user-guide/configuration/redoc.md
       - Documenting Routes:
           - Basic Information: user-guide/documenting-routes/basic-information.md
           - Types and Schemas: user-guide/documenting-routes/types-and-schemas.md
@@ -129,3 +42,80 @@ nav:
       - ktor-openapi: dokka/ktor-openapi/index.html
   - Migration Guide: migration-guide.md
   - Changelog: changelog.md
+
+
+# Validation
+# # https://www.mkdocs.org/user-guide/configuration/#validation
+validation:
+  nav:
+    omitted_files: warn
+    not_found: warn
+    absolute_links: warn
+  links:
+    not_found: warn
+    absolute_links: warn
+    unrecognized_links: warn
+
+
+# Configuration
+# https://www.mkdocs.org/user-guide/configuration/#build-directories
+theme:
+  name: material
+  icon:
+    logo: material/library
+    repo: fontawesome/brands/github
+  palette:
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
+  features:
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.expand
+    - navigation.indexes
+    - toc.integrate
+    - search.suggest
+    - search.share
+    - content.code.copy
+    - content.code.annotate
+extra:
+  version:
+    provider: mike
+plugins:
+  - search
+  - privacy
+
+
+# Formatting Options
+# https://www.mkdocs.org/user-guide/configuration/#formatting-options
+markdown_extensions:
+  # https://python-markdown.github.io/extensions/
+  - attr_list
+  - admonition
+  - md_in_html
+  - tables
+  # https://facelessuser.github.io/pymdown-extensions/extensions/arithmatex/
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.details
+  - pymdownx.snippets:
+      base_path: [ 'examples/src/main/kotlin/io/github/smiley4/ktoropenapi/examples' ]
+      dedent_subsections: True
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
