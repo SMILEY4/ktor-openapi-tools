@@ -47,7 +47,7 @@
 
 ## 3.6.1
 
-- upgraded schema-kenerator from 1.5.0 to [1.5.1]((https://github.com/SMILEY4/schema-kenerator/releases/tag/1.5.1))
+- upgraded schema-kenerator from 1.5.0 to [1.5.1](https://github.com/SMILEY4/schema-kenerator/releases/tag/1.5.1)
 
 ## 3.6.0
 
