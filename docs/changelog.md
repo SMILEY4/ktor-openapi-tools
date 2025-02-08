@@ -104,10 +104,6 @@
 - fixed body of defaultUnauthorizedResponse
 - upgraded schema-kenerator from 1.0.0 to 1.0.1
 
-## 2.10.1
-
-- fixed bug: routes with same "url" not added to spec when rootHost-path is configured
-
 ## 3.0.0
 
 - improved default schema-generator configuration
@@ -149,6 +145,10 @@
     - added `parameter.style`
     - added `route.externalDocs`, `route.servers`
 - fix: swagger routing config
+
+## 2.10.1
+
+- fixed bug: routes with same "url" not added to spec when rootHost-path is configured
 
 ## 2.10.0
 

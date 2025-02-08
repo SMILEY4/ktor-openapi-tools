@@ -1,4 +1,4 @@
-# Customizing Schema Generation
+# Schema Generation
 
 The default schema generator can be replaced and completely customized in the schema section of the plugin config.
 Schemas are automatically generated from types using [schema-kenerator](https://github.com/SMILEY4/schema-kenerator).

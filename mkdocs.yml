@@ -1,8 +1,8 @@
 # Project Information
 # https://www.mkdocs.org/user-guide/configuration/#project-information
-site_name: Ktor Swagger UI
+site_name: Ktor OpenAPI Tools
 site_url: https://smiley4.github.io/ktor-swagger-ui/
-site_description: Kotlin Ktor plugin to generate OpenAPI and provide Swagger UI
+site_description: A collection of libraries to simplify API documentation and exploration for Ktor applications. Generates OpenAPI specifications and provides Swagger UI and ReDoc.
 
 # Repository
 repo_name: ktor-swagger-ui
@@ -12,19 +12,27 @@ repo_url: https://github.com/SMILEY4/ktor-swagger-ui
 # Documentation Layout
 # https://www.mkdocs.org/user-guide/configuration/#documentation-layout
 nav:
-  - Home: home.md
-  - Getting Started:
-      - Introduction: index.md
-      - Installation: installation.md
-      - Quickstart: quickstart.md
-  - User Guide:
-      - Documenting Routes:
-          - Basic Information: user-guide/documenting-routes/basic-information.md
-          - Types and Schemas: user-guide/documenting-routes/types-and-schemas.md
-          - Customizing Schema Generation: user-guide/documenting-routes/customizing-schema-generation.md
-          - Customizing OpenAPI Examples: user-guide/documenting-routes/customizing-openapi-examples.md
-      - Multiple API Specs: user-guide/multiple-api-specs.md
+  - Home: index.md
+  - OpenAPI:
+      - openapi/index.md
+      - GettingStarted: openapi/getting_started.md
+      - Plugin Configuration: openapi/plugin_configuration.md
+      - Multiple API Specs: openapi/multiple_specs.md
+      - Documenting Routes: openapi/documenting_routes.md
+      - Typesafe-Routing: openapi/typesafe_routing.md
+      - Schema Generation: openapi/schema_generation.md
+      - Example Encoding: openapi/example_encoding.md
+      - API Reference: dokka/ktor-openapi/index.html
+  - Swagger UI:
+      - swaggerui/index.md
+      - GettingStarted: swaggerui/getting_started.md
+      - API Reference: dokka/ktor-swagger-ui/index.html
+  - ReDoc:
+      - redoc/index.md
+      - Getting Started: redoc/getting_started.md
+      - API Reference: dokka/ktor-redoc/index.html
   - Examples:
+      - examples/index.md
       - Basics: examples/basics.md
       - Minimal: examples/minimal.md
       - Complete Configuration: examples/complete-configuration.md
@@ -38,9 +46,6 @@ nav:
       - External OpenAPI Spec: examples/external-openapi-spec.md
       - Kotlinx Serialization: examples/kotlinx-serialization.md
       - File Upload: examples/file-upload.md
-  - API Reference:
-      - ktor-openapi: dokka/ktor-openapi/index.html
-  - Migration Guide: migration-guide.md
   - Changelog: changelog.md
 
 
@@ -119,3 +124,6 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      options:
+        custom_icons:
+          - './docs/assets/icons'

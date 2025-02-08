@@ -1,4 +1,4 @@
-# Multiple API Specs
+# Multiple OpenAPI Specifications
 
 ## Assigning routes to a specific OpenAPI spec
 Routes can be assigned in two ways

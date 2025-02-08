@@ -1,4 +1,4 @@
-# Configuration OpenAPI (Shared) Examples
+# Example Encoding
 
 ## Customizing Example Encoding
 The encoding of example values can be customized with the encoder config.

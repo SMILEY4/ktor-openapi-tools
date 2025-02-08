@@ -5,6 +5,7 @@ import io.github.smiley4.ktoropenapi.get
 import io.github.smiley4.ktoropenapi.openApi
 import io.github.smiley4.ktorredoc.redoc
 import io.github.smiley4.ktorswaggerui.swaggerUI
+import io.ktor.http.HttpStatusCode
 import io.ktor.server.application.Application
 import io.ktor.server.application.install
 import io.ktor.server.engine.embeddedServer
@@ -19,7 +20,7 @@ fun main() {
 
 private fun Application.myModule() {
 
-    // Install the Op lugin and use the default configuration
+    // Install the OpenAPI plugin and use the default configuration
     install(OpenApi)
 
     routing {
@@ -32,7 +33,9 @@ private fun Application.myModule() {
         // Create a route for the Swagger UI using the OpenAPI spec at "/api.json".
         // This route will not be included in the spec.
         route("swagger") {
-            swaggerUI("/api.json")
+            swaggerUI("/api.json") {
+
+            }
         }
         // Create a route for ReDoc using the OpenAPI spec at "/api.json".
         // This route will not be included in the spec.
@@ -44,6 +47,12 @@ private fun Application.myModule() {
         get("hello", {
             // description of this route
             description = "A Hello-World route"
+            response {
+                HttpStatusCode.OK to {
+                    description = "A successful response"
+                    body<String>()
+                }
+            }
         }) {
             call.respondText("Hello World!")
         }
