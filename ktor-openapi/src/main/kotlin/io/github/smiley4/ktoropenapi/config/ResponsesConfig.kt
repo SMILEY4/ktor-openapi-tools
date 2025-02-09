@@ -44,9 +44,9 @@ class ResponsesConfig {
 
 
     /**
-     * Add the given response. Intended for internal use.
+     * Add the given response.
      */
-    fun addResponse(response: ResponseConfig) {
+    internal fun addResponse(response: ResponseConfig) {
         responses[response.statusCode] = response
     }
 

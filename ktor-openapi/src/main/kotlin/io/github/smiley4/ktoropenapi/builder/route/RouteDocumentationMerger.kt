@@ -1,7 +1,5 @@
 package io.github.smiley4.ktoropenapi.builder.route
 
-import io.github.smiley4.ktoropenapi.config.RequestConfig
-import io.github.smiley4.ktoropenapi.config.RequestParameterConfig
 import io.github.smiley4.ktoropenapi.config.RouteConfig
 
 internal class RouteDocumentationMerger {

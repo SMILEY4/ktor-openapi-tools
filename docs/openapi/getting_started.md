@@ -39,13 +39,13 @@ __Previous Versions__
 ## Install OpenAPI
 
 ```kotlin
-install(OpenApi) { //(1)
-    //(2)
+install(OpenApi) { //(1)!
+    //...(2)
 }
 ```
 
 1. Install the "OpenAPI" plugin to the application.
-2. Additional plugin configuration is optional.
+2. Add additional plugin configuration here.
 
 ??? info "Further Information"
 
@@ -60,8 +60,8 @@ install(OpenApi) { //(1)
 
 ```kotlin
 routing {
-    route("api.json") { //(1)
-        openApi() //(2)
+    route("api.json") { //(1)!
+        openApi() //(2)!
     }
 }
 ```
@@ -79,24 +79,24 @@ routing {
 ## Documenting Routes
 
 ```kotlin
-import io.github.smiley4.ktoropenapi.get //(1)
+import io.github.smiley4.ktoropenapi.get //(1)!
 
-get("hello", { //(2)
-    description = "A Hello-World route" //(3)
+get("hello", { //(2)!
+    description = "A Hello-World route" //(3)!
     response {
-        HttpStatusCode.OK to { //(4)
+        HttpStatusCode.OK to { //(4)!
             description = "A success response"
-            body<String>() //(5)
+            body<String>() //(5)!
         }
     }
     //...
 }) {
-    call.respondText("Hello World!") //(6)
+    call.respondText("Hello World!") //(6)!
 }
 ```
 
 1. Replace `io.ktor.server.routing.get` with `io.github.smiley4.ktoropenapi.get`. Same for other http methods.
-2. Enrich routes with additional information.
+2. Enrich `/hello` route with additional information.
 3. Add a description to the route.
 4. Document the different possible responses.
 5. Specify the response body type. The schema for the type is generated automatically.

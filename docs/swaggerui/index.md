@@ -13,14 +13,16 @@ Library for [Ktor](https://ktor.io/) applications to serve [Swagger UI](https://
 
 ```kotlin
 routing {
-    route("swagger") { //(1)
-        swaggerUI("/api.json") { //(2)
-            //(3)
+    
+    route("swagger") { //(1)!
+        swaggerUI("/api.json") { //(2)!
+            //...(3)
         }
     }
+    
 }
 ```
 
-1. Specify route to serve Swagger UI at `/swagger`
+1. Specify route to serve Swagger UI at `/swagger`.
 2. Expose Swagger UI using OpenAPI specification at `/api.json`. Path can be relative pointing to specification provided by this application or absolute pointing to an external resource.
-3. Add configuration for this Swagger UI "instance"
+3. Add configuration for this Swagger UI "instance" here.

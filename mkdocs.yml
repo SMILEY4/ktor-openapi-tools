@@ -15,17 +15,18 @@ nav:
   - Home: index.md
   - OpenAPI:
       - openapi/index.md
-      - GettingStarted: openapi/getting_started.md
+      - Getting Started: openapi/getting_started.md
       - Plugin Configuration: openapi/plugin_configuration.md
-      - Multiple API Specs: openapi/multiple_specs.md
       - Documenting Routes: openapi/documenting_routes.md
+      - Handling Types and Schemas: openapi/handling_types_and_schemas.md
       - Typesafe-Routing: openapi/typesafe_routing.md
       - Schema Generation: openapi/schema_generation.md
       - Example Encoding: openapi/example_encoding.md
+      - Multiple API Specs: openapi/multiple_specs.md
       - API Reference: dokka/ktor-openapi/index.html
   - Swagger UI:
       - swaggerui/index.md
-      - GettingStarted: swaggerui/getting_started.md
+      - Getting Started: swaggerui/getting_started.md
       - API Reference: dokka/ktor-swagger-ui/index.html
   - ReDoc:
       - redoc/index.md
@@ -95,9 +96,11 @@ theme:
     - search.share
     - content.code.copy
     - content.code.annotate
+extra_css:
+  - assets/stylesheets/extra.css
 extra:
   version:
-    provider: mike
+      provider: mike
 plugins:
   - search
   - privacy

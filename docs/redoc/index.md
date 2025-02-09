@@ -13,14 +13,16 @@ Library for [Ktor](https://ktor.io/) applications to serve [ReDoc](https://githu
 
 ```kotlin
 routing {
-    route("redoc") { //(1)
-        redoc("/api.json") { //(2)
-            //(3)
+    
+    route("redoc") { //(1)!
+        redoc("/api.json") { //(2)!
+            //...(3)
         }
     }
+    
 }
 ```
 
-1. Specify route to serve ReDoc at `/redoc`
+1. Specify route to serve ReDoc at `/redoc`.
 2. Expose Swagger UI showing OpenAPI specification at `/api.json`.
-3. Add configuration for this ReDoc "instance"
+3. Add configuration for this ReDoc "instance" here.

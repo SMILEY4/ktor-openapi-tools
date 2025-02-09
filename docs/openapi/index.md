@@ -5,30 +5,30 @@
 
 ## Features
 
-- extends existing ktor dsl
-- no immediate change to existing code required
-- supports [OpenAPI 3.1.0 Specification](https://swagger.io/specification/)
-- automatically generates json schemas from kotlin types
-    - out-of-the-box support for type parameters, inheritance, collections, etc
-    - usable with reflection or [kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization)
-    - supports [Jackson](https://github.com/FasterXML/jackson), [Swagger](https://github.com/swagger-api/swagger-core), [Javax](https://mvnrepository.com/artifact/javax.validation/validation-api)
+- Extends existing Ktor dsl
+- No immediate change to existing code required
+- Supports [OpenAPI 3.1.0 Specification](https://swagger.io/specification/)
+- Automatically generates json schemas from kotlin types
+    - Out-of-the-box support for type parameters, inheritance, collections, etc
+    - Usable with reflection or [kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization)
+    - Supports [Jackson](https://github.com/FasterXML/jackson), [Swagger](https://github.com/swagger-api/swagger-core), [Javax](https://mvnrepository.com/artifact/javax.validation/validation-api)
     and [Jakarta](https://github.com/jakartaee/validation/tree/main) annotations
-    - highly configurable and customizable
+    - Highly configurable and customizable
 
 
 ## Example
 
 ```kotlin
-install(OpenApi) //(1)
+install(OpenApi) //(1)!
 
 routing {
     
     route("api.json") {
-        openApi() //(2)
+        openApi() //(2)!
     }
     
     get("example", {
-        description = "An example route" //(3)
+        description = "An example route" //(3)!
         response {
             HttpStatusCode.OK to {
                 description = "A success response"
@@ -36,7 +36,7 @@ routing {
             }
         }
     }) {
-        call.respondText("Hello World!") //(4)
+        call.respondText("Hello World!") //(4)!
     }
 }
 ```

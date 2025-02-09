@@ -1,0 +1,11 @@
+/*Make code in "details" a bit larger for better readability*/
+details code {
+    font-size: 1em !important;
+}
+
+/*Draw a light border around tab panels*/
+.tabbed-set {
+    border: 1px solid var(--md-default-fg-color--lightest);
+    border-radius: .2rem !important;
+    padding: 0 .3rem .3rem .3rem !important;
+}
