@@ -1,3 +1,8 @@
+---
+search:
+  exclude: true
+---
+
 # Changelog
 
 ## 4.1.6

@@ -47,7 +47,7 @@ install(OpenApi) { //(1)!
 1. Install the "OpenAPI" plugin to the application.
 2. Add additional plugin configuration here.
 
-??? info "Further Information"
+??? info "More Information"
 
     [:octicons-arrow-right-24: Plugin Configuration](plugin_configuration.md)
 
@@ -69,7 +69,7 @@ routing {
 1. Create a new route to expose the OpenAPI specification file at `api.json`.
 2. Expose the OpenAPI specification.
 
-??? info "Further Information"
+??? info "More Information"
 
     [:octicons-arrow-right-24: Multiple OpenAPI Specifications](multiple_specs.md)
 
@@ -102,7 +102,7 @@ get("hello", { //(2)!
 5. Specify the response body type. The schema for the type is generated automatically.
 6. Handle requests as usual.
 
-??? info "Further Information"
+??? info "More Information"
 
     [:octicons-arrow-right-24: Documenting Routes](documenting_routes.md)
 

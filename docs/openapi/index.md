@@ -5,8 +5,8 @@
 
 ## Features
 
-- Extends existing Ktor dsl
-- No immediate change to existing code required
+- Extends existing Ktor DSL
+- No immediate change to code required
 - Supports [OpenAPI 3.1.0 Specification](https://swagger.io/specification/)
 - Automatically generates json schemas from kotlin types
     - Out-of-the-box support for type parameters, inheritance, collections, etc

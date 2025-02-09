@@ -18,11 +18,11 @@ nav:
       - Getting Started: openapi/getting_started.md
       - Plugin Configuration: openapi/plugin_configuration.md
       - Documenting Routes: openapi/documenting_routes.md
-      - Handling Types and Schemas: openapi/handling_types_and_schemas.md
-      - Typesafe-Routing: openapi/typesafe_routing.md
+      - Type-safe Routing: openapi/typesafe_routing.md
+      - Handling Types, Schemas and Examples: openapi/handling_types_schemas_examples.md
       - Schema Generation: openapi/schema_generation.md
       - Example Encoding: openapi/example_encoding.md
-      - Multiple API Specs: openapi/multiple_specs.md
+      - Multiple API Specifications: openapi/multiple_specs.md
       - API Reference: dokka/ktor-openapi/index.html
   - Swagger UI:
       - swaggerui/index.md
@@ -35,18 +35,17 @@ nav:
   - Examples:
       - examples/index.md
       - Basics: examples/basics.md
-      - Minimal: examples/minimal.md
-      - Complete Configuration: examples/complete-configuration.md
-      - Schemas: examples/schemas.md
-      - Customized Schema Generator: examples/customized-schema-generator.md
       - Requests and Responses: examples/request-response.md
       - Authentication: examples/authentication.md
+      - File Upload: examples/file-upload.md
+      - Schema Handling: examples/schemas.md
+      - Schema Generator: examples/customized-schema-generator.md
+      - Example Handling: examples/openapi-examples.md
+      - Kotlinx Serialization: examples/kotlinx-serialization.md
       - Petstore: examples/petstore.md
-      - OpenAPI Examples: examples/openapi-examples.md
       - Multiple Specs: examples/multiple-specs.md
       - External OpenAPI Spec: examples/external-openapi-spec.md
-      - Kotlinx Serialization: examples/kotlinx-serialization.md
-      - File Upload: examples/file-upload.md
+      - Complete Configuration: examples/complete-configuration.md
   - Changelog: changelog.md
 
 
@@ -91,6 +90,7 @@ theme:
     - navigation.tabs.sticky
     - navigation.expand
     - navigation.indexes
+    - navigation.footer
     - toc.integrate
     - search.suggest
     - search.share

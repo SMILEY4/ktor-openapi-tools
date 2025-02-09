@@ -60,6 +60,6 @@ routing {
     1. Serve auto-generated OpenAPI specification at `/api.json`.
     2. Expose ReDoc using auto-generated specification at `/api.json`.
 
-## Configuration
+??? info "Configuration Options"
 
-For more information on available configuration options, please see the [api reference](../dokka/ktor-redoc/ktor-redoc/io.github.smiley4.ktorredoc.config/-redoc-config/index.html).
+    For more information on available configuration options, please see the [api reference](../dokka/ktor-redoc/ktor-redoc/io.github.smiley4.ktorredoc.config/-redoc-config/index.html).

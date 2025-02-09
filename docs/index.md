@@ -3,6 +3,7 @@ hide:
   - title
   - navigation
   - toc
+  - footer
 ---
 
 # Ktor OpenAPI Tools

@@ -60,6 +60,7 @@ routing {
     1. Serve auto-generated OpenAPI specification at `/api.json`.
     2. Expose Swagger UI using auto-generated specification at `/api.json`.
 
-## Configuration
 
-For more information on available configuration options, please see the [api reference](../dokka/ktor-swagger-ui/ktor-swagger-ui/io.github.smiley4.ktorswaggerui.config/-swagger-u-i-config/index.html).
+??? info "Configuration Options"
+
+    For more information on available configuration options, please see the [api reference](../dokka/ktor-swagger-ui/ktor-swagger-ui/io.github.smiley4.ktorswaggerui.config/-swagger-u-i-config/index.html).
