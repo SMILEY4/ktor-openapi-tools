@@ -1,6 +1,7 @@
 package io.github.smiley4.ktoropenapi.examples
 
 import io.github.smiley4.ktoropenapi.OpenApi
+import io.github.smiley4.ktoropenapi.config.OutputFormat
 import io.github.smiley4.ktoropenapi.get
 import io.github.smiley4.ktoropenapi.openApi
 import io.github.smiley4.ktorredoc.redoc
@@ -22,6 +23,9 @@ private fun Application.myModule() {
 
     // Install and configure the "OpenApi" Plugin
     install(OpenApi) {
+
+        outputFormat = OutputFormat.JSON
+
         // configure basic information about the api
         info {
             title = "Example API"

@@ -71,7 +71,7 @@ private fun Application.myModule() {
                 swaggerUI("/v2/api.json")
             }
             // ReDoc using '/v2/api.json'
-            route("swagger") {
+            route("redoc") {
                 redoc("/v2/api.json")
             }
         }

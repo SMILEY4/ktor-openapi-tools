@@ -180,9 +180,9 @@ class RequestConfig {
 
 
     /**
-     * Set the body of this request. Intended for internal use.
+     * Set the body of this request.
      */
-    fun setBody(body: BaseBodyConfig?) {
+    internal fun setBody(body: BaseBodyConfig?) {
         this.body = body
     }
 

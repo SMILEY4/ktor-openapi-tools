@@ -1,21 +1,48 @@
-# Ktor Swagger UI
+---
+hide:
+  - title
+  - navigation
+  - toc
+  - footer
+---
 
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.smiley4/ktor-swagger-ui/badge.svg)](https://search.maven.org/artifact/io.github.smiley4/ktor-swagger-ui)
-[![Checks Passing](https://github.com/SMILEY4/ktor-swagger-ui/actions/workflows/checks.yml/badge.svg?branch=develop)](https://github.com/SMILEY4/ktor-swagger-ui/actions/workflows/checks.yml)
+# Ktor OpenAPI Tools
 
-This library provides a [Ktor](https://ktor.io/) plugin to document routes, generate an OpenAPI specification and serve [Swagger UI](https://swagger.io/tools/swagger-ui/) and [ReDoc](https://github.com/Redocly/redoc).
+A collection of libraries to simplify API documentation and exploration for [Ktor](https://ktor.io/) applications.
+Designed to be non-invasive, it integrates seamlessly with applications without requiring immediate change to existing code while being highly customizable to fit every use case.
 
-It is meant to be  minimally invasive i.e. it can be plugged into existing application without requiring immediate changes to the code.
-Routes can then be gradually enhanced with documentation.
+<div class="grid cards" markdown>
+
+-   :simple-openapiinitiative:{ .lg .middle } __OpenAPI__
+
+    ---
+
+    `ktor-openapi`
+
+    Add documentation to Ktor routes and automatically generate [OpenAPI](https://www.openapis.org/) specifications.
+
+    [:octicons-arrow-right-24: Get Started](openapi/index.md)
 
 
-## Features
+-   :simple-swagger:{ .lg .middle } __Swagger UI__
 
-- Minimally invasive (no immediate change to existing code required)
-- Provides OpenAPI spec, Swagger UI and ReDoc with minimal configuration
-- Supports most of the [OpenAPI 3.1.0 Specification](https://swagger.io/specification/)
-- Automatic [json-schema generation](https://github.com/SMILEY4/schema-kenerator) from arbitrary types/classes for bodies and parameters
-    - Supports generics, inheritance, collections, etc.
-    - (Optional) support for Jackson-annotations and swagger schema annotations
-    - Use with reflection or kotlinx-serialization
-    - Customizable schema generation
+    ---
+
+    `ktor-swagger-ui`
+
+    Serve an interactive [Swagger UI](https://swagger.io/tools/swagger-ui/) for easy API exploration and testing
+
+    [:octicons-arrow-right-24: Get Started](swaggerui/index.md)
+
+
+-   :redoc:{ .lg .middle } __Redoc__
+
+    ---
+
+    `ktor-redoc`
+
+    Serve an interactive [ReDoc](https://github.com/Redocly/redoc) page for easy API exploration and testing
+
+    [:octicons-arrow-right-24: Get Started](redoc/index.md)
+
+</div>
