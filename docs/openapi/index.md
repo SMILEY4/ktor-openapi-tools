@@ -7,7 +7,9 @@
 
 - Extends existing Ktor DSL
 - No immediate change to code required
-- Supports [OpenAPI 3.1.0 Specification](https://swagger.io/specification/)
+- Support for [Type-safe routing](https://ktor.io/docs/server-resources.html) / Resources plugin
+- Document webhooks and (limited) options for server-sent events
+- Covers (almost) complete [OpenAPI 3.1.0 Specification](https://swagger.io/specification/)
 - Automatically generates json schemas from kotlin types
     - Out-of-the-box support for type parameters, inheritance, collections, etc
     - Usable with reflection or [kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization)

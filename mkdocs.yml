@@ -38,6 +38,7 @@ nav:
       - Requests and Responses: examples/request-response.md
       - Authentication: examples/authentication.md
       - File Upload: examples/file-upload.md
+      - Webhooks: examples/webhooks.md
       - Schema Handling: examples/schemas.md
       - Schema Generator: examples/customized-schema-generator.md
       - Example Handling: examples/openapi-examples.md

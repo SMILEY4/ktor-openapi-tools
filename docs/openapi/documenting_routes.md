@@ -163,3 +163,58 @@ Information about possible responses is added in the `response`-block of a route
 ??? info "API Reference"
 
     [:octicons-arrow-right-24: API Reference](../dokka/ktor-openapi/ktor-openapi/io.github.smiley4.ktoropenapi.config/-responses-config/index.html) for more information on available documentation options for requests.
+
+
+## Documenting Webhooks
+
+Even though Webhooks are not a part of a Ktor server application, they can be added to the OpenAPI specification for documentation purposes.
+
+???+ example "Documenting Webhooks"
+
+    ```kotlin
+    import io.github.smiley4.ktoropenapi.webhook
+
+    routing {
+        webhook(HttpMethod.Post, "alert") { //(1)!
+            description = "Notify the registered URL with details of an upcoming concert" //(2)!
+            request {
+                body<String> {
+                    mediaTypes(ContentType.Text.Plain)
+                    required = true
+                }
+            }
+        }   
+    }
+    ```
+
+    1. Add the webhook using the route extension function. This does not create any callable Ktor route and is only for documentation purposes. 
+    2. Document the webhook route like any other route.
+
+??? info "More Information"
+
+    [:octicons-arrow-right-24: API Reference](../dokka/ktor-openapi/ktor-openapi/io.github.smiley4.ktoropenapi/webhook.html)
+
+
+## Documenting SSE-Routes
+
+For discoverability purposes, server-sent event routes can be added to the OpenAPI specification.</br>
+Ktor SSE routes do not have an own extension function allowing for api documentation to be added. Instead, they have to be wrapped in a parent route containing the desired documentation.
+
+```kotlin
+routing {
+    route({
+        description = "Send notifications to the client." //(1)!
+    }) {
+        sse("/events") { /*...*/ } //(2)!
+    }
+}
+```
+
+1. The parent route with the desired api documentation.
+2. The SSE route.
+
+???+ warning SSE Support
+    
+    Support for server-sent events in OpenAPI and this plugin is limited.</br>
+    Even though all documentation options are technically available, not all may work or have the intended effect. 
+    
