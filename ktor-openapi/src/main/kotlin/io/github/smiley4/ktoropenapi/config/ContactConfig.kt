@@ -7,7 +7,7 @@ import io.github.smiley4.ktoropenapi.data.DataUtils.merge
  * Contact information for the exposed API.
  */
 @OpenApiDslMarker
-class ContactConfig {
+class ContactConfig internal constructor() {
 
     /**
      * The identifying name of the contact person/organization.

@@ -7,7 +7,7 @@ import io.github.smiley4.ktoropenapi.data.OpenIdOAuthFlowsData
  * An object containing configuration information for the oauth flow types supported
  */
 @OpenApiDslMarker
-class OpenIdOAuthFlowsConfig {
+class OpenIdOAuthFlowsConfig internal constructor() {
 
     private var implicit: OpenIdOAuthFlowConfig? = null
 

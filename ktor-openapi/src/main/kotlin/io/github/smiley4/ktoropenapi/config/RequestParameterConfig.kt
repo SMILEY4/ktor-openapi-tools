@@ -1,5 +1,9 @@
 package io.github.smiley4.ktoropenapi.config
 
+import io.github.smiley4.ktoropenapi.config.descriptors.ExampleDescriptor
+import io.github.smiley4.ktoropenapi.config.descriptors.SwaggerExampleDescriptor
+import io.github.smiley4.ktoropenapi.config.descriptors.ValueExampleDescriptor
+import io.github.smiley4.ktoropenapi.config.descriptors.TypeDescriptor
 import io.github.smiley4.ktoropenapi.data.RequestParameterData
 import io.swagger.v3.oas.models.examples.Example
 import io.swagger.v3.oas.models.parameters.Parameter
@@ -8,7 +12,7 @@ import io.swagger.v3.oas.models.parameters.Parameter
  * Describes a single request parameter.
  */
 @OpenApiDslMarker
-class RequestParameterConfig(
+class RequestParameterConfig internal constructor(
     /**
      * The name (case-sensitive) of the parameter
      */
@@ -32,7 +36,7 @@ class RequestParameterConfig(
     /**
      * An example value for this parameter
      */
-    var example: ExampleDescriptor? = null
+    internal var example: ExampleDescriptor? = null
 
 
     /**

@@ -5,7 +5,7 @@ package io.github.smiley4.ktoropenapi.resources
 import io.github.smiley4.ktoropenapi.OpenApiPlugin
 import io.github.smiley4.ktoropenapi.config.ParameterLocation
 import io.github.smiley4.ktoropenapi.config.RouteConfig
-import io.github.smiley4.ktoropenapi.config.SerialTypeDescriptor
+import io.github.smiley4.ktoropenapi.config.descriptors.SerialTypeDescriptor
 import io.ktor.resources.serialization.ResourcesFormat
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.KSerializer
@@ -20,6 +20,11 @@ private data class ParameterData(
     val location: ParameterLocation
 )
 
+
+/**
+ * Intended for internal use.
+ * Automatically extract route configuration from the given resource class.
+ */
 fun <T> extractTypesafeDocumentation(serializer: KSerializer<T>, resourcesFormat: ResourcesFormat): RouteConfig.() -> Unit {
     if(!OpenApiPlugin.config.autoDocumentResourcesRoutes) {
         return {}

@@ -1,6 +1,6 @@
 package io.github.smiley4.ktoropenapi.builder.schema
 
-import io.github.smiley4.ktoropenapi.config.TypeDescriptor
+import io.github.smiley4.ktoropenapi.config.descriptors.TypeDescriptor
 import io.swagger.v3.oas.models.media.Schema
 
 /**

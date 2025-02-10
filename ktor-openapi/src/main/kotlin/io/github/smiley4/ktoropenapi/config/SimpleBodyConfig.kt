@@ -1,5 +1,10 @@
 package io.github.smiley4.ktoropenapi.config
 
+import io.github.smiley4.ktoropenapi.config.descriptors.ExampleDescriptor
+import io.github.smiley4.ktoropenapi.config.descriptors.RefExampleDescriptor
+import io.github.smiley4.ktoropenapi.config.descriptors.SwaggerExampleDescriptor
+import io.github.smiley4.ktoropenapi.config.descriptors.ValueExampleDescriptor
+import io.github.smiley4.ktoropenapi.config.descriptors.TypeDescriptor
 import io.github.smiley4.ktoropenapi.data.SimpleBodyData
 import io.swagger.v3.oas.models.examples.Example
 
@@ -8,7 +13,7 @@ import io.swagger.v3.oas.models.examples.Example
  * Describes the base of a single request/response body.
  */
 @OpenApiDslMarker
-class SimpleBodyConfig(
+class SimpleBodyConfig internal constructor(
     /**
      * The type defining the schema used for the body.
      */

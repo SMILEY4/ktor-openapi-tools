@@ -18,8 +18,17 @@ import kotlinx.serialization.descriptors.nonNullOriginal
 import kotlin.reflect.KClass
 import kotlin.reflect.KType
 
+/**
+ * Overwrite specific types with custom schemas
+ */
 open class SchemaOverwriteModule(
+    /**
+     * The identifier of the type. The qualified name of the class or the name of the serial descriptor.
+     */
     val identifier: String,
+    /**
+     * The custom schema overwriting the default generated one.
+     */
     val schema: () -> Schema<*>
 ) : ReflectionTypeAnalyzerModule, SerializationTypeAnalyzerModule, SwaggerSchemaGenerationModule {
 

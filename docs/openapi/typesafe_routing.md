@@ -33,11 +33,6 @@ This project supports documenting Ktor routes defined using [Type-safe Routing](
 
     See [Documenting Routes](documenting_routes.md) for more general information.
 
-???+ warning "Schema Generation"
-
-    When using Type-safe routing, schemas must be generated using **kotlinx.serialization**.
-    See [Schema Generation](schema_generation.md) for more information on how to change the default generator.
-
 ??? tip "Extracting Information from Resource Classes"
 
     When using type-safe routing, information about the routes can be extracted from the resources classes.
@@ -51,3 +46,8 @@ This project supports documenting Ktor routes defined using [Type-safe Routing](
         autoDocumentResourcesRoutes = true
     }
     ```
+
+    ???+ warning "Schema Generation"
+    
+        When using Type-safe routing and `autoDocumentResourcesRoutes` is enabled, schemas must be generated using **kotlinx.serialization**.
+        See [Schema Generation](schema_generation.md) for more information on how to change the default generator.

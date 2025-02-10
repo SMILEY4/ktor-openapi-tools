@@ -1,8 +1,8 @@
 package io.github.smiley4.ktoropenapi.data
 
-import io.github.smiley4.ktoropenapi.config.ExampleDescriptor
+import io.github.smiley4.ktoropenapi.config.descriptors.ExampleDescriptor
 import io.github.smiley4.ktoropenapi.config.ParameterLocation
-import io.github.smiley4.ktoropenapi.config.TypeDescriptor
+import io.github.smiley4.ktoropenapi.config.descriptors.TypeDescriptor
 import io.swagger.v3.oas.models.parameters.Parameter
 
 /**

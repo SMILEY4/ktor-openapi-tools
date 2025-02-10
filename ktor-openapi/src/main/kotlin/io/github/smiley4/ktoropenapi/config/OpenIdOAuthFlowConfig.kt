@@ -7,7 +7,7 @@ import io.github.smiley4.ktoropenapi.data.OpenIdOAuthFlowData
  * Configuration details for a supported OAuth Flow
  */
 @OpenApiDslMarker
-class OpenIdOAuthFlowConfig {
+class OpenIdOAuthFlowConfig internal constructor() {
 
     /**
      * The authorization URL to be used for this flow

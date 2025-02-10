@@ -8,7 +8,7 @@ import io.github.smiley4.ktoropenapi.data.ServerData
  * An object representing a Server.
  */
 @OpenApiDslMarker
-class ServerConfig {
+class ServerConfig internal constructor() {
 
     /**
      * A URL to the target host. This URL supports Server Variables and MAY be relative, to indicate that the host location is relative to

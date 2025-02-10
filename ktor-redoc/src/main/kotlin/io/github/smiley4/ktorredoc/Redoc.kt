@@ -13,6 +13,8 @@ import io.ktor.server.routing.get
 
 /**
  * Registers the route for serving all redoc resources. The path to the OpenApi-file to use has to be given.
+ * @param openApiUrl the url of the openapi spec
+ * @param config the redoc configuration
  */
 fun Route.redoc(openApiUrl: String, config: RedocConfig.() -> Unit = {}) {
     val redocConfig = RedocConfig().apply(config)

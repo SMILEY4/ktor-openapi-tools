@@ -1,12 +1,12 @@
 package io.github.smiley4.ktoropenapi.builder.example
 
 import io.github.smiley4.ktoropenapi.builder.route.RouteMeta
-import io.github.smiley4.ktoropenapi.config.ExampleDescriptor
+import io.github.smiley4.ktoropenapi.config.descriptors.ExampleDescriptor
 import io.github.smiley4.ktoropenapi.config.GenericExampleEncoder
-import io.github.smiley4.ktoropenapi.config.RefExampleDescriptor
-import io.github.smiley4.ktoropenapi.config.SwaggerExampleDescriptor
-import io.github.smiley4.ktoropenapi.config.TypeDescriptor
-import io.github.smiley4.ktoropenapi.config.ValueExampleDescriptor
+import io.github.smiley4.ktoropenapi.config.descriptors.RefExampleDescriptor
+import io.github.smiley4.ktoropenapi.config.descriptors.SwaggerExampleDescriptor
+import io.github.smiley4.ktoropenapi.config.descriptors.TypeDescriptor
+import io.github.smiley4.ktoropenapi.config.descriptors.ValueExampleDescriptor
 import io.github.smiley4.ktoropenapi.data.*
 import io.swagger.v3.oas.models.examples.Example
 

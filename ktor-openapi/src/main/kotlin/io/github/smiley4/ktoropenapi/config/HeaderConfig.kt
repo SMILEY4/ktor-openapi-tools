@@ -1,5 +1,8 @@
 package io.github.smiley4.ktoropenapi.config
 
+import io.github.smiley4.ktoropenapi.config.descriptors.KTypeDescriptor
+import io.github.smiley4.ktoropenapi.config.descriptors.SwaggerTypeDescriptor
+import io.github.smiley4.ktoropenapi.config.descriptors.TypeDescriptor
 import io.github.smiley4.ktoropenapi.data.HeaderData
 import io.swagger.v3.oas.models.media.Schema
 import kotlin.reflect.KType
@@ -9,7 +12,7 @@ import kotlin.reflect.typeOf
  * Describes a single header.
  */
 @OpenApiDslMarker
-class HeaderConfig {
+class HeaderConfig internal constructor() {
 
     /**
      * A description of the header
@@ -20,7 +23,7 @@ class HeaderConfig {
     /**
      * The schema of the header
      */
-    var type: TypeDescriptor? = null
+    internal var type: TypeDescriptor? = null
 
 
     /**

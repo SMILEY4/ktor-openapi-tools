@@ -1,5 +1,8 @@
 package io.github.smiley4.ktoropenapi.config
 
+import io.github.smiley4.ktoropenapi.config.descriptors.KTypeDescriptor
+import io.github.smiley4.ktoropenapi.config.descriptors.SwaggerTypeDescriptor
+import io.github.smiley4.ktoropenapi.config.descriptors.TypeDescriptor
 import io.github.smiley4.ktoropenapi.data.MultipartPartData
 import io.ktor.http.ContentType
 import io.swagger.v3.oas.models.media.Schema
@@ -11,7 +14,7 @@ import kotlin.reflect.typeOf
  * See https://swagger.io/docs/specification/describing-request-body/multipart-requests/ for more info
  */
 @OpenApiDslMarker
-class MultipartPartConfig(
+class MultipartPartConfig internal constructor(
     /**
      * The name of this part
      */

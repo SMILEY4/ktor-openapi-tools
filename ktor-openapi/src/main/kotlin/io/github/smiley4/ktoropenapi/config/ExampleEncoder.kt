@@ -2,6 +2,8 @@ package io.github.smiley4.ktoropenapi.config
 
 import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
+import io.github.smiley4.ktoropenapi.config.descriptors.KTypeDescriptor
+import io.github.smiley4.ktoropenapi.config.descriptors.TypeDescriptor
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.serializer
 

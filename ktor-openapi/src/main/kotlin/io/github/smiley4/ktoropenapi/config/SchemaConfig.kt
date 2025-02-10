@@ -1,5 +1,8 @@
 package io.github.smiley4.ktoropenapi.config
 
+import io.github.smiley4.ktoropenapi.config.descriptors.KTypeDescriptor
+import io.github.smiley4.ktoropenapi.config.descriptors.SwaggerTypeDescriptor
+import io.github.smiley4.ktoropenapi.config.descriptors.TypeDescriptor
 import io.github.smiley4.ktoropenapi.data.*
 import io.swagger.v3.oas.models.media.Schema
 import kotlin.reflect.KType
@@ -9,7 +12,7 @@ import kotlin.reflect.typeOf
  * Configuration for schemas
  */
 @OpenApiDslMarker
-class SchemaConfig {
+class SchemaConfig internal constructor() {
 
     /**
      * The json-schema generator for all schemas. See https://github.com/SMILEY4/schema-kenerator/wiki for more information.

@@ -16,13 +16,13 @@ import io.github.smiley4.ktoropenapi.builder.openapi.ServerBuilder
 import io.github.smiley4.ktoropenapi.builder.route.RouteMeta
 import io.github.smiley4.ktoropenapi.builder.schema.SchemaContext
 import io.github.smiley4.ktoropenapi.builder.schema.SchemaContextImpl
-import io.github.smiley4.ktoropenapi.config.KTypeDescriptor
+import io.github.smiley4.ktoropenapi.config.descriptors.KTypeDescriptor
 import io.github.smiley4.ktoropenapi.data.OpenApiPluginData
-import io.github.smiley4.ktoropenapi.config.RefTypeDescriptor
-import io.github.smiley4.ktoropenapi.config.SwaggerTypeDescriptor
+import io.github.smiley4.ktoropenapi.config.descriptors.RefTypeDescriptor
+import io.github.smiley4.ktoropenapi.config.descriptors.SwaggerTypeDescriptor
 import io.github.smiley4.ktoropenapi.config.OpenApiPluginConfig
 import io.github.smiley4.ktoropenapi.config.RouteConfig
-import io.github.smiley4.ktoropenapi.config.ValueExampleDescriptor
+import io.github.smiley4.ktoropenapi.config.descriptors.ValueExampleDescriptor
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.collections.shouldBeEmpty
 import io.kotest.matchers.collections.shouldContainExactlyInAnyOrder

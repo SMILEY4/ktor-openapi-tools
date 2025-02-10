@@ -1,5 +1,8 @@
 package io.github.smiley4.ktoropenapi.config
 
+import io.github.smiley4.ktoropenapi.config.descriptors.ExampleDescriptor
+import io.github.smiley4.ktoropenapi.config.descriptors.SwaggerExampleDescriptor
+import io.github.smiley4.ktoropenapi.config.descriptors.ValueExampleDescriptor
 import io.github.smiley4.ktoropenapi.data.ExampleConfigData
 import io.github.smiley4.ktoropenapi.data.MultipartBodyData
 import io.github.smiley4.ktoropenapi.data.SecurityData
@@ -11,9 +14,12 @@ import io.swagger.v3.oas.models.examples.Example
  * Configuration for examples
  */
 @OpenApiDslMarker
-class ExampleConfig {
+class ExampleConfig internal constructor() {
 
-    val sharedExamples = mutableMapOf<String, ExampleDescriptor>()
+    /**
+     * The list of global / shared examples.
+     */
+    private val sharedExamples = mutableMapOf<String, ExampleDescriptor>()
 
 
     /**
@@ -51,6 +57,9 @@ class ExampleConfig {
     )
 
 
+    /**
+     * The [GenericExampleEncoder] responsible for encoding all example values.
+     */
     var exampleEncoder: GenericExampleEncoder = ExampleConfigData.DEFAULT.exampleEncoder
 
 
