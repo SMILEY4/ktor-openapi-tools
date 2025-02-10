@@ -17,7 +17,7 @@ mkdocs {
     buildDir = "./build/mkdocs"
     updateSiteUrl = true
     publish {
-        version = "5.0"
+        version = "5.0-test.5"
         rootRedirect = true
         rootRedirectTo = "latest"
         setVersionAliases("latest")
