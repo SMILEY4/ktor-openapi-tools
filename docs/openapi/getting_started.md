@@ -24,17 +24,15 @@ All artifacts are published to Maven Central.
     </dependency>
     ```
 
-__Previous Versions__
+??? tip "Ktor Compatibility and Previous Versions"
 
-???+ warning "todo"
-    - explain project split & rename
-    - compatibility table
+    This project as been split into multiple projects starting with version 5.0.</br>Versions up to 5.0 are called `ktor-swagger-ui` instead of `ktor-openapi`.
 
-    | Ktor | Plugin Version                 |
-    |------|--------------------------------|
-    | 2.x  | up to 3.x as `ktor-swagger-ui` |
-    | 3.x  | 4.x as `ktor-swagger-ui`       |
-    | 3.x  | 5.x as `ktor-openapi`          |
+    | Ktor | Plugin Version | Project Name      |
+    |------|----------------|-------------------|
+    | 2.x  | up to 3.x      | `ktor-swagger-ui` |
+    | 3.x  | 4.x            | `ktor-swagger-ui` |
+    | 3.x  | 5.x            | `ktor-openapi`    |
 
 ## Install OpenAPI
 
