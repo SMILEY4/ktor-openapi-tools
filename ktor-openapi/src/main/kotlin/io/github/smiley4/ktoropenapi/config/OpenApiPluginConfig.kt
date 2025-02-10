@@ -14,7 +14,7 @@ import kotlin.reflect.KClass
  * Main-Configuration of the "OpenApi"-Plugin
  */
 @OpenApiDslMarker
-class OpenApiPluginConfig {
+class OpenApiPluginConfig internal constructor() {
 
     companion object {
         const val DEFAULT_SPEC_ID = "api"

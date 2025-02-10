@@ -9,7 +9,7 @@ import io.ktor.http.HttpStatusCode
  * Configuration for security and authentication.
  */
 @OpenApiDslMarker
-class SecurityConfig {
+class SecurityConfig internal constructor() {
 
     /**
      * Default response to automatically add to each protected route for the "Unauthorized"-Response-Code.

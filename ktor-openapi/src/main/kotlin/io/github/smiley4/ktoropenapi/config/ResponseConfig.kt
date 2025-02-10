@@ -1,5 +1,8 @@
 package io.github.smiley4.ktoropenapi.config
 
+import io.github.smiley4.ktoropenapi.config.descriptors.KTypeDescriptor
+import io.github.smiley4.ktoropenapi.config.descriptors.SwaggerTypeDescriptor
+import io.github.smiley4.ktoropenapi.config.descriptors.TypeDescriptor
 import io.github.smiley4.ktoropenapi.data.ResponseData
 import io.swagger.v3.oas.models.media.Schema
 import kotlin.reflect.KType
@@ -10,14 +13,14 @@ import kotlin.reflect.typeOf
  * A response code can only have one response object.
  */
 @OpenApiDslMarker
-class ResponseConfig(val statusCode: String) {
+class ResponseConfig internal constructor(val statusCode: String) {
 
     /**
      * A short description of the response
      */
     var description: String? = null
 
-    val headers = mutableMapOf<String, HeaderConfig>()
+    private val headers = mutableMapOf<String, HeaderConfig>()
 
 
     /**

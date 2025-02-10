@@ -30,5 +30,6 @@
 
 
 TODO
+    - wiki: openapi explain prev. versions & ktor compatibility
     - add javadoc for missing classes, methods, properties
     - make more classes, methods, fields "internal"

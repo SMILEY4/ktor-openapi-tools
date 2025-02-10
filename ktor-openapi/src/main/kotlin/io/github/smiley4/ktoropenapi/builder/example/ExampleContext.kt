@@ -1,6 +1,6 @@
 package io.github.smiley4.ktoropenapi.builder.example
 
-import io.github.smiley4.ktoropenapi.config.ExampleDescriptor
+import io.github.smiley4.ktoropenapi.config.descriptors.ExampleDescriptor
 import io.swagger.v3.oas.models.examples.Example
 
 /**

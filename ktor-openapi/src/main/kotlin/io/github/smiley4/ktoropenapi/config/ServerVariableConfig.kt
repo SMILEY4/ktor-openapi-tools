@@ -6,7 +6,7 @@ import io.github.smiley4.ktoropenapi.data.ServerVariableData
  * An object representing a Server Variable for server URL template substitution.
  */
 @OpenApiDslMarker
-class ServerVariableConfig(
+class ServerVariableConfig internal constructor(
     /**
      * The name of this variable
      */

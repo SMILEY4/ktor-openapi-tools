@@ -1,14 +1,14 @@
 package io.github.smiley4.ktoropenapi.builder.schema
 
 import io.github.smiley4.ktoropenapi.builder.route.RouteMeta
-import io.github.smiley4.ktoropenapi.config.AnyOfTypeDescriptor
-import io.github.smiley4.ktoropenapi.config.ArrayTypeDescriptor
-import io.github.smiley4.ktoropenapi.config.EmptyTypeDescriptor
-import io.github.smiley4.ktoropenapi.config.KTypeDescriptor
-import io.github.smiley4.ktoropenapi.config.RefTypeDescriptor
-import io.github.smiley4.ktoropenapi.config.SerialTypeDescriptor
-import io.github.smiley4.ktoropenapi.config.SwaggerTypeDescriptor
-import io.github.smiley4.ktoropenapi.config.TypeDescriptor
+import io.github.smiley4.ktoropenapi.config.descriptors.AnyOfTypeDescriptor
+import io.github.smiley4.ktoropenapi.config.descriptors.ArrayTypeDescriptor
+import io.github.smiley4.ktoropenapi.config.descriptors.EmptyTypeDescriptor
+import io.github.smiley4.ktoropenapi.config.descriptors.KTypeDescriptor
+import io.github.smiley4.ktoropenapi.config.descriptors.RefTypeDescriptor
+import io.github.smiley4.ktoropenapi.config.descriptors.SerialTypeDescriptor
+import io.github.smiley4.ktoropenapi.config.descriptors.SwaggerTypeDescriptor
+import io.github.smiley4.ktoropenapi.config.descriptors.TypeDescriptor
 import io.github.smiley4.ktoropenapi.data.MultipartBodyData
 import io.github.smiley4.ktoropenapi.data.SchemaConfigData
 import io.github.smiley4.ktoropenapi.data.SimpleBodyData

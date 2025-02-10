@@ -7,7 +7,7 @@ import io.github.smiley4.ktoropenapi.data.LicenseData
  * License information for the exposed API.
  */
 @OpenApiDslMarker
-class LicenseConfig {
+class LicenseConfig internal constructor() {
 
     /**
      * The license name used for the API

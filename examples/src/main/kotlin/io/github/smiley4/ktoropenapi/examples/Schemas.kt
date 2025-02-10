@@ -3,9 +3,9 @@ package io.github.smiley4.ktoropenapi.examples
 import com.fasterxml.jackson.annotation.JsonSubTypes
 import io.github.smiley4.ktoropenapi.OpenApi
 import io.github.smiley4.ktoropenapi.config.SchemaGenerator
-import io.github.smiley4.ktoropenapi.config.anyOf
-import io.github.smiley4.ktoropenapi.config.array
-import io.github.smiley4.ktoropenapi.config.ref
+import io.github.smiley4.ktoropenapi.config.descriptors.anyOf
+import io.github.smiley4.ktoropenapi.config.descriptors.array
+import io.github.smiley4.ktoropenapi.config.descriptors.ref
 import io.github.smiley4.ktoropenapi.get
 import io.github.smiley4.ktoropenapi.openApi
 import io.github.smiley4.ktorredoc.redoc

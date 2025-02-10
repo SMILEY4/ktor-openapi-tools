@@ -1,5 +1,8 @@
 package io.github.smiley4.ktoropenapi.config
 
+import io.github.smiley4.ktoropenapi.config.descriptors.KTypeDescriptor
+import io.github.smiley4.ktoropenapi.config.descriptors.SwaggerTypeDescriptor
+import io.github.smiley4.ktoropenapi.config.descriptors.TypeDescriptor
 import io.github.smiley4.ktoropenapi.data.RequestData
 import io.swagger.v3.oas.models.media.Schema
 import kotlin.reflect.KType
@@ -9,12 +12,12 @@ import kotlin.reflect.typeOf
  * Describes a single request.
  */
 @OpenApiDslMarker
-class RequestConfig {
+class RequestConfig internal constructor() {
 
     /**
      * A list of parameters that are applicable for this operation
      */
-    val parameters = mutableListOf<RequestParameterConfig>()
+    internal val parameters = mutableListOf<RequestParameterConfig>()
 
 
     /**

@@ -1,7 +1,7 @@
 package io.github.smiley4.ktorswaggerui.misc
 
 import io.github.smiley4.ktoropenapi.builder.route.RouteDocumentationMerger
-import io.github.smiley4.ktoropenapi.config.KTypeDescriptor
+import io.github.smiley4.ktoropenapi.config.descriptors.KTypeDescriptor
 import io.github.smiley4.ktoropenapi.config.RouteConfig
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.collections.shouldBeEmpty

@@ -96,7 +96,7 @@ object SchemaGenerator {
     /**
      * The configuration for a pre-built schema generator using reflection for type analysis.
      */
-    class ReflectionConfig {
+    class ReflectionConfig internal constructor() {
 
         /**
          * Whether to include getters as members of classes (see [io.github.smiley4.schemakenerator.core.data.MemberKind.GETTER]).
@@ -285,7 +285,7 @@ object SchemaGenerator {
     /**
      * The configuration for a pre-built schema generator using kotlinx-serialization for type analysis.
      */
-    class KotlinxSerializationConfig {
+    class KotlinxSerializationConfig internal constructor() {
 
         /**
          * kotlinx serializers module from `Json { }.serializersModule` for support of contextual serializers

@@ -8,7 +8,7 @@ import io.github.smiley4.ktoropenapi.data.TagsData
  * Configuration for tags
  */
 @OpenApiDslMarker
-class TagsConfig {
+class TagsConfig internal constructor() {
 
     private val tags = mutableListOf<TagConfig>()
 

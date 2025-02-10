@@ -15,7 +15,7 @@ import io.ktor.server.routing.Route
 import io.ktor.server.routing.get
 
 /**
- * Registers the route for serving all swagger-ui resources. The path to the OpenApi-file to use has to be given.
+ * Registers the route for serving all swagger-ui resources using the given OpenAPI specification.
  * @param openApiUrl the url of the openapi spec
  * @param config the swagger configuration
  */
@@ -23,8 +23,8 @@ fun Route.swaggerUI(openApiUrl: String, config: SwaggerUIConfig.() -> Unit = {})
 
 
 /**
- * Registers the route for serving all swagger-ui resources. The path to the OpenApi-file to use has to be given.
- * @param openApiUrls the urls of the available openapi specs. Key is the name of the spec and the value is the url.
+ * Registers the route for serving all swagger-ui resources using the given OpenAPI specifications which can be selected in the UI.
+ * @param openApiUrls the urls of the available openapi specs. "keys" are the names of the specifications and "values" are the urls.
  * @param config the swagger configuration
  */
 fun Route.swaggerUI(openApiUrls: Map<String, String>, config: SwaggerUIConfig.() -> Unit = {}) {

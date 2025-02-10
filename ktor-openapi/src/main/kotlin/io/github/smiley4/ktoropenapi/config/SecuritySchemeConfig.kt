@@ -10,7 +10,7 @@ import io.github.smiley4.ktoropenapi.data.SecuritySchemeData
  * a cookie parameter or as a query parameter), OAuth2's common flows (implicit, password, client credentials and authorization code)
  */
 @OpenApiDslMarker
-class SecuritySchemeConfig(
+class SecuritySchemeConfig internal constructor(
     /**
      * The name of the security scheme.
      */

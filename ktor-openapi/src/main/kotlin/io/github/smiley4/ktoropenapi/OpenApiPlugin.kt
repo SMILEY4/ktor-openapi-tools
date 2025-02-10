@@ -8,7 +8,6 @@ import io.github.smiley4.ktoropenapi.config.OpenApiPluginConfig
 import io.github.smiley4.ktoropenapi.config.OutputFormat
 import io.github.smiley4.ktoropenapi.data.OpenApiPluginData
 import io.ktor.http.ContentType
-import io.ktor.http.HttpMethod
 import io.ktor.http.HttpStatusCode
 import io.ktor.server.application.Application
 import io.ktor.server.application.ApplicationPlugin
@@ -23,6 +22,10 @@ import io.ktor.server.routing.get
 
 private val logger = KotlinLogging.logger {}
 
+
+/**
+ * The OpenAPI Ktor Plugin
+ */
 val OpenApi: ApplicationPlugin<OpenApiPluginConfig> = createApplicationPlugin("OpenApi", ::OpenApiPluginConfig) {
     OpenApiPlugin.config = pluginConfig.build(OpenApiPluginData.DEFAULT, getRootPath(application))
     on(MonitoringEvent(ApplicationStarted)) { application ->
@@ -42,6 +45,9 @@ private fun getRootPath(application: Application): String? {
 }
 
 
+/**
+ * Provides functionality to interact with OpenAPI specification generation.
+ */
 object OpenApiPlugin {
 
     internal var config = OpenApiPluginData.DEFAULT
@@ -50,7 +56,7 @@ object OpenApiPlugin {
 
 
     /**
-     * Generates new openapi
+     * Generates new OpenAPI specification for the given application. Replaces previously generated specifications.
      */
     fun generateOpenApiSpecs(application: Application) {
         val routes = RouteCollector().collect({ application.plugin(RoutingRoot) }, config) + webhooks.map { (name, entry) ->
@@ -67,9 +73,21 @@ object OpenApiPlugin {
         openApiSpecs.putAll(specs)
     }
 
+
+    /**
+     * Provides the generated specification with the given name. Throws if no specification with the given name exists (yet).
+     * @param name the name of the specification to get. [OpenApiPluginConfig.DEFAULT_SPEC_ID] if only one specification is used and no name has been given
+     * @return the OpenAPI specification with the given name as a string.
+     */
     fun getOpenApiSpec(name: String): String = openApiSpecs[name]?.first
         ?: throw IllegalArgumentException("No OpenAPI documentation exists with name '$name'")
 
+
+    /**
+     * Provides the format of the generated specification with the given name. Throws if no specification with the given name exists (yet).
+     * @param name the name of the specification to get. [OpenApiPluginConfig.DEFAULT_SPEC_ID] if only one specification is used and no name has been given
+     * @return the [OutputFormat] OpenAPI specification of the given name.
+     */
     fun getOpenApiSpecFormat(name: String): OutputFormat = openApiSpecs[name]?.second
         ?: throw IllegalArgumentException("No OpenAPI documentation exists with name '$name'")
 
@@ -78,6 +96,7 @@ object OpenApiPlugin {
 
 /**
  * Registers the route for serving an openapi-spec. When multiple specs are configured, the name of the one to serve has to be provided.
+ * @param specName the name of the specification to get. [OpenApiPluginConfig.DEFAULT_SPEC_ID] if only one specification is used and no name has been given
  */
 fun Route.openApi(specName: String = OpenApiPluginConfig.DEFAULT_SPEC_ID) {
     route({ hidden = true }) {

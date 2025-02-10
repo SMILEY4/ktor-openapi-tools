@@ -6,7 +6,7 @@ import io.ktor.http.HttpStatusCode
  * All possible responses of an operation
  */
 @OpenApiDslMarker
-class ResponsesConfig {
+class ResponsesConfig internal constructor() {
 
     private val responses = mutableMapOf<String, ResponseConfig>()
 

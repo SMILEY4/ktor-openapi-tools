@@ -51,8 +51,6 @@ install(OpenApi) { //(1)!
 
     [:octicons-arrow-right-24: Plugin Configuration](plugin_configuration.md)
 
-    [:octicons-arrow-right-24: Multiple OpenAPI Specifications](multiple_specs.md)
-
     [:octicons-arrow-right-24: API Reference](../dokka/ktor-openapi/ktor-openapi/io.github.smiley4.ktoropenapi.config/-open-api-plugin-config/index.html)
 
 
@@ -105,5 +103,7 @@ get("hello", { //(2)!
 ??? info "More Information"
 
     [:octicons-arrow-right-24: Documenting Routes](documenting_routes.md)
+
+    [:octicons-arrow-right-24: Documentation with Type-safe Routing](typesafe_routing.md)
 
     [:octicons-arrow-right-24: API Reference](../dokka/ktor-openapi/ktor-openapi/io.github.smiley4.ktoropenapi.config/-route-config/index.html)

@@ -8,7 +8,7 @@ import io.github.smiley4.ktoropenapi.data.ServerData
  * Describes a single route including request and responses.
  */
 @OpenApiDslMarker
-class RouteConfig {
+class RouteConfig internal constructor() {
 
     /**
      * the id of the openapi-spec this route belongs to. 'Null' to use default spec.

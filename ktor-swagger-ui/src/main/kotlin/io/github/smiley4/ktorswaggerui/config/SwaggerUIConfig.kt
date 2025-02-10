@@ -4,7 +4,7 @@ package io.github.smiley4.ktorswaggerui.config
  * Configuration for the swagger ui.
  * See https://swagger.io/docs/open-source-tools/swagger-ui/usage/configuration
  */
-class SwaggerUIConfig {
+class SwaggerUIConfig internal constructor() {
 
     /**
      * Path to the static resources for swagger-ui in the jar-file.
@@ -139,6 +139,10 @@ class SwaggerUIConfig {
      */
     var validatorUrl: String? = null
 
+
+    /**
+     * Set the [validatorUrl] to an online validator.
+     */
     fun onlineSpecValidator() {
         validatorUrl = "https://validator.swagger.io/validator"
     }

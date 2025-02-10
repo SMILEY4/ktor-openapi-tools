@@ -4,7 +4,7 @@ package io.github.smiley4.ktorredoc.config
  * Configuration for redoc.
  * See https://redocly.com/docs/redoc/config
  */
-class RedocConfig {
+class RedocConfig internal constructor() {
 
     /**
      * Path to the static resources for redoc in the jar-file.
