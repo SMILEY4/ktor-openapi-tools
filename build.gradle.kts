@@ -17,6 +17,7 @@ mkdocs {
     buildDir = "./build/mkdocs"
     updateSiteUrl = true
     publish {
+        branch = "gh-pages"
         version = "5.0-test.5"
         rootRedirect = true
         rootRedirectTo = "latest"
