@@ -12,11 +12,12 @@ import io.github.smiley4.ktorswaggerui.config.OperationsSort
 import io.github.smiley4.ktorswaggerui.config.SwaggerUISyntaxHighlight
 import io.github.smiley4.ktorswaggerui.config.TagSort
 import io.github.smiley4.ktorswaggerui.swaggerUI
-import io.github.smiley4.schemakenerator.reflection.analyseTypeUsingReflection
-import io.github.smiley4.schemakenerator.swagger.compileReferencingRoot
+import io.github.smiley4.schemakenerator.core.data.InitialKTypeData
+import io.github.smiley4.schemakenerator.reflection.ReflectionSteps.analyzeTypeUsingReflection
+import io.github.smiley4.schemakenerator.swagger.SwaggerSteps.compileReferencingRoot
+import io.github.smiley4.schemakenerator.swagger.SwaggerSteps.generateSwaggerSchema
+import io.github.smiley4.schemakenerator.swagger.SwaggerSteps.withTitle
 import io.github.smiley4.schemakenerator.swagger.data.TitleType
-import io.github.smiley4.schemakenerator.swagger.generateSwaggerSchema
-import io.github.smiley4.schemakenerator.swagger.withTitle
 import io.ktor.http.ContentType
 import io.ktor.http.HttpStatusCode
 import io.ktor.server.application.Application
@@ -107,7 +108,13 @@ private fun Application.myModule() {
             schema<String>("string")
             generator = { type ->
                 type
-                    .analyseTypeUsingReflection()
+                    .let {
+                        when(it) {
+                            is InitialKTypeData -> it
+                            else -> throw IllegalArgumentException("Invalid initial type data $it")
+                        }
+                    }
+                    .analyzeTypeUsingReflection()
                     .generateSwaggerSchema()
                     .withTitle(TitleType.SIMPLE)
                     .compileReferencingRoot()

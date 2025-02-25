@@ -2,36 +2,37 @@
 
 package io.github.smiley4.ktoropenapi.config
 
-import io.github.smiley4.schemakenerator.core.addDiscriminatorProperty
-import io.github.smiley4.schemakenerator.core.addMissingSupertypeSubtypeRelations
-import io.github.smiley4.schemakenerator.core.data.InputType
-import io.github.smiley4.schemakenerator.core.handleNameAnnotation
-import io.github.smiley4.schemakenerator.reflection.analyseTypeUsingReflection
+import io.github.smiley4.schemakenerator.core.CoreSteps.addDiscriminatorProperty
+import io.github.smiley4.schemakenerator.core.CoreSteps.addMissingSupertypeSubtypeRelations
+import io.github.smiley4.schemakenerator.core.CoreSteps.handleNameAnnotation
+import io.github.smiley4.schemakenerator.core.data.InitialKTypeData
+import io.github.smiley4.schemakenerator.core.data.InitialTypeData
+import io.github.smiley4.schemakenerator.reflection.ReflectionSteps.analyzeTypeUsingReflection
+import io.github.smiley4.schemakenerator.reflection.ReflectionSteps.collectSubTypes
 import io.github.smiley4.schemakenerator.reflection.analyzer.ReflectionCustomProvider
 import io.github.smiley4.schemakenerator.reflection.analyzer.ReflectionTypeAnalyzerModule
 import io.github.smiley4.schemakenerator.reflection.analyzer.ReflectionTypeMatcher
 import io.github.smiley4.schemakenerator.reflection.analyzer.SimpleTypeAnalyzerModule
 import io.github.smiley4.schemakenerator.reflection.analyzer.TypeCategoryAnalyzer.Companion.DEFAULT_PRIMITIVE_TYPES
-import io.github.smiley4.schemakenerator.reflection.collectSubTypes
 import io.github.smiley4.schemakenerator.reflection.data.EnumConstType
-import io.github.smiley4.schemakenerator.serialization.addJsonClassDiscriminatorProperty
-import io.github.smiley4.schemakenerator.serialization.analyzeTypeUsingKotlinxSerialization
+import io.github.smiley4.schemakenerator.serialization.SerializationSteps.addJsonClassDiscriminatorProperty
+import io.github.smiley4.schemakenerator.serialization.SerializationSteps.analyzeTypeUsingKotlinxSerialization
 import io.github.smiley4.schemakenerator.serialization.analyzer.KotlinxSerializationCustomProvider
 import io.github.smiley4.schemakenerator.serialization.analyzer.KotlinxSerializationTypeMatcher
 import io.github.smiley4.schemakenerator.serialization.analyzer.SerializationTypeAnalyzerModule
 import io.github.smiley4.schemakenerator.serialization.analyzer.SimpleSerializationTypeAnalyzerModule
 import io.github.smiley4.schemakenerator.serialization.analyzer.fullName
-import io.github.smiley4.schemakenerator.swagger.RequiredHandling
-import io.github.smiley4.schemakenerator.swagger.compileReferencingRoot
-import io.github.smiley4.schemakenerator.swagger.data.CompiledSwaggerSchema
+import io.github.smiley4.schemakenerator.swagger.SwaggerSteps.RequiredHandling
+import io.github.smiley4.schemakenerator.swagger.SwaggerSteps.compileReferencingRoot
+import io.github.smiley4.schemakenerator.swagger.SwaggerSteps.generateSwaggerSchema
+import io.github.smiley4.schemakenerator.swagger.SwaggerSteps.handleCoreAnnotations
+import io.github.smiley4.schemakenerator.swagger.SwaggerSteps.handleSchemaAnnotations
+import io.github.smiley4.schemakenerator.swagger.SwaggerSteps.mergePropertyAttributesIntoType
+import io.github.smiley4.schemakenerator.swagger.SwaggerSteps.withTitle
+import io.github.smiley4.schemakenerator.swagger.data.CompiledSwaggerSchemaData
 import io.github.smiley4.schemakenerator.swagger.data.RefType
 import io.github.smiley4.schemakenerator.swagger.data.TitleType
-import io.github.smiley4.schemakenerator.swagger.generateSwaggerSchema
 import io.github.smiley4.schemakenerator.swagger.generator.SwaggerSchemaGenerationModule
-import io.github.smiley4.schemakenerator.swagger.handleCoreAnnotations
-import io.github.smiley4.schemakenerator.swagger.handleSchemaAnnotations
-import io.github.smiley4.schemakenerator.swagger.mergePropertyAttributesIntoType
-import io.github.smiley4.schemakenerator.swagger.withTitle
 import io.swagger.v3.oas.models.media.Schema
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.json.Json
@@ -44,7 +45,7 @@ import kotlin.uuid.ExperimentalUuidApi
 /**
  * Function to generate swagger schemas for any given type
  */
-typealias GenericSchemaGenerator = (type: InputType) -> CompiledSwaggerSchema
+typealias GenericSchemaGenerator = (type: InitialTypeData) -> CompiledSwaggerSchemaData
 
 object SchemaGenerator {
 
@@ -56,8 +57,14 @@ object SchemaGenerator {
         val configInstance = ReflectionConfig().apply(config)
         return { type ->
             type
+                .let {
+                    when(it) {
+                        is InitialKTypeData -> it
+                        else -> throw IllegalArgumentException("Unsupported initial type data ${it.javaClass}")
+                    }
+                }
                 .collectSubTypes()
-                .analyseTypeUsingReflection {
+                .analyzeTypeUsingReflection {
                     includeGetters = configInstance.includeGetters
                     includeWeakGetters = configInstance.includeWeakGetters
                     includeFunctions = configInstance.includeFunctions

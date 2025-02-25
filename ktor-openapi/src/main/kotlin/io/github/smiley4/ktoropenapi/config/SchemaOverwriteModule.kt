@@ -9,7 +9,6 @@ import io.github.smiley4.schemakenerator.reflection.analyzer.MinimalTypeData
 import io.github.smiley4.schemakenerator.reflection.analyzer.ReflectionTypeAnalyzerModule
 import io.github.smiley4.schemakenerator.serialization.analyzer.SerializationTypeAnalyzerModule
 import io.github.smiley4.schemakenerator.serialization.analyzer.fullName
-import io.github.smiley4.schemakenerator.swagger.data.SwaggerSchema
 import io.github.smiley4.schemakenerator.swagger.generator.SwaggerSchemaGenerationModule
 import io.swagger.v3.oas.models.media.Schema
 import kotlinx.serialization.ExperimentalSerializationApi
@@ -84,7 +83,7 @@ open class SchemaOverwriteModule(
                 collectionData = null,
                 mapData = null
             ),
-            nullable = context.nullable || context.descriptor.isNullable,
+            nullable = context.descriptor.isNullable,
         )
     }
 
@@ -92,11 +91,8 @@ open class SchemaOverwriteModule(
         return typeData.identifyingName.full == identifier
     }
 
-    override fun generate(context: SwaggerSchemaGenerationModule.Context): SwaggerSchema {
-        return SwaggerSchema(
-            typeData = context.typeData,
-            swagger = schema()
-        )
+    override fun generate(context: SwaggerSchemaGenerationModule.Context): Schema<*> {
+        return schema()
     }
 
     private fun KClass<*>.toTypeName() = TypeName(
