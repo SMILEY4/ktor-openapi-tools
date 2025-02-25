@@ -15,7 +15,7 @@ All artifacts are published to Maven Central.
     implementation 'io.github.smiley4:ktor-swagger-ui:$version'
     ```
 
-=== "Gradle (Maven)"
+=== "Maven"
     ```xml
     <dependency>
         <groupId>io.github.smiley4</groupId>

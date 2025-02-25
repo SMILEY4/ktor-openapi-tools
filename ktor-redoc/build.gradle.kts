@@ -66,6 +66,10 @@ tasks.withType<Detekt>().configureEach {
     }
 }
 
+tasks.withType<DokkaTask>().configureEach {
+    outputDirectory.set(file("$rootDir/docs/dokka/ktor-redoc"))
+}
+
 mavenPublishing {
     val projectGroupId: String by project
     val projectVersion: String by project
@@ -103,8 +107,4 @@ mavenPublishing {
             }
         }
     }
-}
-
-tasks.withType<DokkaTask>().configureEach {
-    outputDirectory.set(file("$rootDir/docs/dokka/ktor-redoc"))
 }

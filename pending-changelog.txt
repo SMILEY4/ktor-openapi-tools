@@ -32,3 +32,5 @@
 
 TODO
 - migrate docs for prev major versions (only copy-paste)
+- write readme(s) (root & submodules)
+- check if license should be included in submodules ?
