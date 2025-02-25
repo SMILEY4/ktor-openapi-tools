@@ -3,19 +3,21 @@
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.smiley4/ktor-swagger-ui/badge.svg)](https://search.maven.org/artifact/io.github.smiley4/ktor-swagger-ui)
 [![Checks Passing](https://github.com/SMILEY4/ktor-swagger-ui/actions/workflows/checks.yml/badge.svg?branch=develop)](https://github.com/SMILEY4/ktor-swagger-ui/actions/workflows/checks.yml)
 
-This library provides a Ktor plugin to document routes, generate an OpenApi Specification and serve a Swagger UI. It is meant to be  minimally invasive, meaning it can be plugged into existing application without requiring immediate changes to the code. Routes can then be gradually enhanced with documentation.
+This library provides a Ktor plugin to document routes, generate an OpenAPI specification and serve Swagger UI.
+It is meant to be  minimally invasive, meaning it can be plugged into existing application without requiring immediate changes to the code.
+Routes can then be gradually enhanced with documentation.
 
 
 ## Features
 
-- minimally invasive (no immediate change to existing code required)
-- provides swagger-ui and openapi-spec with minimal configuration
-- supports most of the [OpenAPI 3.1.0 Specification](https://swagger.io/specification/)
-- automatic [json-schema generation](https://github.com/SMILEY4/schema-kenerator) from arbitrary types/classes for bodies and parameters
-  - supports generics, inheritance, collections, ... 
-  - support for Jackson-annotations and swagger Schema-annotations (optional) 
-  - use with reflection or kotlinx-serialization
-  - customizable schema-generation
+- Minimally invasive (no immediate change to existing code required)
+- Provides Swagger UI and OpenAPI spec with minimal configuration
+- Supports most of the [OpenAPI 3.1.0 Specification](https://swagger.io/specification/)
+- Automatic [json-schema generation](https://github.com/SMILEY4/schema-kenerator) from arbitrary types/classes for bodies and parameters
+  - Supports generics, inheritance, collections, etc.
+  - (Optional) support for Jackson-annotations and swagger schema annotations 
+  - Use with reflection or kotlinx-serialization
+  - Customizable schema generation
 
 
 ## Documentation
@@ -27,7 +29,8 @@ A wiki with a short documentation is available [here](https://github.com/SMILEY4
 
 ```kotlin
 dependencies {
-    implementation "io.github.smiley4:ktor-swagger-ui:<VERSION>"
+    implementation("io.github.smiley4:ktor-openapi:<VERSION>")
+    implementation("io.github.smiley4:ktor-swagger-ui:<VERSION>")
 }
 ```
 
@@ -46,30 +49,28 @@ Runnable examples can be found in [ktor-swagger-ui-examples/src/main/kotlin/io/g
 ### Configuration
 
 ```kotlin
-install(SwaggerUI) {
-    swagger {
-        swaggerUrl = "swagger-ui"
-        forwardRoot = true
-    }
-    info {
-        title = "Example API"
-        version = "latest"
-        description = "Example API for testing and demonstration purposes."
-    }
-    server {
-        url = "http://localhost:8080"
-        description = "Development Server"
-    }
+install(OpenApi) {
+  info {
+    title = "Example API"
+    description = "An example api to showcase basic swagger-ui functionality."
+  }
+  server {
+    url = "http://localhost:8080"
+    description = "Development Server"
+  }
 }
 ```
+
 ```kotlin
 routing {
-    // Create a route for the openapi-spec file.
-    route("api.json") {
-      openApiSpec()
+    // Create a route for the OpenAPI spec file.
+    // This route will not be included in the spec.
+    route("/api.json") {
+      openApi()
     }
-    // Create a route for the swagger-ui using the openapi-spec at "/api.json".
-    route("swagger") {
+    // Create a route for swagger-ui using the openapi spec at "/api.json".
+    // This route will not be included in the spec.
+    route("/swagger") {
       swaggerUI("/api.json")
     }
 }

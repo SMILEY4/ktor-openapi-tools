@@ -1,0 +1,36 @@
+
+- upgrade schema kenerator to ???
+
+- support for documenting webhooks
+
+- more configuration options for swagger and redoc
+
+- TypesafeRouting plugin
+    - improved support for TypesafeRouting plugin
+    - automatically detect path and query parameters
+
+- schema generation
+    - added typealias `GenericSchemaGenerator` for schema generation function
+    - create pre-defined configurable schema generators for reflection and kotlinx-serialization
+    - kotlinx-serialization schema generator can be configured using the kotlinx "Json" object (also used for serializing real ktor requests and responses)
+    - added pre-defined custom analysis and schema generation modules (SchemaGenerator.TypeOverwrites.XYZ) for common types
+    - remove old "type overwrites" (no longer necessary due to more powerful and flexible schema generator)
+
+- example encoding
+    - renamed typalias `ExampleEncoder` to `GenericExampleEncoder`
+    - moved default example encoder to `ExampleEncoder.internal`
+    - moved `kotlinxExampleEncoder` to ExampleEncoder.kotlinx
+    - create pre-defined configurable example encoders for internal swagger encoder and kotlinx-serialization
+    - kotlinx-serialization example encoder can be configured using the kotlinx "Json" object (also used for serializing real ktor requests and responses)
+
+- upgrade ktor to 3.1.0
+
+- documentation
+    - migrated from github wiki to own wiki
+    - complete overhaul of documentation
+
+
+TODO
+- migrate docs for prev major versions (only copy-paste)
+- write readme(s) (root & submodules)
+- check if license should be included in submodules ?
