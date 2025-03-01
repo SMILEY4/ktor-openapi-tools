@@ -1,6 +1,5 @@
 package io.github.smiley4.ktoropenapi.examples
 
-import io.github.smiley4.ktoropenapi.DocumentedRouteSelector
 import io.github.smiley4.ktoropenapi.OpenApi
 import io.github.smiley4.ktoropenapi.config.AuthScheme
 import io.github.smiley4.ktoropenapi.config.AuthType
@@ -12,7 +11,6 @@ import io.github.smiley4.ktorswaggerui.config.OperationsSort
 import io.github.smiley4.ktorswaggerui.config.SwaggerUISyntaxHighlight
 import io.github.smiley4.ktorswaggerui.config.TagSort
 import io.github.smiley4.ktorswaggerui.swaggerUI
-import io.github.smiley4.schemakenerator.core.data.InitialKTypeData
 import io.github.smiley4.schemakenerator.reflection.ReflectionSteps.analyzeTypeUsingReflection
 import io.github.smiley4.schemakenerator.swagger.SwaggerSteps.compileReferencingRoot
 import io.github.smiley4.schemakenerator.swagger.SwaggerSteps.generateSwaggerSchema
@@ -108,12 +106,6 @@ private fun Application.myModule() {
             schema<String>("string")
             generator = { type ->
                 type
-                    .let {
-                        when(it) {
-                            is InitialKTypeData -> it
-                            else -> throw IllegalArgumentException("Invalid initial type data $it")
-                        }
-                    }
                     .analyzeTypeUsingReflection()
                     .generateSwaggerSchema()
                     .withTitle(TitleType.SIMPLE)

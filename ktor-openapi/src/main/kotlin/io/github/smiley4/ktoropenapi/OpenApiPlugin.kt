@@ -76,7 +76,8 @@ object OpenApiPlugin {
 
     /**
      * Provides the generated specification with the given name. Throws if no specification with the given name exists (yet).
-     * @param name the name of the specification to get. [OpenApiPluginConfig.DEFAULT_SPEC_ID] if only one specification is used and no name has been given
+     * @param name the name of the specification to get. [OpenApiPluginConfig.DEFAULT_SPEC_ID] if only one specification is used and
+     * no name has been given
      * @return the OpenAPI specification with the given name as a string.
      */
     fun getOpenApiSpec(name: String): String = openApiSpecs[name]?.first
@@ -85,7 +86,8 @@ object OpenApiPlugin {
 
     /**
      * Provides the format of the generated specification with the given name. Throws if no specification with the given name exists (yet).
-     * @param name the name of the specification to get. [OpenApiPluginConfig.DEFAULT_SPEC_ID] if only one specification is used and no name has been given
+     * @param name the name of the specification to get. [OpenApiPluginConfig.DEFAULT_SPEC_ID] if only one specification is used and
+     * no ame has been given
      * @return the [OutputFormat] OpenAPI specification of the given name.
      */
     fun getOpenApiSpecFormat(name: String): OutputFormat = openApiSpecs[name]?.second
@@ -96,7 +98,8 @@ object OpenApiPlugin {
 
 /**
  * Registers the route for serving an openapi-spec. When multiple specs are configured, the name of the one to serve has to be provided.
- * @param specName the name of the specification to get. [OpenApiPluginConfig.DEFAULT_SPEC_ID] if only one specification is used and no name has been given
+ * @param specName the name of the specification to get. [OpenApiPluginConfig.DEFAULT_SPEC_ID] if only one specification is used and
+ * no name has been given
  */
 fun Route.openApi(specName: String = OpenApiPluginConfig.DEFAULT_SPEC_ID) {
     route({ hidden = true }) {

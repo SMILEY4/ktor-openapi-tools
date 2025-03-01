@@ -5,7 +5,6 @@ package io.github.smiley4.ktoropenapi.config
 import io.github.smiley4.schemakenerator.core.CoreSteps.addDiscriminatorProperty
 import io.github.smiley4.schemakenerator.core.CoreSteps.addMissingSupertypeSubtypeRelations
 import io.github.smiley4.schemakenerator.core.CoreSteps.handleNameAnnotation
-import io.github.smiley4.schemakenerator.core.data.InitialKTypeData
 import io.github.smiley4.schemakenerator.core.data.InitialTypeData
 import io.github.smiley4.schemakenerator.reflection.ReflectionSteps.analyzeTypeUsingReflection
 import io.github.smiley4.schemakenerator.reflection.ReflectionSteps.collectSubTypes
@@ -57,12 +56,6 @@ object SchemaGenerator {
         val configInstance = ReflectionConfig().apply(config)
         return { type ->
             type
-                .let {
-                    when(it) {
-                        is InitialKTypeData -> it
-                        else -> throw IllegalArgumentException("Unsupported initial type data ${it.javaClass}")
-                    }
-                }
                 .collectSubTypes()
                 .analyzeTypeUsingReflection {
                     includeGetters = configInstance.includeGetters

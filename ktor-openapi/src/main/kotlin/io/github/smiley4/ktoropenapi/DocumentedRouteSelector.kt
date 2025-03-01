@@ -1,9 +1,7 @@
 package io.github.smiley4.ktoropenapi
 
 import io.github.smiley4.ktoropenapi.config.RouteConfig
-import io.github.smiley4.ktoropenapi.resources.handle
 import io.ktor.http.HttpMethod
-import io.ktor.server.resources.resource
 import io.ktor.server.routing.Route
 import io.ktor.server.routing.RouteSelector
 import io.ktor.server.routing.RouteSelectorEvaluation

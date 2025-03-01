@@ -2,7 +2,6 @@ package io.github.smiley4.ktorswaggerui
 
 import io.ktor.http.ContentType
 import io.ktor.http.content.OutgoingContent
-import io.ktor.http.withCharset
 import java.net.URL
 
 internal class ResourceContent(private val resource: URL) : OutgoingContent.ByteArrayContent() {
