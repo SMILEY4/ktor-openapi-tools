@@ -73,8 +73,8 @@ tasks.withType<DokkaTask>().configureEach {
 mavenPublishing {
     val projectGroupId: String by project
     val projectVersion: String by project
-    val projectScmUrl: String by project
-    val projectScmConnection: String by project
+    val projectBaseScmUrl: String by project
+    val projectBaseScmConnection: String by project
     val projectLicenseName: String by project
     val projectLicenseUrl: String by project
     val projectDeveloperName: String by project
@@ -87,7 +87,7 @@ mavenPublishing {
     pom {
         name.set("Ktor Redoc")
         description.set("Ktor plugin to provide Redoc")
-        url.set(projectScmUrl)
+        url.set(projectBaseScmUrl +"ktor-redoc")
         licenses {
             license {
                 name.set(projectLicenseName)
@@ -96,8 +96,8 @@ mavenPublishing {
             }
         }
         scm {
-            url.set(projectScmUrl)
-            connection.set(projectScmConnection)
+            url.set(projectBaseScmUrl + "ktor-redoc")
+            connection.set(projectBaseScmConnection + "ktor-redoc.git")
         }
         developers {
             developer {
