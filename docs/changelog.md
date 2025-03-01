@@ -7,7 +7,49 @@ search:
 
 ## 5.0.0
 
+- split project into submodules: ktor-openap and ktor-swagger-ui (and ktor-redoc)
+    - "ktor-openapi" plugin is responsible only for generating and providing an openapi-file
+        - no longer `install(SwaggerUI)` but now `install(OpenApi)`
+        - can be used without the swagger-ui dependency
+    - "ktor-swagger" library to provide routes to server swagger-ui for any openapi-file (based on given url)
+        - can be used with any openapi file or generator
+    - this split allows for more flexibility and new features using openapi-files without swagger-ui (e.g. redoc)
 
+- cleanup package structure, naming, configuration
+    - shorter and cleaner package names
+    - shorter and more uniform class names
+    - *slightly* simpler configuration dsl
+    - made all internal classes actually "internal" -> less namespace pollution
+
+- TypesafeRouting plugin
+    - improved support for TypesafeRouting plugin
+    - automatically detect path and query parameters
+
+- improved schema generation
+    - added typealias `GenericSchemaGenerator` for schema generation function
+    - create pre-defined configurable schema generators for reflection and kotlinx-serialization
+    - kotlinx-serialization schema generator can be configured using the kotlinx "Json" object (also used for serializing real ktor requests and responses)
+    - added pre-defined custom analysis and schema generation modules (SchemaGenerator.TypeOverwrites.XYZ) for common types
+    - remove old "type overwrites" (no longer necessary due to more powerful and flexible schema generator)
+
+- example encoding
+    - renamed typealias `ExampleEncoder` to `GenericExampleEncoder`
+    - moved default example encoder to `ExampleEncoder.internal`
+    - moved `kotlinxExampleEncoder` to ExampleEncoder.kotlinx
+    - create pre-defined configurable example encoders for internal swagger encoder and kotlinx-serialization
+    - kotlinx-serialization example encoder can be configured using the kotlinx "Json" object (also used for serializing real ktor requests and responses)
+
+- added support for ReDoc as new library
+
+- added missing configuration options for Swagger UI
+
+- added basic support for documenting webhooks
+
+- upgrade schema-kenerator to 2.1.0
+
+- upgrade ktor to 3.1.1
+
+- overhauled documentation
 
 ## 4.1.6
 

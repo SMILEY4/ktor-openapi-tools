@@ -6,7 +6,7 @@ site_description: A collection of libraries to simplify API documentation and ex
 
 # Repository
 repo_name: ktor-openapi-tools
-repo_url: https://github.com/ktor-openapi-tools
+repo_url: https://github.com/SMILEY4/ktor-openapi-tools
 
 
 # Documentation Layout
