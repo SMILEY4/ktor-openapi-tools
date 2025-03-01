@@ -2,6 +2,7 @@ import com.vanniktech.maven.publish.JavadocJar
 import com.vanniktech.maven.publish.KotlinJvm
 import com.vanniktech.maven.publish.SonatypeHost
 import io.gitlab.arturbosch.detekt.Detekt
+import org.jetbrains.dokka.gradle.DokkaTask
 
 val projectGroupId: String by project
 val projectVersion: String by project
@@ -11,6 +12,7 @@ version = projectVersion
 plugins {
     kotlin("jvm")
     id("org.owasp.dependencycheck")
+    id("com.github.ben-manes.versions")
     id("io.gitlab.arturbosch.detekt")
     id("com.vanniktech.maven.publish")
     id("org.jetbrains.dokka")
@@ -22,42 +24,22 @@ repositories {
 
 dependencies {
     val versionKtor: String by project
-    val versionSwaggerUI: String by project
-    val versionSwaggerParser: String by project
-    val versionSchemaKenerator: String by project
-    val versionKotlinLogging: String by project
-    val versionKotest: String by project
-    val versionKotlinTest: String by project
-    val versionMockk: String by project
-    val versionJackson: String by project
-
     implementation("io.ktor:ktor-server-core-jvm:$versionKtor")
-    implementation("io.ktor:ktor-server-auth:$versionKtor")
-    implementation("io.ktor:ktor-server-resources:$versionKtor")
-
-    implementation("org.webjars:swagger-ui:$versionSwaggerUI")
-
-    implementation("io.swagger.parser.v3:swagger-parser:$versionSwaggerParser")
-
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:$versionJackson")
-
-    implementation("io.github.smiley4:schema-kenerator-core:$versionSchemaKenerator")
-    implementation("io.github.smiley4:schema-kenerator-reflection:$versionSchemaKenerator")
-    implementation("io.github.smiley4:schema-kenerator-swagger:$versionSchemaKenerator")
-
-    implementation("io.github.oshai:kotlin-logging-jvm:$versionKotlinLogging")
-
+    implementation("io.ktor:ktor-server-content-negotiation:$versionKtor")
     testImplementation("io.ktor:ktor-server-netty-jvm:$versionKtor")
     testImplementation("io.ktor:ktor-server-content-negotiation:$versionKtor")
     testImplementation("io.ktor:ktor-serialization-jackson:$versionKtor")
-    testImplementation("io.ktor:ktor-server-auth:$versionKtor")
-    testImplementation("io.ktor:ktor-server-call-logging:$versionKtor")
     testImplementation("io.ktor:ktor-server-test-host:$versionKtor")
+
+    val versionSwaggerUI: String by project
+    implementation("org.webjars:swagger-ui:$versionSwaggerUI")
+
+    val versionKotest: String by project
     testImplementation("io.kotest:kotest-runner-junit5:$versionKotest")
     testImplementation("io.kotest:kotest-assertions-core:$versionKotest")
-    testImplementation("org.jetbrains.kotlin:kotlin-test:$versionKotlinTest")
-    testImplementation("io.mockk:mockk:$versionMockk")
 
+    val versionKotlinTest: String by project
+    testImplementation("org.jetbrains.kotlin:kotlin-test:$versionKotlinTest")
 }
 
 kotlin {
@@ -84,14 +66,15 @@ tasks.withType<Detekt>().configureEach {
     }
 }
 
+tasks.withType<DokkaTask>().configureEach {
+    outputDirectory.set(file("$rootDir/docs/dokka/ktor-swagger-ui"))
+}
+
 mavenPublishing {
     val projectGroupId: String by project
     val projectVersion: String by project
-    val projectArtifactIdBase: String by project
-    val projectNameBase: String by project
-    val projectDescriptionBase: String by project
-    val projectScmUrl: String by project
-    val projectScmConnection: String by project
+    val projectBaseScmUrl: String by project
+    val projectBaseScmConnection: String by project
     val projectLicenseName: String by project
     val projectLicenseUrl: String by project
     val projectDeveloperName: String by project
@@ -100,11 +83,11 @@ mavenPublishing {
     configure(KotlinJvm(JavadocJar.Dokka("dokkaHtml"), true))
     publishToMavenCentral(SonatypeHost.S01)
     signAllPublications()
-    coordinates(projectGroupId, projectArtifactIdBase, projectVersion)
+    coordinates(projectGroupId, "ktor-swagger-ui", projectVersion)
     pom {
-        name.set(projectNameBase)
-        description.set(projectDescriptionBase)
-        url.set(projectScmUrl)
+        name.set("Ktor Swagger-UI")
+        description.set("Ktor plugin to provide a Swagger-UI")
+        url.set(projectBaseScmUrl + "ktor-swagger-ui")
         licenses {
             license {
                 name.set(projectLicenseName)
@@ -113,8 +96,8 @@ mavenPublishing {
             }
         }
         scm {
-            url.set(projectScmUrl)
-            connection.set(projectScmConnection)
+            url.set(projectBaseScmUrl + "ktor-swagger-ui")
+            connection.set(projectBaseScmConnection + "ktor-swagger-ui.git")
         }
         developers {
             developer {

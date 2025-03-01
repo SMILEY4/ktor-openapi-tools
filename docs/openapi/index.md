@@ -1,0 +1,49 @@
+# OpenAPI
+
+[Ktor](https://ktor.io/) plugin to automatically generate [OpenAPI](https://www.openapis.org/) specifications from routes. Additional information can be gradually added to existing routes without requiring major changes to existing code.
+
+
+## Features
+
+- Extends existing Ktor DSL
+- No immediate change to code required
+- Support for [Type-safe routing](https://ktor.io/docs/server-resources.html) / Resources plugin
+- Document webhooks and (limited) options for server-sent events
+- Covers (almost) complete [OpenAPI 3.1.0 Specification](https://swagger.io/specification/)
+- Automatically generates json schemas from kotlin types
+    - Out-of-the-box support for type parameters, inheritance, collections, etc
+    - Usable with reflection or [kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization)
+    - Supports [Jackson](https://github.com/FasterXML/jackson), [Swagger](https://github.com/swagger-api/swagger-core), [Javax](https://mvnrepository.com/artifact/javax.validation/validation-api)
+    and [Jakarta](https://github.com/jakartaee/validation/tree/main) annotations
+    - Highly configurable and customizable
+
+
+## Example
+
+```kotlin
+install(OpenApi) //(1)!
+
+routing {
+    
+    route("api.json") {
+        openApi() //(2)!
+    }
+    
+    get("example", {
+        description = "An example route" //(3)!
+        response {
+            HttpStatusCode.OK to {
+                description = "A success response"
+                body<String>()
+            }
+        }
+    }) {
+        call.respondText("Hello World!") //(4)!
+    }
+}
+```
+
+1. Install and configure the OpenAPI plugin.
+2. Create a route to expose the OpenAPI specification file at `/api.json`.
+3. Add (optional) information to the route, e.g. a description and responses and response bodies.
+4. Handle requests as usual.
