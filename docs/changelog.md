@@ -5,6 +5,10 @@ search:
 
 # Changelog
 
+## 5.0.0
+
+
+
 ## 4.1.6
 
 - fixed bug: schemas of headers in multipart bodies were not generated correctly and caused exceptions

@@ -1,139 +1,101 @@
-# Ktor Swagger-UI
+# Ktor OpenAPI Tools
 
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.github.smiley4/ktor-swagger-ui/badge.svg)](https://search.maven.org/artifact/io.github.smiley4/ktor-swagger-ui)
-[![Checks Passing](https://github.com/SMILEY4/ktor-swagger-ui/actions/workflows/checks.yml/badge.svg?branch=develop)](https://github.com/SMILEY4/ktor-swagger-ui/actions/workflows/checks.yml)
+[![Version](https://img.shields.io/maven-central/v/io.github.smiley4/ktor-openapi?style=flat&color=blue&logo=apachemaven)](https://search.maven.org/search?q=g:io.github.smiley4%20a:ktor-openapi)
+[![Checks Passing](https://img.shields.io/github/actions/workflow/status/SMILEY4/ktor-swagger-ui/checks.yml?style=flat&logo=github)](https://github.com/SMILEY4/ktor-swagger-ui/actions/workflows/checks.yml)
+[![License](https://img.shields.io/github/license/SMILEY4/ktor-swagger-ui?style=flat&color=teal)](https://github.com/SMILEY4/ktor-swagger-ui/blob/develop/LICENSE)
 
-This library provides a Ktor plugin to document routes, generate an OpenAPI specification and serve Swagger UI.
-It is meant to be  minimally invasive, meaning it can be plugged into existing application without requiring immediate changes to the code.
-Routes can then be gradually enhanced with documentation.
+A collection of libraries to simplify API documentation and exploration for [Ktor](https://ktor.io/) applications. Designed to be non-invasive, they integrate seamlessly with applications without requiring immediate change to existing code while being highly customizable to fit every use case.
 
-
-## Features
-
-- Minimally invasive (no immediate change to existing code required)
-- Provides Swagger UI and OpenAPI spec with minimal configuration
-- Supports most of the [OpenAPI 3.1.0 Specification](https://swagger.io/specification/)
-- Automatic [json-schema generation](https://github.com/SMILEY4/schema-kenerator) from arbitrary types/classes for bodies and parameters
-  - Supports generics, inheritance, collections, etc.
-  - (Optional) support for Jackson-annotations and swagger schema annotations 
-  - Use with reflection or kotlinx-serialization
-  - Customizable schema generation
+**Documentation** can be found [here](https://smiley4.github.io/ktor-swagger-ui/latest/).
 
 
-## Documentation
+## OpenAPI
 
-A wiki with a short documentation is available [here](https://github.com/SMILEY4/ktor-swagger-ui/wiki).
+Ktor plugin to automatically generate [OpenAPI](https://www.openapis.org/) specifications from routes. Additional information can be gradually added to existing routes without requiring major changes to existing code.
 
-
-## Installation
+- Extends existing Ktor DSL
+- No immediate change to code required
+- Support for [Type-safe routing](https://ktor.io/docs/server-resources.html) / Resources plugin
+- Document webhooks and (limited) options for server-sent events
+- Covers (almost) complete [OpenAPI 3.1.0 Specification](https://swagger.io/specification/)
+- Automatically generates json schemas from kotlin types
+  - Out-of-the-box support for type parameters, inheritance, collections, etc
+  - Usable with reflection or [kotlinx.serialization](https://github.com/Kotlin/kotlinx.serialization)
+  - Supports [Jackson](https://github.com/FasterXML/jackson), [Swagger](https://github.com/swagger-api/swagger-core), [Javax](https://mvnrepository.com/artifact/javax.validation/validation-api)
+    and [Jakarta](https://github.com/jakartaee/validation/tree/main) annotations
+  - Highly configurable and customizable
 
 ```kotlin
-dependencies {
-    implementation("io.github.smiley4:ktor-openapi:<VERSION>")
-    implementation("io.github.smiley4:ktor-swagger-ui:<VERSION>")
+// Install and configure the OpenAPI plugin.
+install(OpenApi)
+
+routing {
+    
+    route("api.json") {
+        // Create a route to expose the OpenAPI specification file at `/api.json`.
+        openApi()
+    }
+    
+    get("example", {
+        // Add (optional) information to the route, e.g. a description and responses and response bodies.
+        description = "An example route"
+        response {
+            HttpStatusCode.OK to {
+                description = "A success response"
+                body<String>()
+            }
+        }
+    }) {
+        // Handle requests as usual.
+        call.respondText("Hello World!")
+    }
 }
 ```
 
 
-## Ktor compatibility
+## Swagger UI
 
-- Ktor 2.x: ktor-swagger-ui up to 3.x
-- Ktor 3.x: ktor-swagger-ui starting with 4.0
+Library for Ktor applications to serve [Swagger UI](https://swagger.io/tools/swagger-ui/) - visualize and interact with generated OpenAPI specifications.
 
-
-## Examples
-
-Runnable examples can be found in [ktor-swagger-ui-examples/src/main/kotlin/io/github/smiley4/ktorswaggerui/examples](https://github.com/SMILEY4/ktor-swagger-ui/tree/release/ktor-swagger-ui-examples/src/main/kotlin/io/github/smiley4/ktorswaggerui/examples).
-
-
-### Configuration
-
-```kotlin
-install(OpenApi) {
-  info {
-    title = "Example API"
-    description = "An example api to showcase basic swagger-ui functionality."
-  }
-  server {
-    url = "http://localhost:8080"
-    description = "Development Server"
-  }
-}
-```
+- Explore and interact with OpenAPI specifications generated by [`ktor-openapi`](../openapi/index.md) or external specifications
+- Serve bundled Swagger UI
+- Expose multiple "instances" of Swagger UI (e.g. for different OpenAPI specifications)
+- All Swagger UI configuration options available
 
 ```kotlin
 routing {
-    // Create a route for the OpenAPI spec file.
-    // This route will not be included in the spec.
-    route("/api.json") {
-      openApi()
+    
+    route("swagger") {
+        // Expose Swagger UI using OpenAPI specification at `/api.json`.
+        // Path can be relative pointing to specification provided by this application or absolute pointing to an external resource.
+        swaggerUI("/api.json") {
+            // Add configuration for this Swagger UI "instance" here.
+        }
     }
-    // Create a route for swagger-ui using the openapi spec at "/api.json".
-    // This route will not be included in the spec.
-    route("/swagger") {
-      swaggerUI("/api.json")
-    }
+    
 }
 ```
 
-### Routes
+
+## ReDoc
+
+Library for Ktor applications to serve [ReDoc](https://github.com/Redocly/redoc) - visualize and interact with generated OpenAPI specifications.
+
+- Explore and interact with OpenAPI specifications generated by [`ktor-openapi`](../openapi/index.md) or external specifications
+- Serve bundled ReDoc page
+- Expose multiple "instances" of ReDoc (e.g. for different OpenAPI specifications)
+- All ReDoc configuration options available
 
 ```kotlin
-get("hello", {
-    description = "Hello World Endpoint."
-    response {
-        HttpStatusCode.OK to {
-            description = "Successful Request"
-            body<String> { description = "the response" }
-        }
-        HttpStatusCode.InternalServerError to {
-            description = "Something unexpected happened"
+routing {
+    
+    route("redoc") {
+        // Expose ReDoc showing OpenAPI specification at `/api.json`.
+        // Path can be relative pointing to specification provided by this application or absolute pointing to an external resource.
+      redoc("/api.json") {
+            // Add configuration for this ReDoc "instance" here.
         }
     }
-}) {
-    call.respondText("Hello World!")
+    
 }
 ```
-
-```kotlin
-post("math/{operation}", {
-    tags = listOf("test")
-    description = "Performs the given operation on the given values and returns the result"
-    request {
-        pathParameter<String>("operation") {
-            description = "the math operation to perform. Either 'add' or 'sub'"
-        }
-        body<MathRequest>()
-    }
-    response {
-        HttpStatusCode.OK to {
-            description = "The operation was successful"
-            body<MathResult> {
-                description = "The result of the operation"
-            }
-        }
-        HttpStatusCode.BadRequest to {
-            description = "An invalid operation was provided"
-        }
-    }
-}) {
-    val operation = call.parameters["operation"]!!
-    call.receive<MathRequest>().let { request ->
-        when (operation) {
-            "add" -> call.respond(HttpStatusCode.OK, MathResult(request.a + request.b))
-            "sub" -> call.respond(HttpStatusCode.OK, MathResult(request.a - request.b))
-            else -> call.respond(HttpStatusCode.BadRequest, Unit)
-        }
-    }
-}
-
-data class MathRequest(
-    val a: Int,
-    val b: Int
-)
-
-data class MathResult(
-    val value: Int
-)
-```
-

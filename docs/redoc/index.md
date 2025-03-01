@@ -24,5 +24,5 @@ routing {
 ```
 
 1. Specify route to serve ReDoc at `/redoc`.
-2. Expose Swagger UI showing OpenAPI specification at `/api.json`.
+2. Expose ReDoc showing OpenAPI specification at `/api.json`. Path can be relative pointing to specification provided by this application or absolute pointing to an external resource.
 3. Add configuration for this ReDoc "instance" here.

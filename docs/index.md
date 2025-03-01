@@ -9,7 +9,7 @@ hide:
 # Ktor OpenAPI Tools
 
 A collection of libraries to simplify API documentation and exploration for [Ktor](https://ktor.io/) applications.
-Designed to be non-invasive, it integrates seamlessly with applications without requiring immediate change to existing code while being highly customizable to fit every use case.
+Designed to be non-invasive, they integrate seamlessly with applications without requiring immediate change to existing code while being highly customizable to fit every use case.
 
 <div class="grid cards" markdown>
 

@@ -1,12 +1,12 @@
 # Project Information
 # https://www.mkdocs.org/user-guide/configuration/#project-information
 site_name: Ktor OpenAPI Tools
-site_url: https://smiley4.github.io/ktor-swagger-ui/
+site_url: https://smiley4.github.io/ktor-openapi-tools/
 site_description: A collection of libraries to simplify API documentation and exploration for Ktor applications. Generates OpenAPI specifications and provides Swagger UI and ReDoc.
 
 # Repository
-repo_name: ktor-swagger-ui
-repo_url: https://github.com/SMILEY4/ktor-swagger-ui
+repo_name: ktor-openapi-tools
+repo_url: https://github.com/ktor-openapi-tools
 
 
 # Documentation Layout
