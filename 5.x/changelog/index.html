@@ -1,0 +1,2389 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A collection of libraries to simplify API documentation and exploration for Ktor applications. Generates OpenAPI specifications and provides Swagger UI and ReDoc.">
+      
+      
+      
+        <link rel="canonical" href="https://smiley4.github.io/ktor-openapi-tools/5.x/changelog/">
+      
+      
+        <link rel="prev" href="../examples/complete-configuration/">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>Changelog - Ktor OpenAPI Tools</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.bcfcd587.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        
+        <link rel="stylesheet" href="../assets/external/fonts.googleapis.com/css.49ea35f2.css">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#changelog" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Ktor OpenAPI Tools" class="md-header__button md-logo" aria-label="Ktor OpenAPI Tools" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Ktor OpenAPI Tools
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Changelog
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ktor-openapi-tools" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ktor-openapi-tools
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../openapi/" class="md-tabs__link">
+          
+  
+    
+  
+  OpenAPI
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../swaggerui/" class="md-tabs__link">
+          
+  
+    
+  
+  Swagger UI
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../redoc/" class="md-tabs__link">
+          
+  
+    
+  
+  ReDoc
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../examples/" class="md-tabs__link">
+          
+  
+    
+  
+  Examples
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+    
+  
+  Changelog
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Ktor OpenAPI Tools" class="md-nav__button md-logo" aria-label="Ktor OpenAPI Tools" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Ktor OpenAPI Tools
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ktor-openapi-tools" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ktor-openapi-tools
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../openapi/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    OpenAPI
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            OpenAPI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../openapi/getting_started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../openapi/plugin_configuration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Plugin Configuration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../openapi/documenting_routes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Documenting Routes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../openapi/typesafe_routing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Type-safe Routing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../openapi/handling_types_schemas_examples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Handling Types, Schemas and Examples
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../openapi/schema_generation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Schema Generation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../openapi/example_encoding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Example Encoding
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../openapi/multiple_specs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multiple API Specifications
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dokka/ktor-openapi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API Reference
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../swaggerui/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Swagger UI
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Swagger UI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../swaggerui/getting_started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dokka/ktor-swagger-ui/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API Reference
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../redoc/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    ReDoc
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            ReDoc
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redoc/getting_started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dokka/ktor-redoc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API Reference
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../examples/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Examples
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/request-response/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Requests and Responses
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/authentication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Authentication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/file-upload/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File Upload
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/webhooks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Webhooks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/schemas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Schema Handling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/customized-schema-generator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Schema Generator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/openapi-examples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Example Handling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/kotlinx-serialization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kotlinx Serialization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/petstore/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Petstore
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/multiple-specs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multiple Specs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/external-openapi-spec/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    External OpenAPI Spec
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/complete-configuration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Complete Configuration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Changelog
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Changelog
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#500" class="md-nav__link">
+    <span class="md-ellipsis">
+      5.0.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#416" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1.6
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#415" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1.5
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#414" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1.4
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#413" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1.3
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#412" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1.2
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#411" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1.1
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#410" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.1.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#400" class="md-nav__link">
+    <span class="md-ellipsis">
+      4.0.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#361" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.6.1
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#360" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.6.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#351" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.5.1
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#350" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.5.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#340" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#331" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3.1
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#330" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#320" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#310" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#301" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.0.1
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#300" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.0.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2101" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.10.1
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2100" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.10.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#290" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.9.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#280" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.8.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#275" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.7.5
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#274" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.7.4
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#273" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.7.3
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#272" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.7.2
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#271" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.7.1
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#270" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.7.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#260" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.6.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#250" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.5.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#240" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.4.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#231" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3.1
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#230" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#223" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2.3
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#222" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2.2
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#221" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2.1
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#220" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#210" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#200" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.0.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#161" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.6.1
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#160" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.6.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#150" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.5.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#140" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.4.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#132" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3.2
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#131" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3.1
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#130" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#120" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#111" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1.1
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#110" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.1.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#102" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.0.2
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#101" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.0.1
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#100" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.0.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#090" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.9.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#080" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.8.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#070" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.7.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#060" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.6.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#052" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.5.2
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#051" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.5.1
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#050" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.5.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#040" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.4.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#030" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.3.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#020" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.2.0
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#010" class="md-nav__link">
+    <span class="md-ellipsis">
+      0.1.0
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="changelog">Changelog</h1>
+<h2 id="500">5.0.0</h2>
+<h2 id="416">4.1.6</h2>
+<ul>
+<li>fixed bug: schemas of headers in multipart bodies were not generated correctly and caused exceptions</li>
+<li>added <code>required</code> property to multipart parts</li>
+</ul>
+<h2 id="415">4.1.5</h2>
+<ul>
+<li>fix bug: plugin configuration not merged correctly when using multiple openapi-specs (some changes in main config did
+  not apply to specific spec configs)</li>
+<li>fix bug: multipart-body used the old schema <code>type</code> property instead of types, resulting in a broken schema</li>
+<li>fixed examples: multipart-body examples used the old schema <code>type</code> property instead of types, resulting in a broken
+  schemas</li>
+</ul>
+<h2 id="414">4.1.4</h2>
+<ul>
+<li>fixed: root path set via <code>application.rootPath = "..."</code> was ignored in openapi</li>
+</ul>
+<h2 id="413">4.1.3</h2>
+<ul>
+<li>upgrade schema-kenerator from 1.6.2 to <a href="https://github.com/SMILEY4/schema-kenerator/releases/tag/1.6.3">1.6.3</a></li>
+</ul>
+<h2 id="412">4.1.2</h2>
+<ul>
+<li>upgrade schema-kenerator from 1.6.1 to <a href="https://github.com/SMILEY4/schema-kenerator/releases/tag/1.6.2">1.6.2</a></li>
+</ul>
+<h2 id="411">4.1.1</h2>
+<ul>
+<li>upgrade schema <code>io.swagger.parser.v3:swagger-parser</code> from 2.1.20 to 2.1.24</li>
+<li>upgrade schema-kenerator from 1.6.0 to <a href="https://github.com/SMILEY4/schema-kenerator/releases/tag/1.6.1">1.6.1</a></li>
+</ul>
+<h2 id="410">4.1.0</h2>
+<ul>
+<li>add default kotlinx example encoder</li>
+<li>add <code>ignoredRouteSelectorClassNames</code> in case class to ignore is not
+  public (<a href="https://github.com/SMILEY4/ktor-swagger-ui/pull/149">#149</a>)</li>
+<li>upgrade schema-kenerator from 1.5.0 to <a href="https://github.com/SMILEY4/schema-kenerator/releases/tag/1.6.0">1.6.0</a></li>
+<li>add <code>@KtorDsl</code> annotation on documented routes</li>
+<li>fixed: default security schema did not correctly use components section</li>
+<li>fixed documented resource routes (<a href="https://github.com/SMILEY4/ktor-swagger-ui/pull/153">#153</a>)</li>
+</ul>
+<h2 id="400">4.0.0</h2>
+<ul>
+<li>upgrade ktor to 3.0.0 (<a href="https://github.com/SMILEY4/ktor-swagger-ui/pull/140">#140</a>)</li>
+<li>removed unnecessary ktor Webjars plugin</li>
+</ul>
+<h2 id="361">3.6.1</h2>
+<ul>
+<li>upgraded schema-kenerator from 1.5.0 to <a href="https://github.com/SMILEY4/schema-kenerator/releases/tag/1.5.1">1.5.1</a></li>
+</ul>
+<h2 id="360">3.6.0</h2>
+<ul>
+<li>support location "cookies" for request parameters</li>
+<li>option to serve api-spec as yaml instead of json
+     <div class="highlight"><pre><span></span><code><span class="n">install</span><span class="p">(</span><span class="n">SwaggerUI</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">outputFormat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OutputFormat</span><span class="p">.</span><span class="na">YAML</span>
+<span class="p">}</span>
+</code></pre></div></li>
+<li>fix bug: additional slashes in routes caused parts of url being dropped</li>
+<li>upgrade schema kenerator from 1.4.3 to <a href="https://github.com/SMILEY4/schema-kenerator/releases/tag/1.5.0">1.5.0</a></li>
+<li>bump versions of some dependencies</li>
+</ul>
+<h2 id="351">3.5.1</h2>
+<ul>
+<li>properly render openapi-spec as 3.1.0</li>
+<li>upgrade schema-kenerator from 1.4.1 to 1.4.3</li>
+<li>upgrade ktor from 2.3.11 to 2.3.12</li>
+</ul>
+<h2 id="350">3.5.0</h2>
+<ul>
+<li>upgrade schema-kenerator to version 1.4.1</li>
+<li>fixed: incorrect http-status-code format in responses object</li>
+<li>fixed: "ktor.deployment.rootPath" is included in paths</li>
+</ul>
+<h2 id="340">3.4.0</h2>
+<ul>
+<li>upgrade schema-kenerator to version 1.2.2</li>
+<li>removed some openapi fields with default values in the generated spec that are usually optional (this resulted in some
+  invalid schemas before)</li>
+</ul>
+<h2 id="331">3.3.1</h2>
+<ul>
+<li>upgrade schema-kenerator to version 1.1.1</li>
+</ul>
+<h2 id="330">3.3.0</h2>
+<ul>
+<li>upgrade schema-kenerator from 1.0.1 to 1.1.0</li>
+<li>path-parameters are not "required" by default</li>
+<li>fixed issue with config merging, resulting in some plugin config changes to be ignored or having no effect</li>
+</ul>
+<h2 id="320">3.2.0</h2>
+<ul>
+<li>fixed bug: security examples not generated with correct type</li>
+<li>quality of life improvements to dsl</li>
+</ul>
+<h2 id="310">3.1.0</h2>
+<ul>
+<li>add option to customize schema encoding</li>
+</ul>
+<h2 id="301">3.0.1</h2>
+<ul>
+<li>fixed body of defaultUnauthorizedResponse</li>
+<li>upgraded schema-kenerator from 1.0.0 to 1.0.1</li>
+</ul>
+<h2 id="300">3.0.0</h2>
+<ul>
+<li>improved default schema-generator configuration</li>
+<li>improved documentation</li>
+</ul>
+<p><strong>Changes from <a href="https://github.com/SMILEY4/ktor-swagger-ui/releases/tag/3.0.0-beta1">3.0.0-beta1</a></strong></p>
+<ul>
+<li>
+<p>reworked schema and example handling; replaced previously used json schema generator
+  with https://github.com/SMILEY4/schema-kenerator
+  <em>this switch should result in more predictable behavior, cleaner schemas in the spec and allow for more flexibility
+  and better support for future features and bugfixes specific to the ktor-swagger-ui plugin</em></p>
+</li>
+<li>
+<p>dropped automatic swagger-ui routing. Routes for swagger-ui and the openapi-file have to be added manually at the
+  desired url
+  <em>this change should make the routing of the ui and spec more visible and intuitive while also allowing for easier
+  customization of the routes</em></p>
+</li>
+<li>
+<p>cleaned up plugin-configuration and openapi-dsl
+  <em>removed no longer necessary configuration and cleaned up existing groups making the plugin config a bit cleaner</em></p>
+</li>
+<li>
+<p>examples are no longer part of the tests and have been moved to an own subproject. Reworked examples to better
+  showcase functionalities.</p>
+</li>
+</ul>
+<p><strong>Changes from <a href="https://github.com/SMILEY4/ktor-swagger-ui/releases/tag/3.0.0-beta2">3.0.0-beta2</a></strong></p>
+<ul>
+<li>improved (added back) proper dsl for schemas and examples</li>
+<li>upgraded to schema-kenerator version 0.2.0 (https://github.com/SMILEY4/schema-kenerator/releases/tag/0.2.0)</li>
+</ul>
+<p><strong>Changes from <a href="https://github.com/SMILEY4/ktor-swagger-ui/releases/tag/3.0.0-beta3">3.0.0-beta3</a></strong></p>
+<ul>
+<li>add option to disable syntax highlighting (<code>SwaggerUiSyntaxHighlight#DISABLED</code>)</li>
+<li>upgrade schema-kenerator to version 0.4.0 (https://github.com/SMILEY4/schema-kenerator/releases/tag/0.4.0)</li>
+<li>uprade swagger-ui webjars to version 5.17.11</li>
+<li>upgrade to openapi version 3.1.0 and add support for more properties<ul>
+<li>added <code>info.summary</code></li>
+<li>added <code>license.identifier</code></li>
+<li>added <code>server.variables</code></li>
+<li>added <code>header.explode</code></li>
+<li>added <code>parameter.style</code></li>
+<li>added <code>route.externalDocs</code>, <code>route.servers</code></li>
+</ul>
+</li>
+<li>fix: swagger routing config</li>
+</ul>
+<h2 id="2101">2.10.1</h2>
+<ul>
+<li>fixed bug: routes with same "url" not added to spec when rootHost-path is configured</li>
+</ul>
+<h2 id="2100">2.10.0</h2>
+<ul>
+<li><a href="https://ktor.io/docs/server-configuration-file.html#predefined-properties">ktor.deployment.rootPath</a> is appended to
+  paths in openapi.json</li>
+</ul>
+<h2 id="290">2.9.0</h2>
+<ul>
+<li>added option to manually configure routing for swagger-ui and api-spec-json</li>
+<li>added (back) jackson-module - results in jackson annotation and sub-types being detected automatically again</li>
+</ul>
+<h2 id="280">2.8.0</h2>
+<ul>
+<li>add hook whenBuildOpenApiSpecs to process/customize final api-content after openapi-generation generation</li>
+<li>add withCredentials (see https://swagger.io/docs/open-source-tools/swagger-ui/usage/configuration)</li>
+</ul>
+<h2 id="275">2.7.5</h2>
+<ul>
+<li>bump victools/jsonschema-generator to 4.33+ and include Option.INLINE_NULLABLE_SCHEMAS</li>
+</ul>
+<h2 id="274">2.7.4</h2>
+<ul>
+<li>fix bug: incorrect handling of rootHostPath</li>
+</ul>
+<h2 id="273">2.7.3</h2>
+<ul>
+<li>change name of AuthScheme#BEARER from "Bearer" to "bearer"</li>
+<li>bump ktor version to 2.3.7</li>
+<li>bump swagger-parser version to 2.1.19</li>
+</ul>
+<h2 id="272">2.7.2</h2>
+<ul>
+<li>fix bug: invalid property "name" in security schemes</li>
+</ul>
+<h2 id="271">2.7.1</h2>
+<ul>
+<li>fix: displayed routes using the resources-plugin contained parameters in the url</li>
+</ul>
+<h2 id="270">2.7.0</h2>
+<ul>
+<li>upgraded dependency versions</li>
+<li>fixed: missing properties that start with 'is[A-Z]' https://github.com/SMILEY4/ktor-swagger-ui/issues/60</li>
+</ul>
+<h2 id="260">2.6.0</h2>
+<ul>
+<li>allow for multiple openapi-specs and swagger-uis</li>
+<li>simpler request and response-body schema customization (oneOf, multipleOf, custom)</li>
+</ul>
+<h2 id="250">2.5.0</h2>
+<ul>
+<li>add support for type-safe routes / resources-plugin</li>
+</ul>
+<h2 id="240">2.4.0</h2>
+<ul>
+<li>add support for external documentation</li>
+</ul>
+<h2 id="231">2.3.1</h2>
+<ul>
+<li>fix bug: schemas with wildcard generics (e.g. Array&lt;*&gt;) throw exception</li>
+</ul>
+<h2 id="230">2.3.0</h2>
+<ul>
+<li>add <code>rootHostPath</code> to plugin-config for improved support for reverse-proxies</li>
+<li>add <code>customSchemas.includeAll</code> to plugin-config to also include custom schemas that are not directly references by any
+  route</li>
+<li>add github actions to automatically run tests and-code style-checks</li>
+</ul>
+<h2 id="223">2.2.3</h2>
+<ul>
+<li>fix bug: schema for file-uploads not generated correctly</li>
+</ul>
+<h2 id="222">2.2.2</h2>
+<ul>
+<li>fix bug: Schema-annotation with "nullable = true" breaks schema generation</li>
+</ul>
+<h2 id="221">2.2.1</h2>
+<ul>
+<li>fixed a bug where the component name of schemas of inner array elements was wrong</li>
+</ul>
+<h2 id="220">2.2.0</h2>
+<ul>
+<li>publish to maven central</li>
+</ul>
+<h2 id="210">2.1.0</h2>
+<ul>
+<li>add flag <code>protected</code> to route-documentation to overwrite default behaviour, i.e. manually mark route as protected or
+  not</li>
+</ul>
+<h2 id="200">2.0.0</h2>
+<ul>
+<li>improved automatic schema handling</li>
+<li>changes in plugin-configuration<ul>
+<li>removed <code>canonicalNameObjectRefs</code>, <code>schemasInComponentSection</code>, <code>examplesInComponentSection</code>, <code>jsonSchemaBuilder</code></li>
+<li>replaced <code>automaticTagGenerator</code> with <code>generateTags</code></li>
+<li>added <code>encoding</code>-section</li>
+</ul>
+</li>
+<li>schema and example generation process more extendable (via <code>encoding</code>-config section) allowing for simpler integration
+  of other schema-generators and json-serializers (e.g. supporting kotlinx and multiplatform) -
+  see <a href="https://github.com/SMILEY4/ktor-swagger-ui/blob/develop/src/test/kotlin/io/github/smiley4/ktorswaggerui/examples/KotlinxExample.kt">KotlinxExample.kt</a></li>
+<li>print exceptions thrown during api generation</li>
+</ul>
+<h2 id="161">1.6.1</h2>
+<ul>
+<li>upgrade swagger parser to 2.1.13 due to vulnerabilities</li>
+</ul>
+<h2 id="160">1.6.0</h2>
+<ul>
+<li>add <code>@Example</code>-Annotation to add example values directly on fields of the model</li>
+<li>support for (some features of) the openapi-core <code>@Schema</code>-Annotation</li>
+</ul>
+<h2 id="150">1.5.0</h2>
+<ul>
+<li>added "hidden"-flag to not include routes in openapi-spec</li>
+</ul>
+<h2 id="140">1.4.0</h2>
+<ul>
+<li>add (basic) support for swagger @Schema-annotation to add more information (mainly description, title, required,
+  nullable) to schemas/fields</li>
+</ul>
+<h2 id="132">1.3.2</h2>
+<ul>
+<li>fix bug: primitive body types (int, float, ...) default to type "string" when specified via generics</li>
+</ul>
+<h2 id="131">1.3.1</h2>
+<ul>
+<li>fix bug: example values for parameters could not be set and were mixed up with the "explode"-option</li>
+</ul>
+<h2 id="130">1.3.0</h2>
+<ul>
+<li>allow multiple security schemes per route</li>
+</ul>
+<h2 id="120">1.2.0</h2>
+<ul>
+<li>add config (<code>ignoredRouteSelectors</code>) to ignore specific ktor route-selectors</li>
+<li>enable usage of custom object schemas as object or array</li>
+<li>add option to mark routes as deprecated</li>
+<li>bugfix: changed <code>canonicalNameObjectRefs</code> in plugin-config from val to var</li>
+</ul>
+<h2 id="111">1.1.1</h2>
+<ul>
+<li>fix bug: changed canonicalNameObjectRefs to var in plugin-config</li>
+</ul>
+<h2 id="110">1.1.0</h2>
+<ul>
+<li>use simpleName instead of canonicalName for objects by default, can be configured via <code>canonicalNameObjectRefs</code></li>
+<li>upgrade to ktor 2.2.2</li>
+<li>bugfix: fixed "operationsSorter"-value</li>
+</ul>
+<h2 id="102">1.0.2</h2>
+<ul>
+<li>fix bug: json-schemas for maps were not generated correctly</li>
+</ul>
+<h2 id="101">1.0.1</h2>
+<ul>
+<li>exclude documented-route from route-string</li>
+</ul>
+<h2 id="100">1.0.0</h2>
+<p>🥳</p>
+<h2 id="090">0.9.0</h2>
+<ul>
+<li>make json-schema-generator configurable</li>
+<li>upgrade to ktor 2.2.1</li>
+</ul>
+<h2 id="080">0.8.0</h2>
+<ul>
+<li>add (basic) support for multipart-bodies</li>
+</ul>
+<h2 id="070">0.7.0</h2>
+<ul>
+<li>add additional configuration-options for swagger-ui</li>
+<li>fix: add missing enum mapping for schemas</li>
+</ul>
+<h2 id="060">0.6.0</h2>
+<ul>
+<li>added support for custom predefined schemas</li>
+<li>added support for custom json-schema-builders</li>
+</ul>
+<h2 id="052">0.5.2</h2>
+<ul>
+<li>fixed bug: configured rootPath (in application.conf) not respected</li>
+</ul>
+<h2 id="051">0.5.1</h2>
+<ul>
+<li>fixed bug: security scheme not added to openapi-spec</li>
+</ul>
+<h2 id="050">0.5.0</h2>
+<ul>
+<li>add <code>@DslMarker</code> for more safety</li>
+<li>protect Swagger-UI and OpenApi-json with custom authentication</li>
+<li>improved/proper support for generics in schemas (e.g. <code>body&lt;MyResponse&gt;()</code> as alternative to
+  <code>body(MyResponse::class)</code>)</li>
+<li>support external json-schemas for bodies</li>
+<li>support for default responses and responses for custom status-codes</li>
+<li>support <code>operationId</code></li>
+</ul>
+<h2 id="040">0.4.0</h2>
+<ul>
+<li>add oauth flows</li>
+</ul>
+<h2 id="030">0.3.0</h2>
+<ul>
+<li>support examples for request and response bodies</li>
+</ul>
+<h2 id="020">0.2.0</h2>
+<ul>
+<li>replace java with kclass</li>
+</ul>
+<h2 id="010">0.1.0</h2>
+<ul>
+<li>prepare for publishing</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../examples/complete-configuration/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Complete Configuration">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Complete Configuration
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.expand", "navigation.indexes", "navigation.footer", "toc.integrate", "search.suggest", "search.share", "content.code.copy", "content.code.annotate"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+    
+  </body>
+</html>

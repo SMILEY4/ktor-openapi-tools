@@ -1,0 +1,43 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:io.github.smiley4.ktorredoc.config////PointingToDeclaration/ktor-redoc/io.github.smiley4.ktorredoc.config/index.html
+$dokka.location:io.github.smiley4.ktorredoc.config/RedocConfig///PointingToDeclaration/ktor-redoc/io.github.smiley4.ktorredoc.config/-redoc-config/index.html
+$dokka.location:io.github.smiley4.ktorredoc.config/RedocConfig/disableSearch/#/PointingToDeclaration/ktor-redoc/io.github.smiley4.ktorredoc.config/-redoc-config/disable-search.html
+$dokka.location:io.github.smiley4.ktorredoc.config/RedocConfig/expandDefaultServerVariables/#/PointingToDeclaration/ktor-redoc/io.github.smiley4.ktorredoc.config/-redoc-config/expand-default-server-variables.html
+$dokka.location:io.github.smiley4.ktorredoc.config/RedocConfig/expandResponses/#/PointingToDeclaration/ktor-redoc/io.github.smiley4.ktorredoc.config/-redoc-config/expand-responses.html
+$dokka.location:io.github.smiley4.ktorredoc.config/RedocConfig/expandSingleSchemaField/#/PointingToDeclaration/ktor-redoc/io.github.smiley4.ktorredoc.config/-redoc-config/expand-single-schema-field.html
+$dokka.location:io.github.smiley4.ktorredoc.config/RedocConfig/hideDownloadButton/#/PointingToDeclaration/ktor-redoc/io.github.smiley4.ktorredoc.config/-redoc-config/hide-download-button.html
+$dokka.location:io.github.smiley4.ktorredoc.config/RedocConfig/hideHostname/#/PointingToDeclaration/ktor-redoc/io.github.smiley4.ktorredoc.config/-redoc-config/hide-hostname.html
+$dokka.location:io.github.smiley4.ktorredoc.config/RedocConfig/hideLoading/#/PointingToDeclaration/ktor-redoc/io.github.smiley4.ktorredoc.config/-redoc-config/hide-loading.html
+$dokka.location:io.github.smiley4.ktorredoc.config/RedocConfig/hideOneOfDescription/#/PointingToDeclaration/ktor-redoc/io.github.smiley4.ktorredoc.config/-redoc-config/hide-one-of-description.html
+$dokka.location:io.github.smiley4.ktorredoc.config/RedocConfig/hideRequestPayloadSample/#/PointingToDeclaration/ktor-redoc/io.github.smiley4.ktorredoc.config/-redoc-config/hide-request-payload-sample.html
+$dokka.location:io.github.smiley4.ktorredoc.config/RedocConfig/hideSchemaPattern/#/PointingToDeclaration/ktor-redoc/io.github.smiley4.ktorredoc.config/-redoc-config/hide-schema-pattern.html
+$dokka.location:io.github.smiley4.ktorredoc.config/RedocConfig/hideSchemaTitles/#/PointingToDeclaration/ktor-redoc/io.github.smiley4.ktorredoc.config/-redoc-config/hide-schema-titles.html
+$dokka.location:io.github.smiley4.ktorredoc.config/RedocConfig/hideSecuritySection/#/PointingToDeclaration/ktor-redoc/io.github.smiley4.ktorredoc.config/-redoc-config/hide-security-section.html
+$dokka.location:io.github.smiley4.ktorredoc.config/RedocConfig/hideSingleRequestSampleTab/#/PointingToDeclaration/ktor-redoc/io.github.smiley4.ktorredoc.config/-redoc-config/hide-single-request-sample-tab.html
+$dokka.location:io.github.smiley4.ktorredoc.config/RedocConfig/htmlTemplate/#/PointingToDeclaration/ktor-redoc/io.github.smiley4.ktorredoc.config/-redoc-config/html-template.html
+$dokka.location:io.github.smiley4.ktorredoc.config/RedocConfig/jsonSampleExpandLevel/#/PointingToDeclaration/ktor-redoc/io.github.smiley4.ktorredoc.config/-redoc-config/json-sample-expand-level.html
+$dokka.location:io.github.smiley4.ktorredoc.config/RedocConfig/maxDisplayedEnumValues/#/PointingToDeclaration/ktor-redoc/io.github.smiley4.ktorredoc.config/-redoc-config/max-displayed-enum-values.html
+$dokka.location:io.github.smiley4.ktorredoc.config/RedocConfig/menuToggle/#/PointingToDeclaration/ktor-redoc/io.github.smiley4.ktorredoc.config/-redoc-config/menu-toggle.html
+$dokka.location:io.github.smiley4.ktorredoc.config/RedocConfig/minCharacterLengthToInitSearch/#/PointingToDeclaration/ktor-redoc/io.github.smiley4.ktorredoc.config/-redoc-config/min-character-length-to-init-search.html
+$dokka.location:io.github.smiley4.ktorredoc.config/RedocConfig/nativeScrollbars/#/PointingToDeclaration/ktor-redoc/io.github.smiley4.ktorredoc.config/-redoc-config/native-scrollbars.html
+$dokka.location:io.github.smiley4.ktorredoc.config/RedocConfig/onlyRequiredInSamples/#/PointingToDeclaration/ktor-redoc/io.github.smiley4.ktorredoc.config/-redoc-config/only-required-in-samples.html
+$dokka.location:io.github.smiley4.ktorredoc.config/RedocConfig/pageTitle/#/PointingToDeclaration/ktor-redoc/io.github.smiley4.ktorredoc.config/-redoc-config/page-title.html
+$dokka.location:io.github.smiley4.ktorredoc.config/RedocConfig/pathInMiddlePanel/#/PointingToDeclaration/ktor-redoc/io.github.smiley4.ktorredoc.config/-redoc-config/path-in-middle-panel.html
+$dokka.location:io.github.smiley4.ktorredoc.config/RedocConfig/payloadSampleIdx/#/PointingToDeclaration/ktor-redoc/io.github.smiley4.ktorredoc.config/-redoc-config/payload-sample-idx.html
+$dokka.location:io.github.smiley4.ktorredoc.config/RedocConfig/requiredPropsFirst/#/PointingToDeclaration/ktor-redoc/io.github.smiley4.ktorredoc.config/-redoc-config/required-props-first.html
+$dokka.location:io.github.smiley4.ktorredoc.config/RedocConfig/schemaExpansionLevel/#/PointingToDeclaration/ktor-redoc/io.github.smiley4.ktorredoc.config/-redoc-config/schema-expansion-level.html
+$dokka.location:io.github.smiley4.ktorredoc.config/RedocConfig/showObjectSchemaExamples/#/PointingToDeclaration/ktor-redoc/io.github.smiley4.ktorredoc.config/-redoc-config/show-object-schema-examples.html
+$dokka.location:io.github.smiley4.ktorredoc.config/RedocConfig/showWebhookVerb/#/PointingToDeclaration/ktor-redoc/io.github.smiley4.ktorredoc.config/-redoc-config/show-webhook-verb.html
+$dokka.location:io.github.smiley4.ktorredoc.config/RedocConfig/simpleOneOfTypeLabel/#/PointingToDeclaration/ktor-redoc/io.github.smiley4.ktorredoc.config/-redoc-config/simple-one-of-type-label.html
+$dokka.location:io.github.smiley4.ktorredoc.config/RedocConfig/sortEnumValuesAlphabetically/#/PointingToDeclaration/ktor-redoc/io.github.smiley4.ktorredoc.config/-redoc-config/sort-enum-values-alphabetically.html
+$dokka.location:io.github.smiley4.ktorredoc.config/RedocConfig/sortOperationsAlphabetically/#/PointingToDeclaration/ktor-redoc/io.github.smiley4.ktorredoc.config/-redoc-config/sort-operations-alphabetically.html
+$dokka.location:io.github.smiley4.ktorredoc.config/RedocConfig/sortPropsAlphabetically/#/PointingToDeclaration/ktor-redoc/io.github.smiley4.ktorredoc.config/-redoc-config/sort-props-alphabetically.html
+$dokka.location:io.github.smiley4.ktorredoc.config/RedocConfig/sortTagsAlphabetically/#/PointingToDeclaration/ktor-redoc/io.github.smiley4.ktorredoc.config/-redoc-config/sort-tags-alphabetically.html
+$dokka.location:io.github.smiley4.ktorredoc.config/RedocConfig/theme/#/PointingToDeclaration/ktor-redoc/io.github.smiley4.ktorredoc.config/-redoc-config/theme.html
+$dokka.location:io.github.smiley4.ktorredoc.config/RedocConfig/untrustedDefinition/#/PointingToDeclaration/ktor-redoc/io.github.smiley4.ktorredoc.config/-redoc-config/untrusted-definition.html
+$dokka.location:io.github.smiley4.ktorredoc////PointingToDeclaration/ktor-redoc/io.github.smiley4.ktorredoc/index.html
+$dokka.location:io.github.smiley4.ktorredoc//redoc/io.ktor.server.routing.Route#kotlin.String#kotlin.Function1[io.github.smiley4.ktorredoc.config.RedocConfig,kotlin.Unit]/PointingToDeclaration/ktor-redoc/io.github.smiley4.ktorredoc/redoc.html
+io.github.smiley4.ktorredoc
+io.github.smiley4.ktorredoc.config
+
