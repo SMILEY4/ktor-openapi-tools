@@ -6,7 +6,7 @@
 
 A collection of libraries to simplify API documentation and exploration for [Ktor](https://ktor.io/) applications. Designed to be non-invasive, they integrate seamlessly with applications without requiring immediate change to existing code while being highly customizable to fit every use case.
 
-**Documentation** can be found [here](https://smiley4.github.io/ktor-openapi-tools/latest/).
+**Documentation** can be found [here](https://smiley4.github.io/ktor-openapi-tools/latest/) and in the [wiki](https://github.com/SMILEY4/ktor-openapi-tools/wiki) for older versions.
 
 
 ## OpenAPI
