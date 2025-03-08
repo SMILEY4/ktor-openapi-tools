@@ -1,4 +1,4 @@
-@file:OptIn(ExperimentalUuidApi::class)
+@file:OptIn(ExperimentalUuidApi::class, ExperimentalSerializationApi::class)
 
 package io.github.smiley4.ktoropenapi.config
 
@@ -16,6 +16,7 @@ import io.github.smiley4.schemakenerator.reflection.analyzer.TypeCategoryAnalyze
 import io.github.smiley4.schemakenerator.reflection.data.EnumConstType
 import io.github.smiley4.schemakenerator.serialization.SerializationSteps.addJsonClassDiscriminatorProperty
 import io.github.smiley4.schemakenerator.serialization.SerializationSteps.analyzeTypeUsingKotlinxSerialization
+import io.github.smiley4.schemakenerator.serialization.SerializationSteps.renameMembers
 import io.github.smiley4.schemakenerator.serialization.analyzer.KotlinxSerializationCustomProvider
 import io.github.smiley4.schemakenerator.serialization.analyzer.KotlinxSerializationTypeMatcher
 import io.github.smiley4.schemakenerator.serialization.analyzer.SerializationTypeAnalyzerModule
@@ -33,8 +34,10 @@ import io.github.smiley4.schemakenerator.swagger.data.RefType
 import io.github.smiley4.schemakenerator.swagger.data.TitleType
 import io.github.smiley4.schemakenerator.swagger.generator.SwaggerSchemaGenerationModule
 import io.swagger.v3.oas.models.media.Schema
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonNamingStrategy
 import kotlinx.serialization.modules.SerializersModule
 import kotlin.reflect.KClass
 import kotlin.reflect.KType
@@ -261,6 +264,10 @@ object SchemaGenerator {
                     customModules.addAll(configInstance.analyzerModules)
                 }
                 .addJsonClassDiscriminatorProperty()
+                .let {
+                    if(configInstance.namingStrategy != null) it.renameMembers(configInstance.namingStrategy!!)
+                    else it
+                }
                 .handleNameAnnotation()
                 .generateSwaggerSchema {
                     optionals = configInstance.optionals
@@ -328,6 +335,10 @@ object SchemaGenerator {
             markNotParameterized(clazz.qualifiedName ?: clazz.java.name)
         }
 
+        /**
+         * The [JsonNamingStrategy] to use for renaming members/properties
+         */
+        var namingStrategy: JsonNamingStrategy? = null
 
         /**
          * Whether optional properties are treated as "required". An optional parameter is one that has a default value specified.
@@ -444,6 +455,7 @@ object SchemaGenerator {
          * @param json the kotlinx json serializer
          */
         fun useKotlinxConfig(json: Json) {
+            namingStrategy = json.configuration.namingStrategy
             serializersModule = json.serializersModule
             optionals = if (json.configuration.encodeDefaults) RequiredHandling.REQUIRED else RequiredHandling.NON_REQUIRED
             nullables = if (json.configuration.explicitNulls) RequiredHandling.REQUIRED else RequiredHandling.NON_REQUIRED
