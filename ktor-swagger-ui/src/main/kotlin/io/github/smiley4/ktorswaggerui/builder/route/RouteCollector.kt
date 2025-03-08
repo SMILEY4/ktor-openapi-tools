@@ -100,7 +100,6 @@ class RouteCollector(
     private fun isProtected(route: RoutingNode): Boolean {
         return when (route.selector) {
             is AuthenticationRouteSelector -> true
-            is TrailingSlashRouteSelector -> false
             is RootRouteSelector -> false
             is DocumentedRouteSelector -> route.parent?.let { isProtected(it) } ?: false
             is HttpMethodRouteSelector -> route.parent?.let { isProtected(it) } ?: false
