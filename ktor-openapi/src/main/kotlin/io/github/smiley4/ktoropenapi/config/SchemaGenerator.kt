@@ -16,6 +16,7 @@ import io.github.smiley4.schemakenerator.reflection.analyzer.TypeCategoryAnalyze
 import io.github.smiley4.schemakenerator.reflection.data.EnumConstType
 import io.github.smiley4.schemakenerator.serialization.SerializationSteps.addJsonClassDiscriminatorProperty
 import io.github.smiley4.schemakenerator.serialization.SerializationSteps.analyzeTypeUsingKotlinxSerialization
+import io.github.smiley4.schemakenerator.serialization.SerializationSteps.renameMembers
 import io.github.smiley4.schemakenerator.serialization.analyzer.KotlinxSerializationCustomProvider
 import io.github.smiley4.schemakenerator.serialization.analyzer.KotlinxSerializationTypeMatcher
 import io.github.smiley4.schemakenerator.serialization.analyzer.SerializationTypeAnalyzerModule
@@ -33,8 +34,10 @@ import io.github.smiley4.schemakenerator.swagger.data.RefType
 import io.github.smiley4.schemakenerator.swagger.data.TitleType
 import io.github.smiley4.schemakenerator.swagger.generator.SwaggerSchemaGenerationModule
 import io.swagger.v3.oas.models.media.Schema
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonNamingStrategy
 import kotlinx.serialization.modules.SerializersModule
 import kotlin.reflect.KClass
 import kotlin.reflect.KType
@@ -249,6 +252,7 @@ object SchemaGenerator {
     /**
      * A pre-built [GenericSchemaGenerator] using reflection to analyze types and generate the schemas
      */
+    @OptIn(ExperimentalSerializationApi::class)
     fun kotlinx(json: Json? = null, config: KotlinxSerializationConfig.() -> Unit = {}): GenericSchemaGenerator {
         val configInstance = KotlinxSerializationConfig()
             .apply { if (json != null) useKotlinxConfig(json) }
@@ -262,6 +266,10 @@ object SchemaGenerator {
                 }
                 .addJsonClassDiscriminatorProperty()
                 .handleNameAnnotation()
+                .let {
+                    if(configInstance.namingStrategy != null) it.renameMembers(configInstance.namingStrategy!!)
+                    else it
+                }
                 .generateSwaggerSchema {
                     optionals = configInstance.optionals
                     nullables = configInstance.nullables
@@ -285,6 +293,7 @@ object SchemaGenerator {
     /**
      * The configuration for a pre-built schema generator using kotlinx-serialization for type analysis.
      */
+    @OptIn(ExperimentalSerializationApi::class)
     class KotlinxSerializationConfig internal constructor() {
 
         /**
@@ -346,6 +355,11 @@ object SchemaGenerator {
          */
         var explicitNullTypes: Boolean = true
 
+
+        /**
+         * The naming strategy used to rename members/properties. Set `null` to not do any additional renaming.
+         */
+        var namingStrategy: JsonNamingStrategy? = null
 
         /**
          * The format of the titles. Set `null` to not include titles in the schemas.
@@ -447,6 +461,7 @@ object SchemaGenerator {
             serializersModule = json.serializersModule
             optionals = if (json.configuration.encodeDefaults) RequiredHandling.REQUIRED else RequiredHandling.NON_REQUIRED
             nullables = if (json.configuration.explicitNulls) RequiredHandling.REQUIRED else RequiredHandling.NON_REQUIRED
+            namingStrategy = json.configuration.namingStrategy
         }
 
     }
