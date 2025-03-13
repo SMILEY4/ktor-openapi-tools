@@ -5,9 +5,15 @@ search:
 
 # Changelog
 
+## 5.0.1
+
+- upgrade schema-kenerator to [2.1.1](https://github.com/SMILEY4/schema-kenerator/releases/tag/2.1.1)
+- fixed bug: routes requiring authorization sometimes not automatically detected as "protected" ([#186](https://github.com/SMILEY4/ktor-openapi-tools/issues/186))
+- simplify configuration of json naming strategy with pre-built kotlinx schema generators
+
 ## 5.0.0
 
-- split project into submodules: ktor-openap and ktor-swagger-ui (and ktor-redoc)
+- split project into submodules: ktor-openapi and ktor-swagger-ui (and ktor-redoc)
     - "ktor-openapi" plugin is responsible only for generating and providing an openapi-file
         - no longer `install(SwaggerUI)` but now `install(OpenApi)`
         - can be used without the swagger-ui dependency
@@ -50,6 +56,10 @@ search:
 - upgrade ktor to 3.1.1
 
 - overhauled documentation
+
+## 4.1.7
+
+- fixed bug: routes requiring authorization sometimes not automatically detected as "protected" ([#186](https://github.com/SMILEY4/ktor-openapi-tools/issues/186))
 
 ## 4.1.6
 
