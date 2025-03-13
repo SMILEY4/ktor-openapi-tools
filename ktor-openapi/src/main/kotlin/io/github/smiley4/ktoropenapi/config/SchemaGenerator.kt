@@ -252,6 +252,7 @@ object SchemaGenerator {
     /**
      * A pre-built [GenericSchemaGenerator] using reflection to analyze types and generate the schemas
      */
+    @OptIn(ExperimentalSerializationApi::class)
     fun kotlinx(json: Json? = null, config: KotlinxSerializationConfig.() -> Unit = {}): GenericSchemaGenerator {
         val configInstance = KotlinxSerializationConfig()
             .apply { if (json != null) useKotlinxConfig(json) }
@@ -269,6 +270,10 @@ object SchemaGenerator {
                     else it
                 }
                 .handleNameAnnotation()
+                .let {
+                    if(configInstance.namingStrategy != null) it.renameMembers(configInstance.namingStrategy!!)
+                    else it
+                }
                 .generateSwaggerSchema {
                     optionals = configInstance.optionals
                     nullables = configInstance.nullables
@@ -292,6 +297,7 @@ object SchemaGenerator {
     /**
      * The configuration for a pre-built schema generator using kotlinx-serialization for type analysis.
      */
+    @OptIn(ExperimentalSerializationApi::class)
     class KotlinxSerializationConfig internal constructor() {
 
         /**
@@ -357,6 +363,11 @@ object SchemaGenerator {
          */
         var explicitNullTypes: Boolean = true
 
+
+        /**
+         * The naming strategy used to rename members/properties. Set `null` to not do any additional renaming.
+         */
+        var namingStrategy: JsonNamingStrategy? = null
 
         /**
          * The format of the titles. Set `null` to not include titles in the schemas.
@@ -459,6 +470,7 @@ object SchemaGenerator {
             serializersModule = json.serializersModule
             optionals = if (json.configuration.encodeDefaults) RequiredHandling.REQUIRED else RequiredHandling.NON_REQUIRED
             nullables = if (json.configuration.explicitNulls) RequiredHandling.REQUIRED else RequiredHandling.NON_REQUIRED
+            namingStrategy = json.configuration.namingStrategy
         }
 
     }
