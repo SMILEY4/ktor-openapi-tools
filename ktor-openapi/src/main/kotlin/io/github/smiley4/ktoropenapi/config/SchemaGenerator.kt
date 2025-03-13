@@ -265,10 +265,6 @@ object SchemaGenerator {
                     customModules.addAll(configInstance.analyzerModules)
                 }
                 .addJsonClassDiscriminatorProperty()
-                .let {
-                    if(configInstance.namingStrategy != null) it.renameMembers(configInstance.namingStrategy!!)
-                    else it
-                }
                 .handleNameAnnotation()
                 .let {
                     if(configInstance.namingStrategy != null) it.renameMembers(configInstance.namingStrategy!!)
@@ -340,11 +336,6 @@ object SchemaGenerator {
             val clazz = typeOf<T>().classifier!! as KClass<*>
             markNotParameterized(clazz.qualifiedName ?: clazz.java.name)
         }
-
-        /**
-         * The [JsonNamingStrategy] to use for renaming members/properties
-         */
-        var namingStrategy: JsonNamingStrategy? = null
 
         /**
          * Whether optional properties are treated as "required". An optional parameter is one that has a default value specified.
