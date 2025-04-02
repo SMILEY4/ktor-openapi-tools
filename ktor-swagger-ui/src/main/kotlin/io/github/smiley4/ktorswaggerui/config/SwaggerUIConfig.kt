@@ -2,7 +2,7 @@ package io.github.smiley4.ktorswaggerui.config
 
 /**
  * Configuration for the swagger ui.
- * See https://swagger.io/docs/open-source-tools/swagger-ui/usage/configuration
+ * See [Configuration | Swagger Docs](https://swagger.io/docs/open-source-tools/swagger-ui/usage/configuration)
  */
 class SwaggerUIConfig internal constructor() {
 
@@ -97,6 +97,11 @@ class SwaggerUIConfig internal constructor() {
      * Enables the request snippet section. When disabled, the legacy curl snippet will be used.
      */
     var requestSnippetsEnabled: Boolean = true
+
+    /**
+     *  `String=["list"*, "full", "none"]`. Controls the default expansion setting for the operations and tags. It can be 'list' (expands only the tags), 'full' (expands the tags and operations) or 'none' (expands nothing).
+     */
+    var docExpansion: String? = null
 
     // NETWORK ========================================
 
