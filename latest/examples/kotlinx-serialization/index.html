@@ -1422,7 +1422,14 @@
 <span class="normal">91</span>
 <span class="normal">92</span>
 <span class="normal">93</span>
-<span class="normal">94</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">package</span><span class="w"> </span><span class="nn">io.github.smiley4.ktoropenapi.examples</span>
+<span class="normal">94</span>
+<span class="normal">95</span>
+<span class="normal">96</span>
+<span class="normal">97</span>
+<span class="normal">98</span>
+<span class="normal">99</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@file</span><span class="p">:</span><span class="n">OptIn</span><span class="p">(</span><span class="n">ExperimentalSerializationApi</span><span class="o">::</span><span class="n">class</span><span class="p">)</span>
+
+<span class="k">package</span><span class="w"> </span><span class="nn">io.github.smiley4.ktoropenapi.examples</span>
 
 <span class="k">import</span><span class="w"> </span><span class="nn">io.github.smiley4.ktoropenapi.OpenApi</span>
 <span class="k">import</span><span class="w"> </span><span class="nn">io.github.smiley4.ktoropenapi.config.ExampleEncoder</span>
@@ -1439,8 +1446,10 @@
 <span class="k">import</span><span class="w"> </span><span class="nn">io.ktor.server.response.respondText</span>
 <span class="k">import</span><span class="w"> </span><span class="nn">io.ktor.server.routing.route</span>
 <span class="k">import</span><span class="w"> </span><span class="nn">io.ktor.server.routing.routing</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">kotlinx.serialization.ExperimentalSerializationApi</span>
 <span class="k">import</span><span class="w"> </span><span class="nn">kotlinx.serialization.Serializable</span>
 <span class="k">import</span><span class="w"> </span><span class="nn">kotlinx.serialization.json.Json</span>
+<span class="k">import</span><span class="w"> </span><span class="nn">kotlinx.serialization.json.JsonNamingStrategy</span>
 
 <span class="kd">fun</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">embeddedServer</span><span class="p">(</span><span class="n">Netty</span><span class="p">,</span><span class="w"> </span><span class="n">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">8080</span><span class="p">,</span><span class="w"> </span><span class="n">host</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;localhost&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Application</span><span class="o">::</span><span class="n">myModule</span><span class="p">).</span><span class="na">start</span><span class="p">(</span><span class="n">wait</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span>
@@ -1452,6 +1461,7 @@
 <span class="w">        </span><span class="n">prettyPrint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
 <span class="w">        </span><span class="n">encodeDefaults</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
 <span class="w">        </span><span class="n">explicitNulls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">        </span><span class="n">namingStrategy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">JsonNamingStrategy</span><span class="p">.</span><span class="na">SnakeCase</span>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="n">install</span><span class="p">(</span><span class="n">OpenApi</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>

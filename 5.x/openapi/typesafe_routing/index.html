@@ -1369,11 +1369,20 @@ All other information still needs to be added manually and at the routes.</p>
 <span class="w">    </span><span class="n">autoDocumentResourcesRoutes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
 <span class="p">}</span>
 </code></pre></div>
-<details class="warning" open="open">
+</details>
+<details class="warning">
 <summary>Schema Generation</summary>
 <p>When using Type-safe routing and <code>autoDocumentResourcesRoutes</code> is enabled, schemas must be generated using <strong>kotlinx.serialization</strong>.
 See <a href="../schema_generation/">Schema Generation</a> for more information on how to change the default generator.</p>
-</details>
+<div class="highlight"><pre><span></span><code><span class="n">install</span><span class="p">(</span><span class="n">OpenApi</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// enable automatically extracting documentation from resources-routes</span>
+<span class="w">    </span><span class="n">autoDocumentResourcesRoutes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="c1">// schema-generator must use kotlinx-serialization to be compatible</span>
+<span class="w">    </span><span class="n">schemas</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">generator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SchemaGenerator</span><span class="p">.</span><span class="na">kotlinx</span><span class="p">()</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
 </details>
 
 

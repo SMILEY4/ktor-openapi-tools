@@ -15,6 +15,7 @@ $dokka.location:io.github.smiley4.ktorswaggerui.config/SwaggerUIConfig/defaultMo
 $dokka.location:io.github.smiley4.ktorswaggerui.config/SwaggerUIConfig/defaultModelsExpandDepth/#/PointingToDeclaration/ktor-swagger-ui/io.github.smiley4.ktorswaggerui.config/-swagger-u-i-config/default-models-expand-depth.html
 $dokka.location:io.github.smiley4.ktorswaggerui.config/SwaggerUIConfig/displayOperationId/#/PointingToDeclaration/ktor-swagger-ui/io.github.smiley4.ktorswaggerui.config/-swagger-u-i-config/display-operation-id.html
 $dokka.location:io.github.smiley4.ktorswaggerui.config/SwaggerUIConfig/displayRequestDuration/#/PointingToDeclaration/ktor-swagger-ui/io.github.smiley4.ktorswaggerui.config/-swagger-u-i-config/display-request-duration.html
+$dokka.location:io.github.smiley4.ktorswaggerui.config/SwaggerUIConfig/docExpansion/#/PointingToDeclaration/ktor-swagger-ui/io.github.smiley4.ktorswaggerui.config/-swagger-u-i-config/doc-expansion.html
 $dokka.location:io.github.smiley4.ktorswaggerui.config/SwaggerUIConfig/filter/#/PointingToDeclaration/ktor-swagger-ui/io.github.smiley4.ktorswaggerui.config/-swagger-u-i-config/filter.html
 $dokka.location:io.github.smiley4.ktorswaggerui.config/SwaggerUIConfig/maxDisplayedTags/#/PointingToDeclaration/ktor-swagger-ui/io.github.smiley4.ktorswaggerui.config/-swagger-u-i-config/max-displayed-tags.html
 $dokka.location:io.github.smiley4.ktorswaggerui.config/SwaggerUIConfig/oauth2RedirectUrl/#/PointingToDeclaration/ktor-swagger-ui/io.github.smiley4.ktorswaggerui.config/-swagger-u-i-config/oauth2-redirect-url.html
