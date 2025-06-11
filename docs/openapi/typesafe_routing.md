@@ -47,7 +47,19 @@ This project supports documenting Ktor routes defined using [Type-safe Routing](
     }
     ```
 
-    ???+ warning "Schema Generation"
-    
-        When using Type-safe routing and `autoDocumentResourcesRoutes` is enabled, schemas must be generated using **kotlinx.serialization**.
-        See [Schema Generation](schema_generation.md) for more information on how to change the default generator.
+??? warning "Schema Generation"
+
+    When using Type-safe routing and `autoDocumentResourcesRoutes` is enabled, schemas must be generated using **kotlinx.serialization**.
+    See [Schema Generation](schema_generation.md) for more information on how to change the default generator.
+
+    ```kotlin
+    install(OpenApi) {
+        // enable automatically extracting documentation from resources-routes
+        autoDocumentResourcesRoutes = true
+        // schema-generator must use kotlinx-serialization to be compatible
+        schemas {
+            generator = SchemaGenerator.kotlinx()
+        }
+    }
+    ```
+

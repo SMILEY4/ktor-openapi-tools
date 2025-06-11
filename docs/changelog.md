@@ -5,6 +5,11 @@ search:
 
 # Changelog
 
+## 5.0.2
+
+- upgrade schema-kenerator to [2.1.2](https://github.com/SMILEY4/schema-kenerator/releases/tag/2.1.2)
+- fix incorrect schema for multipart bodies
+
 ## 5.0.1
 
 - upgrade schema-kenerator to [2.1.1](https://github.com/SMILEY4/schema-kenerator/releases/tag/2.1.1)

@@ -2,7 +2,7 @@ package io.github.smiley4.ktorswaggerui.config
 
 /**
  * Configuration for the swagger ui.
- * See https://swagger.io/docs/open-source-tools/swagger-ui/usage/configuration
+ * See [Configuration | Swagger Docs](https://swagger.io/docs/open-source-tools/swagger-ui/usage/configuration)
  */
 class SwaggerUIConfig internal constructor() {
 
@@ -98,6 +98,14 @@ class SwaggerUIConfig internal constructor() {
      */
     var requestSnippetsEnabled: Boolean = true
 
+    /**
+     *  `String=["list"*, "full", "none"]`.
+     *  Controls the default expansion setting for the operations and tags.
+     *  It can be 'list' (expands only the tags),
+     *  'full' (expands the tags and operations) or 'none' (expands nothing).
+     */
+    var docExpansion: String? = null
+
     // NETWORK ========================================
 
     /**
@@ -127,7 +135,8 @@ class SwaggerUIConfig internal constructor() {
      * List of HTTP methods that have the "Try it out" feature enabled. An empty array disables "Try it out" for all operations.
      * This does not filter the operations from the display.
      */
-    var supportedSubmitMethods: Collection<String> = setOf("get", "put", "post", "delete", "options", "head", "patch", "trace")
+    var supportedSubmitMethods: Collection<String> =
+        setOf("get", "put", "post", "delete", "options", "head", "patch", "trace")
 
 
     /**
