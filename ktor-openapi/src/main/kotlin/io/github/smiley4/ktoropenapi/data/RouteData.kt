@@ -17,4 +17,5 @@ internal data class RouteData(
     val responses: List<ResponseData>,
     val externalDocs: ExternalDocsData?,
     val servers: List<ServerData>,
+    val extensions: Map<String, Any?>
 )
