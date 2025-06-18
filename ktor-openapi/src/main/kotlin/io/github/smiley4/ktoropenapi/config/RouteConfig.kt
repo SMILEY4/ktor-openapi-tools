@@ -147,6 +147,24 @@ class RouteConfig internal constructor() {
     private val servers = mutableListOf<ServerConfig>()
 
     /**
+     * A list of extensions to the OpenAPI Schema.
+     * The field name MUST begin with x-, for example, x-internal-id.
+     * Field names beginning x-oai- and x-oas- are reserved for uses defined by the OpenAPI Initiative.
+     * The value can be null, a primitive, an array or an object.
+     */
+    var extensions: Map<String, Any?> = emptyMap()
+
+    /**
+     * Sets extensions to the OpenAPI Schema.
+     * The field name MUST begin with x-, for example, x-internal-id.
+     * Field names beginning x-oai- and x-oas- are reserved for uses defined by the OpenAPI Initiative.
+     * The value can be null, a primitive, an array or an object.
+     */
+    fun extensions(extensions: Map<String, Any?>) {
+        this.extensions = extensions
+    }
+
+    /**
      * Build the data object for this config.
      */
     internal fun build() = RouteData(
@@ -162,7 +180,8 @@ class RouteConfig internal constructor() {
         request = request.build(),
         responses = responses.getResponses().map { it.build() },
         externalDocs = externalDocs?.build(ExternalDocsData.DEFAULT),
-        servers = servers.map { it.build(ServerData.DEFAULT) }
+        servers = servers.map { it.build(ServerData.DEFAULT) },
+        extensions = extensions,
     )
 
 }

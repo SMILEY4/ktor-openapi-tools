@@ -6,6 +6,7 @@ import io.github.smiley4.ktoropenapi.config.RouteConfig
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.collections.shouldBeEmpty
 import io.kotest.matchers.collections.shouldContainExactlyInAnyOrder
+import io.kotest.matchers.maps.shouldBeEmpty
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import kotlin.reflect.typeOf
@@ -32,6 +33,7 @@ class RouteDocumentationMergerTest : StringSpec({
             route.getResponses().also { responses ->
                 responses.getResponses().shouldBeEmpty()
             }
+            route.extensions.shouldBeEmpty()
         }
     }
 
@@ -59,6 +61,7 @@ class RouteDocumentationMergerTest : StringSpec({
                     "a1" to { description = "response a1" }
                     "a2" to { description = "response a1" }
                 }
+                extensions = mapOf("x-custom-field-a" to "value-a")
             },
             route {
                 specName = "test-spec-b"
@@ -82,6 +85,7 @@ class RouteDocumentationMergerTest : StringSpec({
                     "b1" to { description = "response b1" }
                     "b2" to { description = "response b1" }
                 }
+                extensions = mapOf("x-custom-field-b" to "value-b")
             }
         ).also { route ->
             route.specName shouldBe "test-spec-a"
@@ -115,6 +119,10 @@ class RouteDocumentationMergerTest : StringSpec({
                     "b1", "b2", "a1", "a2"
                 )
             }
+            route.extensions.toList() shouldContainExactlyInAnyOrder listOf(
+                "x-custom-field-a" to "value-a",
+                "x-custom-field-b" to "value-b",
+            )
         }
     }
 

@@ -38,7 +38,9 @@ internal class RouteDocumentationMerger {
                     a.getResponses().getResponses().forEach { this[it.statusCode] = it }
                 }.values.forEach { addResponse(it) }
             }
+            extensions = a.extensions.toMutableMap().also { merged ->
+                b.extensions.forEach { merged[it.key] = it.value }
+            }
         }
     }
-
 }
