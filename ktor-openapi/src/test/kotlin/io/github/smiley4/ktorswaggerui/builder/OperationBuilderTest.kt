@@ -1010,6 +1010,53 @@ class OperationBuilderTest : StringSpec({
         }
     }
 
+    "route with extensions" {
+        val route = RouteMeta(
+            path = "/test",
+            method = HttpMethod.Get,
+            documentation = RouteConfig().also { route ->
+                route.summary = "test route with extensions"
+                route.description = "route for testing extensions"
+                route.extensions = mapOf(
+                    "x-custom-extension" to "custom-value",
+                    "x-another-extension" to mapOf(
+                        "nested" to "value",
+                        "number" to 42
+                    ),
+                    "x-simple-flag" to true
+                )
+            }.build(),
+            protected = false,
+            isWebhook = false,
+        )
+        val schemaContext = schemaContext(listOf(route))
+        val exampleContext = exampleContext(listOf(route))
+        buildOperationObject(route, schemaContext, exampleContext).also { operation ->
+            operation.tags.shouldBeEmpty()
+            operation.summary shouldBe "test route with extensions"
+            operation.description shouldBe "route for testing extensions"
+            operation.externalDocs shouldBe null
+            operation.operationId shouldBe null
+            operation.parameters.shouldBeEmpty()
+            operation.requestBody shouldBe null
+            operation.responses.shouldBeEmpty()
+            operation.deprecated shouldBe false
+            operation.security shouldBe null
+            operation.servers shouldBe null
+            operation.extensions
+                .also { it.shouldNotBeNull() }
+                ?.also { extensions ->
+                    extensions shouldHaveSize 3
+                    extensions["x-custom-extension"] shouldBe "custom-value"
+                    extensions["x-another-extension"] shouldBe mapOf(
+                        "nested" to "value",
+                        "number" to 42
+                    )
+                    extensions["x-simple-flag"] shouldBe true
+                }
+        }
+    }
+
 }) {
 
     companion object {

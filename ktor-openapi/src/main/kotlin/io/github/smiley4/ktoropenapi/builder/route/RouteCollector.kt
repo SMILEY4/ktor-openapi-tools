@@ -120,7 +120,6 @@ internal class RouteCollector {
             is DocumentedRouteSelector -> route.parent?.let { isProtected(it) } ?: false
             is HttpMethodRouteSelector -> route.parent?.let { isProtected(it) } ?: false
             else -> route.parent?.let { isProtected(it) } ?: false
-
         }
     }
 

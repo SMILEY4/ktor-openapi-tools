@@ -42,6 +42,8 @@ internal class OperationBuilder(
             if (route.documentation.servers.isNotEmpty()) {
                 it.servers = route.documentation.servers.map { server -> serverBuilder.build(server) }
             }
+            if (route.documentation.extensions.isNotEmpty()) {
+                it.extensions = route.documentation.extensions
+            }
         }
-
 }

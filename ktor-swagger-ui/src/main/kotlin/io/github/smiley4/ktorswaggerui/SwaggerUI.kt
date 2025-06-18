@@ -57,7 +57,9 @@ internal object SwaggerUI {
     }
 
 
-    // see https://swagger.io/docs/open-source-tools/swagger-ui/usage/configuration for reference
+    /**
+     * See [Configuration | Swagger Docs](https://swagger.io/docs/open-source-tools/swagger-ui/usage/configuration) for reference
+     */
     @Suppress("CyclomaticComplexMethod")
     private fun buildProperties(config: SwaggerUIConfig, openApiUrls: Map<String, String>): String {
         return PropertyBuilder().also { properties ->
@@ -96,6 +98,7 @@ internal object SwaggerUI {
             }
             properties["tryItOutEnabled"] = config.tryItOutEnabled
             properties["requestSnippetsEnabled"] = config.requestSnippetsEnabled
+            properties["docExpansion"] = config.docExpansion
 
             // Network
             properties["oauth2RedirectUrl"] = config.oauth2RedirectUrl

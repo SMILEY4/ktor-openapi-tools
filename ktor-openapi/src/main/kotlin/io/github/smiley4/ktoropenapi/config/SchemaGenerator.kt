@@ -1,4 +1,4 @@
-@file:OptIn(ExperimentalUuidApi::class)
+@file:OptIn(ExperimentalUuidApi::class, ExperimentalSerializationApi::class)
 
 package io.github.smiley4.ktoropenapi.config
 
@@ -337,7 +337,6 @@ object SchemaGenerator {
             markNotParameterized(clazz.qualifiedName ?: clazz.java.name)
         }
 
-
         /**
          * Whether optional properties are treated as "required". An optional parameter is one that has a default value specified.
          */
@@ -458,6 +457,7 @@ object SchemaGenerator {
          * @param json the kotlinx json serializer
          */
         fun useKotlinxConfig(json: Json) {
+            namingStrategy = json.configuration.namingStrategy
             serializersModule = json.serializersModule
             optionals = if (json.configuration.encodeDefaults) RequiredHandling.REQUIRED else RequiredHandling.NON_REQUIRED
             nullables = if (json.configuration.explicitNulls) RequiredHandling.REQUIRED else RequiredHandling.NON_REQUIRED

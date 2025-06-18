@@ -220,6 +220,14 @@ private fun Application.myModule() {
                 url = "example.com/hello"
                 description = "external documentation of 'hello'-route"
             }
+            extensions = mapOf(
+                "x-custom-extension" to "custom-value",
+                "x-another-extension" to mapOf(
+                    "nested" to "value",
+                    "number" to 42
+                ),
+                "x-simple-flag" to true
+            )
             request {
                 queryParameter<String>("name") {
                     description = "the name to greet"
