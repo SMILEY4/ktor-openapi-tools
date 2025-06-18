@@ -5,6 +5,12 @@ search:
 
 # Changelog
 
+## 5.1.0
+
+- upgrade schema-kenerator to [2.1.3](https://github.com/SMILEY4/schema-kenerator/releases/tag/2.1.3)
+- add OpenApi extension support for route documentation [#202](https://github.com/SMILEY4/ktor-openapi-tools/pull/202)
+- add `docExpansion` property to SwaggerUI configuration controlling the default expansion setting for the operations and tags [#191](https://github.com/SMILEY4/ktor-openapi-tools/pull/191)
+
 ## 5.0.2
 
 - upgrade schema-kenerator to [2.1.2](https://github.com/SMILEY4/schema-kenerator/releases/tag/2.1.2)
