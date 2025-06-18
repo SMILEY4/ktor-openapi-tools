@@ -1593,7 +1593,15 @@
 <span class="normal">262</span>
 <span class="normal">263</span>
 <span class="normal">264</span>
-<span class="normal">265</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">package</span><span class="w"> </span><span class="nn">io.github.smiley4.ktoropenapi.examples</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">package</span><span class="w"> </span><span class="nn">io.github.smiley4.ktoropenapi.examples</span>
 
 <span class="k">import</span><span class="w"> </span><span class="nn">io.github.smiley4.ktoropenapi.OpenApi</span>
 <span class="k">import</span><span class="w"> </span><span class="nn">io.github.smiley4.ktoropenapi.config.AuthScheme</span>
@@ -1815,6 +1823,14 @@
 <span class="w">                </span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;example.com/hello&quot;</span>
 <span class="w">                </span><span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;external documentation of &#39;hello&#39;-route&quot;</span>
 <span class="w">            </span><span class="p">}</span>
+<span class="w">            </span><span class="n">extensions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mapOf</span><span class="p">(</span>
+<span class="w">                </span><span class="s">&quot;x-custom-extension&quot;</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="s">&quot;custom-value&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s">&quot;x-another-extension&quot;</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">mapOf</span><span class="p">(</span>
+<span class="w">                    </span><span class="s">&quot;nested&quot;</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="s">&quot;value&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="s">&quot;number&quot;</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="m">42</span>
+<span class="w">                </span><span class="p">),</span>
+<span class="w">                </span><span class="s">&quot;x-simple-flag&quot;</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">            </span><span class="p">)</span>
 <span class="w">            </span><span class="n">request</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                </span><span class="n">queryParameter</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;name&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                    </span><span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;the name to greet&quot;</span>

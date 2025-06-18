@@ -253,6 +253,8 @@ $dokka.location:io.github.smiley4.ktoropenapi.config/ResponsesConfig/to/kotlin.S
 $dokka.location:io.github.smiley4.ktoropenapi.config/RouteConfig///PointingToDeclaration/ktor-openapi/io.github.smiley4.ktoropenapi.config/-route-config/index.html
 $dokka.location:io.github.smiley4.ktoropenapi.config/RouteConfig/deprecated/#/PointingToDeclaration/ktor-openapi/io.github.smiley4.ktoropenapi.config/-route-config/deprecated.html
 $dokka.location:io.github.smiley4.ktoropenapi.config/RouteConfig/description/#/PointingToDeclaration/ktor-openapi/io.github.smiley4.ktoropenapi.config/-route-config/description.html
+$dokka.location:io.github.smiley4.ktoropenapi.config/RouteConfig/extensions/#/PointingToDeclaration/ktor-openapi/io.github.smiley4.ktoropenapi.config/-route-config/extensions.html
+$dokka.location:io.github.smiley4.ktoropenapi.config/RouteConfig/extensions/#kotlin.collections.Map[kotlin.String,kotlin.Any?]/PointingToDeclaration/ktor-openapi/io.github.smiley4.ktoropenapi.config/-route-config/extensions.html
 $dokka.location:io.github.smiley4.ktoropenapi.config/RouteConfig/externalDocs/#kotlin.Function1[io.github.smiley4.ktoropenapi.config.ExternalDocsConfig,kotlin.Unit]/PointingToDeclaration/ktor-openapi/io.github.smiley4.ktoropenapi.config/-route-config/external-docs.html
 $dokka.location:io.github.smiley4.ktoropenapi.config/RouteConfig/getRequest/#/PointingToDeclaration/ktor-openapi/io.github.smiley4.ktoropenapi.config/-route-config/get-request.html
 $dokka.location:io.github.smiley4.ktoropenapi.config/RouteConfig/getResponses/#/PointingToDeclaration/ktor-openapi/io.github.smiley4.ktoropenapi.config/-route-config/get-responses.html
