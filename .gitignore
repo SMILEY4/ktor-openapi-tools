@@ -133,3 +133,6 @@ venv.bak/
 # mkdocs documentation
 /site
 .cache
+
+# misc
+*.local
