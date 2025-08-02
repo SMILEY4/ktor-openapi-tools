@@ -101,13 +101,13 @@ mavenPublishing {
     val projectDeveloperUrl: String by project
 
     configure(KotlinJvm(JavadocJar.Dokka("dokkaHtml"), true))
-    publishToMavenCentral(SonatypeHost.S01)
+    publishToMavenCentral(automaticRelease = true)
     signAllPublications()
     coordinates(projectGroupId, "ktor-openapi", projectVersion)
     pom {
         name.set("Ktor OpenApi")
         description.set("Ktor plugin to automatically generate and provide OpenApi")
-        url.set(projectBaseScmUrl + "ktor-openapi")
+        url.set(projectBaseScmUrl)
         licenses {
             license {
                 name.set(projectLicenseName)
