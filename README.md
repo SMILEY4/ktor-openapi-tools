@@ -1,8 +1,8 @@
 # Ktor OpenAPI Tools
 
 [![Version](https://img.shields.io/maven-central/v/io.github.smiley4/ktor-openapi?style=flat&color=blue&logo=apachemaven)](https://search.maven.org/search?q=g:io.github.smiley4%20a:ktor-openapi)
-[![Checks Passing](https://img.shields.io/github/actions/workflow/status/SMILEY4/ktor-swagger-ui/checks.yml?style=flat&logo=github)](https://github.com/SMILEY4/ktor-openapi-tools/actions/workflows/checks.yml)
-[![License](https://img.shields.io/github/license/SMILEY4/ktor-swagger-ui?style=flat&color=teal)](https://github.com/SMILEY4/ktor-openapi-tools/blob/develop/LICENSE)
+[![Checks Passing](https://img.shields.io/github/actions/workflow/status/SMILEY4/ktor-openapi-tools/checks.yml?style=flat&logo=github)](https://github.com/SMILEY4/ktor-openapi-tools/actions/workflows/checks.yml)
+[![License](https://img.shields.io/github/license/SMILEY4/ktor-openapi-tools?style=flat&color=teal)](https://github.com/SMILEY4/ktor-openapi-tools/blob/develop/LICENSE)
 
 A collection of libraries to simplify API documentation and exploration for [Ktor](https://ktor.io/) applications. Designed to be non-invasive, they integrate seamlessly with applications without requiring immediate change to existing code while being highly customizable to fit every use case.
 
