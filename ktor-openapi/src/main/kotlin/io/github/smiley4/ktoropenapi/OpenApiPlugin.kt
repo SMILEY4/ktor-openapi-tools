@@ -69,7 +69,6 @@ object OpenApiPlugin {
             )
         }
         val specs = OpenApiSpecBuilder().build(config, routes)
-        openApiSpecs.clear()
         openApiSpecs.putAll(specs)
     }
 
