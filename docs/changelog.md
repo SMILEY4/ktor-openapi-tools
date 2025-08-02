@@ -5,6 +5,11 @@ search:
 
 # Changelog
 
+## 5.2.0
+
+- upgrade schema-kenerator from 2.1.3 to [2.3.0](https://github.com/SMILEY4/schema-kenerator/releases/tag/2.3.0)
+- fix handling of different OpenApi specs with multiple ktor modules
+
 ## 5.1.0
 
 - upgrade schema-kenerator to [2.1.3](https://github.com/SMILEY4/schema-kenerator/releases/tag/2.1.3)
