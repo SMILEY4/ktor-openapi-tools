@@ -1,148 +1,148 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/</loc>
-         <lastmod>2025-06-18</lastmod>
+         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/index.html</loc>
+         <lastmod>2025-08-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/changelog/</loc>
-         <lastmod>2025-06-18</lastmod>
+         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/changelog.html</loc>
+         <lastmod>2025-08-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/examples/</loc>
-         <lastmod>2025-06-18</lastmod>
+         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/examples/index.html</loc>
+         <lastmod>2025-08-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/examples/authentication/</loc>
-         <lastmod>2025-06-18</lastmod>
+         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/examples/authentication.html</loc>
+         <lastmod>2025-08-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/examples/basics/</loc>
-         <lastmod>2025-06-18</lastmod>
+         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/examples/basics.html</loc>
+         <lastmod>2025-08-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/examples/complete-configuration/</loc>
-         <lastmod>2025-06-18</lastmod>
+         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/examples/complete-configuration.html</loc>
+         <lastmod>2025-08-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/examples/customized-schema-generator/</loc>
-         <lastmod>2025-06-18</lastmod>
+         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/examples/customized-schema-generator.html</loc>
+         <lastmod>2025-08-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/examples/external-openapi-spec/</loc>
-         <lastmod>2025-06-18</lastmod>
+         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/examples/external-openapi-spec.html</loc>
+         <lastmod>2025-08-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/examples/file-upload/</loc>
-         <lastmod>2025-06-18</lastmod>
+         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/examples/file-upload.html</loc>
+         <lastmod>2025-08-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/examples/kotlinx-serialization/</loc>
-         <lastmod>2025-06-18</lastmod>
+         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/examples/kotlinx-serialization.html</loc>
+         <lastmod>2025-08-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/examples/multiple-specs/</loc>
-         <lastmod>2025-06-18</lastmod>
+         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/examples/multiple-specs.html</loc>
+         <lastmod>2025-08-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/examples/openapi-examples/</loc>
-         <lastmod>2025-06-18</lastmod>
+         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/examples/openapi-examples.html</loc>
+         <lastmod>2025-08-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/examples/petstore/</loc>
-         <lastmod>2025-06-18</lastmod>
+         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/examples/petstore.html</loc>
+         <lastmod>2025-08-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/examples/request-response/</loc>
-         <lastmod>2025-06-18</lastmod>
+         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/examples/request-response.html</loc>
+         <lastmod>2025-08-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/examples/schemas/</loc>
-         <lastmod>2025-06-18</lastmod>
+         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/examples/schemas.html</loc>
+         <lastmod>2025-08-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/examples/webhooks/</loc>
-         <lastmod>2025-06-18</lastmod>
+         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/examples/webhooks.html</loc>
+         <lastmod>2025-08-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/openapi/</loc>
-         <lastmod>2025-06-18</lastmod>
+         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/openapi/index.html</loc>
+         <lastmod>2025-08-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/openapi/documenting_routes/</loc>
-         <lastmod>2025-06-18</lastmod>
+         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/openapi/documenting_routes.html</loc>
+         <lastmod>2025-08-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/openapi/example_encoding/</loc>
-         <lastmod>2025-06-18</lastmod>
+         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/openapi/example_encoding.html</loc>
+         <lastmod>2025-08-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/openapi/getting_started/</loc>
-         <lastmod>2025-06-18</lastmod>
+         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/openapi/getting_started.html</loc>
+         <lastmod>2025-08-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/openapi/handling_types_schemas_examples/</loc>
-         <lastmod>2025-06-18</lastmod>
+         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/openapi/handling_types_schemas_examples.html</loc>
+         <lastmod>2025-08-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/openapi/multiple_specs/</loc>
-         <lastmod>2025-06-18</lastmod>
+         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/openapi/multiple_specs.html</loc>
+         <lastmod>2025-08-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/openapi/plugin_configuration/</loc>
-         <lastmod>2025-06-18</lastmod>
+         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/openapi/plugin_configuration.html</loc>
+         <lastmod>2025-08-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/openapi/schema_generation/</loc>
-         <lastmod>2025-06-18</lastmod>
+         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/openapi/schema_generation.html</loc>
+         <lastmod>2025-08-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/openapi/typesafe_routing/</loc>
-         <lastmod>2025-06-18</lastmod>
+         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/openapi/typesafe_routing.html</loc>
+         <lastmod>2025-08-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/redoc/</loc>
-         <lastmod>2025-06-18</lastmod>
+         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/redoc/index.html</loc>
+         <lastmod>2025-08-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/redoc/getting_started/</loc>
-         <lastmod>2025-06-18</lastmod>
+         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/redoc/getting_started.html</loc>
+         <lastmod>2025-08-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/swaggerui/</loc>
-         <lastmod>2025-06-18</lastmod>
+         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/swaggerui/index.html</loc>
+         <lastmod>2025-08-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/swaggerui/getting_started/</loc>
-         <lastmod>2025-06-18</lastmod>
+         <loc>https://smiley4.github.io/ktor-openapi-tools/5.x/swaggerui/getting_started.html</loc>
+         <lastmod>2025-08-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
