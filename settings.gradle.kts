@@ -1,4 +1,4 @@
-rootProject.name = "ktor-openapi-tools"
+rootProject.name = "ktor-openapi"
 
 include("ktor-openapi")
 include("ktor-swagger-ui")
