@@ -3,12 +3,14 @@ package io.github.smiley4.ktoropenapi.builder.example
 import io.github.smiley4.ktoropenapi.builder.route.RouteMeta
 import io.github.smiley4.ktoropenapi.config.descriptors.ExampleDescriptor
 import io.github.smiley4.ktoropenapi.config.GenericExampleEncoder
+import io.github.smiley4.ktoropenapi.config.descriptors.KTypeDescriptor
 import io.github.smiley4.ktoropenapi.config.descriptors.RefExampleDescriptor
 import io.github.smiley4.ktoropenapi.config.descriptors.SwaggerExampleDescriptor
 import io.github.smiley4.ktoropenapi.config.descriptors.TypeDescriptor
 import io.github.smiley4.ktoropenapi.config.descriptors.ValueExampleDescriptor
 import io.github.smiley4.ktoropenapi.data.*
 import io.swagger.v3.oas.models.examples.Example
+import kotlin.reflect.full.starProjectedType
 
 /**
  * Implementation of an [ExampleContext].
@@ -82,7 +84,7 @@ internal class ExampleContextImpl(private val encoder: GenericExampleEncoder) : 
     private fun generateExample(exampleDescriptor: ExampleDescriptor, type: TypeDescriptor?): Example {
         return when (exampleDescriptor) {
             is ValueExampleDescriptor -> Example().also {
-                it.value = encoder(type, exampleDescriptor.value)
+                it.value = encoder(type ?: exampleDescriptor.type, exampleDescriptor.value)
                 it.summary = exampleDescriptor.summary
                 it.description = exampleDescriptor.description
             }
