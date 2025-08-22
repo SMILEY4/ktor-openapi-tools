@@ -261,7 +261,6 @@ object SchemaGenerator {
             type
                 .analyzeTypeUsingKotlinxSerialization {
                     serializersModule = configInstance.serializersModule
-                    knownNotParameterized = configInstance.knownNotParameterized
                     customModules.addAll(configInstance.analyzerModules)
                 }
                 .addJsonClassDiscriminatorProperty()
@@ -306,6 +305,7 @@ object SchemaGenerator {
          * The types that are guaranteed to not have type parameters.
          * This helps the type processing step to determine whether two types are truly the same and may fix issues encountered with types.
          */
+        @Deprecated("unused")
         var knownNotParameterized = mutableSetOf<String>()
 
 
@@ -313,8 +313,10 @@ object SchemaGenerator {
          * Mark the type with the given full/qualified name as "not parameterized", i.e. as not having any generic type parameters.
          * This helps the type processing step to determine whether two types are truly the same and may fix issues encountered with types.
          */
+        @Suppress("unused")
+        @Deprecated("unused")
         fun markNotParameterized(name: String) {
-            knownNotParameterized.add(name)
+            // does nothing anymore
         }
 
 
@@ -322,9 +324,10 @@ object SchemaGenerator {
          * Mark the given type as "not parameterized", i.e as not having any generic type parameters.
          * This helps the type processing step to determine whether two types are truly the same and may fix issues encountered with types.
          */
+        @Suppress("unused")
+        @Deprecated("unused")
         fun markNotParameterized(type: KType) {
-            val clazz = type.classifier!! as KClass<*>
-            markNotParameterized(clazz.qualifiedName ?: clazz.java.name)
+            // does nothing anymore
         }
 
 
@@ -332,9 +335,9 @@ object SchemaGenerator {
          * Mark the given type as "not parameterized", i.e as not having any generic type parameters.
          * This helps the type processing step to determine whether two types are truly the same.
          */
+        @Deprecated("unused")
         inline fun <reified T> markNotParameterized() {
-            val clazz = typeOf<T>().classifier!! as KClass<*>
-            markNotParameterized(clazz.qualifiedName ?: clazz.java.name)
+            // does nothing anymore
         }
 
         /**
