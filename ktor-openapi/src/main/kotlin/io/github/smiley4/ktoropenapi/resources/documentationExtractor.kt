@@ -5,6 +5,7 @@ package io.github.smiley4.ktoropenapi.resources
 import io.github.smiley4.ktoropenapi.OpenApiPlugin
 import io.github.smiley4.ktoropenapi.config.ParameterLocation
 import io.github.smiley4.ktoropenapi.config.RouteConfig
+import io.github.smiley4.ktoropenapi.config.descriptors.KTypeDescriptor
 import io.github.smiley4.ktoropenapi.config.descriptors.SerialTypeDescriptor
 import io.ktor.resources.serialization.ResourcesFormat
 import kotlinx.serialization.ExperimentalSerializationApi
@@ -12,6 +13,7 @@ import kotlinx.serialization.KSerializer
 import kotlinx.serialization.descriptors.SerialDescriptor
 import kotlinx.serialization.descriptors.StructureKind
 import kotlinx.serialization.descriptors.elementNames
+import kotlin.reflect.KType
 
 private data class ParameterData(
     val name: String,
@@ -26,10 +28,23 @@ private data class ParameterData(
  * Automatically extract route configuration from the given resource class.
  */
 fun <T> extractTypesafeDocumentation(serializer: KSerializer<T>, resourcesFormat: ResourcesFormat): RouteConfig.() -> Unit {
-    if(!OpenApiPlugin.config.autoDocumentResourcesRoutes) {
+    return extractTypesafeDocumentation(serializer, null, resourcesFormat)
+}
+
+
+/**
+ * Intended for internal use.
+ * Automatically extract route configuration from the given resource class.
+ */
+fun <T> extractTypesafeDocumentation(
+    serializer: KSerializer<T>,
+    bodyType: KType?,
+    resourcesFormat: ResourcesFormat
+): RouteConfig.() -> Unit {
+    if (!OpenApiPlugin.config.autoDocumentResourcesRoutes) {
         return {}
     }
-    // Note: typesafe routing only defines information about path & query parameters - no other information is available
+    // Note: typesafe routing only defines information about path & query parameters & request body - no other information is available
     val path = resourcesFormat.encodeToPathPattern(serializer)
     return {
         request {
@@ -38,10 +53,12 @@ fun <T> extractTypesafeDocumentation(serializer: KSerializer<T>, resourcesFormat
                     required = !parameter.optional
                 }
             }
+            bodyType?.also {
+                body(KTypeDescriptor(it)) {}
+            }
         }
     }
 }
-
 
 
 private fun collectParameters(descriptor: SerialDescriptor, path: String): List<ParameterData> {
@@ -58,7 +75,7 @@ private fun collectParameters(descriptor: SerialDescriptor, path: String): List<
                 ParameterData(
                     name = name,
                     descriptor = elementDescriptor,
-                    optional = when(location) {
+                    optional = when (location) {
                         ParameterLocation.PATH -> path.contains("{$name?}")
                         ParameterLocation.QUERY -> elementDescriptor.isNullable || descriptor.isElementOptional(index)
                         else -> false

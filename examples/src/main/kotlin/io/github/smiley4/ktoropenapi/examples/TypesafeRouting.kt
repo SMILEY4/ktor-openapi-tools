@@ -81,13 +81,15 @@ private fun Application.myModule() {
             call.respond(HttpStatusCode.NotImplemented, Unit)
         }
 
+        // delete route
         delete<PetsRoute.Id.Delete> { request ->
             println("..${request.parent.id}")
             call.respond(HttpStatusCode.NotImplemented, Unit)
         }
 
-        post<PetsRoute.Id.New> { request ->
-            println("..${request.parent.id}")
+        // post with request body. Request body is added to the schema automatically.
+        post<PetsRoute.Id.New, Pet> { request, body ->
+            println("..${request.parent.id} $body")
             call.respond(HttpStatusCode.NotImplemented, Unit)
         }
 

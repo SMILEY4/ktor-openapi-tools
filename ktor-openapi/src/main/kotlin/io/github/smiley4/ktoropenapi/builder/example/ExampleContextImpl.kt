@@ -82,7 +82,7 @@ internal class ExampleContextImpl(private val encoder: GenericExampleEncoder) : 
     private fun generateExample(exampleDescriptor: ExampleDescriptor, type: TypeDescriptor?): Example {
         return when (exampleDescriptor) {
             is ValueExampleDescriptor -> Example().also {
-                it.value = encoder(type, exampleDescriptor.value)
+                it.value = encoder(type ?: exampleDescriptor.type, exampleDescriptor.value)
                 it.summary = exampleDescriptor.summary
                 it.description = exampleDescriptor.description
             }

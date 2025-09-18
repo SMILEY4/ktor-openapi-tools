@@ -5,6 +5,18 @@ search:
 
 # Changelog
 
+## 5.3.0
+
+- fix kotlinx-serialization example encoding [#212](https://github.com/SMILEY4/ktor-openapi-tools/issues/212)
+- fix missing response bodies from documented resources routes [#209](https://github.com/SMILEY4/ktor-openapi-tools/issues/209)
+- upgrade schema-kenerator from 2.3.0 to [2.4.0](https://github.com/SMILEY4/schema-kenerator/releases/tag/2.4.0)
+- upgrade ktor from 3.1.1 to ktor 3.3.0
+
+## 5.2.0
+
+- upgrade schema-kenerator from 2.1.3 to [2.3.0](https://github.com/SMILEY4/schema-kenerator/releases/tag/2.3.0)
+- fix handling of different OpenApi specs with multiple ktor modules
+
 ## 5.1.0
 
 - upgrade schema-kenerator to [2.1.3](https://github.com/SMILEY4/schema-kenerator/releases/tag/2.1.3)

@@ -2,13 +2,12 @@ package io.github.smiley4.ktoropenapi.resources
 
 import io.github.smiley4.ktoropenapi.config.RouteConfig
 import io.github.smiley4.ktoropenapi.documentation
-import io.github.smiley4.ktoropenapi.method
-import io.ktor.http.HttpMethod
 import io.ktor.server.resources.*
 import io.ktor.server.routing.Route
 import io.ktor.server.routing.RoutingContext
 import io.ktor.utils.io.KtorDsl
 import kotlinx.serialization.serializer
+import kotlin.reflect.typeOf
 
 //============================//
 //             GET            //
@@ -23,11 +22,7 @@ inline fun <reified T : Any> Route.get(
     val extractedDocumentation = extractTypesafeDocumentation(serializer<T>(), resources.resourcesFormat)
     return documentation(extractedDocumentation) {
         documentation(builder) {
-            resource<T> {
-                method(HttpMethod.Get) {
-                    handle(body)
-                }
-            }
+            get<T>(body)
         }
     }
 }
@@ -45,11 +40,21 @@ inline fun <reified T : Any> Route.post(
     val extractedDocumentation = extractTypesafeDocumentation(serializer<T>(), resources.resourcesFormat)
     return documentation(extractedDocumentation) {
         documentation(builder) {
-            resource<T> {
-                method(HttpMethod.Post) {
-                    handle(body)
-                }
-            }
+            post<T>(body)
+        }
+    }
+}
+
+@KtorDsl
+inline fun <reified T : Any, reified R : Any> Route.post(
+    noinline builder: RouteConfig.() -> Unit = { },
+    noinline body: suspend RoutingContext.(T, R) -> Unit
+): Route {
+    val resources = plugin(Resources)
+    val extractedDocumentation = extractTypesafeDocumentation(serializer<T>(), typeOf<R>(), resources.resourcesFormat)
+    return documentation(extractedDocumentation) {
+        documentation(builder) {
+            post<T, R>(body)
         }
     }
 }
@@ -67,11 +72,21 @@ inline fun <reified T : Any> Route.put(
     val extractedDocumentation = extractTypesafeDocumentation(serializer<T>(), resources.resourcesFormat)
     return documentation(extractedDocumentation) {
         documentation(builder) {
-            resource<T> {
-                method(HttpMethod.Put) {
-                    handle(body)
-                }
-            }
+            put<T>(body)
+        }
+    }
+}
+
+@KtorDsl
+inline fun <reified T : Any, reified R : Any> Route.put(
+    noinline builder: RouteConfig.() -> Unit = { },
+    noinline body: suspend RoutingContext.(T, R) -> Unit
+): Route {
+    val resources = plugin(Resources)
+    val extractedDocumentation = extractTypesafeDocumentation(serializer<T>(), typeOf<R>(), resources.resourcesFormat)
+    return documentation(extractedDocumentation) {
+        documentation(builder) {
+            put<T, R>(body)
         }
     }
 }
@@ -89,11 +104,7 @@ inline fun <reified T : Any> Route.delete(
     val extractedDocumentation = extractTypesafeDocumentation(serializer<T>(), resources.resourcesFormat)
     return documentation(extractedDocumentation) {
         documentation(builder) {
-            resource<T> {
-                method(HttpMethod.Delete) {
-                    handle(body)
-                }
-            }
+            delete<T>(body)
         }
     }
 }
@@ -111,14 +122,25 @@ inline fun <reified T : Any> Route.patch(
     val extractedDocumentation = extractTypesafeDocumentation(serializer<T>(), resources.resourcesFormat)
     return documentation(extractedDocumentation) {
         documentation(builder) {
-            resource<T> {
-                method(HttpMethod.Patch) {
-                    handle(body)
-                }
-            }
+            patch<T>(body)
         }
     }
 }
+
+@KtorDsl
+inline fun <reified T : Any, reified R : Any> Route.patch(
+    noinline builder: RouteConfig.() -> Unit = { },
+    noinline body: suspend RoutingContext.(T, R) -> Unit
+): Route {
+    val resources = plugin(Resources)
+    val extractedDocumentation = extractTypesafeDocumentation(serializer<T>(), typeOf<R>(), resources.resourcesFormat)
+    return documentation(extractedDocumentation) {
+        documentation(builder) {
+            patch<T, R>(body)
+        }
+    }
+}
+
 
 //============================//
 //           OPTIONS          //
@@ -133,11 +155,7 @@ inline fun <reified T : Any> Route.options(
     val extractedDocumentation = extractTypesafeDocumentation(serializer<T>(), resources.resourcesFormat)
     return documentation(extractedDocumentation) {
         documentation(builder) {
-            resource<T> {
-                method(HttpMethod.Options) {
-                    handle(body)
-                }
-            }
+            options<T>(body)
         }
     }
 }
@@ -155,19 +173,7 @@ inline fun <reified T : Any> Route.head(
     val extractedDocumentation = extractTypesafeDocumentation(serializer<T>(), resources.resourcesFormat)
     return documentation(extractedDocumentation) {
         documentation(builder) {
-            resource<T> {
-                method(HttpMethod.Head) {
-                    handle(body)
-                }
-            }
+            head<T>(body)
         }
     }
-}
-
-
-inline fun <reified T : Any> Route.handle(
-    noinline body: suspend RoutingContext.(T) -> Unit
-) {
-    val serializer = serializer<T>()
-    handle(serializer, body)
 }

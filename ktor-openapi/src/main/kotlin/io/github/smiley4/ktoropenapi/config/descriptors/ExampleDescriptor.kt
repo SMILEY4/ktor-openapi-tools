@@ -18,6 +18,7 @@ class ValueExampleDescriptor(
     val value: Any?,
     val summary: String? = null,
     val description: String? = null,
+    val type: TypeDescriptor? = null,
 ) : ExampleDescriptor(name)
 
 

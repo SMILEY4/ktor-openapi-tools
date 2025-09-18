@@ -1,6 +1,7 @@
 package io.github.smiley4.ktoropenapi.config
 
 import io.github.smiley4.ktoropenapi.config.descriptors.ExampleDescriptor
+import io.github.smiley4.ktoropenapi.config.descriptors.KTypeDescriptor
 import io.github.smiley4.ktoropenapi.config.descriptors.SwaggerExampleDescriptor
 import io.github.smiley4.ktoropenapi.config.descriptors.ValueExampleDescriptor
 import io.github.smiley4.ktoropenapi.data.ExampleConfigData
@@ -8,6 +9,7 @@ import io.github.smiley4.ktoropenapi.data.MultipartBodyData
 import io.github.smiley4.ktoropenapi.data.SecurityData
 import io.github.smiley4.ktoropenapi.data.SimpleBodyData
 import io.swagger.v3.oas.models.examples.Example
+import kotlin.reflect.typeOf
 
 
 /**
@@ -43,15 +45,16 @@ class ExampleConfig internal constructor() {
      * Add a shared example that can be referenced by all routes by the given name.
      * The provided name has to be unique among all shared examples and acts as its id.
      */
-    fun example(name: String, example: ValueExampleDescriptorConfig.() -> Unit) = example(
-        ValueExampleDescriptorConfig()
+    inline fun <reified T> example(name: String, example: ValueExampleDescriptorConfig<T>.() -> Unit) = example(
+        ValueExampleDescriptorConfig<T>()
             .apply(example)
             .let { result ->
                 ValueExampleDescriptor(
                     name = name,
                     value = result.value,
                     summary = result.summary,
-                    description = result.description
+                    description = result.description,
+                    type = KTypeDescriptor(typeOf<T>())
                 )
             }
     )

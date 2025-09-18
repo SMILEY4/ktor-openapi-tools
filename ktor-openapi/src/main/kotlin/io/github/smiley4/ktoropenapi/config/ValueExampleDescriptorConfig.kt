@@ -1,11 +1,11 @@
 package io.github.smiley4.ktoropenapi.config
 
-class ValueExampleDescriptorConfig {
+class ValueExampleDescriptorConfig<T> {
 
     /**
      * the example value
      */
-    var value: Any? = null
+    var value: T? = null
 
 
     /**
