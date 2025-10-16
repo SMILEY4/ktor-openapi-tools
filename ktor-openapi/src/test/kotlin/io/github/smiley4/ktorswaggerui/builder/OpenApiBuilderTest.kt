@@ -101,6 +101,45 @@ class OpenApiBuilderTest : StringSpec({
         }
     }
 
+    "x-tagGroups extension" {
+        val config = OpenApiPluginConfig().also {
+            it.tags {
+                tag("Users") {
+                    description = "User management"
+                }
+                tag("Products") {
+                    description = "Product catalog"
+                }
+                tag("Orders") {
+                    description = "Order processing"
+                }
+
+                tagGroup("E-Commerce") {
+                    tag("Products")
+                    tag("Orders")
+                }
+                tagGroup("User Management") {
+                    tag("Users")
+                }
+            }
+        }
+        buildOpenApiObject(emptyList(), config).also { openapi ->
+            openapi.extensions shouldNotBe null
+            openapi.extensions shouldHaveSize 1
+            openapi.extensions["x-tagGroups"] shouldNotBe null
+
+            @Suppress("UNCHECKED_CAST")
+            val tagGroups = openapi.extensions["x-tagGroups"] as List<Map<String, Any>>
+            tagGroups shouldHaveSize 2
+
+            tagGroups[0]["name"] shouldBe "E-Commerce"
+            (tagGroups[0]["tags"] as List<*>) shouldContainExactlyInAnyOrder listOf("Products", "Orders")
+
+            tagGroups[1]["name"] shouldBe "User Management"
+            (tagGroups[1]["tags"] as List<*>) shouldContainExactlyInAnyOrder listOf("Users")
+        }
+    }
+
 }) {
 
     companion object {

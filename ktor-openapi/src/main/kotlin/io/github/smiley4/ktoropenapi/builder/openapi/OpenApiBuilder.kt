@@ -35,6 +35,16 @@ internal class OpenApiBuilder(
             it.paths = pathsBuilder.build(routes.filter { r -> !r.isWebhook})
             it.webhooks = webhooksBuilder.build(routes.filter { r -> r.isWebhook})
             it.components = componentsBuilder.build(schemaContext.getComponentSection(), exampleContext.getComponentSection())
+
+            // Add x-tagGroups vendor extension if tag groups are configured
+            if (config.tagsConfig.tagGroups.isNotEmpty()) {
+                it.addExtension("x-tagGroups", config.tagsConfig.tagGroups.map { tagGroup ->
+                    mapOf(
+                        "name" to tagGroup.name,
+                        "tags" to tagGroup.tags
+                    )
+                })
+            }
         }
     }
 
