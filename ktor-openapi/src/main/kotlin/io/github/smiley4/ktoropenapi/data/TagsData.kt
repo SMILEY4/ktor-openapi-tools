@@ -8,12 +8,14 @@ import io.github.smiley4.ktoropenapi.config.TagGenerator
 internal data class TagsData(
     val tags: List<TagData>,
     val generator: TagGenerator,
+    val tagGroups: List<TagGroupData>,
 ) {
 
     companion object {
         val DEFAULT = TagsData(
             tags = emptyList(),
-            generator = { emptyList() }
+            generator = { emptyList() },
+            tagGroups = emptyList()
         )
     }
 
