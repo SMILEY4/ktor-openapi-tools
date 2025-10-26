@@ -95,11 +95,13 @@ private fun Application.myModule() {
                 description = "routes to manage users"
                 externalDocUrl = "example.com"
                 externalDocDescription = "Users documentation"
+                displayName = "User Management"  // Redoc's x-displayName extension
             }
             tag("documents") {
                 description = "routes to manage documents"
                 externalDocUrl = "example.com"
                 externalDocDescription = "Document documentation"
+                displayName = "Document Management"  // Redoc's x-displayName extension
             }
         }
         schemas {

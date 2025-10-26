@@ -29,12 +29,19 @@ class TagConfig internal constructor(
      */
     var externalDocUrl: String? = null
 
+    /**
+     * Custom display name for the tag. Maps to Redoc's x-displayName extension.
+     * When defined, this name is used instead of the default name in the navigation sidebar and section headings.
+     */
+    var displayName: String? = null
+
 
     internal fun build(base: TagData) = TagData(
         name = name,
         description = merge(base.description, description),
         externalDocDescription = merge(base.externalDocDescription, externalDocDescription),
-        externalDocUrl = merge(base.externalDocUrl, externalDocUrl)
+        externalDocUrl = merge(base.externalDocUrl, externalDocUrl),
+        displayName = merge(base.displayName, displayName)
     )
 
 }

@@ -18,6 +18,9 @@ internal class TagBuilder(
             if(tag.externalDocUrl != null && tag.externalDocDescription != null) {
                 it.externalDocs = tagExternalDocumentationBuilder.build(tag.externalDocUrl, tag.externalDocDescription)
             }
+            if(tag.displayName != null) {
+                it.extensions = mapOf("x-displayName" to tag.displayName)
+            }
         }
 
 }
