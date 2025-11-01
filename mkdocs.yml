@@ -20,7 +20,21 @@ nav:
             - How It Works: openapi/core_concepts/how_it_works.md
             - Plugin Configuration: openapi/core_concepts/plugin_configuration.md
             - Route Documentation Basics: openapi/core_concepts/route_documentation_basics.md
-            - OpenAPI Specification Output: openapi/core_concepts/openapi_specification_output.md
+            - Providing OpenAPI Specification: openapi/core_concepts/providing_openapi_specification.md
+      - Documenting Routes:
+            - Basic Route Documentation: openapi/documenting_routes/basic_route_documentation.md
+            - Request Documentation: openapi/documenting_routes/request_documentation.md
+            - Response Documentation: openapi/documenting_routes/response_documentation.md
+            - Nested Routes and Documentation Inheritance: openapi/documenting_routes/nested_routes_and_documentation_inheritance.md
+      - Working With Schemas:
+            -   Introduction To Schemas: openapi/working_with_schemas/schema_introduction.md
+            -   Manual Schema Definition: openapi/working_with_schemas/manual_schema_definition.md
+            -   Automatic Schema Generation: openapi/working_with_schemas/automatic_schema_generation_overview.md
+            -   Global Schemas: openapi/working_with_schemas/global_schemas.md
+      - Working With Examples:
+            - Examples Overview: openapi/working_with_examples/examples_overview.md
+            - Local vs Global Examples: openapi/working_with_schemas/local_vs_global_examples.md
+            - Custom Example Encoding: openapi/working_with_schemas/custom_example_encoding.md
       - Troubleshooting & FAQ: openapi/troubleshooting_and_faq.md
       - API Reference: dokka/ktor-openapi/index.html
   - Swagger UI:
@@ -91,7 +105,6 @@ theme:
     - navigation.expand
     - navigation.indexes
     - navigation.footer
-    - toc.integrate
     - search.suggest
     - search.share
     - content.code.copy
