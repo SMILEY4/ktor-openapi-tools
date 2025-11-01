@@ -14,7 +14,8 @@ existing code.
 
 ### Documentation DSL
 
-The plugin provides a domain-specific language for documenting routes. The DSL is structured as nested configuration blocks:
+The plugin provides a domain-specific language for documenting routes. It is used to add information relevant for the OpenAPI specification
+to routes. The DSL is structured as nested configuration blocks:
 
 ```kotlin
 httpMethod("path", {
@@ -109,11 +110,11 @@ is generated and handled independently.
 ````kotlin
 install(OpenApi) {
     // Base configuration applies to all specs
-    
+
     spec("v1") {
         // Configuration specific to "v1" specification
     }
-    
+
     spec("v2") {
         // Configuration specific to "v2" specification
     }
@@ -130,10 +131,9 @@ routing {
     route("api-v2.json") {
         openApi("v2")
     }
-    
+
 }
 ````
-
 
 ## Plugin Lifecycle
 
