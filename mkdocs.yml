@@ -12,134 +12,137 @@ repo_url: https://github.com/SMILEY4/ktor-openapi-tools
 # Documentation Layout
 # https://www.mkdocs.org/user-guide/configuration/#documentation-layout
 nav:
-  - Home: index.md
-  - OpenAPI:
-      - openapi/index.md
-      - Getting Started: openapi/getting_started.md
-      - Core Concepts:
-            - How It Works: openapi/core_concepts/how_it_works.md
-            - Plugin Configuration: openapi/core_concepts/plugin_configuration.md
-            - Route Documentation Basics: openapi/core_concepts/route_documentation_basics.md
-            - Providing OpenAPI Specification: openapi/core_concepts/providing_openapi_specification.md
-      - Documenting Routes:
-            - Basic Route Documentation: openapi/documenting_routes/basic_route_documentation.md
-            - Request Documentation: openapi/documenting_routes/request_documentation.md
-            - Response Documentation: openapi/documenting_routes/response_documentation.md
-            - Nested Routes and Documentation Inheritance: openapi/documenting_routes/nested_routes_and_documentation_inheritance.md
-      - Working With Schemas:
-            -   Introduction To Schemas: openapi/working_with_schemas/schema_introduction.md
-            -   Manual Schema Definition: openapi/working_with_schemas/manual_schema_definition.md
-            -   Automatic Schema Generation: openapi/working_with_schemas/automatic_schema_generation_overview.md
-            -   Global Schemas: openapi/working_with_schemas/global_schemas.md
-      - Working With Examples:
-            - Examples Overview: openapi/working_with_examples/examples_overview.md
-            - Local vs Global Examples: openapi/working_with_schemas/local_vs_global_examples.md
-            - Custom Example Encoding: openapi/working_with_schemas/custom_example_encoding.md
-      - Troubleshooting & FAQ: openapi/troubleshooting_and_faq.md
-      - API Reference: dokka/ktor-openapi/index.html
-  - Swagger UI:
-      - swaggerui/index.md
-      - Getting Started: swaggerui/getting_started.md
-      - API Reference: dokka/ktor-swagger-ui/index.html
-  - ReDoc:
-      - redoc/index.md
-      - Getting Started: redoc/getting_started.md
-      - API Reference: dokka/ktor-redoc/index.html
-  - Examples:
-      - examples/index.md
-      - Basics: examples/basics.md
-      - Requests and Responses: examples/request-response.md
-      - Authentication: examples/authentication.md
-      - File Upload: examples/file-upload.md
-      - Webhooks: examples/webhooks.md
-      - Schema Handling: examples/schemas.md
-      - Schema Generator: examples/customized-schema-generator.md
-      - Example Handling: examples/openapi-examples.md
-      - Kotlinx Serialization: examples/kotlinx-serialization.md
-      - Petstore: examples/petstore.md
-      - Multiple Specs: examples/multiple-specs.md
-      - External OpenAPI Spec: examples/external-openapi-spec.md
-      - Complete Configuration: examples/complete-configuration.md
-  - Changelog: changelog.md
+    -   Home: index.md
+    -   OpenAPI:
+            -   Getting Started: openapi/getting_started.md
+            -   Plugin Configuration: openapi/plugin_configuration.md
+            -   Providing OpenAPI Specification: openapi/providing_openapi_specification.md
+            -   Core Concepts:
+                    -   How It Works: openapi/core_concepts/how_it_works.md
+            -   Documenting Routes:
+                    -   Basic Route Documentation: openapi/documenting_routes/basic_route_documentation.md
+                    -   Request Documentation: openapi/documenting_routes/request_documentation.md
+                    -   Response Documentation: openapi/documenting_routes/response_documentation.md
+                    -   Nested Routes and Documentation Inheritance: openapi/documenting_routes/nested_routes_and_documentation_inheritance.md
+            -   Working With Schemas:
+                    -   Introduction To Schemas: openapi/working_with_schemas/schema_introduction.md
+                    -   Manual Schema Definition: openapi/working_with_schemas/manual_schema_definition.md
+                    -   Automatic Schema Generation: openapi/working_with_schemas/automatic_schema_generation_overview.md
+                    -   Customizing Automatically Generated Schemas: openapi/working_with_schemas/customizing_automatically_generated_schemas.md
+                    -   Global Schemas: openapi/working_with_schemas/global_schemas.md
+            -   Working With Examples:
+                    -   Introduction To Examples: openapi/working_with_examples/examples_introduction.md
+                    -   Global Examples: openapi/working_with_examples/global_examples.md
+                    -   Configuring Example Encoding: openapi/working_with_examples/configuring_example_encoding.md
+            - Advanced Topics:
+                  - Multiple API Specifications: openapi/advanced_topics/multiple_openapi_specifications.md
+                  - Typesafe Routing Support: openapi/advanced_topics/typesafe_routing_support.md
+                  - Documenting Webhooks: openapi/advanced_topics/documenting_webhooks.md
+                  - Documenting Server-Sent Events: openapi/advanced_topics/typesafe_routing_support.md
+            -   Troubleshooting & FAQ: openapi/troubleshooting_and_faq.md
+            -   API Reference: dokka/ktor-openapi/index.html
+    -   Swagger UI:
+            - swaggerui/index.md
+            -   Getting Started: swaggerui/getting_started.md
+            -   API Reference: dokka/ktor-swagger-ui/index.html
+    -   ReDoc:
+            - redoc/index.md
+            -   Getting Started: redoc/getting_started.md
+            -   API Reference: dokka/ktor-redoc/index.html
+    -   Examples:
+            - examples/index.md
+            -   Basics: examples/basics.md
+            -   Requests and Responses: examples/request-response.md
+            -   Authentication: examples/authentication.md
+            -   File Upload: examples/file-upload.md
+            -   Webhooks: examples/webhooks.md
+            -   Schema Handling: examples/schemas.md
+            -   Schema Generator: examples/customized-schema-generator.md
+            -   Example Handling: examples/openapi-examples.md
+            -   Kotlinx Serialization: examples/kotlinx-serialization.md
+            -   Petstore: examples/petstore.md
+            -   Multiple Specs: examples/multiple-specs.md
+            -   External OpenAPI Spec: examples/external-openapi-spec.md
+            -   Complete Configuration: examples/complete-configuration.md
+    -   Changelog: changelog.md
 
 
 # Validation
 # # https://www.mkdocs.org/user-guide/configuration/#validation
 validation:
-  nav:
-    omitted_files: warn
-    not_found: warn
-    absolute_links: warn
-  links:
-    not_found: warn
-    absolute_links: warn
-    unrecognized_links: warn
+    nav:
+        omitted_files: warn
+        not_found: warn
+        absolute_links: warn
+    links:
+        not_found: warn
+        absolute_links: warn
+        unrecognized_links: warn
 
 
 # Configuration
 # https://www.mkdocs.org/user-guide/configuration/#build-directories
 theme:
-  name: material
-  icon:
-    logo: material/library
-    repo: fontawesome/brands/github
-  palette:
-    - media: "(prefers-color-scheme)"
-      toggle:
-        icon: material/brightness-auto
-        name: Switch to light mode
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
-      toggle:
-        icon: material/brightness-7
-        name: Switch to dark mode
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
-      toggle:
-        icon: material/brightness-4
-        name: Switch to system preference
-  features:
-    - navigation.tracking
-    - navigation.tabs
-    - navigation.tabs.sticky
-    - navigation.expand
-    - navigation.indexes
-    - navigation.footer
-    - search.suggest
-    - search.share
-    - content.code.copy
-    - content.code.annotate
+    name: material
+    icon:
+        logo: material/library
+        repo: fontawesome/brands/github
+    palette:
+        -   media: "(prefers-color-scheme)"
+            toggle:
+                icon: material/brightness-auto
+                name: Switch to light mode
+        -   media: "(prefers-color-scheme: light)"
+            scheme: default
+            toggle:
+                icon: material/brightness-7
+                name: Switch to dark mode
+        -   media: "(prefers-color-scheme: dark)"
+            scheme: slate
+            toggle:
+                icon: material/brightness-4
+                name: Switch to system preference
+    features:
+        - navigation.tracking
+        - navigation.tabs
+        - navigation.tabs.sticky
+        - navigation.expand
+        - navigation.indexes
+        - search.suggest
+        - search.share
+        - content.code.copy
+        - content.code.annotate
 extra_css:
-  - assets/stylesheets/extra.css
+    - assets/stylesheets/extra.css
 extra:
-  version:
-      provider: mike
+    version:
+        provider: mike
 plugins:
-  - search
-  - privacy
+    - search
+    - privacy
 
 
 # Formatting Options
 # https://www.mkdocs.org/user-guide/configuration/#formatting-options
 markdown_extensions:
-  # https://python-markdown.github.io/extensions/
-  - attr_list
-  - admonition
-  - md_in_html
-  - tables
-  # https://facelessuser.github.io/pymdown-extensions/extensions/arithmatex/
-  - pymdownx.betterem:
-      smart_enable: all
-  - pymdownx.details
-  - pymdownx.snippets:
-      base_path: [ 'examples/src/main/kotlin/io/github/smiley4/ktoropenapi/examples' ]
-      dedent_subsections: True
-  - pymdownx.superfences
-  - pymdownx.tabbed:
-      alternate_style: true
-  - pymdownx.emoji:
-      emoji_index: !!python/name:material.extensions.emoji.twemoji
-      emoji_generator: !!python/name:material.extensions.emoji.to_svg
-      options:
-        custom_icons:
-          - './docs/assets/icons'
+    # https://python-markdown.github.io/extensions/
+    - attr_list
+    - admonition
+    - md_in_html
+    - tables
+    # https://facelessuser.github.io/pymdown-extensions/extensions/arithmatex/
+    -   pymdownx.betterem:
+            smart_enable: all
+    - pymdownx.details
+    -   pymdownx.snippets:
+            base_path: [ 'examples/src/main/kotlin/io/github/smiley4/ktoropenapi/examples' ]
+            dedent_subsections: True
+    - pymdownx.superfences
+    -   pymdownx.tabbed:
+            alternate_style: true
+    -   pymdownx.emoji:
+            emoji_index: !!python/name:material.extensions.emoji.twemoji
+            emoji_generator: !!python/name:material.extensions.emoji.to_svg
+            options:
+                custom_icons:
+                    - './docs/assets/icons'

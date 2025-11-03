@@ -1,5 +1,10 @@
-This guide covers the basic setup of the OpenAPI plugin, including installation, route documentation and exposing the generated
-specification.
+The OpenAPI plugin operates as a Ktor plugin that integrates with the routing system to collect API documentation and generate OpenAPI
+specifications. The plugin automatically finds all registered routes, extracts documentation, generates schemas for types, and
+produces a complete OpenAPI specification that can be served via HTTP endpoints.
+
+The plugin follows a non-invasive design pattern: standard Ktor routes continue to function normally, and routes using the documented
+routing functions are included in the generated specification. This allows for gradual documentation without requiring changes to
+existing code.
 
 ## Add Dependencies
 
@@ -120,6 +125,10 @@ fun Application.module() {
 8. Response body types are specified, with automatic schema generation.
 9. The handler block contains standard Ktor route logic and remains unchanged from non-documented routes.
 
+Type information from the documentation DSL is automatically converted to OpenAPI schemas. Schemas can be defined locally (
+inline with usage) or globally (in the plugin configuration).
+The plugin uses [schema-kenerator](https://github.com/SMILEY4/schema-kenerator) to generate its schemas from kotlin classes and supports.
+
 **Structure of a generic documented Route:**
 
 ```kotlin
@@ -166,14 +175,3 @@ fun Application.module() {
 
 1. A route is created at the desired specification path. This route behaves like any other ktor route and can be nested in other blocks. Here for example, the specification is available at `localhost:8080/api.json`.
 2. The `openApi()` function serves the generated specification at this route.
-
-
-## Next Steps
-
-Available documentation for further configuration and usage:
-
-- **Core Concepts: How It Works** - Plugin architecture and documentation collection process.
-- **Documenting Routes** - Complete documentation options.
-- **Working with Schemas** - Type-to-schema conversion configuration and customization.
-- **Swagger UI** - Interactive API exploration.
-- **ReDoc** - Alternative documentation interface.

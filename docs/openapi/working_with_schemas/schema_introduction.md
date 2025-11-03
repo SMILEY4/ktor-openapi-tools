@@ -1,4 +1,4 @@
-# Schema Overview
+# Schema Introduction
 
 Schemas define the structure of data types used in API requests and responses. Schemas can be automatically generated from Kotlin types, manually defined in OpenAPI format or declared globally for reuse across multiple routes.
 
