@@ -42,7 +42,7 @@ routing {
 2. Expose Swagger UI showing OpenAPI specification at `/api.json`. The url can be relative pointing to specification provided by this application or absolute pointing to an external resource. Specify a map of urls to interact with multiple different specifications in the same Swagger UI "instance".
 3. Add configuration for this Swagger UI "instance" here.
 
-??? tip "Using Swagger UI with [auto-generated](../openapi/index.md) OpenAPI specification"
+??? tip "Using Swagger UI with [auto-generated](../openapi/getting_started.md) OpenAPI specification"
 
     ```kotlin
     routing {

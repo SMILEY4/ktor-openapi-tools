@@ -4,6 +4,7 @@ import io.github.smiley4.ktoropenapi.OpenApi
 import io.github.smiley4.ktoropenapi.config.AuthScheme
 import io.github.smiley4.ktoropenapi.config.AuthType
 import io.github.smiley4.ktoropenapi.config.OpenApiPluginConfig
+import io.github.smiley4.ktoropenapi.config.OutputFormat
 import io.github.smiley4.ktoropenapi.get
 import io.github.smiley4.ktoropenapi.openApi
 import io.github.smiley4.ktorredoc.redoc
@@ -17,6 +18,7 @@ import io.github.smiley4.schemakenerator.swagger.SwaggerSteps.generateSwaggerSch
 import io.github.smiley4.schemakenerator.swagger.SwaggerSteps.withTitle
 import io.github.smiley4.schemakenerator.swagger.data.TitleType
 import io.ktor.http.ContentType
+import io.ktor.http.HttpMethod
 import io.ktor.http.HttpStatusCode
 import io.ktor.server.application.Application
 import io.ktor.server.application.install
@@ -123,6 +125,7 @@ private fun Application.myModule() {
 
             }
         }
+        outputFormat = OutputFormat.JSON
         specAssigner = { _, _ -> OpenApiPluginConfig.DEFAULT_SPEC_ID }
         pathFilter = { _, url -> url.firstOrNull() != "hidden" }
         ignoredRouteSelectors = emptySet()

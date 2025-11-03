@@ -1,10 +1,14 @@
 # Type-Safe Routing Support
 
-The OpenAPI plugin supports Ktor's type-safe routing via the Resources plugin. Resource classes can be used to define routes, and the plugin can automatically extract parameter information from resource class properties.
+The OpenAPI plugin supports Ktor's type-safe routing via the Resources plugin. Resource classes can be used to define routes and the plugin
+can automatically extract parameter information from resource class properties.
+
+
 
 ## Setup
 
 Type-safe routing support requires additional configuration:
+
 
 ### Installed Resources Plugin
 
@@ -21,6 +25,7 @@ install(Resources)
 install(OpenApi)
 ```
 
+
 ### Configure Schema Generator
 
 Type-safe routing requires the kotlinx.serialization schema generator:
@@ -32,6 +37,7 @@ install(OpenApi) {
     }
 }
 ```
+
 
 ### Enable Auto-Documentation (Optional)
 
@@ -51,6 +57,8 @@ When enabled, the plugin automatically documents:
 
 This reduces the need for manual parameter documentation in resource routes.
 
+
+
 ## Documenting Resource Routes
 
 ### Import Documented Resource Functions
@@ -62,7 +70,9 @@ import io.github.smiley4.ktoropenapi.resources.get
 import io.github.smiley4.ktoropenapi.resources.post
 import io.github.smiley4.ktoropenapi.resources.put
 import io.github.smiley4.ktoropenapi.resources.delete
+// ...
 ```
+
 
 ### Document Resource Routes
 
@@ -79,11 +89,9 @@ class Users
 @Resource("{id}")
 class User(val parent: Users, val id: String)
 
-
 get<User>({
     description = "Retrieve a user by ID"
     tags = listOf("users")
-    
     response {
         code(HttpStatusCode.OK) {
             description = "User found"
@@ -94,7 +102,6 @@ get<User>({
         }
     }
 }) {
-    val user = call.parameters["id"]
-    // Handler implementation
+    // handler implementation
 }
 ```

@@ -1,8 +1,10 @@
 # Manual Schema Definition
 
-Schemas can be defined manually using OpenAPI schema objects, providing complete control over the schema structure. This approach is useful when automatic schema generation doesn't produce the desired result.
+Schemas can be defined manually using OpenAPI schema objects, providing complete control over the schema structure.
+This approach is useful when automatic schema generation doesn't produce the desired result.
 
-Manual schemas use the io.swagger.v3.oas.models.media.Schema class from the OpenAPI specification library. This class provides all properties defined in the OpenAPI specification, allowing schemas to be built exactly as they should appear in the final specification.
+Manual schemas use the `io.swagger.v3.oas.models.media.Schema` class from the Swagger library.
+This class provides all properties defined in the OpenAPI specification, allowing schemas to be built exactly as they should appear in the final specification.
 
 ```kotlin
 import io.swagger.v3.oas.models.media.Schema
@@ -31,9 +33,13 @@ post("data", {
 
 This creates a schema with two properties: a UUID-formatted string id and a numeric value constrained between 0 and 100.
 
+
+
+
 ## Composite Schemas
 
-Composite schemas combine multiple schemas using logical operators. This can also include combining global schemas defined in the plugin configuration.
+Composite schemas combine multiple schemas using logical operators.
+This can also include combining global schemas defined in the plugin configuration.
 
 ```kotlin
 install(OpenApi) {
@@ -59,6 +65,7 @@ get("users", {
 }) { }
 ```
 
+
 ### anyOf
 
 The anyOf operator indicates that a value can match any one of the provided schemas:
@@ -80,6 +87,7 @@ body(anyOf(
 
 This accepts either an email address or a URI. The value must be valid according to at least one of the schemas.
 
+
 ### array
 
 Composite schemas can be used as array items:
@@ -89,17 +97,11 @@ import io.github.smiley4.ktoropenapi.config.array
 
 body(
     array(
-        anyOf(
-            Schema<Any>().apply {
-                type = "string"
-            },
-            Schema<Any>().apply {
-                type = "number"
-            }
-        )
+        ref("user-schema")
     )
 ) { }
 ```
+
 
 ### type
 
@@ -129,6 +131,7 @@ body(
     )
 ) { }
 ```
+
 
 ### empty
 

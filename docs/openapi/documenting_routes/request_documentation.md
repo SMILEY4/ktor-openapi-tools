@@ -1,6 +1,10 @@
 # Request Documentation
 
-Request documentation describes what data an endpoint accepts - parameters, headers, and request bodies. This information is defined in the request block of route documentation.
+Request documentation describes what data an endpoint accepts - parameters, headers, and request bodies.
+This information is defined in the request block of route documentation.
+
+
+
 
 ## The Request Block
 
@@ -8,23 +12,29 @@ Request documentation is provided within the request configuration block:
 
 ```kotlin
 post("users", {
-    // Documentation block - defines API contract
     request {
-        // Request block - documents requests
         queryParameter<String>("source")
         headerParameter<String>("X-Request-ID")
         body<CreateUserRequest> {
             required = true
         }
     }
-}) {
-    // Handler block - implements functionality
-}
+}) { }
 ```
+
+??? info "API Reference"
+
+    The full list of available configuration options for documenting requests can be found in the API reference:
+
+    [:octicons-arrow-right-24: API Reference](../../dokka/ktor-openapi/ktor-openapi/io.github.smiley4.ktoropenapi.config/-request-config/index.html)
+
+
+
 
 ## Path, Query, and Header Parameters
 
 Parameters are documented using type-specific functions that specify the parameter location, name, and type.
+
 
 ### Path Parameters
 
@@ -42,6 +52,7 @@ get("users/{id}", {
 
 Path Parameters must match the names in the route path and are always marked as required. 
 
+
 ### Query Parameters
 
 Query parameters are optional URL parameters:
@@ -56,6 +67,7 @@ get("users", {
     }
 }) { }
 ```
+
 
 ### Header Parameters
 
@@ -72,6 +84,7 @@ post("users", {
 }) { }
 ```
 
+
 ### Cookie Parameters
 
 Document cookies used by the endpoint.
@@ -87,9 +100,10 @@ get("profile", {
 }) { }
 ```
 
+
 ### Parameter Configuration
 
-All parameter types support similar configuration options. All available options can be found in the api reference.
+All parameter types support similar configuration options.
 
 ```kotlin
 queryParameter<String>("search") {
@@ -101,6 +115,8 @@ queryParameter<String>("search") {
     }
 }
 ```
+
+
 
 ## Request Body
 
@@ -117,11 +133,12 @@ post("users", {
 }) { }
 ```
 
-The type specified (e.g., CreateUserRequest) is automatically converted to an OpenAPI schema using the configured schema generator. A list of all available configuration options can be found in the api reference.
+The type specified (e.g., CreateUserRequest) is automatically converted to an OpenAPI schema using the configured schema generator.
+
 
 ### Using Schema References
 
-Global schemas can be referenced instead of inline types:
+Global schemas defined in the plugin configuration can be referenced instead of inline types:
 
 ```kotlin
 post("users", {
@@ -134,7 +151,16 @@ post("users", {
 }) { }
 ```
 
-Global schemas are defined in plugin configuration. See Local vs Global Schemas for details.
+??? info "More Information"
+
+    More information on handling request bodies can be found here:
+
+    [:octicons-arrow-right-24: Schema Introduction](../working_with_schemas/schema_introduction.md)
+
+    [:octicons-arrow-right-24: Global Schemas](../working_with_schemas/global_schemas.md)
+
+
+
 
 ## Multiple Content Types
 
@@ -158,26 +184,13 @@ post("data", {
 
 This documents that the endpoint accepts the same data structure in either JSON or XML format.
 
-For endpoints that accept fundamentally different structures based on content type:
 
-```kotlin
-post("upload", {
-    request {
-        body<JsonUpload> {
-            description = "JSON upload format"
-            mediaTypes(ContentType.Application.Json)
-        }
-        body<ByteArray> {
-            description = "Binary upload format"
-            mediaTypes(ContentType.Application.OctetStream)
-        }
-    }
-}) { }
-```
+
 
 ## File Uploads
 
 File uploads can be documented using appropriate content types.
+
 
 ### Single File Upload
 
@@ -196,20 +209,24 @@ post("upload", {
 ### Multipart Form Data
 
 ```kotlin
-//todo
-```
-
-### Image Upload
-
-```kotlin
-post("profile/avatar", {
+post("multipart", {
     request {
-        body<ByteArray> {
-            description = "Avatar image (JPEG or PNG)"
-            mediaTypes(
-                ContentType.Image.JPEG,
-                ContentType.Image.PNG
-            )
+        multipartBody {
+            mediaTypes(ContentType.MultiPart.FormData)
+            part<ByteArray>("first-image") {
+                mediaTypes(
+                    ContentType.Image.PNG,
+                    ContentType.Image.JPEG,
+                    ContentType.Image.SVG
+                )
+            }
+            part<ByteArray>("second-image") {
+                mediaTypes(
+                    ContentType.Image.PNG,
+                    ContentType.Image.JPEG,
+                    ContentType.Image.SVG
+                )
+            }
         }
     }
 }) { }

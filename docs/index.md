@@ -21,7 +21,7 @@ Designed to be non-invasive, they integrate seamlessly with applications without
 
     Add documentation to Ktor routes and automatically generate [OpenAPI](https://www.openapis.org/) specifications.
 
-    [:octicons-arrow-right-24: Get Started](openapi/index.md)
+    [:octicons-arrow-right-24: Get Started](./openapi/getting_started.md)
 
 
 -   :simple-swagger:{ .lg .middle } __Swagger UI__

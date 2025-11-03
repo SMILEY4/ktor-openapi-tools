@@ -17,8 +17,6 @@ nav:
             -   Getting Started: openapi/getting_started.md
             -   Plugin Configuration: openapi/plugin_configuration.md
             -   Providing OpenAPI Specification: openapi/providing_openapi_specification.md
-            -   Core Concepts:
-                    -   How It Works: openapi/core_concepts/how_it_works.md
             -   Documenting Routes:
                     -   Basic Route Documentation: openapi/documenting_routes/basic_route_documentation.md
                     -   Request Documentation: openapi/documenting_routes/request_documentation.md
@@ -38,7 +36,7 @@ nav:
                   - Multiple API Specifications: openapi/advanced_topics/multiple_openapi_specifications.md
                   - Typesafe Routing Support: openapi/advanced_topics/typesafe_routing_support.md
                   - Documenting Webhooks: openapi/advanced_topics/documenting_webhooks.md
-                  - Documenting Server-Sent Events: openapi/advanced_topics/typesafe_routing_support.md
+                  - Documenting Server-Sent Events: openapi/advanced_topics/documenting_sse_routes.md
             -   Troubleshooting & FAQ: openapi/troubleshooting_and_faq.md
             -   API Reference: dokka/ktor-openapi/index.html
     -   Swagger UI:
@@ -106,7 +104,6 @@ theme:
         - navigation.tracking
         - navigation.tabs
         - navigation.tabs.sticky
-        - navigation.expand
         - navigation.indexes
         - search.suggest
         - search.share

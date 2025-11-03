@@ -33,20 +33,36 @@ This basic pipeline:
 1. Analyzes types using kotlinx.serialization
 2. Generates independent Swagger schemas for each type
 3. Adds titles
-4. Compiles final schemas with references
+4. Merges schemas into final schema with references
 
-More information can be found in the schema-kenerator documentation.
+??? info "More Information"
+
+    The schema-kenerator library provides extensive documentation on pipeline configuration and complete customization options.
+
+    [:octicons-arrow-right-24: schema-kenerator Documentation](https://smiley4.github.io/schema-kenerator/latest/)
+
+
+
 
 ## Configuring Pre-Build Generators
 
 The plugin provides pre-configured generators with simplified configuration options. These handle the pipeline internally while exposing
 commonly needed settings.
 
+
 ### Basic Reflection Generator Configuration
+
+??? info "API Reference"
+
+    The full list of available configuration options can be found in the API reference:
+
+    [:octicons-arrow-right-24: API Reference](../../dokka/ktor-openapi/ktor-openapi/io.github.smiley4.ktoropenapi.config/-schema-generator/-reflection-config/index.html)
+
+
 
 **Property inclusion:**
 
-Control which class members are included in the schema. By default, only constructor parameters are included. Enable includeGetters to
+Control which class members are included in the schema. By default, only constructor parameters are included. Enable `includeGetters` to
 include getter methods as properties.
 
 ```kotlin
@@ -65,8 +81,8 @@ install(OpenApi) {
 
 **Required field handling**
 
-Determine how optional and nullable properties affect the required array in schemas. RequiredHandling.REQUIRED includes the property in the
-required list, RequiredHandling.NON_REQUIRED makes it optional.
+Determine how optional and nullable properties affect the required array in schemas. `RequiredHandling.REQUIRED` includes the property in the
+required list, `RequiredHandling.NON_REQUIRED` makes it optional.
 
 ```kotlin
 install(OpenApi) {
@@ -124,7 +140,15 @@ install(OpenApi) {
 }
 ```
 
+
 ### Basic Kotlinx.Serialization Generator Configuration
+
+??? info "API Reference"
+
+    The full list of available configuration options can be found in the API reference:
+
+    [:octicons-arrow-right-24: API Reference](../../dokka/ktor-openapi/ktor-openapi/io.github.smiley4.ktoropenapi.config/-schema-generator/-kotlinx-serialization-config/index.html)
+
 
 **Serialization module**
 
@@ -156,8 +180,8 @@ install(OpenApi) {
 
 **Required field handling**
 
-Determine how optional and nullable properties affect the required array in schemas. RequiredHandling.REQUIRED includes the property in the
-required list, RequiredHandling.NON_REQUIRED makes it optional.
+Determine how optional and nullable properties affect the required array in schemas. `RequiredHandling.REQUIRED` includes the property in the
+required list, `RequiredHandling.NON_REQUIRED` makes it optional.
 
 ```kotlin
 install(OpenApi) {
@@ -188,7 +212,7 @@ install(OpenApi) {
 
 ### Configuring Kotlinx.Serialization Generator From Json Configuration
 
-The kotlinx.serialization generator can automatically match Json configuration:
+The kotlinx.serialization generator can automatically match a given Json configuration:
 
 ```kotlin
 val json = Json {
@@ -233,6 +257,7 @@ behavior.
     install(OpenApi) {
         schemas {
             generator = SchemaGenerator.reflection() {
+                todo
             }
         }
     }
@@ -240,20 +265,28 @@ behavior.
 
 === "Kotlinx.Serialization Generator"
 
-    ```kotlin
+    ```groovy
     install(OpenApi) {
         schemas {
             generator = SchemaGenerator.kotlinx() {
+                todo
             }
         }
     }
+    ```
+
+
 
 Custom analyzers are evaluated in registration order. When a type matches multiple analyzers, the last registered analyzer is used.
+
+
+
 
 ## Creating Custom Schema Generators for types
 
 Schema generators convert type data (produced by analyzers) into OpenAPI schemas. Custom generators can produce schemas with specific
 structures, validation rules, or formats.
+
 
 ### Implementing a Custom Analyzer
 
@@ -262,6 +295,7 @@ todo
 ```
 
 The generator receives type data and returns a schema or null for default behavior.
+
 
 ### Registering a Custom Generator
 

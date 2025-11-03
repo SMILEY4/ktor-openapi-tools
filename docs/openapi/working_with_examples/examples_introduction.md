@@ -1,10 +1,18 @@
 # Examples Introduction
 
-Examples provide sample data for requests and responses in the OpenAPI specification. They help API consumers understand data structures and test endpoints with realistic values.
+Examples provide sample data for requests and responses in the OpenAPI specification.
+They help API consumers understand data structures and test endpoints with realistic values.
+
+
+
 
 ## What Are Examples?
 
-Examples are sample values that illustrate what data looks like for request parameters, request bodies, and response bodies. They appear in the OpenAPI specification and are displayed by documentation tools like Swagger UI and ReDoc.
+Examples are sample values that illustrate what data looks like for request parameters, request bodies, and response bodies.
+They appear in the OpenAPI specification and are displayed by documentation tools like Swagger UI and ReDoc.
+
+
+
 
 ## How Examples Are Used
 
@@ -16,13 +24,18 @@ Examples can be provided for various API elements:
 post("users", {
     request {
         body<CreateUserRequest>() {
-            example("Basic") {
-                value = CreateUserRequest(name = "John", email = "john@example.com")
+            example("Basic") { // (1)!
+                value = CreateUserRequest(
+                    name = "John",
+                    email = "john@example.com"
+                )
             }
         }
     }
 }) { }
 ```
+
+1.  Add an example with name "Basic" to the request body.
 
 **Response Body Examples**
 
@@ -31,8 +44,11 @@ get("users/{id}", {
     response {
         code(HttpStatusCode.OK) {
             body<User>() {
-                example("Success") {
-                    value = User(id = "123", name = "John")
+                example("Success") { // (1)!
+                    value = User(
+                        id = "123",
+                        name = "John"
+                    )
                 }
             }
         }
@@ -40,13 +56,15 @@ get("users/{id}", {
 }) { }
 ```
 
+1.  Add an example with name "Success" to the response body.
+
 **Parameter Examples Examples**
 
 ```kotlin
 get("search", {
     request {
         queryParameter<String>("query") {
-            example("Search Example") {
+            example("Search Example") { // (1)!
                 value = "kotlin"
             }
         }
@@ -54,13 +72,15 @@ get("search", {
 }) { }
 ```
 
+1.  Add an example with name "Search Example" to the query parameter.
+
 **Header Examples**
 
 ```kotlin
 get("data", {
     request {
         headerParameter<String>("X-Request-ID") {
-            example("ID Example") {
+            example("ID Example") { // (1)!
                 value = "req-123456"
             }
         }
@@ -68,7 +88,10 @@ get("data", {
 }) { }
 ```
 
+1.  Add an example with name "ID Example" to the header.
+
 The plugin supports three ways to define examples in route documentation.
+
 
 ### As Kotlin Objects
 
@@ -87,6 +110,7 @@ body<User>() {
 ```
 
 The plugin automatically encodes the Kotlin object using the configured example encoder.
+
 
 ### As Swagger Example Objects
 
@@ -107,6 +131,7 @@ body<User>() {
 }
 ```
 
+
 ### As References to Global Examples
 
 Examples can be defined globally in plugin configuration and referenced by ID:
@@ -115,7 +140,7 @@ Examples can be defined globally in plugin configuration and referenced by ID:
 // Define once in plugin configuration
 install(OpenApi) {
     examples {
-        example("standard-user") {
+        example("standard-user") { // (1)!
             value = User(id = "1", name = "John")
             description = "Standard user example"
         }
@@ -124,11 +149,21 @@ install(OpenApi) {
 
 // Reference in routes
 body<User>() {
-    exampleRef("Standard User", "standard-user")
+    exampleRef("Standard User", "standard-user") // (2)!
 }
 ```
 
-Detailed information on global examples can be found in Global Examples.
+1. Define the example with id `standard-user` once in plugin configuration.
+2. Reference the example in routes by its id `standard-user`.
+
+??? info "More Information"
+
+    More information on using global examples can be found here:
+
+    [:octicons-arrow-right-24: Global Examples](./global_examples.md)
+
+
+
 
 ## Example Encoding
 
@@ -138,9 +173,13 @@ The default encoder uses Swagger's internal serialization. Custom encoders can b
 ```kotlin
 install(OpenApi) {
     examples {
-        encoder = ExampleEncoder.kotlinx() // Use kotlinx.serialization
+        encoder = ExampleEncoder.kotlinx()
     }
 }
 ```
 
-Detailed information on configuring example encoding can be found in Configuring Example Encoding.
+??? info "More Information"
+
+    Detailed information on configuring example encoding can be found here:
+
+    [:octicons-arrow-right-24: Configuring Example Encoding](./configuring_example_encoding.md)
