@@ -42,7 +42,7 @@ routing {
 2. Expose ReDoc showing the OpenAPI specification at `/api.json`. The url can be relative pointing to specification provided by this application or absolute pointing to an external resource.
 3. Add configuration for this ReDoc "instance" here.
 
-??? tip "Using ReDoc with [auto-generated](../openapi/index.md) OpenAPI specification"
+??? tip "Using ReDoc with [auto-generated](../openapi/getting_started.md) OpenAPI specification"
 
     ```kotlin
     routing {
