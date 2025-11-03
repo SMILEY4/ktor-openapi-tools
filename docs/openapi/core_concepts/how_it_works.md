@@ -48,7 +48,7 @@ httpMethod("path", {
 
 Type information from the documentation DSL is automatically converted to OpenAPI schemas. Schemas can be defined locally (
 inline with usage) or globally (in the plugin configuration).
-The plugin uses [schema-kenerator](https://github.com/SMILEY4/schema-kenerator) to generate its schemas from kotlin classes and supports
+The plugin uses [schema-kenerator](https://github.com/SMILEY4/schema-kenerator) to generate its schemas from kotlin classes and supports.
 multiple schema generation strategies:
 
 - Reflection-based (default): Analyzes Kotlin types using reflection

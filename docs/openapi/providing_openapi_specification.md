@@ -4,16 +4,6 @@ The OpenAPI plugin generates specifications conforming to the OpenAPI 3.1.0 spec
 
 Specifications are generated during application initialization based on registered routes and plugin configuration. The generation process collects route documentation, generates schemas for referenced types, encodes examples, and assembles all components into a valid OpenAPI document.
 
-## Output Format
-
-By default, OpenAPI specifications are generated as json. This can be configured in the plugin configuration 
-
-```kotlin
-install(OpenApi) {
-    outputFormat = OutputFormat.YAML
-}
-```
-
 Available formats are JSON and YAML.
 
 ## Accessing the Specification
@@ -58,3 +48,14 @@ OpenApiPlugin.regenerateOpenApiSpec(OpenApiPluginConfig.DEFAULT_SPEC_ID)
 ```
 
 This discard a previously created specification, Collect all routes and information again and generates a new specification.
+
+
+## Output Format
+
+By default, OpenAPI specifications are generated as json. This can be configured in the plugin configuration
+
+```kotlin
+install(OpenApi) {
+    outputFormat = OutputFormat.YAML
+}
+```

@@ -9,8 +9,6 @@ The documentation block is the first lambda parameter in documented route functi
 ```kotlin
 import io.github.smiley4.ktoropenapi.get
 
-import io.github.smiley4.ktoropenapi.get
-
 get("users", {
     // Documentation block - defines API contract
     description = "Retrieves all users"
