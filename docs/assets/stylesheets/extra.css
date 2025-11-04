@@ -27,5 +27,9 @@ details code {
 }
 
 .md-typeset h3 {
-  margin-top: 1.2em;
+    margin-top: 2.2em;
+}
+
+.md-content {
+    padding-bottom: 7em;
 }
