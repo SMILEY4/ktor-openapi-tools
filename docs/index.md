@@ -21,7 +21,7 @@ Designed to be non-invasive, they integrate seamlessly with applications without
 
     Add documentation to Ktor routes and automatically generate [OpenAPI](https://www.openapis.org/) specifications.
 
-    [:octicons-arrow-right-24: Get Started](./openapi/getting_started.md)
+    [:octicons-arrow-right-24: Read Documentation](./openapi/getting_started.md)
 
 
 -   :simple-swagger:{ .lg .middle } __Swagger UI__
@@ -32,7 +32,7 @@ Designed to be non-invasive, they integrate seamlessly with applications without
 
     Serve an interactive [Swagger UI](https://swagger.io/tools/swagger-ui/) for easy API exploration and testing
 
-    [:octicons-arrow-right-24: Get Started](swaggerui/index.md)
+    [:octicons-arrow-right-24: Read Documentation](swaggerui/index.md)
 
 
 -   :redoc:{ .lg .middle } __Redoc__
@@ -43,6 +43,6 @@ Designed to be non-invasive, they integrate seamlessly with applications without
 
     Serve an interactive [ReDoc](https://github.com/Redocly/redoc) page for easy API exploration and testing
 
-    [:octicons-arrow-right-24: Get Started](redoc/index.md)
+    [:octicons-arrow-right-24: Read Documentation](redoc/index.md)
 
 </div>
