@@ -1,11 +1,20 @@
 package io.github.smiley4.ktoropenapi.examples
 
 import io.github.smiley4.ktoropenapi.OpenApi
+import io.github.smiley4.ktoropenapi.config.ExampleEncoder
 import io.github.smiley4.ktoropenapi.config.OutputFormat
+import io.github.smiley4.ktoropenapi.config.SchemaGenerator
+import io.github.smiley4.ktoropenapi.config.descriptors.anyOf
+import io.github.smiley4.ktoropenapi.config.descriptors.array
+import io.github.smiley4.ktoropenapi.config.descriptors.ref
+import io.github.smiley4.ktoropenapi.config.descriptors.type
 import io.github.smiley4.ktoropenapi.get
 import io.github.smiley4.ktoropenapi.openApi
 import io.github.smiley4.ktorredoc.redoc
 import io.github.smiley4.ktorswaggerui.swaggerUI
+import io.github.smiley4.schemakenerator.reflection.analyzer.TypeCategoryAnalyzer.Companion.DEFAULT_PRIMITIVE_TYPES
+import io.github.smiley4.schemakenerator.reflection.data.EnumConstType
+import io.github.smiley4.schemakenerator.swagger.data.TitleType
 import io.ktor.http.HttpStatusCode
 import io.ktor.server.application.Application
 import io.ktor.server.application.install
@@ -14,6 +23,10 @@ import io.ktor.server.netty.Netty
 import io.ktor.server.response.respondText
 import io.ktor.server.routing.route
 import io.ktor.server.routing.routing
+import io.swagger.v3.oas.models.examples.Example
+import io.swagger.v3.oas.models.media.Schema
+import kotlinx.serialization.json.JsonNamingStrategy
+import kotlin.reflect.typeOf
 
 fun main() {
     embeddedServer(Netty, port = 8080, host = "localhost", module = Application::myModule).start(wait = true)
@@ -74,6 +87,9 @@ private fun Application.myModule() {
                 // information about the query parameter "name" of type "string"
                 queryParameter<String>("name") {
                     description = "the name to greet"
+                }
+                body<String>() {
+                    exampleRef("Standard User", "standard-user")
                 }
             }
             // information about possible responses

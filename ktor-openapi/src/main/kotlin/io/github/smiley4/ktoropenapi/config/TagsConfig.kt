@@ -2,6 +2,7 @@ package io.github.smiley4.ktoropenapi.config
 
 import io.github.smiley4.ktoropenapi.data.DataUtils.merge
 import io.github.smiley4.ktoropenapi.data.TagData
+import io.github.smiley4.ktoropenapi.data.TagGroupData
 import io.github.smiley4.ktoropenapi.data.TagsData
 
 /**
@@ -11,6 +12,7 @@ import io.github.smiley4.ktoropenapi.data.TagsData
 class TagsConfig internal constructor() {
 
     private val tags = mutableListOf<TagConfig>()
+    private val tagGroups = mutableListOf<TagGroupConfig>()
 
 
     /**
@@ -18,6 +20,26 @@ class TagsConfig internal constructor() {
      */
     fun tag(name: String, block: TagConfig.() -> Unit) {
         tags.add(TagConfig(name).apply(block))
+    }
+
+
+    /**
+     * Define a tag group for organizing tags in API documentation (x-tagGroups vendor extension).
+     * Tag groups are particularly useful for tools like Redoc to organize tags in the sidebar.
+     *
+     * Important: All tags used in your API should be included in a tag group, as tags not in any group may not be displayed.
+     *
+     * Example:
+     * ```
+     * tagGroup("User Management") {
+     *     tag("Users")
+     *     tag("API keys")
+     *     tag("Admin")
+     * }
+     * ```
+     */
+    fun tagGroup(name: String, block: TagGroupConfig.() -> Unit) {
+        tagGroups.add(TagGroupConfig(name).apply(block))
     }
 
 
@@ -37,6 +59,10 @@ class TagsConfig internal constructor() {
             addAll(tags.map { it.build(TagData.DEFAULT) })
         },
         generator = merge(base.generator, tagGenerator) ?: TagsData.DEFAULT.generator,
+        tagGroups = buildList {
+            addAll(base.tagGroups)
+            addAll(tagGroups.map { it.build(TagGroupData.DEFAULT) })
+        }
     )
 
 }

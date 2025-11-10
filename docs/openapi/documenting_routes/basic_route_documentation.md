@@ -1,0 +1,186 @@
+# Basic Route Documentation
+
+Route documentation is provided through a configuration block that defines the API contract for an endpoint. This documentation is collected
+during application initialization and used to generate the OpenAPI specification.
+
+
+
+
+## The Documentation Block
+
+The documentation block is the first lambda parameter in documented route functions:
+
+```kotlin
+import io.github.smiley4.ktoropenapi.get
+
+get("users", {
+    // Documentation block - defines API contract
+    description = "Retrieves all users"
+    tags = listOf("users")
+    request {
+        queryParameter<String>("search")
+    }
+    response {
+        code(HttpStatusCode.OK) {
+            body<List<User>>()
+        }
+    }
+}) {
+    // Handler block - implements functionality
+    call.respond(userService.getAllUsers())
+}
+```
+
+The documentation block is evaluated once during route registration. It configures the OpenAPI specification and does not interfere with request handling.
+
+
+
+
+## Describing Routes
+
+??? info "API Reference"
+
+    The full list of available configuration options can be found in the API reference:
+
+    [:octicons-arrow-right-24: API Reference](../../dokka/ktor-openapi/ktor-openapi/io.github.smiley4.ktoropenapi.config/-route-config/index.html)
+
+
+### Basic Route Information
+
+Every route should clearly communicate its purpose. All properties are optional, allowing documentation to be as minimal or detailed as needed.
+Properties closely match [official OpenAPI Specification](https://swagger.io/specification/).
+
+```kotlin
+get("users/{id}", {
+    operationId = "getUserById"
+    summary = "Get user by ID"
+    description = "Retrieves detailed information for a specific user"
+}) { }
+```
+
+
+### Organizing with Tags
+
+Tags group related operations in documentation UIs:
+
+```kotlin
+get("products", {
+    tags = listOf("products")
+}) { }
+
+get("admin/products", {
+    tags = listOf("products", "admin")
+}) { }
+```
+
+Tags can be inherited from parent routes, allowing consistent organization:
+
+```kotlin
+route("api/v1", {
+    tags = listOf("v1")
+}) {
+    get("users", {
+        tags = listOf("users") // (1)!
+    }) { }
+}
+```
+
+1. Actual tags for `/api/v1/users`: `["v1", "users"]`
+
+2. Additional information like descriptions and references to external documentations can be added to tags
+   in the [plugin configuration](./../plugin_configuration.md#tags-configuration).
+
+
+### Documenting Requests and Responses
+
+The `request` and `response` blocks define what the endpoint accepts and returns:
+
+```kotlin
+post("users", {
+    request {
+        body<CreateUserRequest> {
+            description = "User data"
+            required = true
+        }
+    }
+    response {
+        code(HttpStatusCode.Created) {
+            description = "User created successfully"
+            body<User>()
+        }
+        code(HttpStatusCode.BadRequest) {
+            description = "Invalid input data"
+        }
+    }
+}) { }
+```
+
+??? info "More Information"
+
+    Request and response documentation is covered in detail in dedicated pages:
+
+    [:octicons-arrow-right-24: Request Documentation](./request_documentation.md)
+
+    [:octicons-arrow-right-24: Response Documentation](./response_documentation.md)
+
+
+### Security and Access Control
+
+Document authentication requirements directly on routes:
+
+```kotlin
+get("profile", {
+    securitySchemeNames("UserAuth")
+}) { }
+```
+
+Security schemes must be defined in the plugin configuration:
+
+```kotlin
+install(OpenApi) {
+    security {
+        securityScheme("UserAuth") {
+            type = AuthType.HTTP
+            scheme = AuthScheme.BASIC
+        }
+    }
+}
+```
+
+
+### Multiple Specifications
+
+When using multiple API specifications, routes can be assigned to specific ones:
+
+```kotlin
+route("v1", {
+    specName = "v1"
+}) {
+    get("users") { }
+}
+
+route("v2", {
+    specName = "v2"
+}) {
+    get("users") { }
+}
+```
+
+??? info "More Information"
+
+    Full documentation on how to use multiple specifications can be found here:
+
+    [:octicons-arrow-right-24: Multiple OpenAPI Specifications](./../advanced_topics/multiple_openapi_specifications.md)
+
+
+### Hiding Internal Routes
+
+Exclude routes from all specifications using the hidden flag:
+
+```kotlin
+get("internal/metrics", {
+    hidden = true
+}) {
+    // Route functions normally but does not appear in the documentation
+}
+```

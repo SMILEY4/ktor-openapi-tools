@@ -2,8 +2,7 @@
 
 ## Add Dependency
 
-To serve ReDoc, you need to include the `ktor-redoc` artifact in the build script.
-All artifacts are published to Maven Central.
+Add the `ktor-redoc` dependency to your project:
 
 === "Gradle (Kotlin)"
     ```kotlin
@@ -24,41 +23,99 @@ All artifacts are published to Maven Central.
     </dependency>
     ```
 
-## Usage
+
+
+
+## Basic Usage
+
+ReDoc is served through standard Ktor routes using the redoc() function. The function accepts the URL of an OpenAPI specification.
+
+```kotlin
+routing {
+    route("redoc") {
+        redoc("/api.json")
+    }
+}
+```
+
+1. Specify route to serve Redoc at `/redoc`.
+2. Expose ReDoc using the OpenAPI specification at `/api.json`.
+3. Add configuration for this ReDoc instance here.
+
+
+
+
+## With Generated Specifications
+
+When using the [ktor-openapi plugin](../openapi/getting_started.md), you can serve the automatically generated OpenAPI specification and point ReDoc to it.
 
 ```kotlin
 routing {
     
-    route("redoc") { //(1)!
-        redoc("/api.json") { //(2)!
-            //...(3)
-        }
+    route("api.json") {
+        openApi() //(1)!
+    }
+    route("redoc") {
+        redoc("/api.json") //(2)!
     }
     
 }
 ```
 
-1. Specify route to serve ReDoc at `/redoc`.
-2. Expose ReDoc showing the OpenAPI specification at `/api.json`. The url can be relative pointing to specification provided by this application or absolute pointing to an external resource.
-3. Add configuration for this ReDoc "instance" here.
+1. Serve auto-generated OpenAPI specification at `/api.json`.
+2. Expose ReDoc using auto-generated specification at `/api.json`.
 
-??? tip "Using ReDoc with [auto-generated](../openapi/index.md) OpenAPI specification"
 
-    ```kotlin
-    routing {
-        
-        route("api.json") {
-            openApi() //(1)!
-        }
-        route("redoc") {
-            redoc("/api.json") //(2)!
-        }
-        
+
+
+## Multiple Specifications
+
+ReDoc works best with separate documentation pages for different specifications. Each route serves an independent ReDoc instance with its
+own specification, allowing users to navigate directly to the documentation version they need.
+
+```kotlin
+routing {
+    route("docs/v1") {
+        redoc("/v1/api.json")
     }
-    ```
+    route("docs/v2") {
+        redoc("/v2/api.json")
+    }
+}
+```
+
+
+
+
+## Configuration
+
+ReDoc provides extensive configuration options to customize its appearance and behavior.
+
+```kotlin
+route("redoc") {
     
-    1. Serve auto-generated OpenAPI specification at `/api.json`.
-    2. Expose ReDoc using auto-generated specification at `/api.json`.
+    redoc("/api.json") {
+        pageTitle = "Redoc - My Api"
+        disableSearch = false
+        expandResponses = listOf("all")
+        hideDownloadButton = false
+        pathInMiddlePanel = true
+        requiredPropsFirst = true
+        sortOperationsAlphabetically = true
+        theme = """
+          {
+            "sidebar": {
+              "backgroundColor": "lightblue"
+            },
+            "rightPanel": {
+              "backgroundColor": "darkblue"
+            }
+          }
+        """.trimIndent()
+    }
+    
+}
+```
 
 ??? info "Configuration Options"
 

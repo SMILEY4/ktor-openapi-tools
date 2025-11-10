@@ -40,6 +40,18 @@ class TagsBuilderTest : StringSpec({
         }
     }
 
+    "tag object with x-displayName" {
+        buildTagObject("test-tag-123") {
+            description = "Description of tag"
+            displayName = "Custom Display Name"
+        }.also { tag ->
+            tag.name shouldBe "test-tag-123"
+            tag.description shouldBe "Description of tag"
+            tag.extensions.shouldNotBeNull()
+            tag.extensions["x-displayName"] shouldBe "Custom Display Name"
+        }
+    }
+
 }) {
 
     companion object {

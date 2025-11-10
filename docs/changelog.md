@@ -5,12 +5,20 @@ search:
 
 # Changelog
 
+## 5.4.0
+
+- support for ReDoc extensions `x-displayName` and `x-tagGroups` [#221](https://github.com/SMILEY4/ktor-openapi-tools/pull/221), [#219](https://github.com/SMILEY4/ktor-openapi-tools/pull/219)
+- complete overhaul of the documentation
+- upgrade schema-kenerator from 2.4.0 to [2.5.0](https://github.com/SMILEY4/schema-kenerator/releases/tag/2.5.0)
+- upgrade Ktor from 3.2.3 to 3.3.2
+- upgrade kotlin from 2.0.21 to 2.2.21
+
 ## 5.3.0
 
 - fix kotlinx-serialization example encoding [#212](https://github.com/SMILEY4/ktor-openapi-tools/issues/212)
 - fix missing response bodies from documented resources routes [#209](https://github.com/SMILEY4/ktor-openapi-tools/issues/209)
 - upgrade schema-kenerator from 2.3.0 to [2.4.0](https://github.com/SMILEY4/schema-kenerator/releases/tag/2.4.0)
-- upgrade ktor from 3.1.1 to ktor 3.3.0
+- upgrade ktor from 3.1.1 to ktor 3.2.3
 
 ## 5.2.0
 
