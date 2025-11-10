@@ -16,7 +16,7 @@
         <link rel="prev" href="../getting_started/">
       
       
-        <link rel="next" href="../documenting_routes/">
+        <link rel="next" href="../providing_openapi_specification/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -373,9 +373,7 @@
   
 
 
-  
-
-<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="Ktor OpenAPI Tools" class="md-nav__button md-logo" aria-label="Ktor OpenAPI Tools" data-md-component="logo">
       
@@ -573,63 +571,108 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#automatically-assigning-tags" class="md-nav__link">
+  <a href="#installation" class="md-nav__link">
     <span class="md-ellipsis">
-      Automatically Assigning Tags
+      Installation
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#ignoring-route-selectors" class="md-nav__link">
+  <a href="#info-section" class="md-nav__link">
     <span class="md-ellipsis">
-      Ignoring Route Selectors
+      Info Section
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#excluding-routes" class="md-nav__link">
+  <a href="#server-configuration" class="md-nav__link">
     <span class="md-ellipsis">
-      Excluding Routes
+      Server Configuration
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#choosing-the-output-format-json-or-yaml" class="md-nav__link">
+  <a href="#security-configuration" class="md-nav__link">
     <span class="md-ellipsis">
-      Choosing the output format - JSON or YAML
+      Security Configuration
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#customizing-schemas" class="md-nav__link">
+  <a href="#tags-configuration" class="md-nav__link">
     <span class="md-ellipsis">
-      Customizing Schemas
+      Tags Configuration
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#customizing-examples" class="md-nav__link">
+  <a href="#external-documentation" class="md-nav__link">
     <span class="md-ellipsis">
-      Customizing Examples
+      External Documentation
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#configuring-multiple-openapi-specifications" class="md-nav__link">
+  <a href="#output-format" class="md-nav__link">
     <span class="md-ellipsis">
-      Configuring Multiple OpenAPI Specifications
+      Output Format
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#route-filtering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Route Filtering
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ignored-route-selectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ignored Route Selectors
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#schema-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Schema Configuration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Configuration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multiple-specifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multiple Specifications
     </span>
   </a>
   
@@ -651,19 +694,67 @@
   
   
     <li class="md-nav__item">
-      <a href="../documenting_routes/" class="md-nav__link">
+      <a href="../providing_openapi_specification/" class="md-nav__link">
         
+  
+  <span class="md-ellipsis">
+    Providing OpenAPI Specification
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
   
   <span class="md-ellipsis">
     Documenting Routes
   </span>
   
 
-      </a>
-    </li>
-  
-
-              
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            Documenting Routes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
                 
@@ -672,11 +763,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../typesafe_routing/" class="md-nav__link">
+      <a href="../documenting_routes/basic_route_documentation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Type-safe Routing
+    Basic Route Documentation
   </span>
   
 
@@ -693,11 +784,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../handling_types_schemas_examples/" class="md-nav__link">
+      <a href="../documenting_routes/request_documentation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Handling Types, Schemas and Examples
+    Request Documentation
   </span>
   
 
@@ -714,11 +805,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../schema_generation/" class="md-nav__link">
+      <a href="../documenting_routes/response_documentation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Schema Generation
+    Response Documentation
   </span>
   
 
@@ -735,11 +826,90 @@
   
   
     <li class="md-nav__item">
-      <a href="../example_encoding/" class="md-nav__link">
+      <a href="../documenting_routes/nested_routes_and_documentation_inheritance/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Example Encoding
+    Nested Routes and Documentation Inheritance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Working With Schemas
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            Working With Schemas
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../working_with_schemas/schema_introduction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction To Schemas
   </span>
   
 
@@ -756,11 +926,360 @@
   
   
     <li class="md-nav__item">
-      <a href="../multiple_specs/" class="md-nav__link">
+      <a href="../working_with_schemas/manual_schema_definition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Manual Schema Definition
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../working_with_schemas/automatic_schema_generation_overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Automatic Schema Generation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../working_with_schemas/customizing_automatically_generated_schemas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Customizing Automatically Generated Schemas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../working_with_schemas/global_schemas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Global Schemas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Working With Examples
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            Working With Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../working_with_examples/examples_introduction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction To Examples
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../working_with_examples/global_examples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Global Examples
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../working_with_examples/configuring_example_encoding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configuring Example Encoding
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Advanced Topics
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            Advanced Topics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../advanced_topics/multiple_openapi_specifications/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Multiple API Specifications
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../advanced_topics/typesafe_routing_support/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Typesafe Routing Support
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../advanced_topics/documenting_webhooks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Documenting Webhooks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../advanced_topics/documenting_sse_routes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Documenting Server-Sent Events
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting_and_faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Troubleshooting & FAQ
   </span>
   
 
@@ -827,9 +1346,7 @@
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
           
@@ -938,9 +1455,7 @@
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
           
@@ -1069,9 +1584,7 @@
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
           
@@ -1409,6 +1922,140 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#info-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      Info Section
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#server-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Server Configuration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#security-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security Configuration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tags-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tags Configuration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#external-documentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      External Documentation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#output-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      Output Format
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#route-filtering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Route Filtering
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ignored-route-selectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ignored Route Selectors
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#schema-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Schema Configuration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example Configuration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multiple-specifications" class="md-nav__link">
+    <span class="md-ellipsis">
+      Multiple Specifications
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           
             <div class="md-content" data-md-component="content">
@@ -1421,94 +2068,257 @@
 
 
 <h1 id="plugin-configuration">Plugin Configuration</h1>
-<details class="info" open="open">
+<p>The OpenAPI plugin is configured during installation. All configuration is optional and the plugin works with default settings,
+though providing basic API information is recommended.</p>
+<details class="info">
+<summary>API Reference</summary>
+<p>The full list of available configuration options can be found in the API reference:</p>
+<p><a href="../../dokka/ktor-openapi/ktor-openapi/io.github.smiley4.ktoropenapi.config/-open-api-plugin-config/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"/></svg></span> API Reference</a></p>
+</details>
+<h2 id="installation">Installation</h2>
+<p>The plugin is installed and configured using the standard Ktor plugin mechanism:</p>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nn">io.github.smiley4.ktoropenapi.OpenApi</span>
+
+<span class="n">install</span><span class="p">(</span><span class="n">OpenApi</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Configuration goes here</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="info-section">Info Section</h2>
+<p>The info section defines basic metadata about the API.</p>
+<div class="highlight"><pre><span></span><code><span class="n">install</span><span class="p">(</span><span class="n">OpenApi</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">info</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Example API&quot;</span>
+<span class="w">        </span><span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;latest&quot;</span>
+<span class="w">        </span><span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;An example api.&quot;</span>
+<span class="w">        </span><span class="n">termsOfService</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;example.com&quot;</span>
+<span class="w">        </span><span class="n">contact</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Mr. Example&quot;</span>
+<span class="w">            </span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;example.com&quot;</span>
+<span class="w">            </span><span class="n">email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;example@example.com&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">license</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Example License&quot;</span>
+<span class="w">            </span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;example.com&quot;</span>
+<span class="w">            </span><span class="n">identifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Apache-2.0&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="server-configuration">Server Configuration</h2>
+<p>The servers section defines base URLs where the API is available. Multiple servers can be specified and server variables are supported for dynamic server configuration. Documentation UIs like Swagger UI use these URLs for "Try it out" features.</p>
+<div class="highlight"><pre><span></span><code><span class="n">install</span><span class="p">(</span><span class="n">OpenApi</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">server</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;http://localhost:8080&quot;</span>
+<span class="w">        </span><span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Development server&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">server</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;https://staging.example.com&quot;</span>
+<span class="w">        </span><span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Staging environment&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">server</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;https://api.example.com&quot;</span>
+<span class="w">        </span><span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Production server&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Using server variables:</p>
+<div class="highlight"><pre><span></span><code><span class="n">server</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;https://{environment}.example.com&quot;</span><span class="w"> </span><span class="c1">// (1)!</span>
+<span class="w">    </span><span class="n">variable</span><span class="p">(</span><span class="s">&quot;environment&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// (2)!</span>
+<span class="w">        </span><span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Environment name&quot;</span>
+<span class="w">        </span><span class="n">default</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;api&quot;</span>
+<span class="w">        </span><span class="n">enum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">setOf</span><span class="p">(</span><span class="s">&quot;api&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;staging&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;dev&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ol>
+<li>The URL the server with a placeholder for the variable.</li>
+<li>The variable definition with the name matching the placeholder in the URL.</li>
+</ol>
+<h2 id="security-configuration">Security Configuration</h2>
+<p>Define security schemes. The specified default security scheme is automatically used for all protected routes - unless specified otherwise.</p>
+<div class="highlight"><pre><span></span><code><span class="n">install</span><span class="p">(</span><span class="n">OpenApi</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">security</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">securityScheme</span><span class="p">(</span><span class="s">&quot;MySecurityScheme&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// (1)!</span>
+<span class="w">            </span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AuthType</span><span class="p">.</span><span class="na">HTTP</span>
+<span class="w">            </span><span class="n">scheme</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AuthScheme</span><span class="p">.</span><span class="na">BASIC</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">defaultSecuritySchemeNames</span><span class="p">(</span><span class="s">&quot;MySecurityScheme&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">// (2)!</span>
+<span class="w">        </span><span class="n">defaultUnauthorizedResponse</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// (3)!</span>
+<span class="w">            </span><span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Username or password is invalid&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ol>
+<li>Define a new security scheme with a unique name <code>"MySecurityScheme"</code>. Multiple schemes can be defined.</li>
+<li>Use the security scheme with the name <code>"MySecurityScheme"</code> for all protected routes - unless specified otherwise.</li>
+<li>Describe and add a default unauthorized response to the documentation or all protected routes.</li>
+</ol>
+<h2 id="tags-configuration">Tags Configuration</h2>
+<p>Tags are used to organize and group operations. Their description and external documentation can be defined in this configuration section.
+Tags do not need to be defined explicitly in the plugin configuration if no additional information is required.</p>
+<div class="highlight"><pre><span></span><code><span class="n">install</span><span class="p">(</span><span class="n">OpenApi</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">tags</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">tag</span><span class="p">(</span><span class="s">&quot;users&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;routes to manage users&quot;</span>
+<span class="w">            </span><span class="n">externalDocUrl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;example.com&quot;</span>
+<span class="w">            </span><span class="n">externalDocDescription</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Users documentation&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">tag</span><span class="p">(</span><span class="s">&quot;documents&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;routes to manage documents&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Automatically Assigning Tags</strong></p>
+<p>The <code>tagGenerator</code> function automatically assigns tags to routes based on their URL or other properties. Routes can still provide their own
+additional tags.</p>
+<div class="highlight"><pre><span></span><code><span class="n">install</span><span class="p">(</span><span class="n">OpenApi</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">tags</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">tagGenerator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">url</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="c1">// (1)!</span>
+<span class="w">            </span><span class="k">when</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="n">url</span><span class="p">.</span><span class="na">firstOrNull</span><span class="p">()</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s">&quot;user&quot;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span><span class="s">&quot;users&quot;</span><span class="p">)</span>
+<span class="w">                </span><span class="n">url</span><span class="p">.</span><span class="na">firstOrNull</span><span class="p">()</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s">&quot;document&quot;</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">listOf</span><span class="p">(</span><span class="s">&quot;documents&quot;</span><span class="p">)</span>
+<span class="w">                </span><span class="k">else</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">listOf</span><span class="p">()</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ol>
+<li>For an example route <code>document/settings/access</code> the <code>url</code> parameter would contain <code>["document", "settings", "access"]</code>.</li>
+</ol>
+<h2 id="external-documentation">External Documentation</h2>
+<p>Reference to external documentation sources.</p>
+<div class="highlight"><pre><span></span><code><span class="n">install</span><span class="p">(</span><span class="n">OpenApi</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">externalDocs</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;https://docs.example.com&quot;</span>
+<span class="w">        </span><span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Complete API documentation&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="output-format">Output Format</h2>
+<p>Choose between JSON and YAML output:</p>
+<div class="highlight"><pre><span></span><code><span class="n">install</span><span class="p">(</span><span class="n">OpenApi</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">outputFormat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OutputFormat</span><span class="p">.</span><span class="na">JSON</span><span class="w"> </span><span class="c1">//(1)!</span>
+<span class="p">}</span>
+</code></pre></div>
+<ol>
+<li>Available options are <code>OutputFormat.JSON</code> and <code>OutputFormat.YAML</code>.</li>
+</ol>
+<h2 id="route-filtering">Route Filtering</h2>
+<p>The <code>pathFilter</code> function determines which routes are included in the OpenAPI specification. It takes the http method and the segmented url
+and returns whether it should be included (true) or omitted (false).</p>
+<div class="highlight"><pre><span></span><code><span class="n">pathFilter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">method</span><span class="p">,</span><span class="w"> </span><span class="n">url</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="c1">// (1)!</span>
+<span class="w">    </span><span class="n">url</span><span class="p">.</span><span class="na">firstOrNull</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s">&quot;internal&quot;</span><span class="w"> </span><span class="c1">// (2)!</span>
+<span class="p">}</span>
+</code></pre></div>
+<ol>
+<li>For an example route <code>GET document/settings/access</code> the <code>method</code> is <code>HttpMethod.Get</code> and 
+   the <code>url</code> parameter would contain <code>["document", "settings", "access"]</code>.</li>
+<li>Excludes <code>/internal</code> routes.</li>
+</ol>
+<p>Individual routes can also be excluded using the hidden flag in route documentation.</p>
+<div class="highlight"><pre><span></span><code><span class="k">get</span><span class="p">(</span><span class="s">&quot;secret&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">hidden</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="p">})</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">//...</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="ignored-route-selectors">Ignored Route Selectors</h2>
+<p>Ktor plugins may add route selectors that should not appear in the OpenAPI specification. These selectors can be filtered out, hiding them
+in the generated urls.</p>
+<div class="highlight"><pre><span></span><code><span class="n">install</span><span class="p">(</span><span class="n">OpenApi</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="n">ignoredRouteSelectors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="c1">// (1)!</span>
+<span class="w">        </span><span class="n">ignoredRouteSelectors</span>
+<span class="w">        </span><span class="o">+</span><span class="w"> </span><span class="n">RateLimitRouteSelector</span><span class="o">::</span><span class="n">class</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">ignoredRouteSelectorClassNames</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="c1">// (2)!</span>
+<span class="w">        </span><span class="n">ignoredRouteSelectorClassNames</span>
+<span class="w">        </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;io.ktor.server.plugins.ratelimit.RateLimitRouteSelector&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<ol>
+<li>Ignore a route selector by class reference.</li>
+<li>Ignore a route selector by class name (useful for internal/inaccessible classes)</li>
+</ol>
+<h2 id="schema-configuration">Schema Configuration</h2>
+<p>Control how types are converted to OpenAPI schemas:</p>
+<div class="highlight"><pre><span></span><code><span class="n">schemas</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">generator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SchemaGenerator</span><span class="p">.</span><span class="na">kotlinx</span><span class="p">()</span><span class="w"> </span><span class="c1">// (1)!</span>
+<span class="w">    </span><span class="n">schema</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span><span class="p">(</span><span class="s">&quot;user&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1">// (2)!</span>
+<span class="p">}</span>
+</code></pre></div>
+<ol>
+<li>Available pre-built generators are <code>SchemaGenerator.reflection()</code> (default) and <code>SchemaGenerator.kotlinx()</code>.</li>
+<li>Define global schemas.</li>
+</ol>
+<details class="info">
 <summary>More Information</summary>
-<p>The complete list of all available plugin configuration options can be viewed in the <a href="../../dokka/ktor-openapi/ktor-openapi/io.github.smiley4.ktoropenapi.config/-open-api-plugin-config/">API Reference</a>.</p>
+<p>More information on schemas and schema generation can be found here:</p>
+<p><a href="../working_with_schemas/schema_introduction/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"/></svg></span> Introduction To Schema</a></p>
 </details>
-<h2 id="automatically-assigning-tags">Automatically Assigning Tags</h2>
-<p>Tags can either be assigned at the route documentation directly or via a mapping function in the plugin configuration.
-The specified function is called for each route and the returned tags are added to the route's documentation.</p>
-<div class="highlight"><pre><span></span><code><span class="n">install</span><span class="p">(</span><span class="n">OpenApi</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">tags</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">tagGenerator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">url</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">TODO</span><span class="p">()</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
+<h2 id="example-configuration">Example Configuration</h2>
+<p>Control how examples are encoded:</p>
+<div class="highlight"><pre><span></span><code><span class="n">examples</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">encoder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ExampleEncoder</span><span class="p">.</span><span class="na">internal</span><span class="p">()</span><span class="w"> </span><span class="c1">// (1)!</span>
+<span class="w">    </span><span class="n">example</span><span class="p">(</span><span class="s">&quot;user&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">User</span><span class="p">(</span><span class="s">&quot;Mr. Example&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="c1">// (2)!</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="ignoring-route-selectors">Ignoring Route Selectors</h2>
-<p>Other Ktor plugins may add additional route selectors to routes that show up the OpenAPI specification as unwanted parts in the urls.
-These can be ignored by adding them to the <code>ignoredRouteSelectors</code> or <code>ignoredRouteSelectorClassNames</code> configuration.</p>
-<details class="example" open="open">
-<summary>Ignoring Route Selector</summary>
-<div class="highlight"><pre><span></span><code><span class="n">install</span><span class="p">(</span><span class="n">OpenApi</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">tags</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">ignoredRouteSelectors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ignoredRouteSelectors</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">RateLimitRouteSelector</span><span class="o">::</span><span class="n">class</span><span class="c1">//(1)!</span>
-<span class="w">        </span><span class="n">ignoredRouteSelectorClassNames</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ignoredRouteSelectorClassNames</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;io.ktor.server.plugins.ratelimit.RateLimitRouteSelector&quot;</span><span class="c1">//(2)!</span>
+<ol>
+<li>Available pre-built encoders are <code>ExampleEncoder.internal()</code> (default) and <code>ExampleEncoder.kotlinx()</code>.</li>
+<li>Define global examples.</li>
+</ol>
+<details class="info">
+<summary>More Information</summary>
+<p>More information on examples and example encoding can be found here:</p>
+<p><a href="../working_with_examples/examples_introduction/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"/></svg></span> Introduction To Examples</a></p>
+</details>
+<h2 id="multiple-specifications">Multiple Specifications</h2>
+<p>The plugin can generate multiple independent OpenAPI specifications from a single application. Each specification is identified by a unique
+name and can have its own configuration.</p>
+<p>Routes are assigned to specifications either explicitly (via specName property) or automatically (via assigner function). Each specification
+is generated and handled independently.</p>
+<div class="highlight"><pre><span></span><code><span class="n">install</span><span class="p">(</span><span class="n">OpenApi</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// (1)!</span>
+<span class="w">    </span><span class="n">info</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Example API&quot;</span>
+<span class="w">        </span><span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;An example api.&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">spec</span><span class="p">(</span><span class="s">&quot;v1&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// (2)!</span>
+<span class="w">        </span><span class="n">info</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;1.0&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">spec</span><span class="p">(</span><span class="s">&quot;v2&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// (3)!</span>
+<span class="w">        </span><span class="n">info</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;2.0&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">routing</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">route</span><span class="p">(</span><span class="s">&quot;api-v1.json&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">  </span><span class="c1">// (4)!</span>
+<span class="w">        </span><span class="n">openApi</span><span class="p">(</span><span class="s">&quot;v1&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">route</span><span class="p">(</span><span class="s">&quot;api-v2.json&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// (5)!</span>
+<span class="w">        </span><span class="n">openApi</span><span class="p">(</span><span class="s">&quot;v2&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <ol>
-<li>Ignore the route selector from the Ktor <a href="https://ktor.io/docs/server-rate-limit.html">Rate Limiting Plugin</a> by adding its class to the ignored selectors.</li>
-<li>Ignore the route selector from the Ktor <a href="https://ktor.io/docs/server-rate-limit.html">Rate Limiting Plugin</a> by adding its qualified name to the ignored selector names. This can be useful when the actual class is internal and cannot be accessed.</li>
+<li>Base configuration applies to all specifications.</li>
+<li>Configuration specific to "v1" specification.</li>
+<li>Configuration specific to "v2" specification.</li>
+<li>Expose the "v1" specification.</li>
+<li>Expose the "v2" specification.</li>
 </ol>
+<details class="info">
+<summary>More Information</summary>
+<p>More information on handling multiple API specifications can be found here:</p>
+<p><a href="../advanced_topics/multiple_openapi_specifications/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"/></svg></span> Multiple OpenAPI Specifications</a></p>
 </details>
-<h2 id="excluding-routes">Excluding Routes</h2>
-<p>Routes can be completely excluded from the generated OpenAPI specification via the <code>hidden</code>-flag at the route documentation or the <code>pathFilter</code>-function in the plugin configuration.</p>
-<details class="example" open="open">
-<summary>Excluding Routes</summary>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Route Documentation</label><label for="__tabbed_1_2">Plugin Configuration</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">routing</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">get</span><span class="p">({</span>
-<span class="w">        </span><span class="n">hidden</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c1">//(1)!</span>
-<span class="w">    </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">call</span><span class="p">.</span><span class="na">respond</span><span class="p">(</span><span class="n">HttpStatusCode</span><span class="p">.</span><span class="na">NotImplemented</span><span class="p">,</span><span class="w"> </span><span class="kt">Unit</span><span class="p">)</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<ol>
-<li>Mark this route as "hidden" and exclude it from the generated OpenAPI specification.</li>
-</ol>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">install</span><span class="p">(</span><span class="n">OpenApi</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">pathFilter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">method</span><span class="p">,</span><span class="w"> </span><span class="n">url</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">url</span><span class="p">.</span><span class="na">firstOrNull</span><span class="p">()</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="s">&quot;internal&quot;</span><span class="w"> </span><span class="p">}</span><span class="c1">//(1)!</span>
-<span class="p">}</span>
-</code></pre></div>
-<ol>
-<li>Filter out and exclude all routes with urls starting with "internal". The function receives the http method and url as inputs and returns <code>false</code> for excluded routes.</li>
-</ol>
-</div>
-</div>
-</div>
-</details>
-<h2 id="choosing-the-output-format-json-or-yaml">Choosing the output format - JSON or YAML</h2>
-<p>The output format of the generated OpenAPI specification can be changed from <code>json</code> to <code>yaml</code> with the <code>outputFormat</code> option.</p>
-<details class="example" open="open">
-<summary>Choosing the Output Format</summary>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">JSON</label><label for="__tabbed_2_2">YAML</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">install</span><span class="p">(</span><span class="n">OpenApi</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">outputFormat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OutputFormat</span><span class="p">.</span><span class="na">JSON</span>
-<span class="p">}</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">install</span><span class="p">(</span><span class="n">OpenApi</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">outputFormat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OutputFormat</span><span class="p">.</span><span class="na">YAML</span>
-<span class="p">}</span>
-</code></pre></div>
-</div>
-</div>
-</div>
-</details>
-<h2 id="customizing-schemas">Customizing Schemas</h2>
-<p><a href="../schema_generation/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"/></svg></span> Schema Generation</a></p>
-<h2 id="customizing-examples">Customizing Examples</h2>
-<p><a href="../example_encoding/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"/></svg></span> Example Encoding</a></p>
-<h2 id="configuring-multiple-openapi-specifications">Configuring Multiple OpenAPI Specifications</h2>
-<p><a href="../multiple_specs/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"/></svg></span> Multiple API Specifications</a></p>
 
 
 
@@ -1533,46 +2343,6 @@ These can be ignored by adding them to the <code>ignoredRouteSelectors</code> or
       
         <footer class="md-footer">
   
-    
-      
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
-        
-          
-          <a href="../getting_started/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Getting Started">
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-            </div>
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              <div class="md-ellipsis">
-                Getting Started
-              </div>
-            </div>
-          </a>
-        
-        
-          
-          <a href="../documenting_routes/" class="md-footer__link md-footer__link--next" aria-label="Next: Documenting Routes">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              <div class="md-ellipsis">
-                Documenting Routes
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
-    
-  
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
       <div class="md-copyright">
@@ -1595,7 +2365,7 @@ These can be ignored by adding them to the <code>ignoredRouteSelectors</code> or
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.expand", "navigation.indexes", "navigation.footer", "toc.integrate", "search.suggest", "search.share", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "search.suggest", "search.share", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
       <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>

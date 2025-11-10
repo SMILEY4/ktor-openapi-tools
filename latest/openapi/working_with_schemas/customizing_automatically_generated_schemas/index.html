@@ -1,0 +1,2580 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A collection of libraries to simplify API documentation and exploration for Ktor applications. Generates OpenAPI specifications and provides Swagger UI and ReDoc.">
+      
+      
+      
+        <link rel="canonical" href="https://smiley4.github.io/ktor-openapi-tools/5.x/openapi/working_with_schemas/customizing_automatically_generated_schemas/">
+      
+      
+        <link rel="prev" href="../automatic_schema_generation_overview/">
+      
+      
+        <link rel="next" href="../global_schemas/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>Customizing Automatically Generated Schemas - Ktor OpenAPI Tools</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.bcfcd587.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        
+        <link rel="stylesheet" href="../../../assets/external/fonts.googleapis.com/css.49ea35f2.css">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#customizing-automatically-generated-schemas" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Ktor OpenAPI Tools" class="md-header__button md-logo" aria-label="Ktor OpenAPI Tools" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Ktor OpenAPI Tools
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Customizing Automatically Generated Schemas
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/SMILEY4/ktor-openapi-tools" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ktor-openapi-tools
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+    
+  
+  OpenAPI
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../swaggerui/" class="md-tabs__link">
+          
+  
+    
+  
+  Swagger UI
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../redoc/" class="md-tabs__link">
+          
+  
+    
+  
+  ReDoc
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../examples/" class="md-tabs__link">
+          
+  
+    
+  
+  Examples
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../changelog/" class="md-tabs__link">
+        
+  
+    
+  
+  Changelog
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Ktor OpenAPI Tools" class="md-nav__button md-logo" aria-label="Ktor OpenAPI Tools" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Ktor OpenAPI Tools
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/SMILEY4/ktor-openapi-tools" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ktor-openapi-tools
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    OpenAPI
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            OpenAPI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting_started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plugin_configuration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Plugin Configuration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../providing_openapi_specification/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Providing OpenAPI Specification
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Documenting Routes
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            Documenting Routes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documenting_routes/basic_route_documentation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Basic Route Documentation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documenting_routes/request_documentation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Request Documentation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documenting_routes/response_documentation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Response Documentation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documenting_routes/nested_routes_and_documentation_inheritance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Nested Routes and Documentation Inheritance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Working With Schemas
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            Working With Schemas
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schema_introduction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction To Schemas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../manual_schema_definition/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Manual Schema Definition
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../automatic_schema_generation_overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Automatic Schema Generation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Customizing Automatically Generated Schemas
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Customizing Automatically Generated Schemas
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#building-a-custom-schema-generation-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      Building a Custom Schema Generation Pipeline
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-pre-build-generators" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuring Pre-Build Generators
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuring Pre-Build Generators">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-reflection-generator-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Reflection Generator Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-kotlinxserialization-generator-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Kotlinx.Serialization Generator Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-kotlinxserialization-generator-from-json-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuring Kotlinx.Serialization Generator From Json Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overwriting-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overwriting types
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Overwriting types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#implementing-a-custom-type-overwrite" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementing a Custom Type Overwrite
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registering-a-custom-type-overwrite" class="md-nav__link">
+    <span class="md-ellipsis">
+      Registering a Custom Type Overwrite
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pre-built-type-overwrites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-Built Type Overwrites
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-custom-analyzers-for-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating Custom Analyzers for types
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-custom-schema-generators-for-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating Custom Schema Generators for types
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating Custom Schema Generators for types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#implementing-a-custom-generator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementing a Custom Generator
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../global_schemas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Global Schemas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Working With Examples
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            Working With Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../working_with_examples/examples_introduction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction To Examples
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../working_with_examples/global_examples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Global Examples
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../working_with_examples/configuring_example_encoding/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configuring Example Encoding
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Advanced Topics
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            Advanced Topics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced_topics/multiple_openapi_specifications/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multiple API Specifications
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced_topics/typesafe_routing_support/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Typesafe Routing Support
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced_topics/documenting_webhooks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Documenting Webhooks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced_topics/documenting_sse_routes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Documenting Server-Sent Events
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../troubleshooting_and_faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Troubleshooting & FAQ
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dokka/ktor-openapi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API Reference
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../swaggerui/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Swagger UI
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Swagger UI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../swaggerui/getting_started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dokka/ktor-swagger-ui/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API Reference
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+          
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../redoc/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    ReDoc
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            ReDoc
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../redoc/getting_started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../dokka/ktor-redoc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API Reference
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../examples/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Examples
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/basics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/request-response/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Requests and Responses
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/authentication/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Authentication
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/file-upload/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    File Upload
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/webhooks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Webhooks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/schemas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Schema Handling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/customized-schema-generator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Schema Generator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/openapi-examples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Example Handling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/kotlinx-serialization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kotlinx Serialization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/petstore/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Petstore
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/multiple-specs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multiple Specs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/external-openapi-spec/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    External OpenAPI Spec
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/complete-configuration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Complete Configuration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../changelog/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Changelog
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#building-a-custom-schema-generation-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      Building a Custom Schema Generation Pipeline
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-pre-build-generators" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuring Pre-Build Generators
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuring Pre-Build Generators">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-reflection-generator-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Reflection Generator Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#basic-kotlinxserialization-generator-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Basic Kotlinx.Serialization Generator Configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-kotlinxserialization-generator-from-json-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuring Kotlinx.Serialization Generator From Json Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#overwriting-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overwriting types
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Overwriting types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#implementing-a-custom-type-overwrite" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementing a Custom Type Overwrite
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#registering-a-custom-type-overwrite" class="md-nav__link">
+    <span class="md-ellipsis">
+      Registering a Custom Type Overwrite
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pre-built-type-overwrites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pre-Built Type Overwrites
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-custom-analyzers-for-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating Custom Analyzers for types
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-custom-schema-generators-for-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating Custom Schema Generators for types
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating Custom Schema Generators for types">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#implementing-a-custom-generator" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementing a Custom Generator
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="customizing-automatically-generated-schemas">Customizing Automatically Generated Schemas</h1>
+<p>Automatic schema generation can be customized to handle specific types differently, apply custom naming strategies, or control schema
+structure. Customization is available at multiple levels: complete pipeline configuration, pre-built generator options, custom type
+analyzers, and custom schema generators.</p>
+<h2 id="building-a-custom-schema-generation-pipeline">Building a Custom Schema Generation Pipeline</h2>
+<p>The most flexible approach is building a custom pipeline directly using schema-kenerator. This provides complete control over each step of
+the generation process.</p>
+<div class="highlight"><pre><span></span><code><span class="n">install</span><span class="p">(</span><span class="n">OpenApi</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">schemas</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">generator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="o">-&gt;</span>
+<span class="w">            </span><span class="n">type</span>
+<span class="w">                </span><span class="p">.</span><span class="na">analyzeTypeUsingKotlinxSerialization</span><span class="p">()</span>
+<span class="w">                </span><span class="p">.</span><span class="na">generateSwaggerSchema</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="n">nullables</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RequiredHandling</span><span class="p">.</span><span class="na">NON_REQUIRED</span>
+<span class="w">                    </span><span class="n">optionals</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RequiredHandling</span><span class="p">.</span><span class="na">REQUIRED</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">                </span><span class="p">.</span><span class="na">withTitle</span><span class="p">(</span><span class="n">TitleType</span><span class="p">.</span><span class="na">SIMPLE</span><span class="p">)</span>
+<span class="w">                </span><span class="p">.</span><span class="na">compileReferencingRoot</span><span class="p">(</span>
+<span class="w">                    </span><span class="n">explicitNullTypes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">                </span><span class="p">)</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>This basic pipeline:</p>
+<ol>
+<li>Analyzes types using kotlinx.serialization</li>
+<li>Generates independent Swagger schemas for each type</li>
+<li>Adds titles</li>
+<li>Merges schemas into final schema with references</li>
+</ol>
+<details class="info">
+<summary>More Information</summary>
+<p>The schema-kenerator library provides extensive documentation on pipeline configuration and complete customization options.</p>
+<p><a href="https://smiley4.github.io/schema-kenerator/latest/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"/></svg></span> schema-kenerator Documentation</a></p>
+</details>
+<h2 id="configuring-pre-build-generators">Configuring Pre-Build Generators</h2>
+<p>The plugin provides pre-configured generators with simplified configuration options. These handle the pipeline internally while exposing
+commonly needed settings.</p>
+<h3 id="basic-reflection-generator-configuration">Basic Reflection Generator Configuration</h3>
+<details class="info">
+<summary>API Reference</summary>
+<p>The full list of available configuration options can be found in the API reference:</p>
+<p><a href="../../../dokka/ktor-openapi/ktor-openapi/io.github.smiley4.ktoropenapi.config/-schema-generator/-reflection-config/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"/></svg></span> API Reference</a></p>
+</details>
+<p><strong>Property inclusion:</strong></p>
+<p>Control which class members are included in the schema. By default, only constructor parameters are included. Enable <code>includeGetters</code> to
+include getter methods as properties.</p>
+<div class="highlight"><pre><span></span><code><span class="n">install</span><span class="p">(</span><span class="n">OpenApi</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">schemas</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">generator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SchemaGenerator</span><span class="p">.</span><span class="na">reflection</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">includeGetters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">            </span><span class="n">includeWeakGetters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">            </span><span class="n">includeFunctions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">            </span><span class="n">includeHidden</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">            </span><span class="n">includeStatic</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Required field handling</strong></p>
+<p>Determine how optional and nullable properties affect the required array in schemas. <code>RequiredHandling.REQUIRED</code> includes the property in
+the
+required list, <code>RequiredHandling.NON_REQUIRED</code> makes it optional.</p>
+<div class="highlight"><pre><span></span><code><span class="n">install</span><span class="p">(</span><span class="n">OpenApi</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">schemas</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">generator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SchemaGenerator</span><span class="p">.</span><span class="na">reflection</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">optionals</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RequiredHandling</span><span class="p">.</span><span class="na">REQUIRED</span>
+<span class="w">            </span><span class="n">nullables</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RequiredHandling</span><span class="p">.</span><span class="na">NON_REQUIRED</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Polymorphism</strong></p>
+<p>Configures a discriminator property to schemas with subtypes. The discriminator helps distinguish between different implementations of a
+base type.</p>
+<div class="highlight"><pre><span></span><code><span class="n">install</span><span class="p">(</span><span class="n">OpenApi</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">schemas</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">generator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SchemaGenerator</span><span class="p">.</span><span class="na">reflection</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">discriminatorProperty</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;type&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Schema structure</strong></p>
+<p>Control whether nullable types explicitly include "null" as a type, what format titles should have, and the reference path format.</p>
+<div class="highlight"><pre><span></span><code><span class="n">install</span><span class="p">(</span><span class="n">OpenApi</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">schemas</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">generator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SchemaGenerator</span><span class="p">.</span><span class="na">reflection</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">explicitNullTypes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">            </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TitleType</span><span class="p">.</span><span class="na">SIMPLE</span>
+<span class="w">            </span><span class="n">referencePath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RefType</span><span class="p">.</span><span class="na">OPENAPI_FULL</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Controls what types should be treated as primitives (results in simplified type analysis and schema generation) and what constants to use
+for enum types.</p>
+<div class="highlight"><pre><span></span><code><span class="n">install</span><span class="p">(</span><span class="n">OpenApi</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">schemas</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">generator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SchemaGenerator</span><span class="p">.</span><span class="na">reflection</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">primitiveTypes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DEFAULT_PRIMITIVE_TYPES</span><span class="p">.</span><span class="na">toMutableSet</span><span class="p">()</span>
+<span class="w">            </span><span class="n">enumConstType</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">EnumConstType</span><span class="p">.</span><span class="na">NAME</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="basic-kotlinxserialization-generator-configuration">Basic Kotlinx.Serialization Generator Configuration</h3>
+<details class="info">
+<summary>API Reference</summary>
+<p>The full list of available configuration options can be found in the API reference:</p>
+<p><a href="../../../dokka/ktor-openapi/ktor-openapi/io.github.smiley4.ktoropenapi.config/-schema-generator/-kotlinx-serialization-config/"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.22 19.03a.75.75 0 0 1 0-1.06L18.19 13H3.75a.75.75 0 0 1 0-1.5h14.44l-4.97-4.97a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"/></svg></span> API Reference</a></p>
+</details>
+<p><strong>Serialization module</strong></p>
+<p>Provide the serializers module from your Json configuration to support contextual serializers.</p>
+<div class="highlight"><pre><span></span><code><span class="n">install</span><span class="p">(</span><span class="n">OpenApi</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">schemas</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">generator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SchemaGenerator</span><span class="p">.</span><span class="na">kotlinx</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">serializersModule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mySerializersModule</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Naming strategy</strong></p>
+<p>Apply a naming strategy (snake_case, camelCase, etc.) to property names in schemas. Should match your Json configuration.</p>
+<div class="highlight"><pre><span></span><code><span class="n">install</span><span class="p">(</span><span class="n">OpenApi</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">schemas</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">generator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SchemaGenerator</span><span class="p">.</span><span class="na">kotlinx</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">namingStrategy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">JsonNamingStrategy</span><span class="p">.</span><span class="na">SnakeCase</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Required field handling</strong></p>
+<p>Determine how optional and nullable properties affect the required array in schemas. <code>RequiredHandling.REQUIRED</code> includes the property in
+the
+required list, <code>RequiredHandling.NON_REQUIRED</code> makes it optional.</p>
+<div class="highlight"><pre><span></span><code><span class="n">install</span><span class="p">(</span><span class="n">OpenApi</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">schemas</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">generator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SchemaGenerator</span><span class="p">.</span><span class="na">kotlinx</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">optionals</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RequiredHandling</span><span class="p">.</span><span class="na">REQUIRED</span>
+<span class="w">            </span><span class="n">nullables</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RequiredHandling</span><span class="p">.</span><span class="na">NON_REQUIRED</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Schema Structure</strong></p>
+<p>Controls the basic structure of schemas.</p>
+<div class="highlight"><pre><span></span><code><span class="n">install</span><span class="p">(</span><span class="n">OpenApi</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">schemas</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">generator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SchemaGenerator</span><span class="p">.</span><span class="na">kotlinx</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">explicitNullTypes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">            </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TitleType</span><span class="p">.</span><span class="na">SIMPLE</span>
+<span class="w">            </span><span class="n">referencePath</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RefType</span><span class="p">.</span><span class="na">OPENAPI_FULL</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="configuring-kotlinxserialization-generator-from-json-configuration">Configuring Kotlinx.Serialization Generator From Json Configuration</h3>
+<p>The kotlinx.serialization generator can automatically match a given Json configuration:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">val</span><span class="w"> </span><span class="nv">json</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Json</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">encodeDefaults</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="n">explicitNulls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">    </span><span class="n">namingStrategy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">JsonNamingStrategy</span><span class="p">.</span><span class="na">SnakeCase</span>
+<span class="p">}</span>
+
+<span class="n">install</span><span class="p">(</span><span class="n">OpenApi</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">schemas</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">generator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SchemaGenerator</span><span class="p">.</span><span class="na">kotlinx</span><span class="p">(</span><span class="n">json</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// Additional configuration</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>This automatically sets <code>optionals</code>, <code>nullables</code>, <code>namingStrategy</code>, and <code>serializersModule</code> based on the Json configuration, ensuring
+schemas match actual serialization behavior.</p>
+<h2 id="overwriting-types">Overwriting types</h2>
+<p>Type overwrites provide a simple way to replace schema generation for specific types with an own fixed schema.
+Internally, they combine a custom type analyzer and generator.</p>
+<h3 id="implementing-a-custom-type-overwrite">Implementing a Custom Type Overwrite</h3>
+<div class="highlight"><pre><span></span><code><span class="kd">object</span><span class="w"> </span><span class="nc">EmailAddressOverwrite</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">SchemaOverwriteModule</span><span class="p">(</span>
+<span class="w">    </span><span class="n">identifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;com.example.EmailAddress&quot;</span><span class="p">,</span><span class="w"> </span><span class="c1">// (1)!</span>
+<span class="w">    </span><span class="n">schema</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">Schema</span><span class="o">&lt;</span><span class="kt">Any</span><span class="o">&gt;</span><span class="p">().</span><span class="na">also</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// (2)!</span>
+<span class="w">            </span><span class="nb">it</span><span class="p">.</span><span class="na">types</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">setOf</span><span class="p">(</span><span class="s">&quot;string&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="nb">it</span><span class="p">.</span><span class="na">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;email&quot;</span>
+<span class="w">            </span><span class="nb">it</span><span class="p">.</span><span class="na">pattern</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}</span><span class="err">$</span><span class="s">&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">)</span>
+</code></pre></div>
+<ol>
+<li>Replace types with (qualified) name matching <code>com.example.EmailAddress</code>.</li>
+<li>Replace default schema with own provided schema.</li>
+</ol>
+<p>The overwrite specifies:</p>
+<ul>
+<li><em>Identifier:</em> The fully qualified type name to match. When using kotlinx.serialization and custom serializers, this name must match the
+  serial descriptor name.</li>
+<li><em>Schema:</em> A lambda that produces the replacement schema</li>
+</ul>
+<h3 id="registering-a-custom-type-overwrite">Registering a Custom Type Overwrite</h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Reflection Generator</label><label for="__tabbed_1_2">Kotlinx.Serialization Generator</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">install</span><span class="p">(</span><span class="n">OpenApi</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">schemas</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">generator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SchemaGenerator</span><span class="p">.</span><span class="na">reflection</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">overwrite</span><span class="p">(</span><span class="n">EmailAddressOverwrite</span><span class="p">)</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">install</span><span class="p">(</span><span class="n">OpenApi</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">schemas</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">generator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SchemaGenerator</span><span class="p">.</span><span class="na">kotlinx</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">overwrite</span><span class="p">(</span><span class="n">EmailAddressOverwrite</span><span class="p">)</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Type overwrites work the same with both generators.</p>
+<p>This ensures that <code>EmailAddress</code> types always generate a string schema with email format and validation pattern.</p>
+<h3 id="pre-built-type-overwrites">Pre-Built Type Overwrites</h3>
+<p>The plugin provides pre-built overwrites for common types that need special handling:</p>
+<div class="highlight"><pre><span></span><code><span class="n">install</span><span class="p">(</span><span class="n">OpenApi</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">schemas</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">generator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SchemaGenerator</span><span class="p">.</span><span class="na">reflection</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">overwrite</span><span class="p">(</span><span class="n">SchemaGenerator</span><span class="p">.</span><span class="na">TypeOverwrites</span><span class="p">.</span><span class="na">JavaUuid</span><span class="p">())</span>
+<span class="w">            </span><span class="n">overwrite</span><span class="p">(</span><span class="n">SchemaGenerator</span><span class="p">.</span><span class="na">TypeOverwrites</span><span class="p">.</span><span class="na">LocalDateTime</span><span class="p">())</span>
+<span class="w">            </span><span class="n">overwrite</span><span class="p">(</span><span class="n">SchemaGenerator</span><span class="p">.</span><span class="na">TypeOverwrites</span><span class="p">.</span><span class="na">File</span><span class="p">())</span>
+<span class="w">            </span><span class="c1">// ...</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Available pre-built overwrites:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Overwrite</th>
+<th>Schema Type</th>
+<th>Schema Format</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>java.util.UUID</code></td>
+<td><code>TypeOverwrites.JavaUuid()</code></td>
+<td>string</td>
+<td>uuid</td>
+</tr>
+<tr>
+<td><code>kotlin.uuid.Uuid</code></td>
+<td><code>TypeOverwrites.KotlinUuid()</code></td>
+<td>string</td>
+<td>uuid</td>
+</tr>
+<tr>
+<td><code>java.io.File</code></td>
+<td><code>TypeOverwrites.File()</code></td>
+<td>string</td>
+<td>binary</td>
+</tr>
+<tr>
+<td><code>java.time.Instant</code></td>
+<td><code>TypeOverwrites.Instant()</code></td>
+<td>string</td>
+<td>date-time</td>
+</tr>
+<tr>
+<td><code>java.time.LocalDateTime</code></td>
+<td><code>TypeOverwrites.LocalDateTime()</code></td>
+<td>string</td>
+<td>date-time</td>
+</tr>
+<tr>
+<td><code>java.time.LocalDate</code></td>
+<td><code>TypeOverwrites.LocalDate()</code></td>
+<td>string</td>
+<td>date</td>
+</tr>
+</tbody>
+</table>
+<p>These overwrites ensure standard library types generate schemas with appropriate formats that match common API patterns.</p>
+<h2 id="creating-custom-analyzers-for-types">Creating Custom Analyzers for types</h2>
+<p>Analyzers examine Kotlin types and produce type data describing its structure.. Custom analyzers can handle types that don't work correctly with default
+analysis or require special treatment.</p>
+<p>A simplified version of an analyzer can be registered for a given type:</p>
+<div class="highlight"><pre><span></span><code><span class="n">install</span><span class="p">(</span><span class="n">OpenApi</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">schemas</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">generator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SchemaGenerator</span><span class="p">.</span><span class="na">reflection</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">            </span><span class="n">customAnalyzer</span><span class="o">&lt;</span><span class="n">EmailAddress</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">typeId</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="c1">// (1)!</span>
+<span class="w">                </span><span class="n">TypeData</span><span class="p">(</span><span class="w"> </span><span class="c1">// (2)!</span>
+<span class="w">                    </span><span class="n">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">typeId</span><span class="p">,</span><span class="w"> </span><span class="c1">// (3)!</span>
+<span class="w">                    </span><span class="n">descriptiveName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TypeName</span><span class="p">(</span><span class="w"> </span><span class="c1">//(4)!</span>
+<span class="w">                        </span><span class="n">full</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">EmailAddress</span><span class="o">::</span><span class="n">class</span><span class="p">.</span><span class="na">qualifiedName</span><span class="o">!!</span><span class="p">,</span>
+<span class="w">                        </span><span class="n">short</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">EmailAddress</span><span class="o">::</span><span class="n">class</span><span class="p">.</span><span class="na">simpleName</span><span class="o">!!</span><span class="p">,</span>
+<span class="w">                    </span><span class="p">),</span>
+<span class="w">                    </span><span class="n">identifyingName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TypeName</span><span class="p">(</span><span class="w"> </span><span class="c1">//(5)!</span>
+<span class="w">                        </span><span class="n">full</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">String</span><span class="o">::</span><span class="n">class</span><span class="p">.</span><span class="na">qualifiedName</span><span class="o">!!</span><span class="p">,</span>
+<span class="w">                        </span><span class="n">short</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">String</span><span class="o">::</span><span class="n">class</span><span class="p">.</span><span class="na">simpleName</span><span class="o">!!</span><span class="p">,</span>
+<span class="w">                    </span><span class="p">),</span>
+<span class="w">                    </span><span class="n">annotations</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mutableListOf</span><span class="p">(</span>
+<span class="w">                        </span><span class="n">AnnotationData</span><span class="p">(</span><span class="w"> </span><span class="c1">//(6)!</span>
+<span class="w">                            </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Format</span><span class="o">::</span><span class="n">class</span><span class="p">.</span><span class="na">qualifiedName</span><span class="o">!!</span><span class="p">,</span>
+<span class="w">                            </span><span class="n">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mutableMapOf</span><span class="p">(</span><span class="s">&quot;format&quot;</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="s">&quot;email&quot;</span><span class="p">)</span>
+<span class="w">                        </span><span class="p">)</span>
+<span class="w">                    </span><span class="p">)</span>
+<span class="w">                </span><span class="p">)</span>
+<span class="w">            </span><span class="p">}</span>
+
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ol>
+<li>Register a new (simplified) analyzer for type <code>EmailAddress</code>. Different registration functions with different parameters exist.</li>
+<li>Build a new <code>TypeData</code> for the specified type. <code>TypeData</code> contains all information used to generate a final schema.</li>
+<li>Every <code>TypeData</code> has a unique id. Always use the provided one for custom analyzer.</li>
+<li>Define a descriptive name. This does not have an impact on the final schema except for titles and reference paths.</li>
+<li>Define an identifying name. This name directly influences the type of the final schema.</li>
+<li>Add the schema-kenerator <code>@Format</code> annotation to specify the <code>email</code> format.</li>
+</ol>
+<p>This results in the following schema for <code>EmailAddress</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;format&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;email&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;title&quot;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;EmailAddress&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>More complex and powerful analyzers can be created by overwriting and registering a <code>ReflectionTypeAnalyzerModule</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nc">ProxyCustomAnalyzer</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">ReflectionTypeAnalyzerModule</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">//(1)!</span>
+
+<span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">applies</span><span class="p">(</span><span class="n">type</span><span class="p">:</span><span class="w"> </span><span class="n">KType</span><span class="p">,</span><span class="w"> </span><span class="n">clazz</span><span class="p">:</span><span class="w"> </span><span class="n">KClass</span><span class="o">&lt;*&gt;</span><span class="p">):</span><span class="w"> </span><span class="kt">Boolean</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">typeOf</span><span class="o">&lt;</span><span class="n">EmailAddress</span><span class="o">&gt;</span><span class="p">()</span><span class="w">  </span><span class="c1">//(2)!</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">preAnalyze</span><span class="p">(</span><span class="n">context</span><span class="p">:</span><span class="w"> </span><span class="n">ReflectionTypeAnalyzerModule</span><span class="p">.</span><span class="na">Context</span><span class="p">):</span><span class="w"> </span><span class="n">MinimalTypeData</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">MinimalTypeData</span><span class="p">(</span><span class="w">  </span><span class="c1">//(3)!</span>
+<span class="w">            </span><span class="n">identifyingName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TypeName</span><span class="p">(</span>
+<span class="w">                </span><span class="n">full</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="na">clazz</span><span class="p">.</span><span class="na">qualifiedName</span><span class="w"> </span><span class="o">?:</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="na">clazz</span><span class="p">.</span><span class="na">java</span><span class="p">.</span><span class="na">name</span><span class="p">,</span>
+<span class="w">                </span><span class="n">short</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="na">clazz</span><span class="p">.</span><span class="na">simpleName</span><span class="w"> </span><span class="o">?:</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="na">clazz</span><span class="p">.</span><span class="na">java</span><span class="p">.</span><span class="na">name</span>
+<span class="w">            </span><span class="p">),</span>
+<span class="w">            </span><span class="n">descriptiveName</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">TypeName</span><span class="p">(</span>
+<span class="w">                </span><span class="n">full</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="na">clazz</span><span class="p">.</span><span class="na">qualifiedName</span><span class="w"> </span><span class="o">?:</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="na">clazz</span><span class="p">.</span><span class="na">java</span><span class="p">.</span><span class="na">name</span><span class="p">,</span>
+<span class="w">                </span><span class="n">short</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="na">clazz</span><span class="p">.</span><span class="na">simpleName</span><span class="w"> </span><span class="o">?:</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="na">clazz</span><span class="p">.</span><span class="na">java</span><span class="p">.</span><span class="na">name</span>
+<span class="w">            </span><span class="p">),</span>
+<span class="w">            </span><span class="n">typeParameters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">emptyList</span><span class="p">()</span>
+<span class="w">        </span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">analyze</span><span class="p">(</span>
+<span class="w">        </span><span class="n">context</span><span class="p">:</span><span class="w"> </span><span class="n">ReflectionTypeAnalyzerModule</span><span class="p">.</span><span class="na">Context</span><span class="p">,</span>
+<span class="w">        </span><span class="n">minimalTypeData</span><span class="p">:</span><span class="w"> </span><span class="n">MinimalTypeData</span>
+<span class="w">    </span><span class="p">):</span><span class="w"> </span><span class="n">WrappedTypeData</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Analyzing </span><span class="si">${</span><span class="n">minimalTypeData</span><span class="p">.</span><span class="na">descriptiveName</span><span class="p">.</span><span class="na">full</span><span class="si">}</span><span class="s">!&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">context</span><span class="p">.</span><span class="na">analyze</span><span class="p">(</span><span class="n">typeOf</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span><span class="p">(),</span><span class="w"> </span><span class="kt">String</span><span class="o">::</span><span class="n">class</span><span class="p">)</span><span class="w">  </span><span class="c1">//(4)!</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="p">}</span>
+
+<span class="n">generator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SchemaGenerator</span><span class="p">.</span><span class="na">reflection</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">customAnalyzer</span><span class="p">(</span><span class="n">ProxyCustomAnalyzer</span><span class="p">())</span><span class="w">  </span><span class="c1">//(5)!</span>
+<span class="p">}</span>
+</code></pre></div>
+<ol>
+<li>Implement <code>ReflectionTypeAnalyzerModule</code> or <code>SerializationTypeAnalyzerModule</code>.</li>
+<li>Determine for which types this analyzer applies to - only <code>EmailAddress</code> in this case.</li>
+<li>Provide some basic information about the type in the first step.</li>
+<li>Full analysis step. Context provides complete analysis data and functionality. In this case, a <code>String</code> is analyzed instead of <code>EmailAddress</code>.</li>
+<li>Register the custom analyzer. Registration works the same for reflection and kotlinx.serialization. </li>
+</ol>
+<p>Custom analyzers are evaluated in registration order. When a type matches multiple analyzers, the last registered analyzer is used.</p>
+<p>Full type analysis capabilities can be accessed via the provided <code>Context</code> object, e.g. allowing for property types to be analyzed by the default analyzer using <code>context.analyze(...)</code>.</p>
+<h2 id="creating-custom-schema-generators-for-types">Creating Custom Schema Generators for types</h2>
+<p>Schema generators convert type data (produced by analyzers) into OpenAPI schemas. Custom generators can produce schemas with specific
+structures, validation rules, or formats.</p>
+<h3 id="implementing-a-custom-generator">Implementing a Custom Generator</h3>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span><span class="w"> </span><span class="nc">EmailAddressGenerator</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">SwaggerSchemaGenerationModule</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">//(1)!</span>
+
+<span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">applies</span><span class="p">(</span><span class="n">typeData</span><span class="p">:</span><span class="w"> </span><span class="n">TypeData</span><span class="p">):</span><span class="w"> </span><span class="kt">Boolean</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">typeData</span><span class="p">.</span><span class="na">descriptiveName</span><span class="p">.</span><span class="na">full</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">EmailAddress</span><span class="o">::</span><span class="n">class</span><span class="p">.</span><span class="na">qualifiedName</span><span class="o">!!</span><span class="w"> </span><span class="c1">//(2)!</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">override</span><span class="w"> </span><span class="kd">fun</span><span class="w"> </span><span class="nf">generate</span><span class="p">(</span><span class="n">context</span><span class="p">:</span><span class="w"> </span><span class="n">SwaggerSchemaGenerationModule</span><span class="p">.</span><span class="na">Context</span><span class="p">):</span><span class="w"> </span><span class="n">Schema</span><span class="o">&lt;*&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">Schema</span><span class="o">&lt;</span><span class="kt">Any</span><span class="o">&gt;</span><span class="p">().</span><span class="na">also</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">//(3)!</span>
+<span class="w">            </span><span class="nb">it</span><span class="p">.</span><span class="na">types</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">setOf</span><span class="p">(</span><span class="s">&quot;string&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="nb">it</span><span class="p">.</span><span class="na">format</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;email&quot;</span>
+<span class="w">            </span><span class="nb">it</span><span class="p">.</span><span class="na">pattern</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}</span><span class="err">$</span><span class="s">&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="p">}</span>
+
+
+<span class="n">install</span><span class="p">(</span><span class="n">OpenApi</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">schemas</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">generator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SchemaGenerator</span><span class="p">.</span><span class="na">reflection</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">customGenerator</span><span class="p">(</span><span class="n">EmailAddressGenerator</span><span class="p">())</span><span class="w"> </span><span class="c1">//(4)!</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<ol>
+<li>Implement <code>SwaggerSchemaGenerationModule</code>.</li>
+<li>Determine for which types this generator applies to - only <code>EmailAddress</code> in this case.</li>
+<li>Create the schema for the given type. The context object provides complete analysis data and functionality.</li>
+<li>Register the custom generator. Registration works the same for reflection and kotlinx.serialization.</li>
+</ol>
+<p>Multiple generators can be registered. They are evaluated in order until one returns a non-null schema.</p>
+<p>Full type analysis capabilities can be accessed via the provided <code>Context</code> object, e.g. allowing for property schemas to be generated by the default generator using <code>context.generate(...)</code>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "search.suggest", "search.share", "content.code.copy", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+    
+  </body>
+</html>
