@@ -1,5 +1,5 @@
 plugins {
-    kotlin("jvm") version "2.0.21"
+    kotlin("jvm") version "2.2.21"
     id("org.jetbrains.dokka") version "1.9.20" apply false
     id("org.owasp.dependencycheck") version "8.2.1" apply false
     id("io.gitlab.arturbosch.detekt") version "1.23.0" apply false
