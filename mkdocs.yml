@@ -14,6 +14,7 @@ repo_url: https://github.com/SMILEY4/ktor-openapi-tools
 nav:
     -   Home: index.md
     -   OpenAPI:
+            - openapi/index.md
             -   Getting Started: openapi/getting_started.md
             -   Plugin Configuration: openapi/plugin_configuration.md
             -   Providing OpenAPI Specification: openapi/providing_openapi_specification.md
@@ -32,11 +33,11 @@ nav:
                     -   Introduction To Examples: openapi/working_with_examples/examples_introduction.md
                     -   Global Examples: openapi/working_with_examples/global_examples.md
                     -   Configuring Example Encoding: openapi/working_with_examples/configuring_example_encoding.md
-            - Advanced Topics:
-                  - Multiple API Specifications: openapi/advanced_topics/multiple_openapi_specifications.md
-                  - Typesafe Routing Support: openapi/advanced_topics/typesafe_routing_support.md
-                  - Documenting Webhooks: openapi/advanced_topics/documenting_webhooks.md
-                  - Documenting Server-Sent Events: openapi/advanced_topics/documenting_sse_routes.md
+            -   Advanced Topics:
+                    -   Multiple API Specifications: openapi/advanced_topics/multiple_openapi_specifications.md
+                    -   Typesafe Routing Support: openapi/advanced_topics/typesafe_routing_support.md
+                    -   Documenting Webhooks: openapi/advanced_topics/documenting_webhooks.md
+                    -   Documenting Server-Sent Events: openapi/advanced_topics/documenting_sse_routes.md
             -   Troubleshooting & FAQ: openapi/troubleshooting_and_faq.md
             -   API Reference: dokka/ktor-openapi/index.html
     -   Swagger UI:
