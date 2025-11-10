@@ -5,6 +5,12 @@ search:
 
 # Changelog
 
+## 5.4.0
+
+- upgrade schema-kenerator from 2.4.0 to [2.5.0](https://github.com/SMILEY4/schema-kenerator/releases/tag/2.5.0)
+- support for ReDoc extensions `x-displayName` and `x-tagGroups` [#221](https://github.com/SMILEY4/ktor-openapi-tools/pull/221), [#219](https://github.com/SMILEY4/ktor-openapi-tools/pull/219)
+- complete overhaul of the documentation
+
 ## 5.3.0
 
 - fix kotlinx-serialization example encoding [#212](https://github.com/SMILEY4/ktor-openapi-tools/issues/212)
