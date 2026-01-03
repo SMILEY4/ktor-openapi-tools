@@ -60,6 +60,9 @@ dependencies {
     val versionMockk: String by project
     testImplementation("io.mockk:mockk:$versionMockk")
 
+    val versionLogback: String by project
+    testImplementation("ch.qos.logback:logback-classic:$versionLogback")
+
 }
 
 kotlin {
