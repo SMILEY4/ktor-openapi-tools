@@ -8,6 +8,7 @@ search:
 ## 5.5.0
 
 - added Jackson example encoder configured for use with Kotlin (now the new default)
+- upgrade schema-kenerator from 2.5.0 to [2.6.0](https://github.com/SMILEY4/schema-kenerator/releases/tag/2.6.0)
 - fix: kotlinx-serialization example encoding  [#226](https://github.com/SMILEY4/ktor-openapi-tools/pull/226)
 
 ## 5.4.0
