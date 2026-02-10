@@ -50,7 +50,7 @@ val format: OutputFormat = OpenApiPlugin.getOpenApiSpecFormat( // (2)!
 Specifications can be regenerated programmatically at any time.
 
 ```kotlin
-OpenApiPlugin.regenerateOpenApiSpec(OpenApiPluginConfig.DEFAULT_SPEC_ID) 
+OpenApiPlugin.generateOpenApiSpecs(OpenApiPluginConfig.DEFAULT_SPEC_ID) 
 ```
 
 This discards a previously created specification, collects all routes and information again and generates a new specification.
