@@ -1971,7 +1971,7 @@ collects route documentation, generates schemas for referenced types, encodes ex
 <li>Retrieve the format of the (default) specification (either JSON or YAML).</li>
 </ol>
 <p>Specifications can be regenerated programmatically at any time.</p>
-<div class="highlight"><pre><span></span><code><span class="n">OpenApiPlugin</span><span class="p">.</span><span class="na">regenerateOpenApiSpec</span><span class="p">(</span><span class="n">OpenApiPluginConfig</span><span class="p">.</span><span class="na">DEFAULT_SPEC_ID</span><span class="p">)</span><span class="w"> </span>
+<div class="highlight"><pre><span></span><code><span class="n">OpenApiPlugin</span><span class="p">.</span><span class="na">generateOpenApiSpecs</span><span class="p">(</span><span class="n">OpenApiPluginConfig</span><span class="p">.</span><span class="na">DEFAULT_SPEC_ID</span><span class="p">)</span><span class="w"> </span>
 </code></pre></div>
 <p>This discards a previously created specification, collects all routes and information again and generates a new specification.</p>
 <h2 id="output-format">Output Format</h2>

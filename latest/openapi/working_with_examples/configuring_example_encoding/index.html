@@ -1025,6 +1025,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#jackson-encoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Jackson Encoding
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#internal-encoding" class="md-nav__link">
     <span class="md-ellipsis">
       Internal Encoding
@@ -1906,6 +1915,15 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#jackson-encoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Jackson Encoding
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#internal-encoding" class="md-nav__link">
     <span class="md-ellipsis">
       Internal Encoding
@@ -1985,6 +2003,15 @@ The encoding process transforms Kotlin objects into JSON that can be embedded in
 <span class="p">}</span>
 </code></pre></div>
 <p>The plugin provides three built-in encoding options: internal encoding using Swagger's library, kotlinx.serialization-based encoding, and custom encoding logic.</p>
+<h3 id="jackson-encoding">Jackson Encoding</h3>
+<p>This encoder uses Jackson configured for use with kotlin to convert example values to JSON</p>
+<div class="highlight"><pre><span></span><code><span class="n">install</span><span class="p">(</span><span class="n">OpenApi</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">examples</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">encoder</span><span class="p">(</span><span class="n">ExampleEncoder</span><span class="p">.</span><span class="na">jackson</span><span class="p">())</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>This is the default encoder and usually requires no additional configuration.</p>
 <h3 id="internal-encoding">Internal Encoding</h3>
 <p>The internal encoder uses the Swagger library's built-in serialization:</p>
 <div class="highlight"><pre><span></span><code><span class="n">install</span><span class="p">(</span><span class="n">OpenApi</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -1993,7 +2020,7 @@ The encoding process transforms Kotlin objects into JSON that can be embedded in
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>This is the default encoder and requires no additional configuration. It usually uses Jackson internally to convert example values to JSON.</p>
+<p>It usually uses Jackson internally to convert example values to JSON.</p>
 <h3 id="kotlinxserialization-encoding">Kotlinx.Serialization Encoding</h3>
 <p>The kotlinx encoder uses kotlinx.serialization to encode examples:</p>
 <div class="highlight"><pre><span></span><code><span class="n">install</span><span class="p">(</span><span class="n">OpenApi</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>

@@ -1923,7 +1923,10 @@
 <span class="normal">106</span>
 <span class="normal">107</span>
 <span class="normal">108</span>
-<span class="normal">109</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">package</span><span class="w"> </span><span class="nn">io.github.smiley4.ktoropenapi.examples</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">package</span><span class="w"> </span><span class="nn">io.github.smiley4.ktoropenapi.examples</span>
 
 <span class="k">import</span><span class="w"> </span><span class="nn">io.github.smiley4.ktoropenapi.OpenApi</span>
 <span class="k">import</span><span class="w"> </span><span class="nn">io.github.smiley4.ktoropenapi.config.ExampleEncoder</span>
@@ -1982,6 +1985,9 @@
 <span class="w">        </span><span class="n">server</span><span class="w"> </span><span class="p">{</span>
 <span class="w">            </span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;https://www.example.com&quot;</span>
 <span class="w">            </span><span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Production Server&quot;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="n">examples</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">encoder</span><span class="p">(</span><span class="n">ExampleEncoder</span><span class="p">.</span><span class="na">jackson</span><span class="p">())</span>
 <span class="w">        </span><span class="p">}</span>
 <span class="w">    </span><span class="p">}</span>
 
