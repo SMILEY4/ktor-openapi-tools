@@ -1,5 +1,7 @@
 package io.github.smiley4.ktoropenapi.config
 
+import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import io.github.smiley4.ktoropenapi.config.descriptors.KTypeDescriptor
 import io.github.smiley4.ktoropenapi.config.descriptors.TypeDescriptor
 import kotlinx.serialization.json.Json
@@ -22,8 +24,17 @@ object ExampleEncoder {
     }
 
     /**
+     * [GenericExampleEncoder] using a Jackson mapper to encode example objects.
+     * @param json a jackson object mapper encoding objects to json. Set `null` to use a pre-configured object mapper.
+     */
+    fun jackson(json: ObjectMapper? = null): GenericExampleEncoder = { type, example ->
+        val mapper = json ?: jacksonObjectMapper()
+        mapper.writeValueAsString(example)
+    }
+
+    /**
      * [GenericExampleEncoder] using kotlinx-serialization to encode example objects.
-     * @param json the kotlinx json serializer to use for encoding objects to json. Set `null` to use default kotlinx json serializer.
+     * @param json a kotlinx json serializer to use for encoding objects to json. Set `null` to use default kotlinx json serializer.
      */
     fun kotlinx(json: Json? = null): GenericExampleEncoder = { type, example ->
         when(type) {
