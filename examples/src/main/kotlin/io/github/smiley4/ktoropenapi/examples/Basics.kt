@@ -58,6 +58,9 @@ private fun Application.myModule() {
             url = "https://www.example.com"
             description = "Production Server"
         }
+        examples {
+            encoder(ExampleEncoder.jackson())
+        }
     }
 
     routing {

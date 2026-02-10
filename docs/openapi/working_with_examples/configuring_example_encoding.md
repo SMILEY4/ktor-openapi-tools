@@ -46,6 +46,21 @@ install(OpenApi) {
 The plugin provides three built-in encoding options: internal encoding using Swagger's library, kotlinx.serialization-based encoding, and custom encoding logic.
 
 
+### Jackson Encoding
+
+This encoder uses Jackson configured for use with kotlin to convert example values to JSON
+
+```kotlin
+install(OpenApi) {
+    examples {
+        encoder(ExampleEncoder.jackson())
+    }
+}
+```
+
+This is the default encoder and usually requires no additional configuration.
+
+
 ### Internal Encoding
 
 The internal encoder uses the Swagger library's built-in serialization:
@@ -58,7 +73,7 @@ install(OpenApi) {
 }
 ```
 
-This is the default encoder and requires no additional configuration. It usually uses Jackson internally to convert example values to JSON.
+It usually uses Jackson internally to convert example values to JSON.
 
 
 ### Kotlinx.Serialization Encoding
