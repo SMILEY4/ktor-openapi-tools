@@ -14,7 +14,7 @@ internal class ExampleConfigData(
         val DEFAULT = ExampleConfigData(
             sharedExamples = emptyMap(),
             securityExamples = null,
-            exampleEncoder = ExampleEncoder.internal()
+            exampleEncoder = ExampleEncoder.jackson()
         )
     }
 

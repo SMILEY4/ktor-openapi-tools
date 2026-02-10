@@ -5,6 +5,11 @@ search:
 
 # Changelog
 
+## 5.5.0
+
+- added Jackson example encoder configured for use with Kotlin (now the new default)
+- fix: kotlinx-serialization example encoding  [#226](https://github.com/SMILEY4/ktor-openapi-tools/pull/226)
+
 ## 5.4.0
 
 - support for ReDoc extensions `x-displayName` and `x-tagGroups` [#221](https://github.com/SMILEY4/ktor-openapi-tools/pull/221), [#219](https://github.com/SMILEY4/ktor-openapi-tools/pull/219)
