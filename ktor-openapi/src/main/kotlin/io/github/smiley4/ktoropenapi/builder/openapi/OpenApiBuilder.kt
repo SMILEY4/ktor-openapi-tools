@@ -1,6 +1,7 @@
 package io.github.smiley4.ktoropenapi.builder.openapi
 
 import io.github.smiley4.ktoropenapi.builder.example.ExampleContext
+import io.github.smiley4.ktoropenapi.config.OpenApiVersion
 import io.github.smiley4.ktoropenapi.data.OpenApiPluginData
 import io.github.smiley4.ktoropenapi.builder.route.RouteMeta
 import io.github.smiley4.ktoropenapi.builder.schema.SchemaContext
@@ -26,8 +27,8 @@ internal class OpenApiBuilder(
 
     fun build(routes: Collection<RouteMeta>): OpenAPI {
         return OpenAPI().also {
-            it.specVersion = SpecVersion.V31
-            it.openapi = "3.1.0"
+            it.specVersion = if (config.openApiVersion == OpenApiVersion.V3_0) SpecVersion.V30 else SpecVersion.V31
+            it.openapi = if (config.openApiVersion == OpenApiVersion.V3_0) "3.0.3" else "3.1.0"
             it.info = infoBuilder.build(config.info)
             it.externalDocs = externalDocumentationBuilder.build(config.externalDocs)
             it.servers = config.servers.map { server -> serverBuilder.build(server) }
