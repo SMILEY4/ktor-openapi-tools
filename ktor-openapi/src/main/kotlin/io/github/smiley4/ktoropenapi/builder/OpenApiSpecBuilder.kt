@@ -97,9 +97,11 @@ internal class OpenApiSpecBuilder {
 
     /**
      * Transforms all schemas in the given [OpenAPI] object from OpenAPI 3.1 format to 3.0 format.
-     * The key difference is nullable handling:
-     * - 3.1 uses a type set, e.g. `types: {"string", "null"}`
-     * - 3.0 uses a single type string + a boolean flag, e.g. `type: "string", nullable: true`
+     * Handles the following differences:
+     * - Nullable: 3.1 uses a type set `types: {"string", "null"}`, 3.0 uses `type: "string", nullable: true`
+     * - Examples: 3.1 uses `examples: [val]` on schemas, 3.0 uses a single `example: val`
+     * - Exclusive bounds: 3.1 uses numeric `exclusiveMinimum`/`exclusiveMaximum`, 3.0 uses boolean flags alongside `minimum`/`maximum`
+     * - Content encoding: 3.1 uses `contentEncoding`/`contentMediaType`, 3.0 uses `format: "byte"`/`format: "binary"`
      */
     private fun transformSchemasTo30(openApi: OpenAPI) {
         val visited = mutableSetOf<Schema<*>>()
@@ -122,6 +124,9 @@ internal class OpenApiSpecBuilder {
     private fun transformSchema(schema: Schema<*>, visited: MutableSet<Schema<*>>) {
         if (!visited.add(schema)) return
         transformSchemaTypes(schema)
+        transformSchemaExamples(schema)
+        transformSchemaExclusiveBounds(schema)
+        transformSchemaContentEncoding(schema)
         schema.properties?.values?.forEach { transformSchema(it, visited) }
         schema.allOf?.forEach { transformSchema(it, visited) }
         schema.anyOf?.forEach { transformSchema(it, visited) }
@@ -152,6 +157,61 @@ internal class OpenApiSpecBuilder {
             }
         }
         schema.types = null
+    }
+
+    /**
+     * Transforms 3.1 schema-level `examples` (list) to a single 3.0 `example`.
+     * Takes the first element of the list and discards the rest.
+     */
+    @Suppress("UNCHECKED_CAST")
+    private fun transformSchemaExamples(schema: Schema<*>) {
+        val examples = schema.examples ?: return
+        if (examples.isEmpty()) return
+        if (schema.example == null) {
+            (schema as Schema<Any>).example = examples.first()
+        }
+        schema.examples = null
+    }
+
+    /**
+     * Transforms 3.1 numeric `exclusiveMinimum`/`exclusiveMaximum` to 3.0 boolean flags.
+     * - 3.1: `exclusiveMinimum: 7` (a number)
+     * - 3.0: `minimum: 7, exclusiveMinimum: true`
+     */
+    private fun transformSchemaExclusiveBounds(schema: Schema<*>) {
+        schema.exclusiveMinimumValue?.let { value ->
+            if (schema.minimum == null) schema.minimum = value
+            schema.exclusiveMinimum = true
+            schema.exclusiveMinimumValue = null
+        }
+        schema.exclusiveMaximumValue?.let { value ->
+            if (schema.maximum == null) schema.maximum = value
+            schema.exclusiveMaximum = true
+            schema.exclusiveMaximumValue = null
+        }
+    }
+
+    /**
+     * Transforms 3.1 `contentEncoding`/`contentMediaType` to 3.0 `format`.
+     * - `contentEncoding: "base64"` → `format: "byte"`
+     * - `contentMediaType: <any>` → `format: "binary"`
+     */
+    private fun transformSchemaContentEncoding(schema: Schema<*>) {
+        schema.contentEncoding?.let { encoding ->
+            if (schema.format == null) {
+                schema.format = when (encoding.lowercase()) {
+                    "base64", "base64url" -> "byte"
+                    else -> null
+                }
+            }
+            schema.contentEncoding = null
+        }
+        schema.contentMediaType?.let {
+            if (schema.format == null) {
+                schema.format = "binary"
+            }
+            schema.contentMediaType = null
+        }
     }
 
     private fun builder(
