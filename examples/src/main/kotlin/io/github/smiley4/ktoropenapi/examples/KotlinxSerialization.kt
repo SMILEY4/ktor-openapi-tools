@@ -42,7 +42,7 @@ private fun Application.myModule() {
         }
         examples {
             // configure the example encoder to encode kotlin objects using kotlinx-serializer
-            exampleEncoder = ExampleEncoder.jackson()
+            exampleEncoder = ExampleEncoder.kotlinx()
         }
     }
 
