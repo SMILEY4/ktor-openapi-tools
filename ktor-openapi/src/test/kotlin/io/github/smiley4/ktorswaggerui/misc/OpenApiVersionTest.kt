@@ -27,8 +27,10 @@ class OpenApiVersionTest {
     /** A data class with a nullable field — triggers the "null" type in schema-kenerator output. */
     data class NullableBody(val text: String?)
 
+
     /** A data class with exclusive min/max constraints — triggers exclusiveMinimumValue/exclusiveMaximumValue. */
     data class BoundedBody(@ExclusiveMin(1) @ExclusiveMax(100) val count: Int)
+
 
     @Test
     fun `default version is 3_1_0`() = versionTestApplication(OpenApiVersion.V3_1) { client ->
@@ -38,6 +40,7 @@ class OpenApiVersionTest {
         }
     }
 
+
     @Test
     fun `v3_0 json produces version string 3_0_3`() = versionTestApplication(OpenApiVersion.V3_0) { client ->
         client.get("/api.json").also { response ->
@@ -45,6 +48,7 @@ class OpenApiVersionTest {
             response.bodyAsText() shouldStartWith "{\n  \"openapi\" : \"3.0.3\","
         }
     }
+
 
     @Test
     fun `v3_0 yaml produces version string 3_0_3`() = versionTestApplication(OpenApiVersion.V3_0, OutputFormat.YAML) { client ->
@@ -54,6 +58,7 @@ class OpenApiVersionTest {
         }
     }
 
+
     @Test
     fun `v3_0 transforms nullable property types to nullable boolean`() = versionTestApplication(OpenApiVersion.V3_0) { client ->
         val body = client.get("/api.json").bodyAsText()
@@ -61,6 +66,7 @@ class OpenApiVersionTest {
         body shouldContain "\"nullable\" : true"
         body shouldNotContain "\"null\""
     }
+
 
     @Test
     fun `v3_1 keeps nullable property types as type array`() = versionTestApplication(OpenApiVersion.V3_1) { client ->
@@ -73,13 +79,15 @@ class OpenApiVersionTest {
     // --- exclusiveMinimum / exclusiveMaximum ---
 
     @Test
-    fun `v3_0 transforms exclusiveMinimumValue to boolean flag alongside minimum`() = versionTestApplication(OpenApiVersion.V3_0) { client ->
-        val body = client.get("/api.json").bodyAsText()
-        // BoundedBody.count has @ExclusiveMin(1) @ExclusiveMax(100)
-        // After 3.0 transform: exclusiveMinimum/Maximum are booleans, not numbers
-        body shouldContain "\"exclusiveMinimum\" : true"
-        body shouldContain "\"exclusiveMaximum\" : true"
-    }
+    fun `v3_0 transforms exclusiveMinimumValue to boolean flag alongside minimum`() =
+        versionTestApplication(OpenApiVersion.V3_0) { client ->
+            val body = client.get("/api.json").bodyAsText()
+            // BoundedBody.count has @ExclusiveMin(1) @ExclusiveMax(100)
+            // After 3.0 transform: exclusiveMinimum/Maximum are booleans, not numbers
+            body shouldContain "\"exclusiveMinimum\" : true"
+            body shouldContain "\"exclusiveMaximum\" : true"
+        }
+
 
     @Test
     fun `v3_1 keeps exclusiveMinimum as numeric value`() = versionTestApplication(OpenApiVersion.V3_1) { client ->
@@ -110,6 +118,7 @@ class OpenApiVersionTest {
         body shouldContain "\"example\" : \"example-value\""
         body shouldNotContain "\"examples\" : ["
     }
+
 
     @Test
     fun `v3_1 keeps schema examples list unchanged`() = versionTestApplication(
@@ -145,6 +154,7 @@ class OpenApiVersionTest {
         body shouldNotContain "\"contentEncoding\""
     }
 
+
     @Test
     fun `v3_1 keeps contentEncoding unchanged`() = versionTestApplication(
         version = OpenApiVersion.V3_1,
@@ -159,6 +169,7 @@ class OpenApiVersionTest {
         body shouldNotContain "\"format\" : \"byte\""
     }
 
+
     @Test
     fun `v3_0 transforms contentMediaType to format binary`() = versionTestApplication(
         version = OpenApiVersion.V3_0,
@@ -172,6 +183,7 @@ class OpenApiVersionTest {
         body shouldContain "\"format\" : \"binary\""
         body shouldNotContain "\"contentMediaType\""
     }
+
 
     @Test
     fun `v3_1 keeps contentMediaType unchanged`() = versionTestApplication(
