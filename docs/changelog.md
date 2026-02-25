@@ -5,6 +5,12 @@ search:
 
 # Changelog
 
+## 5.6.0
+
+- basic support for OpenAPI spec version 3.0 [231](https://github.com/SMILEY4/ktor-openapi-tools/pull/231)
+- fix: kotlinx-serialization example encoding  [#232](https://github.com/SMILEY4/ktor-openapi-tools/pull/232)
+
+
 ## 5.5.0
 
 - added Jackson example encoder configured for use with Kotlin (now the new default)
