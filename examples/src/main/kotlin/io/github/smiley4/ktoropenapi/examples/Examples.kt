@@ -1,7 +1,6 @@
 package io.github.smiley4.ktoropenapi.examples
 
 import io.github.smiley4.ktoropenapi.OpenApi
-import io.github.smiley4.ktoropenapi.config.ExampleEncoder
 import io.github.smiley4.ktoropenapi.config.descriptors.KTypeDescriptor
 import io.github.smiley4.ktoropenapi.get
 import io.github.smiley4.ktoropenapi.openApi
@@ -71,10 +70,10 @@ private fun Application.myModule() {
                 body<MyExampleClass> {
                     // specify two example values
                     example("Example 1") {
-                            description = "A first example value"
-                            value = MyExampleClass(
-                                someValue = "example 1"
-                            )
+                        description = "A first example value"
+                        value = MyExampleClass(
+                            someValue = "example 1"
+                        )
                     }
                     example("Example 2") {
                         description = "A second example value"
