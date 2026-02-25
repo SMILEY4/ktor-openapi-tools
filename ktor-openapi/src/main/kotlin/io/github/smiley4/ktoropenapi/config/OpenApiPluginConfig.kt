@@ -133,6 +133,13 @@ class OpenApiPluginConfig internal constructor() {
 
 
     /**
+     * The OpenAPI specification version to generate. Defaults to [OpenApiVersion.V3_1].
+     * Use [OpenApiVersion.V3_0] for compatibility with tools that do not yet support OpenAPI 3.1.
+     */
+    var openApiVersion: OpenApiVersion = OpenApiPluginData.DEFAULT.openApiVersion
+
+
+    /**
      * Invoked after generating the openapi-spec. Can be to e.g. further customize the spec.
      */
     var postBuild: PostBuild? = null
@@ -179,6 +186,7 @@ class OpenApiPluginConfig internal constructor() {
             specConfigs = mutableMapOf(),
             postBuild = merge(base.postBuild, postBuild),
             outputFormat = outputFormat,
+            openApiVersion = openApiVersion,
             rootPath = merge(rootPath ?: ktorRootPath, base.rootPath),
             autoDocumentResourcesRoutes = mergeBoolean(base.autoDocumentResourcesRoutes, autoDocumentResourcesRoutes),
         ).also {

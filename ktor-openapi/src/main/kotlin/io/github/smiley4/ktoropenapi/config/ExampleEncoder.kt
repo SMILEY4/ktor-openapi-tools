@@ -1,5 +1,6 @@
 package io.github.smiley4.ktoropenapi.config
 
+import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import io.github.smiley4.ktoropenapi.config.descriptors.KTypeDescriptor
@@ -29,7 +30,7 @@ object ExampleEncoder {
      */
     fun jackson(json: ObjectMapper? = null): GenericExampleEncoder = { type, example ->
         val mapper = json ?: jacksonObjectMapper()
-        mapper.writeValueAsString(example)
+        mapper.writeValueAsString(example).toStructuredJsonObject()
     }
 
     /**
@@ -41,11 +42,13 @@ object ExampleEncoder {
             is KTypeDescriptor -> {
                 val jsonEncoder = json ?: Json
                 val serializer = jsonEncoder.serializersModule.serializer(type.type)
-                jsonEncoder.encodeToString(serializer, example)
+                jsonEncoder.encodeToString(serializer, example).toStructuredJsonObject()
             }
             else -> example
         }
     }
+
+    fun String.toStructuredJsonObject() = jacksonObjectMapper().readValue(this, object : TypeReference<Any>() {})
 
 }
 

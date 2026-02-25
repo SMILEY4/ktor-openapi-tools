@@ -440,7 +440,7 @@ class OperationBuilderTest : StringSpec({
                     param.schema
                         .also { it.shouldNotBeNull() }
                         ?.also { it.type = "string" }
-                    param.example shouldBe "\"MyExample\""
+                    param.example shouldBe "MyExample"
                     param.examples shouldBe null
                     param.content shouldBe null
                     param.extensions shouldBe null
@@ -501,7 +501,7 @@ class OperationBuilderTest : StringSpec({
                                         ?.also { example ->
                                             example.summary shouldBe "the example 1"
                                             example.description shouldBe "the first example"
-                                            example.value shouldBe "\"MyExample1\""
+                                            example.value shouldBe "MyExample1"
                                             example.externalValue shouldBe null
                                             example.`$ref` shouldBe null
                                             example.extensions shouldBe null
@@ -525,7 +525,7 @@ class OperationBuilderTest : StringSpec({
                                         ?.also { example ->
                                             example.summary shouldBe "the example 1"
                                             example.description shouldBe "the first example"
-                                            example.value shouldBe "\"MyExample1\""
+                                            example.value shouldBe "MyExample1"
                                             example.externalValue shouldBe null
                                             example.`$ref` shouldBe null
                                             example.extensions shouldBe null
@@ -787,7 +787,7 @@ class OperationBuilderTest : StringSpec({
                             content.schema.`$ref` shouldBe "#/components/schemas/${SimpleObject::class.qualifiedName}"
                             val example = content.examples["Example 1"]
                             example.shouldNotBeNull()
-                            example.value shouldBeEqual "{\"text\":\"Some text\",\"number\":123}"
+                            example.value.toString() shouldBeEqual "{text=Some text, number=123}"
                         }
                     responses["default"]
                         .also { it.shouldNotBeNull() }

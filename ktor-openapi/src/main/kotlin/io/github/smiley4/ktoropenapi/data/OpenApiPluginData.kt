@@ -1,6 +1,7 @@
 package io.github.smiley4.ktoropenapi.data
 
 import io.github.smiley4.ktoropenapi.config.OpenApiPluginConfig
+import io.github.smiley4.ktoropenapi.config.OpenApiVersion
 import io.github.smiley4.ktoropenapi.config.OutputFormat
 import io.github.smiley4.ktoropenapi.config.PathFilter
 import io.github.smiley4.ktoropenapi.config.PostBuild
@@ -25,6 +26,7 @@ internal data class OpenApiPluginData(
     val securityConfig: SecurityData,
     val tagsConfig: TagsData,
     val outputFormat: OutputFormat,
+    val openApiVersion: OpenApiVersion,
     val rootPath: String?,
     val autoDocumentResourcesRoutes: Boolean,
 ) {
@@ -45,6 +47,7 @@ internal data class OpenApiPluginData(
             securityConfig = SecurityData.DEFAULT,
             tagsConfig = TagsData.DEFAULT,
             outputFormat = OutputFormat.JSON,
+            openApiVersion = OpenApiVersion.V3_1,
             rootPath = null,
             autoDocumentResourcesRoutes = false,
         )
