@@ -1941,11 +1941,9 @@
 <span class="normal">124</span>
 <span class="normal">125</span>
 <span class="normal">126</span>
-<span class="normal">127</span>
-<span class="normal">128</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">package</span><span class="w"> </span><span class="nn">io.github.smiley4.ktoropenapi.examples</span>
+<span class="normal">127</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">package</span><span class="w"> </span><span class="nn">io.github.smiley4.ktoropenapi.examples</span>
 
 <span class="k">import</span><span class="w"> </span><span class="nn">io.github.smiley4.ktoropenapi.OpenApi</span>
-<span class="k">import</span><span class="w"> </span><span class="nn">io.github.smiley4.ktoropenapi.config.ExampleEncoder</span>
 <span class="k">import</span><span class="w"> </span><span class="nn">io.github.smiley4.ktoropenapi.config.descriptors.KTypeDescriptor</span>
 <span class="k">import</span><span class="w"> </span><span class="nn">io.github.smiley4.ktoropenapi.get</span>
 <span class="k">import</span><span class="w"> </span><span class="nn">io.github.smiley4.ktoropenapi.openApi</span>
@@ -2015,10 +2013,10 @@
 <span class="w">                </span><span class="n">body</span><span class="o">&lt;</span><span class="n">MyExampleClass</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                    </span><span class="c1">// specify two example values</span>
 <span class="w">                    </span><span class="n">example</span><span class="p">(</span><span class="s">&quot;Example 1&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                            </span><span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;A first example value&quot;</span>
-<span class="w">                            </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MyExampleClass</span><span class="p">(</span>
-<span class="w">                                </span><span class="n">someValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;example 1&quot;</span>
-<span class="w">                            </span><span class="p">)</span>
+<span class="w">                        </span><span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;A first example value&quot;</span>
+<span class="w">                        </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MyExampleClass</span><span class="p">(</span>
+<span class="w">                            </span><span class="n">someValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;example 1&quot;</span>
+<span class="w">                        </span><span class="p">)</span>
 <span class="w">                    </span><span class="p">}</span>
 <span class="w">                    </span><span class="n">example</span><span class="p">(</span><span class="s">&quot;Example 2&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">                        </span><span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;A second example value&quot;</span>
