@@ -6,11 +6,29 @@ package io.github.smiley4.ktorswaggerui.config
  */
 class SwaggerUIConfig internal constructor() {
 
+    companion object {
+        private val defaultStaticResourcesPath: String by lazy {
+            val stream = SwaggerUIConfig::class.java.classLoader
+                .getResourceAsStream("META-INF/maven/org.webjars/swagger-ui/pom.properties")
+                ?: error("Could not find META-INF/maven/org.webjars/swagger-ui/pom.properties in classpath")
+            val props = java.util.Properties().apply { load(stream) }
+            val version = props.getProperty("version")
+                ?: error("Could not extract swagger-ui version from pom.properties")
+            val path = "/META-INF/resources/webjars/swagger-ui/$version"
+
+            SwaggerUIConfig::class.java.getResource("$path/index.html")
+                ?: error("Could not find $path/index.html in classpath. Check your swagger-ui webjars dependency.")
+
+            path
+        }
+    }
+
+
     /**
      * Path to the static resources for swagger-ui in the jar-file.
      * Version must match the version of the swagger-ui-webjars dependency.
      */
-    internal val staticResourcesPath: String = "/META-INF/resources/webjars/swagger-ui/5.17.14"
+    internal val staticResourcesPath: String = defaultStaticResourcesPath
 
     // DISPLAY ========================================
 
