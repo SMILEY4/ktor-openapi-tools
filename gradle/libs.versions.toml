@@ -15,24 +15,21 @@ mkdocs = "4.0.1"
 
 # Libraries
 kotlinx-serialization = "1.10.0"
-ktor = "3.3.2"
-schema-kenerator = "2.6.0"
-swagger-parser = "2.1.24"
+ktor = "3.4.2"
+schema-kenerator = "2.7.2"
+swagger-parser = "2.1.39"
 kotlin-logging = "7.0.0"
 logback = "1.5.6"
-jackson = "2.18.1"
-kotest = "5.8.0"
-kotlin-test = "2.0.21"
+jackson = "3.1.1"
+kotest = "6.1.10"
 mockk = "1.13.12"
-webjars-redoc = "2.1.5"
-webjars-swaggerui = "5.17.14"
+webjars-redoc = "2.5.1"
+webjars-swaggerui = "5.32.4"
 
 [libraries]
 
 # Kotlin & Kotlinx
-kotlinx-serialization-core = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core-jvm", version.ref = "kotlinx-serialization" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
-kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
 
 # Ktor
 ktor-server-core-jvm = { module = "io.ktor:ktor-server-netty-jvm", version.ref = "ktor" }
@@ -62,12 +59,12 @@ kotlin-logging = { module = "io.github.oshai:kotlin-logging-jvm", version.ref = 
 logback = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
 
 # Misc
-jackson-kotlin = { module = "com.fasterxml.jackson.module:jackson-module-kotlin", version.ref = "jackson" }
+jackson-kotlin = { module = "tools.jackson.module:jackson-module-kotlin", version.ref = "jackson" }
 
 # Testing
 kotest-runner-junit5 = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
 kotest-assertions-core = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
-kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin-test" }
+kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 
 [plugins]
