@@ -1,15 +1,6 @@
-val projectGroupId: String by project
-val projectVersion: String by project
-group = projectGroupId
-version = projectVersion
-
 plugins {
-    kotlin("jvm")
-    kotlin("plugin.serialization") version "2.0.21"
-}
-
-repositories {
-    mavenCentral()
+    alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 dependencies {
@@ -17,37 +8,25 @@ dependencies {
     implementation(project(":ktor-swagger-ui"))
     implementation(project(":ktor-redoc"))
 
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.0")
+    implementation(libs.kotlinx.serialization.json)
 
-    val versionKtor: String by project
-    implementation("io.ktor:ktor-server-netty-jvm:$versionKtor")
-    implementation("io.ktor:ktor-server-content-negotiation:$versionKtor")
-    implementation("io.ktor:ktor-serialization-jackson:$versionKtor")
-    implementation("io.ktor:ktor-serialization-kotlinx-json:$versionKtor")
+    implementation(libs.ktor.server.netty.jvm)
+    implementation(libs.ktor.server.contentnegotiation)
+    implementation(libs.ktor.server.serialization.jackson)
+    implementation(libs.ktor.server.serialization.kotlinx.json)
+    implementation(libs.ktor.server.auth)
+    implementation(libs.ktor.server.calllogging)
+    implementation(libs.ktor.server.resources)
+    implementation(libs.ktor.server.test.host)
 
+    implementation(libs.schemakenerator.core)
+    implementation(libs.schemakenerator.reflection)
+    implementation(libs.schemakenerator.serialization)
+    implementation(libs.schemakenerator.swagger)
+    implementation(libs.schemakenerator.jackson)
 
-    implementation("io.ktor:ktor-server-auth:$versionKtor")
-    implementation("io.ktor:ktor-server-call-logging:$versionKtor")
-    implementation("io.ktor:ktor-server-test-host:$versionKtor")
-    implementation("io.ktor:ktor-server-resources:$versionKtor")
+    implementation(libs.swagger.parser)
 
-    val versionSchemaKenerator: String by project
-    implementation("io.github.smiley4:schema-kenerator-core:$versionSchemaKenerator")
-    implementation("io.github.smiley4:schema-kenerator-reflection:$versionSchemaKenerator")
-    implementation("io.github.smiley4:schema-kenerator-serialization:$versionSchemaKenerator")
-    implementation("io.github.smiley4:schema-kenerator-swagger:$versionSchemaKenerator")
-    implementation("io.github.smiley4:schema-kenerator-jackson:$versionSchemaKenerator")
-
-    val versionSwaggerParser: String by project
-    implementation("io.swagger.parser.v3:swagger-parser:$versionSwaggerParser")
-
-    val versionKotlinLogging: String by project
-    implementation("io.github.oshai:kotlin-logging-jvm:$versionKotlinLogging")
-
-    val versionLogback: String by project
-    implementation("ch.qos.logback:logback-classic:$versionLogback")
-}
-
-kotlin {
-    jvmToolchain(11)
+    implementation(libs.kotlin.logging)
+    implementation(libs.logback)
 }
