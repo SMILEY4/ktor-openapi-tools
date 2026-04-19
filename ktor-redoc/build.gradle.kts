@@ -1,73 +1,35 @@
-import com.vanniktech.maven.publish.JavadocJar
-import com.vanniktech.maven.publish.KotlinJvm
-import com.vanniktech.maven.publish.SonatypeHost
 import io.gitlab.arturbosch.detekt.Detekt
-import org.jetbrains.dokka.gradle.DokkaTask
-
-val projectGroupId: String by project
-val projectVersion: String by project
-group = projectGroupId
-version = projectVersion
+import org.gradle.kotlin.dsl.withType
 
 plugins {
-    kotlin("jvm")
-    id("org.owasp.dependencycheck")
-    id("com.github.ben-manes.versions")
-    id("io.gitlab.arturbosch.detekt")
-    id("com.vanniktech.maven.publish")
-    id("org.jetbrains.dokka")
-}
-
-repositories {
-    mavenCentral()
+    alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.dependencycheck)
+    alias(libs.plugins.detekt)
+    alias(libs.plugins.maven.publish)
+    alias(libs.plugins.dokka)
+    alias(libs.plugins.versions)
 }
 
 dependencies {
-    val versionKtor: String by project
-    implementation("io.ktor:ktor-server-core-jvm:$versionKtor")
-    implementation("io.ktor:ktor-server-content-negotiation:$versionKtor")
-    testImplementation("io.ktor:ktor-server-netty-jvm:$versionKtor")
-    testImplementation("io.ktor:ktor-server-content-negotiation:$versionKtor")
-    testImplementation("io.ktor:ktor-serialization-jackson:$versionKtor")
-    testImplementation("io.ktor:ktor-server-test-host:$versionKtor")
 
-    val versionRedoc: String by project
-    implementation("org.webjars:redoc:$versionRedoc")
+    implementation(libs.ktor.server.core.jvm)
+    implementation(libs.ktor.server.contentnegotiation)
 
-    val versionKotest: String by project
-    testImplementation("io.kotest:kotest-runner-junit5:$versionKotest")
-    testImplementation("io.kotest:kotest-assertions-core:$versionKotest")
+    testImplementation(libs.ktor.server.netty.jvm)
+    testImplementation(libs.ktor.server.serialization.jackson)
+    testImplementation(libs.ktor.server.test.host)
 
-    val versionKotlinTest: String by project
-    testImplementation("org.jetbrains.kotlin:kotlin-test:$versionKotlinTest")
+    implementation(libs.webjars.redoc)
+
+    testImplementation(libs.kotest.runner.junit5)
+    testImplementation(libs.kotest.assertions.core)
+    testImplementation(libs.kotlin.test)
 }
 
-kotlin {
-    jvmToolchain(11)
-}
-
-tasks.withType<Test>().configureEach {
-    useJUnitPlatform()
-}
-
-detekt {
-    ignoreFailures = false
-    buildUponDefaultConfig = true
-    allRules = false
-    config.setFrom("$projectDir/../detekt/detekt.yml")
-}
-tasks.withType<Detekt>().configureEach {
-    reports {
-        html.required.set(true)
-        md.required.set(true)
-        xml.required.set(false)
-        txt.required.set(false)
-        sarif.required.set(false)
+dokka {
+    dokkaPublications.html {
+        outputDirectory.set(file("$rootDir/docs/dokka/ktor-redoc"))
     }
-}
-
-tasks.withType<DokkaTask>().configureEach {
-    outputDirectory.set(file("$rootDir/docs/dokka/ktor-redoc"))
 }
 
 mavenPublishing {
@@ -80,14 +42,19 @@ mavenPublishing {
     val projectDeveloperName: String by project
     val projectDeveloperUrl: String by project
 
-    configure(KotlinJvm(JavadocJar.Dokka("dokkaHtml"), true))
+    configure(
+        com.vanniktech.maven.publish.KotlinJvm(
+            javadocJar = com.vanniktech.maven.publish.JavadocJar.Dokka("dokkaGenerateHtml")
+        )
+    )
+
     publishToMavenCentral(automaticRelease = true)
     signAllPublications()
     coordinates(projectGroupId, "ktor-redoc", projectVersion)
     pom {
         name.set("Ktor Redoc")
         description.set("Ktor plugin to provide Redoc")
-        url.set(projectBaseScmUrl +"ktor-redoc")
+        url.set(projectBaseScmUrl + "ktor-redoc")
         licenses {
             license {
                 name.set(projectLicenseName)

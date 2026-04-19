@@ -5,6 +5,22 @@ search:
 
 # Changelog
 
+## 5.7.0
+
+- make swagger-ui config version independent (automatically finds webjars) [#234](https://github.com/SMILEY4/ktor-openapi-tools/pull/234)
+- make redoc config version independent (automatically finds webjars)
+- upgrade dependencies
+    - ktor: `3.3.2` -> `3.4.2`
+    - schema-kenerator: 2.6.0`` -> `2.7.2`
+    - swagger-parser: `2.1.24` -> `2.1.39`
+    - jackson: `2.18.1` -> `3.1.1`
+    - kotlin-logging: `7.0.0` -> `8.0.01`
+    - logback: `1.5.6` -> `1.5.32`
+    - redoc (webjars): `2.1.5` -> `2.5.1`
+    - swagger-ui (webjars): `5.17.14` -> `5.32.4`
+    - Gradle Wrapper `8.10.2` -> `8.14.2`
+    - ... and some test dependencies and gradle plugins
+
 ## 5.6.0
 
 - basic support for OpenAPI spec version 3.0 [231](https://github.com/SMILEY4/ktor-openapi-tools/pull/231)

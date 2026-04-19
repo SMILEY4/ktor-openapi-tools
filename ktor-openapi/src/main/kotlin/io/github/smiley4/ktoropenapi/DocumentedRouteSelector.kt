@@ -32,6 +32,7 @@ class DocumentedRouteSelector(val documentation: RouteConfig) : RouteSelector() 
     override fun toString() = if (includeDocumentedRouteInRouteToString) super.toString() else ""
 }
 
+
 @KtorDsl
 fun Route.documentation(
     documentation: RouteConfig.() -> Unit = { },
@@ -54,6 +55,7 @@ fun Route.route(
     return documentation(builder) { route("", build) }
 }
 
+
 @KtorDsl
 fun Route.route(
     method: HttpMethod,
@@ -62,6 +64,7 @@ fun Route.route(
 ): Route {
     return documentation(builder) { route("", method, build) }
 }
+
 
 @KtorDsl
 fun Route.route(
@@ -72,6 +75,7 @@ fun Route.route(
     return documentation(builder) { route(path, build) }
 }
 
+
 @KtorDsl
 fun Route.route(
     path: String,
@@ -81,6 +85,7 @@ fun Route.route(
 ): Route {
     return documentation(builder) { route(path, method, build) }
 }
+
 
 @KtorDsl
 fun Route.method(
@@ -104,6 +109,7 @@ fun Route.get(
     return documentation(builder) { get(path, body) }
 }
 
+
 @KtorDsl
 fun Route.get(
     builder: RouteConfig.() -> Unit = { },
@@ -111,7 +117,6 @@ fun Route.get(
 ): Route {
     return documentation(builder) { get(body) }
 }
-
 
 //============================//
 //            POST            //
@@ -126,6 +131,7 @@ fun Route.post(
     return documentation(builder) { post(path, body) }
 }
 
+
 @KtorDsl
 @JvmName("postTyped")
 inline fun <reified R : Any> Route.post(
@@ -134,6 +140,7 @@ inline fun <reified R : Any> Route.post(
 ): Route {
     return documentation(builder) { post(body) }
 }
+
 
 @KtorDsl
 @JvmName("postTypedPath")
@@ -145,6 +152,7 @@ inline fun <reified R : Any> Route.post(
     return documentation(builder) { post(path, body) }
 }
 
+
 @KtorDsl
 fun Route.post(
     builder: RouteConfig.() -> Unit = { },
@@ -152,7 +160,6 @@ fun Route.post(
 ): Route {
     return documentation(builder) { post(body) }
 }
-
 
 //============================//
 //             PUT            //
@@ -167,6 +174,7 @@ fun Route.put(
     return documentation(builder) { put(path, body) }
 }
 
+
 @KtorDsl
 fun Route.put(
     builder: RouteConfig.() -> Unit = { },
@@ -174,6 +182,7 @@ fun Route.put(
 ): Route {
     return documentation(builder) { put(body) }
 }
+
 
 @KtorDsl
 @JvmName("putTyped")
@@ -184,6 +193,7 @@ inline fun <reified R : Any> Route.put(
     return documentation(builder) { put(body) }
 }
 
+
 @KtorDsl
 @JvmName("putTypedPath")
 inline fun <reified R : Any> Route.put(
@@ -193,7 +203,6 @@ inline fun <reified R : Any> Route.put(
 ): Route {
     return documentation(builder) { put(path, body) }
 }
-
 
 //============================//
 //           DELETE           //
@@ -208,6 +217,7 @@ fun Route.delete(
     return documentation(builder) { delete(path, body) }
 }
 
+
 @KtorDsl
 fun Route.delete(
     builder: RouteConfig.() -> Unit = { },
@@ -215,7 +225,6 @@ fun Route.delete(
 ): Route {
     return documentation(builder) { delete(body) }
 }
-
 
 //============================//
 //            PATCH           //
@@ -230,6 +239,7 @@ fun Route.patch(
     return documentation(builder) { patch(path, body) }
 }
 
+
 @KtorDsl
 fun Route.patch(
     builder: RouteConfig.() -> Unit = { },
@@ -237,6 +247,7 @@ fun Route.patch(
 ): Route {
     return documentation(builder) { patch(body) }
 }
+
 
 @JvmName("patchTyped")
 inline fun <reified R : Any> Route.patch(
@@ -247,6 +258,7 @@ inline fun <reified R : Any> Route.patch(
 
 }
 
+
 @JvmName("patchTypedPath")
 inline fun <reified R : Any> Route.patch(
     path: String,
@@ -255,7 +267,6 @@ inline fun <reified R : Any> Route.patch(
 ): Route {
     return documentation(builder) { patch(path, body) }
 }
-
 
 //============================//
 //           OPTIONS          //
@@ -270,6 +281,7 @@ fun Route.options(
     return documentation(builder) { options(path, body) }
 }
 
+
 @KtorDsl
 fun Route.options(
     builder: RouteConfig.() -> Unit = { },
@@ -277,7 +289,6 @@ fun Route.options(
 ): Route {
     return documentation(builder) { options(body) }
 }
-
 
 //============================//
 //            HEAD            //
@@ -292,6 +303,7 @@ fun Route.head(
     return documentation(builder) { head(path, body) }
 }
 
+
 @KtorDsl
 fun Route.head(
     builder: RouteConfig.() -> Unit = { },
@@ -300,13 +312,12 @@ fun Route.head(
     return documentation(builder) { head(body) }
 }
 
-
 //===============================//
 //            WEBHOOK            //
 //===============================//
 
 internal val webhooks = mutableMapOf<String, Pair<HttpMethod, RouteConfig>>()
 
-fun webhook(method: HttpMethod, name: String, builder: RouteConfig.() -> Unit = { },) {
+fun webhook(method: HttpMethod, name: String, builder: RouteConfig.() -> Unit = { }) {
     webhooks[name] = method to RouteConfig().apply(builder)
 }
