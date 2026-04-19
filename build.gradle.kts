@@ -1,15 +1,74 @@
+import io.gitlab.arturbosch.detekt.Detekt
+import org.gradle.kotlin.dsl.withType
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.dsl.KotlinJvmProjectExtension
+
 plugins {
-    kotlin("jvm") version "2.2.21"
-    id("org.jetbrains.dokka") version "1.9.20" apply false
-    id("org.owasp.dependencycheck") version "8.2.1" apply false
-    id("io.gitlab.arturbosch.detekt") version "1.23.0" apply false
-    id("com.vanniktech.maven.publish") version "0.33.0" apply false
-    id("com.github.ben-manes.versions") version "0.51.0" apply false
-    id("ru.vyarus.mkdocs") version "4.0.1"
+    alias(libs.plugins.kotlin.jvm) apply false
+    alias(libs.plugins.dokka) apply false
+    alias(libs.plugins.dependencycheck) apply false
+    alias(libs.plugins.detekt) apply false
+    alias(libs.plugins.maven.publish) apply false
+    alias(libs.plugins.versions) apply false
+    alias(libs.plugins.mkdocs)
 }
 
-repositories {
-    mavenCentral()
+subprojects {
+
+    val projectGroupId: String by project
+    val projectVersion: String by project
+    group = projectGroupId
+    version = projectVersion
+
+    repositories {
+        mavenCentral()
+    }
+
+    plugins.withId("org.jetbrains.kotlin.jvm") {
+
+        val versionJvmCompile = libs.versions.jvm.compile.get().toInt()
+        val versionJvmTarget = libs.versions.jvm.target.get()
+
+        // Kotlin Toolchain
+        extensions.configure<KotlinJvmProjectExtension> {
+            jvmToolchain(versionJvmCompile)
+            compilerOptions {
+                jvmTarget.set(JvmTarget.fromTarget(versionJvmTarget))
+            }
+        }
+
+        // Java Toolchain
+        extensions.configure<JavaPluginExtension> {
+            toolchain {
+                languageVersion.set(JavaLanguageVersion.of(versionJvmCompile))
+            }
+        }
+
+        // JVM Compatibility
+        tasks.withType<JavaCompile>().configureEach {
+            sourceCompatibility = versionJvmTarget
+            targetCompatibility = versionJvmTarget
+        }
+    }
+
+    tasks.withType<Test>().configureEach {
+        useJUnitPlatform()
+    }
+
+    tasks.withType<Detekt>().configureEach {
+        ignoreFailures = false
+        buildUponDefaultConfig = true
+        allRules = false
+        config.setFrom("$rootDir/detekt/detekt.yml")
+        reports {
+            html.required.set(true)
+            md.required.set(true)
+            xml.required.set(false)
+            txt.required.set(false)
+            sarif.required.set(false)
+        }
+    }
+
 }
 
 mkdocs {

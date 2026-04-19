@@ -5,6 +5,12 @@ search:
 
 # Changelog
 
+## 5.7.0
+
+- upgrade Gradle Wrapper `8.10.2` -> `8.14.2`
+- upgrade some Gradle plugins
+- core: clean up Gradle configs
+
 ## 5.6.0
 
 - basic support for OpenAPI spec version 3.0 [231](https://github.com/SMILEY4/ktor-openapi-tools/pull/231)

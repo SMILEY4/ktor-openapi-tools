@@ -1,0 +1,89 @@
+[versions]
+
+# Language & Build
+kotlin = "2.2.21"
+jvm-compile = "21"
+jvm-target = "11"
+
+# Plugins
+dokka = "2.2.0"
+detekt = "1.23.8"
+dependencycheck = "12.2.0"
+maven-publish = "0.36.0"
+versions-plugin = "0.53.0"
+mkdocs = "4.0.1"
+
+# Libraries
+kotlinx-serialization = "1.10.0"
+ktor = "3.3.2"
+schema-kenerator = "2.6.0"
+swagger-parser = "2.1.24"
+kotlin-logging = "7.0.0"
+logback = "1.5.6"
+jackson = "2.18.1"
+kotest = "5.8.0"
+kotlin-test = "2.0.21"
+mockk = "1.13.12"
+webjars-redoc = "2.1.5"
+webjars-swaggerui = "5.17.14"
+
+[libraries]
+
+# Kotlin & Kotlinx
+kotlinx-serialization-core = { module = "org.jetbrains.kotlinx:kotlinx-serialization-core-jvm", version.ref = "kotlinx-serialization" }
+kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
+kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
+
+# Ktor
+ktor-server-core-jvm = { module = "io.ktor:ktor-server-netty-jvm", version.ref = "ktor" }
+ktor-server-netty-jvm = { module = "io.ktor:ktor-server-netty-jvm", version.ref = "ktor" }
+ktor-server-contentnegotiation = { module = "io.ktor:ktor-server-content-negotiation", version.ref = "ktor" }
+ktor-server-serialization-jackson = { module = "io.ktor:ktor-serialization-jackson", version.ref = "ktor" }
+ktor-server-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+ktor-server-auth = { module = "io.ktor:ktor-server-auth", version.ref = "ktor" }
+ktor-server-calllogging = { module = "io.ktor:ktor-server-call-logging", version.ref = "ktor" }
+ktor-server-resources = { module = "io.ktor:ktor-server-resources", version.ref = "ktor" }
+ktor-server-test-host = { module = "io.ktor:ktor-server-test-host", version.ref = "ktor" }
+
+# schema-kenerator
+schemakenerator-core = { module = "io.github.smiley4:schema-kenerator-core", version.ref = "schema-kenerator" }
+schemakenerator-reflection = { module = "io.github.smiley4:schema-kenerator-reflection", version.ref = "schema-kenerator" }
+schemakenerator-serialization = { module = "io.github.smiley4:schema-kenerator-serialization", version.ref = "schema-kenerator" }
+schemakenerator-swagger = { module = "io.github.smiley4:schema-kenerator-swagger", version.ref = "schema-kenerator" }
+schemakenerator-jackson = { module = "io.github.smiley4:schema-kenerator-jackson", version.ref = "schema-kenerator" }
+
+# OpenAPI
+swagger-parser = { module = "io.swagger.parser.v3:swagger-parser", version.ref = "swagger-parser" }
+webjars-redoc = { module = "org.webjars:redoc", version.ref = "webjars-redoc" }
+webjars-swaggerui = { module = "org.webjars:swagger-ui", version.ref = "webjars-swaggerui" }
+
+# Logging
+kotlin-logging = { module = "io.github.oshai:kotlin-logging-jvm", version.ref = "kotlin-logging" }
+logback = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
+
+# Misc
+jackson-kotlin = { module = "com.fasterxml.jackson.module:jackson-module-kotlin", version.ref = "jackson" }
+
+# Testing
+kotest-runner-junit5 = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
+kotest-assertions-core = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
+kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin-test" }
+mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
+
+[plugins]
+
+# Kotlin
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+
+# Code Quality & Documentation
+dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
+dependencycheck = { id = "org.owasp.dependencycheck", version.ref = "dependencycheck" }
+
+# Publishing
+maven-publish = { id = "com.vanniktech.maven.publish", version.ref = "maven-publish" }
+
+# Utilities
+versions = { id = "com.github.ben-manes.versions", version.ref = "versions-plugin" }
+mkdocs = { id = "ru.vyarus.mkdocs", version.ref = "mkdocs" }
