@@ -1,403 +1,464 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>SwaggerUIConfig</title>
     <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
-    <script>var pathToRoot = "../../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+        <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
-<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
 <link href="../../../styles/style.css" rel="Stylesheet">
 <link href="../../../styles/main.css" rel="Stylesheet">
 <link href="../../../styles/prism.css" rel="Stylesheet">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
-<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
 <script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
-<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
 </head>
 <body>
-    <div class="root">
-<nav class="navigation" id="navigation-wrapper">
-    <div class="navigation--inner">
-        <div class="navigation-title">
-            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
-            <div class="library-name">
-                    <a class="library-name--link" href="../../../index.html">
-                            ktor-swagger-ui
-                    </a>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../../index.html" tabindex="1">
+                    ktor-swagger-ui
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+5.7.0        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
+                        data-filter=":ktor-swagger-ui/main">jvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":ktor-swagger-ui/main"
+                                       data-filter=":ktor-swagger-ui/main"/>
+                                <span class="checkbox--icon"></span>
+                                jvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div class="library-version">
-5.6.0            </div>
-        </div>
-        <div class="filter-section" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":ktor-swagger-ui:dokkaHtml/main">jvm</button>
-        </div>
-    </div>
-    <div class="navigation-controls">
-        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
-        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
-    </div>
-</nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="sidebar--inner" id="sideMenu"></div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
             </div>
-            <div id="main">
-<div class="main-content" data-page-type="classlike" id="content" pageIds="ktor-swagger-ui::io.github.smiley4.ktorswaggerui.config/SwaggerUIConfig///PointingToDeclaration//709432301">
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    ktor-swagger-ui
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="ktor-swagger-ui::io.github.smiley4.ktorswaggerui.config/SwaggerUIConfig///PointingToDeclaration//-1769056698">
   <div class="breadcrumbs"><a href="../../../index.html">ktor-swagger-ui</a><span class="delimiter">/</span><a href="../index.html">io.github.smiley4.ktorswaggerui.config</a><span class="delimiter">/</span><span class="current">SwaggerUIConfig</span></div>
   <div class="cover ">
     <h1 class="cover"><span>Swagger</span><wbr></wbr><span><span>UIConfig</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-swagger-ui:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">SwaggerUIConfig</a></div><p class="paragraph">Configuration for the swagger ui. See <a href="https://swagger.io/docs/open-source-tools/swagger-ui/usage/configuration">Configuration | Swagger Docs</a></p></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-swagger-ui/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">SwaggerUIConfig</a></div><p class="paragraph">Configuration for the swagger ui. See <a href="https://swagger.io/docs/open-source-tools/swagger-ui/usage/configuration">Configuration | Swagger Docs</a></p></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
     <div class="tabs-section-body">
+      <div data-togglable="TYPE">
+        <h2 class="tableheader">Types</h2>
+        <div class="table"><a data-name="1319567574%2FClasslikes%2F-1769056698" anchor-label="Companion" id="1319567574%2FClasslikes%2F-1769056698" data-filterable-set=":ktor-swagger-ui/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-swagger-ui/main" data-filterable-set=":ktor-swagger-ui/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1319567574%2FClasslikes%2F-1769056698"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-swagger-ui/main"><div class="symbol monospace"><span class="token keyword">object </span><a href="-companion/index.html">Companion</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div data-togglable="PROPERTY">
-        <h2 class="">Properties</h2>
-        <div class="table"><a data-name="-650390669%2FProperties%2F709432301" anchor-label="deepLinking" id="-650390669%2FProperties%2F709432301" data-filterable-set=":ktor-swagger-ui:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-swagger-ui:dokkaHtml/main" data-filterable-set=":ktor-swagger-ui:dokkaHtml/main">
+        <h2 class="tableheader">Properties</h2>
+        <div class="table"><a data-name="-650390669%2FProperties%2F-1769056698" anchor-label="deepLinking" id="-650390669%2FProperties%2F-1769056698" data-filterable-set=":ktor-swagger-ui/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-swagger-ui/main" data-filterable-set=":ktor-swagger-ui/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="deep-linking.html"><span>deep</span><wbr></wbr><span><span>Linking</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-650390669%2FProperties%2F709432301"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-650390669%2FProperties%2F-1769056698"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-swagger-ui:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="deep-linking.html">deepLinking</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">If set to true, enables deep linking for tags and operations.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-swagger-ui/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="deep-linking.html">deepLinking</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">If set to true, enables deep linking for tags and operations.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1267034770%2FProperties%2F709432301" anchor-label="defaultModelExpandDepth" id="-1267034770%2FProperties%2F709432301" data-filterable-set=":ktor-swagger-ui:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-swagger-ui:dokkaHtml/main" data-filterable-set=":ktor-swagger-ui:dokkaHtml/main">
+<a data-name="-1267034770%2FProperties%2F-1769056698" anchor-label="defaultModelExpandDepth" id="-1267034770%2FProperties%2F-1769056698" data-filterable-set=":ktor-swagger-ui/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-swagger-ui/main" data-filterable-set=":ktor-swagger-ui/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="default-model-expand-depth.html"><span>default</span><wbr></wbr><span>Model</span><wbr></wbr><span>Expand</span><wbr></wbr><span><span>Depth</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1267034770%2FProperties%2F709432301"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1267034770%2FProperties%2F-1769056698"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-swagger-ui:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="default-model-expand-depth.html">defaultModelExpandDepth</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-number/index.html">Number</a></div><div class="brief "><p class="paragraph">The default expansion depth for the model on the model-example section.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-swagger-ui/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="default-model-expand-depth.html">defaultModelExpandDepth</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-number/index.html">Number</a></div><div class="brief "><p class="paragraph">The default expansion depth for the model on the model-example section.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-370301907%2FProperties%2F709432301" anchor-label="defaultModelsExpandDepth" id="-370301907%2FProperties%2F709432301" data-filterable-set=":ktor-swagger-ui:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-swagger-ui:dokkaHtml/main" data-filterable-set=":ktor-swagger-ui:dokkaHtml/main">
+<a data-name="-370301907%2FProperties%2F-1769056698" anchor-label="defaultModelsExpandDepth" id="-370301907%2FProperties%2F-1769056698" data-filterable-set=":ktor-swagger-ui/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-swagger-ui/main" data-filterable-set=":ktor-swagger-ui/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="default-models-expand-depth.html"><span>default</span><wbr></wbr><span>Models</span><wbr></wbr><span>Expand</span><wbr></wbr><span><span>Depth</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-370301907%2FProperties%2F709432301"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-370301907%2FProperties%2F-1769056698"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-swagger-ui:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="default-models-expand-depth.html">defaultModelsExpandDepth</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-number/index.html">Number</a></div><div class="brief "><p class="paragraph">The default expansion depth for models (set to -1 completely hide the models).</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-swagger-ui/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="default-models-expand-depth.html">defaultModelsExpandDepth</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-number/index.html">Number</a></div><div class="brief "><p class="paragraph">The default expansion depth for models (set to -1 completely hide the models).</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1449862805%2FProperties%2F709432301" anchor-label="displayOperationId" id="-1449862805%2FProperties%2F709432301" data-filterable-set=":ktor-swagger-ui:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-swagger-ui:dokkaHtml/main" data-filterable-set=":ktor-swagger-ui:dokkaHtml/main">
+<a data-name="-1449862805%2FProperties%2F-1769056698" anchor-label="displayOperationId" id="-1449862805%2FProperties%2F-1769056698" data-filterable-set=":ktor-swagger-ui/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-swagger-ui/main" data-filterable-set=":ktor-swagger-ui/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="display-operation-id.html"><span>display</span><wbr></wbr><span>Operation</span><wbr></wbr><span><span>Id</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1449862805%2FProperties%2F709432301"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1449862805%2FProperties%2F-1769056698"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-swagger-ui:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="display-operation-id.html">displayOperationId</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Controls the display of operationId in operations list.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-swagger-ui/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="display-operation-id.html">displayOperationId</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Controls the display of operationId in operations list.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1073959894%2FProperties%2F709432301" anchor-label="displayRequestDuration" id="-1073959894%2FProperties%2F709432301" data-filterable-set=":ktor-swagger-ui:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-swagger-ui:dokkaHtml/main" data-filterable-set=":ktor-swagger-ui:dokkaHtml/main">
+<a data-name="-1073959894%2FProperties%2F-1769056698" anchor-label="displayRequestDuration" id="-1073959894%2FProperties%2F-1769056698" data-filterable-set=":ktor-swagger-ui/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-swagger-ui/main" data-filterable-set=":ktor-swagger-ui/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="display-request-duration.html"><span>display</span><wbr></wbr><span>Request</span><wbr></wbr><span><span>Duration</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1073959894%2FProperties%2F709432301"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1073959894%2FProperties%2F-1769056698"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-swagger-ui:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="display-request-duration.html">displayRequestDuration</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Controls the display of the request duration (in milliseconds) for &quot;Try it out&quot; requests.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-swagger-ui/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="display-request-duration.html">displayRequestDuration</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Controls the display of the request duration (in milliseconds) for &quot;Try it out&quot; requests.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="452467236%2FProperties%2F709432301" anchor-label="docExpansion" id="452467236%2FProperties%2F709432301" data-filterable-set=":ktor-swagger-ui:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-swagger-ui:dokkaHtml/main" data-filterable-set=":ktor-swagger-ui:dokkaHtml/main">
+<a data-name="452467236%2FProperties%2F-1769056698" anchor-label="docExpansion" id="452467236%2FProperties%2F-1769056698" data-filterable-set=":ktor-swagger-ui/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-swagger-ui/main" data-filterable-set=":ktor-swagger-ui/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="doc-expansion.html"><span>doc</span><wbr></wbr><span><span>Expansion</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="452467236%2FProperties%2F709432301"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="452467236%2FProperties%2F-1769056698"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-swagger-ui:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="doc-expansion.html">docExpansion</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph"><code class="lang-kotlin">String=[&quot;list&quot;*, &quot;full&quot;, &quot;none&quot;]</code>. Controls the default expansion setting for the operations and tags. It can be 'list' (expands only the tags), 'full' (expands the tags and operations) or 'none' (expands nothing).</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-swagger-ui/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="doc-expansion.html">docExpansion</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph"><code class="lang-kotlin">String=[&quot;list&quot;*, &quot;full&quot;, &quot;none&quot;]</code>. Controls the default expansion setting for the operations and tags. It can be 'list' (expands only the tags), 'full' (expands the tags and operations) or 'none' (expands nothing).</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-180648781%2FProperties%2F709432301" anchor-label="filter" id="-180648781%2FProperties%2F709432301" data-filterable-set=":ktor-swagger-ui:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-swagger-ui:dokkaHtml/main" data-filterable-set=":ktor-swagger-ui:dokkaHtml/main">
+<a data-name="-180648781%2FProperties%2F-1769056698" anchor-label="filter" id="-180648781%2FProperties%2F-1769056698" data-filterable-set=":ktor-swagger-ui/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-swagger-ui/main" data-filterable-set=":ktor-swagger-ui/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="filter.html"><span><span>filter</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-180648781%2FProperties%2F709432301"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-180648781%2FProperties%2F-1769056698"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-swagger-ui:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="filter.html">filter</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">If set, enables filtering. The top bar will show an edit box that you can use to filter the tagged operations that are shown. Filtering is case-sensitive matching the filter expression anywhere inside the tag.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-swagger-ui/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="filter.html">filter</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">If set, enables filtering. The top bar will show an edit box that you can use to filter the tagged operations that are shown. Filtering is case-sensitive matching the filter expression anywhere inside the tag.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1623219499%2FProperties%2F709432301" anchor-label="maxDisplayedTags" id="-1623219499%2FProperties%2F709432301" data-filterable-set=":ktor-swagger-ui:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-swagger-ui:dokkaHtml/main" data-filterable-set=":ktor-swagger-ui:dokkaHtml/main">
+<a data-name="-1623219499%2FProperties%2F-1769056698" anchor-label="maxDisplayedTags" id="-1623219499%2FProperties%2F-1769056698" data-filterable-set=":ktor-swagger-ui/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-swagger-ui/main" data-filterable-set=":ktor-swagger-ui/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="max-displayed-tags.html"><span>max</span><wbr></wbr><span>Displayed</span><wbr></wbr><span><span>Tags</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1623219499%2FProperties%2F709432301"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1623219499%2FProperties%2F-1769056698"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-swagger-ui:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="max-displayed-tags.html">maxDisplayedTags</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-number/index.html">Number</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">If set, limits the number of tagged operations displayed to at most this many. The default is to show all operations.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-swagger-ui/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="max-displayed-tags.html">maxDisplayedTags</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-number/index.html">Number</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">If set, limits the number of tagged operations displayed to at most this many. The default is to show all operations.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1354785815%2FProperties%2F709432301" anchor-label="oauth2RedirectUrl" id="1354785815%2FProperties%2F709432301" data-filterable-set=":ktor-swagger-ui:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-swagger-ui:dokkaHtml/main" data-filterable-set=":ktor-swagger-ui:dokkaHtml/main">
+<a data-name="1354785815%2FProperties%2F-1769056698" anchor-label="oauth2RedirectUrl" id="1354785815%2FProperties%2F-1769056698" data-filterable-set=":ktor-swagger-ui/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-swagger-ui/main" data-filterable-set=":ktor-swagger-ui/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="oauth2-redirect-url.html"><span>oauth2Redirect</span><wbr></wbr><span><span>Url</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1354785815%2FProperties%2F709432301"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1354785815%2FProperties%2F-1769056698"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-swagger-ui:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="oauth2-redirect-url.html">oauth2RedirectUrl</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">OAuth redirect URL.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-swagger-ui/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="oauth2-redirect-url.html">oauth2RedirectUrl</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">OAuth redirect URL.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="666812852%2FProperties%2F709432301" anchor-label="operationsSorter" id="666812852%2FProperties%2F709432301" data-filterable-set=":ktor-swagger-ui:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-swagger-ui:dokkaHtml/main" data-filterable-set=":ktor-swagger-ui:dokkaHtml/main">
+<a data-name="666812852%2FProperties%2F-1769056698" anchor-label="operationsSorter" id="666812852%2FProperties%2F-1769056698" data-filterable-set=":ktor-swagger-ui/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-swagger-ui/main" data-filterable-set=":ktor-swagger-ui/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="operations-sorter.html"><span>operations</span><wbr></wbr><span><span>Sorter</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="666812852%2FProperties%2F709432301"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="666812852%2FProperties%2F-1769056698"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-swagger-ui:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="operations-sorter.html">operationsSorter</a><span class="token operator">: </span><a href="../-operations-sort/index.html">OperationsSort</a></div><div class="brief "><p class="paragraph">Apply a sort to the operation list of each API.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-swagger-ui/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="operations-sorter.html">operationsSorter</a><span class="token operator">: </span><a href="../-operations-sort/index.html">OperationsSort</a></div><div class="brief "><p class="paragraph">Apply a sort to the operation list of each API.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-9801402%2FProperties%2F709432301" anchor-label="persistAuthorization" id="-9801402%2FProperties%2F709432301" data-filterable-set=":ktor-swagger-ui:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-swagger-ui:dokkaHtml/main" data-filterable-set=":ktor-swagger-ui:dokkaHtml/main">
+<a data-name="-9801402%2FProperties%2F-1769056698" anchor-label="persistAuthorization" id="-9801402%2FProperties%2F-1769056698" data-filterable-set=":ktor-swagger-ui/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-swagger-ui/main" data-filterable-set=":ktor-swagger-ui/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="persist-authorization.html"><span>persist</span><wbr></wbr><span><span>Authorization</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-9801402%2FProperties%2F709432301"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-9801402%2FProperties%2F-1769056698"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-swagger-ui:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="persist-authorization.html">persistAuthorization</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">If set to true, it persists authorization data and it would not be lost on browser close/refresh</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-swagger-ui/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="persist-authorization.html">persistAuthorization</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">If set to true, it persists authorization data and it would not be lost on browser close/refresh</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1599278293%2FProperties%2F709432301" anchor-label="requestInterceptor" id="1599278293%2FProperties%2F709432301" data-filterable-set=":ktor-swagger-ui:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-swagger-ui:dokkaHtml/main" data-filterable-set=":ktor-swagger-ui:dokkaHtml/main">
+<a data-name="1599278293%2FProperties%2F-1769056698" anchor-label="requestInterceptor" id="1599278293%2FProperties%2F-1769056698" data-filterable-set=":ktor-swagger-ui/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-swagger-ui/main" data-filterable-set=":ktor-swagger-ui/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="request-interceptor.html"><span>request</span><wbr></wbr><span><span>Interceptor</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1599278293%2FProperties%2F709432301"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1599278293%2FProperties%2F-1769056698"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-swagger-ui:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="request-interceptor.html">requestInterceptor</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">MUST be a valid javascript function. Function to intercept remote definition, &quot;Try it out&quot;, and OAuth 2.0 requests. Accepts one argument requestInterceptor(request) and must return the modified request, or a Promise that resolves to the modified request. Example: &quot;req => { alert(JSON.stringify(req)); return req; }&quot;</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-swagger-ui/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="request-interceptor.html">requestInterceptor</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">MUST be a valid javascript function. Function to intercept remote definition, &quot;Try it out&quot;, and OAuth 2.0 requests. Accepts one argument requestInterceptor(request) and must return the modified request, or a Promise that resolves to the modified request. Example: &quot;req => { alert(JSON.stringify(req)); return req; }&quot;</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1801648177%2FProperties%2F709432301" anchor-label="requestSnippetsEnabled" id="-1801648177%2FProperties%2F709432301" data-filterable-set=":ktor-swagger-ui:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-swagger-ui:dokkaHtml/main" data-filterable-set=":ktor-swagger-ui:dokkaHtml/main">
+<a data-name="-1801648177%2FProperties%2F-1769056698" anchor-label="requestSnippetsEnabled" id="-1801648177%2FProperties%2F-1769056698" data-filterable-set=":ktor-swagger-ui/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-swagger-ui/main" data-filterable-set=":ktor-swagger-ui/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="request-snippets-enabled.html"><span>request</span><wbr></wbr><span>Snippets</span><wbr></wbr><span><span>Enabled</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1801648177%2FProperties%2F709432301"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1801648177%2FProperties%2F-1769056698"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-swagger-ui:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="request-snippets-enabled.html">requestSnippetsEnabled</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Enables the request snippet section. When disabled, the legacy curl snippet will be used.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-swagger-ui/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="request-snippets-enabled.html">requestSnippetsEnabled</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Enables the request snippet section. When disabled, the legacy curl snippet will be used.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1668117909%2FProperties%2F709432301" anchor-label="responseInterceptor" id="-1668117909%2FProperties%2F709432301" data-filterable-set=":ktor-swagger-ui:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-swagger-ui:dokkaHtml/main" data-filterable-set=":ktor-swagger-ui:dokkaHtml/main">
+<a data-name="-1668117909%2FProperties%2F-1769056698" anchor-label="responseInterceptor" id="-1668117909%2FProperties%2F-1769056698" data-filterable-set=":ktor-swagger-ui/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-swagger-ui/main" data-filterable-set=":ktor-swagger-ui/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="response-interceptor.html"><span>response</span><wbr></wbr><span><span>Interceptor</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1668117909%2FProperties%2F709432301"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1668117909%2FProperties%2F-1769056698"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-swagger-ui:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="response-interceptor.html">responseInterceptor</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">MUST be a function. Function to intercept remote definition, &quot;Try it out&quot;, and OAuth 2.0 responses. Accepts one argument responseInterceptor(response) and must return the modified response, or a Promise that resolves to the modified response. Example: &quot;res => { alert(JSON.stringify(res)); return res; }&quot;</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-swagger-ui/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="response-interceptor.html">responseInterceptor</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">MUST be a function. Function to intercept remote definition, &quot;Try it out&quot;, and OAuth 2.0 responses. Accepts one argument responseInterceptor(response) and must return the modified response, or a Promise that resolves to the modified response. Example: &quot;res => { alert(JSON.stringify(res)); return res; }&quot;</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="108000943%2FProperties%2F709432301" anchor-label="showCommonExtensions" id="108000943%2FProperties%2F709432301" data-filterable-set=":ktor-swagger-ui:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-swagger-ui:dokkaHtml/main" data-filterable-set=":ktor-swagger-ui:dokkaHtml/main">
+<a data-name="108000943%2FProperties%2F-1769056698" anchor-label="showCommonExtensions" id="108000943%2FProperties%2F-1769056698" data-filterable-set=":ktor-swagger-ui/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-swagger-ui/main" data-filterable-set=":ktor-swagger-ui/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="show-common-extensions.html"><span>show</span><wbr></wbr><span>Common</span><wbr></wbr><span><span>Extensions</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="108000943%2FProperties%2F709432301"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="108000943%2FProperties%2F-1769056698"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-swagger-ui:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="show-common-extensions.html">showCommonExtensions</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Controls the display of extensions (pattern, maxLength, minLength, maximum, minimum) fields and values for Parameters.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-swagger-ui/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="show-common-extensions.html">showCommonExtensions</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Controls the display of extensions (pattern, maxLength, minLength, maximum, minimum) fields and values for Parameters.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="410116442%2FProperties%2F709432301" anchor-label="showExtensions" id="410116442%2FProperties%2F709432301" data-filterable-set=":ktor-swagger-ui:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-swagger-ui:dokkaHtml/main" data-filterable-set=":ktor-swagger-ui:dokkaHtml/main">
+<a data-name="410116442%2FProperties%2F-1769056698" anchor-label="showExtensions" id="410116442%2FProperties%2F-1769056698" data-filterable-set=":ktor-swagger-ui/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-swagger-ui/main" data-filterable-set=":ktor-swagger-ui/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="show-extensions.html"><span>show</span><wbr></wbr><span><span>Extensions</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="410116442%2FProperties%2F709432301"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="410116442%2FProperties%2F-1769056698"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-swagger-ui:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="show-extensions.html">showExtensions</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Controls the display of vendor extension (x-) fields and values for Operations, Parameters, Responses, and Schema.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-swagger-ui/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="show-extensions.html">showExtensions</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Controls the display of vendor extension (x-) fields and values for Operations, Parameters, Responses, and Schema.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1751478335%2FProperties%2F709432301" anchor-label="supportedSubmitMethods" id="1751478335%2FProperties%2F709432301" data-filterable-set=":ktor-swagger-ui:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-swagger-ui:dokkaHtml/main" data-filterable-set=":ktor-swagger-ui:dokkaHtml/main">
+<a data-name="1751478335%2FProperties%2F-1769056698" anchor-label="supportedSubmitMethods" id="1751478335%2FProperties%2F-1769056698" data-filterable-set=":ktor-swagger-ui/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-swagger-ui/main" data-filterable-set=":ktor-swagger-ui/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="supported-submit-methods.html"><span>supported</span><wbr></wbr><span>Submit</span><wbr></wbr><span><span>Methods</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1751478335%2FProperties%2F709432301"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1751478335%2FProperties%2F-1769056698"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-swagger-ui:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="supported-submit-methods.html">supportedSubmitMethods</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-collection/index.html">Collection</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">List of HTTP methods that have the &quot;Try it out&quot; feature enabled. An empty array disables &quot;Try it out&quot; for all operations. This does not filter the operations from the display.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-swagger-ui/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="supported-submit-methods.html">supportedSubmitMethods</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/index.html">Collection</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">List of HTTP methods that have the &quot;Try it out&quot; feature enabled. An empty array disables &quot;Try it out&quot; for all operations. This does not filter the operations from the display.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1657151714%2FProperties%2F709432301" anchor-label="syntaxHighlight" id="-1657151714%2FProperties%2F709432301" data-filterable-set=":ktor-swagger-ui:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-swagger-ui:dokkaHtml/main" data-filterable-set=":ktor-swagger-ui:dokkaHtml/main">
+<a data-name="-1657151714%2FProperties%2F-1769056698" anchor-label="syntaxHighlight" id="-1657151714%2FProperties%2F-1769056698" data-filterable-set=":ktor-swagger-ui/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-swagger-ui/main" data-filterable-set=":ktor-swagger-ui/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="syntax-highlight.html"><span>syntax</span><wbr></wbr><span><span>Highlight</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1657151714%2FProperties%2F709432301"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1657151714%2FProperties%2F-1769056698"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-swagger-ui:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="syntax-highlight.html">syntaxHighlight</a><span class="token operator">: </span><a href="../-swagger-u-i-syntax-highlight/index.html">SwaggerUISyntaxHighlight</a></div><div class="brief "><p class="paragraph">Syntax coloring theme to use</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-swagger-ui/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="syntax-highlight.html">syntaxHighlight</a><span class="token operator">: </span><a href="../-swagger-u-i-syntax-highlight/index.html">SwaggerUISyntaxHighlight</a></div><div class="brief "><p class="paragraph">Syntax coloring theme to use</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="552938087%2FProperties%2F709432301" anchor-label="tagsSorter" id="552938087%2FProperties%2F709432301" data-filterable-set=":ktor-swagger-ui:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-swagger-ui:dokkaHtml/main" data-filterable-set=":ktor-swagger-ui:dokkaHtml/main">
+<a data-name="552938087%2FProperties%2F-1769056698" anchor-label="tagsSorter" id="552938087%2FProperties%2F-1769056698" data-filterable-set=":ktor-swagger-ui/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-swagger-ui/main" data-filterable-set=":ktor-swagger-ui/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="tags-sorter.html"><span>tags</span><wbr></wbr><span><span>Sorter</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="552938087%2FProperties%2F709432301"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="552938087%2FProperties%2F-1769056698"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-swagger-ui:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="tags-sorter.html">tagsSorter</a><span class="token operator">: </span><a href="../-tag-sort/index.html">TagSort</a></div><div class="brief "><p class="paragraph">Apply a sort to the tag list of each API.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-swagger-ui/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="tags-sorter.html">tagsSorter</a><span class="token operator">: </span><a href="../-tag-sort/index.html">TagSort</a></div><div class="brief "><p class="paragraph">Apply a sort to the tag list of each API.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-830431434%2FProperties%2F709432301" anchor-label="tryItOutEnabled" id="-830431434%2FProperties%2F709432301" data-filterable-set=":ktor-swagger-ui:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-swagger-ui:dokkaHtml/main" data-filterable-set=":ktor-swagger-ui:dokkaHtml/main">
+<a data-name="-830431434%2FProperties%2F-1769056698" anchor-label="tryItOutEnabled" id="-830431434%2FProperties%2F-1769056698" data-filterable-set=":ktor-swagger-ui/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-swagger-ui/main" data-filterable-set=":ktor-swagger-ui/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="try-it-out-enabled.html"><span>try</span><wbr></wbr><span>It</span><wbr></wbr><span>Out</span><wbr></wbr><span><span>Enabled</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-830431434%2FProperties%2F709432301"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-830431434%2FProperties%2F-1769056698"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-swagger-ui:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="try-it-out-enabled.html">tryItOutEnabled</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Controls whether the &quot;Try it out&quot; section should be enabled by default.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-swagger-ui/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="try-it-out-enabled.html">tryItOutEnabled</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Controls whether the &quot;Try it out&quot; section should be enabled by default.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1001954162%2FProperties%2F709432301" anchor-label="validatorUrl" id="-1001954162%2FProperties%2F709432301" data-filterable-set=":ktor-swagger-ui:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-swagger-ui:dokkaHtml/main" data-filterable-set=":ktor-swagger-ui:dokkaHtml/main">
+<a data-name="-1001954162%2FProperties%2F-1769056698" anchor-label="validatorUrl" id="-1001954162%2FProperties%2F-1769056698" data-filterable-set=":ktor-swagger-ui/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-swagger-ui/main" data-filterable-set=":ktor-swagger-ui/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="validator-url.html"><span>validator</span><wbr></wbr><span><span>Url</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1001954162%2FProperties%2F709432301"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1001954162%2FProperties%2F-1769056698"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-swagger-ui:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="validator-url.html">validatorUrl</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Swagger UI can attempt to validate specs against swagger.io's online validator. You can use this parameter to set a different validator URL, for example for locally deployed validators. Set to &quot;null&quot; to disable validation. Validation is disabled when the url of the api-spec-file contains localhost. (see https://github.com/swagger-api/swagger-ui/blob/master/docs/usage/configuration.md#network)</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-swagger-ui/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="validator-url.html">validatorUrl</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Swagger UI can attempt to validate specs against swagger.io's online validator. You can use this parameter to set a different validator URL, for example for locally deployed validators. Set to &quot;null&quot; to disable validation. Validation is disabled when the url of the api-spec-file contains localhost. (see https://github.com/swagger-api/swagger-ui/blob/master/docs/usage/configuration.md#network)</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-443042695%2FProperties%2F709432301" anchor-label="withCredentials" id="-443042695%2FProperties%2F709432301" data-filterable-set=":ktor-swagger-ui:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-swagger-ui:dokkaHtml/main" data-filterable-set=":ktor-swagger-ui:dokkaHtml/main">
+<a data-name="-443042695%2FProperties%2F-1769056698" anchor-label="withCredentials" id="-443042695%2FProperties%2F-1769056698" data-filterable-set=":ktor-swagger-ui/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-swagger-ui/main" data-filterable-set=":ktor-swagger-ui/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="with-credentials.html"><span>with</span><wbr></wbr><span><span>Credentials</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-443042695%2FProperties%2F709432301"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-443042695%2FProperties%2F-1769056698"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-swagger-ui:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="with-credentials.html">withCredentials</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Bring cookies when initiating network requests. If set to true, enables passing credentials, as defined in the Fetch standard, in CORS requests that are sent by the browser. Note that Swagger UI cannot currently set cookies cross-domain - as a result, you will have to rely on browser-supplied cookies (which this setting enables sending) that Swagger UI cannot control.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-swagger-ui/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="with-credentials.html">withCredentials</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Bring cookies when initiating network requests. If set to true, enables passing credentials, as defined in the Fetch standard, in CORS requests that are sent by the browser. Note that Swagger UI cannot currently set cookies cross-domain - as a result, you will have to rely on browser-supplied cookies (which this setting enables sending) that Swagger UI cannot control.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -405,18 +466,18 @@
         </div>
       </div>
       <div data-togglable="FUNCTION">
-        <h2 class="">Functions</h2>
-        <div class="table"><a data-name="-1490380981%2FFunctions%2F709432301" anchor-label="onlineSpecValidator" id="-1490380981%2FFunctions%2F709432301" data-filterable-set=":ktor-swagger-ui:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-swagger-ui:dokkaHtml/main" data-filterable-set=":ktor-swagger-ui:dokkaHtml/main">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="-1490380981%2FFunctions%2F-1769056698" anchor-label="onlineSpecValidator" id="-1490380981%2FFunctions%2F-1769056698" data-filterable-set=":ktor-swagger-ui/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-swagger-ui/main" data-filterable-set=":ktor-swagger-ui/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="online-spec-validator.html"><span>online</span><wbr></wbr><span>Spec</span><wbr></wbr><span><span>Validator</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1490380981%2FFunctions%2F709432301"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1490380981%2FFunctions%2F-1769056698"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-swagger-ui:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="online-spec-validator.html"><span class="token function">onlineSpecValidator</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Set the <a href="validator-url.html">validatorUrl</a> to an online validator.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-swagger-ui/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="online-spec-validator.html"><span class="token function">onlineSpecValidator</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Set the <a href="validator-url.html">validatorUrl</a> to an online validator.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -426,13 +487,22 @@
     </div>
   </div>
 </div>
-      <div class="footer">
-        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2026 Copyright</span><span
-                class="pull-right"><span>Generated by </span><a
-                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
-      </div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

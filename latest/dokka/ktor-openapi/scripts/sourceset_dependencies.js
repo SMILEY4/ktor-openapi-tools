@@ -1,1 +1,1 @@
-sourceset_dependencies='{":ktor-openapi:dokkaHtml/main":[]}'
+sourceset_dependencies='{":ktor-openapi/main":[]}'

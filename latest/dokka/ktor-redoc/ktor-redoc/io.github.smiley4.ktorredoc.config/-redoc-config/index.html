@@ -1,583 +1,644 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>RedocConfig</title>
     <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
-    <script>var pathToRoot = "../../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+        <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
-<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
 <link href="../../../styles/style.css" rel="Stylesheet">
 <link href="../../../styles/main.css" rel="Stylesheet">
 <link href="../../../styles/prism.css" rel="Stylesheet">
 <link href="../../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
-<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<link href="../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
 <script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
 <script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
-<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+<script type="text/javascript" src="../../../ui-kit/ui-kit.min.js" defer="defer"></script>
 </head>
 <body>
-    <div class="root">
-<nav class="navigation" id="navigation-wrapper">
-    <div class="navigation--inner">
-        <div class="navigation-title">
-            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
-            <div class="library-name">
-                    <a class="library-name--link" href="../../../index.html">
-                            ktor-redoc
-                    </a>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../../index.html" tabindex="1">
+                    ktor-redoc
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+5.7.0        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
+                        data-filter=":ktor-redoc/main">jvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":ktor-redoc/main"
+                                       data-filter=":ktor-redoc/main"/>
+                                <span class="checkbox--icon"></span>
+                                jvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div class="library-version">
-5.6.0            </div>
-        </div>
-        <div class="filter-section" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":ktor-redoc:dokkaHtml/main">jvm</button>
-        </div>
-    </div>
-    <div class="navigation-controls">
-        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
-        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
-    </div>
-</nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="sidebar--inner" id="sideMenu"></div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
             </div>
-            <div id="main">
-<div class="main-content" data-page-type="classlike" id="content" pageIds="ktor-redoc::io.github.smiley4.ktorredoc.config/RedocConfig///PointingToDeclaration//-1044150901">
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    ktor-redoc
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="ktor-redoc::io.github.smiley4.ktorredoc.config/RedocConfig///PointingToDeclaration//-1891723932">
   <div class="breadcrumbs"><a href="../../../index.html">ktor-redoc</a><span class="delimiter">/</span><a href="../index.html">io.github.smiley4.ktorredoc.config</a><span class="delimiter">/</span><span class="current">RedocConfig</span></div>
   <div class="cover ">
     <h1 class="cover"><span>Redoc</span><wbr></wbr><span><span>Config</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">RedocConfig</a></div><p class="paragraph">Configuration for redoc. See https://redocly.com/docs/redoc/config</p></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">RedocConfig</a></div><p class="paragraph">Configuration for redoc. See https://redocly.com/docs/redoc/config</p></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
     <div class="tabs-section-body">
+      <div data-togglable="TYPE">
+        <h2 class="tableheader">Types</h2>
+        <div class="table"><a data-name="1189044726%2FClasslikes%2F-1891723932" anchor-label="Companion" id="1189044726%2FClasslikes%2F-1891723932" data-filterable-set=":ktor-redoc/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-redoc/main" data-filterable-set=":ktor-redoc/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-companion/index.html"><span><span>Companion</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1189044726%2FClasslikes%2F-1891723932"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc/main"><div class="symbol monospace"><span class="token keyword">object </span><a href="-companion/index.html">Companion</a></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div data-togglable="PROPERTY">
-        <h2 class="">Properties</h2>
-        <div class="table"><a data-name="-875755777%2FProperties%2F-1044150901" anchor-label="disableSearch" id="-875755777%2FProperties%2F-1044150901" data-filterable-set=":ktor-redoc:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-redoc:dokkaHtml/main" data-filterable-set=":ktor-redoc:dokkaHtml/main">
+        <h2 class="tableheader">Properties</h2>
+        <div class="table"><a data-name="-875755777%2FProperties%2F-1891723932" anchor-label="disableSearch" id="-875755777%2FProperties%2F-1891723932" data-filterable-set=":ktor-redoc/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-redoc/main" data-filterable-set=":ktor-redoc/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="disable-search.html"><span>disable</span><wbr></wbr><span><span>Search</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-875755777%2FProperties%2F-1044150901"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-875755777%2FProperties%2F-1891723932"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="disable-search.html">disableSearch</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Disables search indexing and hides the search box from the API documentation page. https://redocly.com/docs/redoc/config#disablesearch</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="disable-search.html">disableSearch</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Disables search indexing and hides the search box from the API documentation page. https://redocly.com/docs/redoc/config#disablesearch</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1877778946%2FProperties%2F-1044150901" anchor-label="expandDefaultServerVariables" id="-1877778946%2FProperties%2F-1044150901" data-filterable-set=":ktor-redoc:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-redoc:dokkaHtml/main" data-filterable-set=":ktor-redoc:dokkaHtml/main">
+<a data-name="-1877778946%2FProperties%2F-1891723932" anchor-label="expandDefaultServerVariables" id="-1877778946%2FProperties%2F-1891723932" data-filterable-set=":ktor-redoc/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-redoc/main" data-filterable-set=":ktor-redoc/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="expand-default-server-variables.html"><span>expand</span><wbr></wbr><span>Default</span><wbr></wbr><span>Server</span><wbr></wbr><span><span>Variables</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1877778946%2FProperties%2F-1044150901"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1877778946%2FProperties%2F-1891723932"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="expand-default-server-variables.html">expandDefaultServerVariables</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Enables or disables expanding default server variables. https://redocly.com/docs/redoc/config#expanddefaultservervariables</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="expand-default-server-variables.html">expandDefaultServerVariables</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Enables or disables expanding default server variables. https://redocly.com/docs/redoc/config#expanddefaultservervariables</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-444763305%2FProperties%2F-1044150901" anchor-label="expandResponses" id="-444763305%2FProperties%2F-1044150901" data-filterable-set=":ktor-redoc:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-redoc:dokkaHtml/main" data-filterable-set=":ktor-redoc:dokkaHtml/main">
+<a data-name="-444763305%2FProperties%2F-1891723932" anchor-label="expandResponses" id="-444763305%2FProperties%2F-1891723932" data-filterable-set=":ktor-redoc/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-redoc/main" data-filterable-set=":ktor-redoc/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="expand-responses.html"><span>expand</span><wbr></wbr><span><span>Responses</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-444763305%2FProperties%2F-1044150901"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-444763305%2FProperties%2F-1891723932"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="expand-responses.html">expandResponses</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-collection/index.html">Collection</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Controls which responses to expand by default. Specify one or more responses by providing their response codes as a list, for example expandResponses=&quot;200&quot;,&quot;201&quot;. Special value 'all' expands all responses by default. Be careful: this option can slow down documentation rendering time. https://redocly.com/docs/redoc/config#expandresponses</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="expand-responses.html">expandResponses</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-collection/index.html">Collection</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">&gt;</span><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Controls which responses to expand by default. Specify one or more responses by providing their response codes as a list, for example expandResponses=&quot;200&quot;,&quot;201&quot;. Special value 'all' expands all responses by default. Be careful: this option can slow down documentation rendering time. https://redocly.com/docs/redoc/config#expandresponses</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="994299416%2FProperties%2F-1044150901" anchor-label="expandSingleSchemaField" id="994299416%2FProperties%2F-1044150901" data-filterable-set=":ktor-redoc:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-redoc:dokkaHtml/main" data-filterable-set=":ktor-redoc:dokkaHtml/main">
+<a data-name="994299416%2FProperties%2F-1891723932" anchor-label="expandSingleSchemaField" id="994299416%2FProperties%2F-1891723932" data-filterable-set=":ktor-redoc/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-redoc/main" data-filterable-set=":ktor-redoc/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="expand-single-schema-field.html"><span>expand</span><wbr></wbr><span>Single</span><wbr></wbr><span>Schema</span><wbr></wbr><span><span>Field</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="994299416%2FProperties%2F-1044150901"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="994299416%2FProperties%2F-1891723932"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="expand-single-schema-field.html">expandSingleSchemaField</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Automatically expands the single field in a schema. https://redocly.com/docs/redoc/config#expandsingleschemafield</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="expand-single-schema-field.html">expandSingleSchemaField</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Automatically expands the single field in a schema. https://redocly.com/docs/redoc/config#expandsingleschemafield</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1026289359%2FProperties%2F-1044150901" anchor-label="hideDownloadButton" id="1026289359%2FProperties%2F-1044150901" data-filterable-set=":ktor-redoc:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-redoc:dokkaHtml/main" data-filterable-set=":ktor-redoc:dokkaHtml/main">
+<a data-name="1026289359%2FProperties%2F-1891723932" anchor-label="hideDownloadButton" id="1026289359%2FProperties%2F-1891723932" data-filterable-set=":ktor-redoc/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-redoc/main" data-filterable-set=":ktor-redoc/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="hide-download-button.html"><span>hide</span><wbr></wbr><span>Download</span><wbr></wbr><span><span>Button</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1026289359%2FProperties%2F-1044150901"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1026289359%2FProperties%2F-1891723932"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="hide-download-button.html">hideDownloadButton</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Hides the 'Download' button for saving the API definition source file. This setting does not make the API definition private; it just hides the button. https://redocly.com/docs/redoc/config#hidedownloadbutton</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="hide-download-button.html">hideDownloadButton</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Hides the 'Download' button for saving the API definition source file. This setting does not make the API definition private; it just hides the button. https://redocly.com/docs/redoc/config#hidedownloadbutton</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-414924906%2FProperties%2F-1044150901" anchor-label="hideHostname" id="-414924906%2FProperties%2F-1044150901" data-filterable-set=":ktor-redoc:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-redoc:dokkaHtml/main" data-filterable-set=":ktor-redoc:dokkaHtml/main">
+<a data-name="-414924906%2FProperties%2F-1891723932" anchor-label="hideHostname" id="-414924906%2FProperties%2F-1891723932" data-filterable-set=":ktor-redoc/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-redoc/main" data-filterable-set=":ktor-redoc/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="hide-hostname.html"><span>hide</span><wbr></wbr><span><span>Hostname</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-414924906%2FProperties%2F-1044150901"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-414924906%2FProperties%2F-1891723932"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="hide-hostname.html">hideHostname</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">If set to true, the protocol and hostname are not shown in the operation definition. https://redocly.com/docs/redoc/config#hidehostname</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="hide-hostname.html">hideHostname</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">If set to true, the protocol and hostname are not shown in the operation definition. https://redocly.com/docs/redoc/config#hidehostname</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1084477483%2FProperties%2F-1044150901" anchor-label="hideLoading" id="-1084477483%2FProperties%2F-1044150901" data-filterable-set=":ktor-redoc:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-redoc:dokkaHtml/main" data-filterable-set=":ktor-redoc:dokkaHtml/main">
+<a data-name="-1084477483%2FProperties%2F-1891723932" anchor-label="hideLoading" id="-1084477483%2FProperties%2F-1891723932" data-filterable-set=":ktor-redoc/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-redoc/main" data-filterable-set=":ktor-redoc/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="hide-loading.html"><span>hide</span><wbr></wbr><span><span>Loading</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1084477483%2FProperties%2F-1044150901"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1084477483%2FProperties%2F-1891723932"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="hide-loading.html">hideLoading</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Hides the loading animation. https://redocly.com/docs/redoc/config#hideloading</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="hide-loading.html">hideLoading</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Hides the loading animation. https://redocly.com/docs/redoc/config#hideloading</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="758550634%2FProperties%2F-1044150901" anchor-label="hideOneOfDescription" id="758550634%2FProperties%2F-1044150901" data-filterable-set=":ktor-redoc:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-redoc:dokkaHtml/main" data-filterable-set=":ktor-redoc:dokkaHtml/main">
+<a data-name="758550634%2FProperties%2F-1891723932" anchor-label="hideOneOfDescription" id="758550634%2FProperties%2F-1891723932" data-filterable-set=":ktor-redoc/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-redoc/main" data-filterable-set=":ktor-redoc/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="hide-one-of-description.html"><span>hide</span><wbr></wbr><span>One</span><wbr></wbr><span>Of</span><wbr></wbr><span><span>Description</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="758550634%2FProperties%2F-1044150901"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="758550634%2FProperties%2F-1891723932"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="hide-one-of-description.html">hideOneOfDescription</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">If set to true, the description for oneOf/anyOf object is not shown in the schema. https://redocly.com/docs/redoc/config#hideoneofdescription</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="hide-one-of-description.html">hideOneOfDescription</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">If set to true, the description for oneOf/anyOf object is not shown in the schema. https://redocly.com/docs/redoc/config#hideoneofdescription</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1799280640%2FProperties%2F-1044150901" anchor-label="hideRequestPayloadSample" id="-1799280640%2FProperties%2F-1044150901" data-filterable-set=":ktor-redoc:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-redoc:dokkaHtml/main" data-filterable-set=":ktor-redoc:dokkaHtml/main">
+<a data-name="-1799280640%2FProperties%2F-1891723932" anchor-label="hideRequestPayloadSample" id="-1799280640%2FProperties%2F-1891723932" data-filterable-set=":ktor-redoc/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-redoc/main" data-filterable-set=":ktor-redoc/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="hide-request-payload-sample.html"><span>hide</span><wbr></wbr><span>Request</span><wbr></wbr><span>Payload</span><wbr></wbr><span><span>Sample</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1799280640%2FProperties%2F-1044150901"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1799280640%2FProperties%2F-1891723932"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="hide-request-payload-sample.html">hideRequestPayloadSample</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Hides request payload examples. https://redocly.com/docs/redoc/config#hiderequestpayloadsample</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="hide-request-payload-sample.html">hideRequestPayloadSample</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Hides request payload examples. https://redocly.com/docs/redoc/config#hiderequestpayloadsample</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1461547714%2FProperties%2F-1044150901" anchor-label="hideSchemaPattern" id="1461547714%2FProperties%2F-1044150901" data-filterable-set=":ktor-redoc:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-redoc:dokkaHtml/main" data-filterable-set=":ktor-redoc:dokkaHtml/main">
+<a data-name="1461547714%2FProperties%2F-1891723932" anchor-label="hideSchemaPattern" id="1461547714%2FProperties%2F-1891723932" data-filterable-set=":ktor-redoc/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-redoc/main" data-filterable-set=":ktor-redoc/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="hide-schema-pattern.html"><span>hide</span><wbr></wbr><span>Schema</span><wbr></wbr><span><span>Pattern</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1461547714%2FProperties%2F-1044150901"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1461547714%2FProperties%2F-1891723932"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="hide-schema-pattern.html">hideSchemaPattern</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">If set to true, the pattern is not shown in the schema. https://redocly.com/docs/redoc/config#hideschemapattern</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="hide-schema-pattern.html">hideSchemaPattern</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">If set to true, the pattern is not shown in the schema. https://redocly.com/docs/redoc/config#hideschemapattern</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1839079475%2FProperties%2F-1044150901" anchor-label="hideSchemaTitles" id="-1839079475%2FProperties%2F-1044150901" data-filterable-set=":ktor-redoc:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-redoc:dokkaHtml/main" data-filterable-set=":ktor-redoc:dokkaHtml/main">
+<a data-name="-1839079475%2FProperties%2F-1891723932" anchor-label="hideSchemaTitles" id="-1839079475%2FProperties%2F-1891723932" data-filterable-set=":ktor-redoc/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-redoc/main" data-filterable-set=":ktor-redoc/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="hide-schema-titles.html"><span>hide</span><wbr></wbr><span>Schema</span><wbr></wbr><span><span>Titles</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1839079475%2FProperties%2F-1044150901"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1839079475%2FProperties%2F-1891723932"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="hide-schema-titles.html">hideSchemaTitles</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Hides the schema title next to the type. https://redocly.com/docs/redoc/config#hideschematitles</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="hide-schema-titles.html">hideSchemaTitles</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Hides the schema title next to the type. https://redocly.com/docs/redoc/config#hideschematitles</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1582856620%2FProperties%2F-1044150901" anchor-label="hideSecuritySection" id="1582856620%2FProperties%2F-1044150901" data-filterable-set=":ktor-redoc:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-redoc:dokkaHtml/main" data-filterable-set=":ktor-redoc:dokkaHtml/main">
+<a data-name="1582856620%2FProperties%2F-1891723932" anchor-label="hideSecuritySection" id="1582856620%2FProperties%2F-1891723932" data-filterable-set=":ktor-redoc/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-redoc/main" data-filterable-set=":ktor-redoc/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="hide-security-section.html"><span>hide</span><wbr></wbr><span>Security</span><wbr></wbr><span><span>Section</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1582856620%2FProperties%2F-1044150901"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1582856620%2FProperties%2F-1891723932"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="hide-security-section.html">hideSecuritySection</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Hides the Security panel section. https://redocly.com/docs/redoc/config#hidesecuritysection</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="hide-security-section.html">hideSecuritySection</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Hides the Security panel section. https://redocly.com/docs/redoc/config#hidesecuritysection</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1803440069%2FProperties%2F-1044150901" anchor-label="hideSingleRequestSampleTab" id="1803440069%2FProperties%2F-1044150901" data-filterable-set=":ktor-redoc:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-redoc:dokkaHtml/main" data-filterable-set=":ktor-redoc:dokkaHtml/main">
+<a data-name="1803440069%2FProperties%2F-1891723932" anchor-label="hideSingleRequestSampleTab" id="1803440069%2FProperties%2F-1891723932" data-filterable-set=":ktor-redoc/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-redoc/main" data-filterable-set=":ktor-redoc/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="hide-single-request-sample-tab.html"><span>hide</span><wbr></wbr><span>Single</span><wbr></wbr><span>Request</span><wbr></wbr><span>Sample</span><wbr></wbr><span><span>Tab</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1803440069%2FProperties%2F-1044150901"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1803440069%2FProperties%2F-1891723932"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="hide-single-request-sample-tab.html">hideSingleRequestSampleTab</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Hides the request sample tab for requests with only one sample. https://redocly.com/docs/redoc/config#hidesinglerequestsampletab</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="hide-single-request-sample-tab.html">hideSingleRequestSampleTab</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Hides the request sample tab for requests with only one sample. https://redocly.com/docs/redoc/config#hidesinglerequestsampletab</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-2111577114%2FProperties%2F-1044150901" anchor-label="htmlTemplate" id="-2111577114%2FProperties%2F-1044150901" data-filterable-set=":ktor-redoc:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-redoc:dokkaHtml/main" data-filterable-set=":ktor-redoc:dokkaHtml/main">
+<a data-name="-2111577114%2FProperties%2F-1891723932" anchor-label="htmlTemplate" id="-2111577114%2FProperties%2F-1891723932" data-filterable-set=":ktor-redoc/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-redoc/main" data-filterable-set=":ktor-redoc/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="html-template.html"><span>html</span><wbr></wbr><span><span>Template</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2111577114%2FProperties%2F-1044150901"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2111577114%2FProperties%2F-1891723932"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="html-template.html">htmlTemplate</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Sets the path to the optional HTML file used to modify the layout of the reference docs page. https://redocly.com/docs/redoc/config#htmltemplate</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="html-template.html">htmlTemplate</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Sets the path to the optional HTML file used to modify the layout of the reference docs page. https://redocly.com/docs/redoc/config#htmltemplate</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-603014217%2FProperties%2F-1044150901" anchor-label="jsonSampleExpandLevel" id="-603014217%2FProperties%2F-1044150901" data-filterable-set=":ktor-redoc:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-redoc:dokkaHtml/main" data-filterable-set=":ktor-redoc:dokkaHtml/main">
+<a data-name="-603014217%2FProperties%2F-1891723932" anchor-label="jsonSampleExpandLevel" id="-603014217%2FProperties%2F-1891723932" data-filterable-set=":ktor-redoc/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-redoc/main" data-filterable-set=":ktor-redoc/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="json-sample-expand-level.html"><span>json</span><wbr></wbr><span>Sample</span><wbr></wbr><span>Expand</span><wbr></wbr><span><span>Level</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-603014217%2FProperties%2F-1044150901"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-603014217%2FProperties%2F-1891723932"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="json-sample-expand-level.html">jsonSampleExpandLevel</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Sets the default expand level for JSON payload samples (response and request body). The default value is &quot;2&quot;, and the maximum supported value is '+Infinity'. It can also be configured with the special value &quot;all&quot; that expands all levels. https://redocly.com/docs/redoc/config#jsonsampleexpandlevel</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="json-sample-expand-level.html">jsonSampleExpandLevel</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Sets the default expand level for JSON payload samples (response and request body). The default value is &quot;2&quot;, and the maximum supported value is '+Infinity'. It can also be configured with the special value &quot;all&quot; that expands all levels. https://redocly.com/docs/redoc/config#jsonsampleexpandlevel</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1670245067%2FProperties%2F-1044150901" anchor-label="maxDisplayedEnumValues" id="1670245067%2FProperties%2F-1044150901" data-filterable-set=":ktor-redoc:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-redoc:dokkaHtml/main" data-filterable-set=":ktor-redoc:dokkaHtml/main">
+<a data-name="1670245067%2FProperties%2F-1891723932" anchor-label="maxDisplayedEnumValues" id="1670245067%2FProperties%2F-1891723932" data-filterable-set=":ktor-redoc/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-redoc/main" data-filterable-set=":ktor-redoc/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="max-displayed-enum-values.html"><span>max</span><wbr></wbr><span>Displayed</span><wbr></wbr><span>Enum</span><wbr></wbr><span><span>Values</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1670245067%2FProperties%2F-1044150901"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1670245067%2FProperties%2F-1891723932"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="max-displayed-enum-values.html">maxDisplayedEnumValues</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Displays only the specified number of enum values. The remaining values are hidden in an expandable area. If not set, all values are displayed. https://redocly.com/docs/redoc/config#maxdisplayedenumvalues</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="max-displayed-enum-values.html">maxDisplayedEnumValues</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Displays only the specified number of enum values. The remaining values are hidden in an expandable area. If not set, all values are displayed. https://redocly.com/docs/redoc/config#maxdisplayedenumvalues</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1655453400%2FProperties%2F-1044150901" anchor-label="menuToggle" id="1655453400%2FProperties%2F-1044150901" data-filterable-set=":ktor-redoc:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-redoc:dokkaHtml/main" data-filterable-set=":ktor-redoc:dokkaHtml/main">
+<a data-name="1655453400%2FProperties%2F-1891723932" anchor-label="menuToggle" id="1655453400%2FProperties%2F-1891723932" data-filterable-set=":ktor-redoc/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-redoc/main" data-filterable-set=":ktor-redoc/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="menu-toggle.html"><span>menu</span><wbr></wbr><span><span>Toggle</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1655453400%2FProperties%2F-1044150901"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1655453400%2FProperties%2F-1891723932"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="menu-toggle.html">menuToggle</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">If set to true, selecting an expanded item in the sidebar twice collapses it. https://redocly.com/docs/redoc/config#menutoggle</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="menu-toggle.html">menuToggle</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">If set to true, selecting an expanded item in the sidebar twice collapses it. https://redocly.com/docs/redoc/config#menutoggle</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="992581883%2FProperties%2F-1044150901" anchor-label="minCharacterLengthToInitSearch" id="992581883%2FProperties%2F-1044150901" data-filterable-set=":ktor-redoc:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-redoc:dokkaHtml/main" data-filterable-set=":ktor-redoc:dokkaHtml/main">
+<a data-name="992581883%2FProperties%2F-1891723932" anchor-label="minCharacterLengthToInitSearch" id="992581883%2FProperties%2F-1891723932" data-filterable-set=":ktor-redoc/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-redoc/main" data-filterable-set=":ktor-redoc/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="min-character-length-to-init-search.html"><span>min</span><wbr></wbr><span>Character</span><wbr></wbr><span>Length</span><wbr></wbr><span>To</span><wbr></wbr><span>Init</span><wbr></wbr><span><span>Search</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="992581883%2FProperties%2F-1044150901"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="992581883%2FProperties%2F-1891723932"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="min-character-length-to-init-search.html">minCharacterLengthToInitSearch</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Sets the minimum amount of characters that need to be typed into the search dialog to initiate the search. https://redocly.com/docs/redoc/config#mincharacterlengthtoinitsearch</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="min-character-length-to-init-search.html">minCharacterLengthToInitSearch</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Sets the minimum amount of characters that need to be typed into the search dialog to initiate the search. https://redocly.com/docs/redoc/config#mincharacterlengthtoinitsearch</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1898824839%2FProperties%2F-1044150901" anchor-label="nativeScrollbars" id="1898824839%2FProperties%2F-1044150901" data-filterable-set=":ktor-redoc:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-redoc:dokkaHtml/main" data-filterable-set=":ktor-redoc:dokkaHtml/main">
+<a data-name="1898824839%2FProperties%2F-1891723932" anchor-label="nativeScrollbars" id="1898824839%2FProperties%2F-1891723932" data-filterable-set=":ktor-redoc/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-redoc/main" data-filterable-set=":ktor-redoc/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="native-scrollbars.html"><span>native</span><wbr></wbr><span><span>Scrollbars</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1898824839%2FProperties%2F-1044150901"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1898824839%2FProperties%2F-1891723932"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="native-scrollbars.html">nativeScrollbars</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">If set to true, the sidebar uses the native scrollbar instead of perfect-scroll. This setting is a scrolling performance optimization for big API definitions. https://redocly.com/docs/redoc/config#nativescrollbars</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="native-scrollbars.html">nativeScrollbars</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">If set to true, the sidebar uses the native scrollbar instead of perfect-scroll. This setting is a scrolling performance optimization for big API definitions. https://redocly.com/docs/redoc/config#nativescrollbars</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-802307114%2FProperties%2F-1044150901" anchor-label="onlyRequiredInSamples" id="-802307114%2FProperties%2F-1044150901" data-filterable-set=":ktor-redoc:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-redoc:dokkaHtml/main" data-filterable-set=":ktor-redoc:dokkaHtml/main">
+<a data-name="-802307114%2FProperties%2F-1891723932" anchor-label="onlyRequiredInSamples" id="-802307114%2FProperties%2F-1891723932" data-filterable-set=":ktor-redoc/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-redoc/main" data-filterable-set=":ktor-redoc/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="only-required-in-samples.html"><span>only</span><wbr></wbr><span>Required</span><wbr></wbr><span>In</span><wbr></wbr><span><span>Samples</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-802307114%2FProperties%2F-1044150901"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-802307114%2FProperties%2F-1891723932"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="only-required-in-samples.html">onlyRequiredInSamples</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Shows only required fields in request samples. https://redocly.com/docs/redoc/config#onlyrequiredinsamples</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="only-required-in-samples.html">onlyRequiredInSamples</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Shows only required fields in request samples. https://redocly.com/docs/redoc/config#onlyrequiredinsamples</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1750895558%2FProperties%2F-1044150901" anchor-label="pageTitle" id="1750895558%2FProperties%2F-1044150901" data-filterable-set=":ktor-redoc:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-redoc:dokkaHtml/main" data-filterable-set=":ktor-redoc:dokkaHtml/main">
+<a data-name="1750895558%2FProperties%2F-1891723932" anchor-label="pageTitle" id="1750895558%2FProperties%2F-1891723932" data-filterable-set=":ktor-redoc/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-redoc/main" data-filterable-set=":ktor-redoc/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="page-title.html"><span>page</span><wbr></wbr><span><span>Title</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1750895558%2FProperties%2F-1044150901"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1750895558%2FProperties%2F-1891723932"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="page-title.html">pageTitle</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The title of the page</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="page-title.html">pageTitle</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">The title of the page</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1266799466%2FProperties%2F-1044150901" anchor-label="pathInMiddlePanel" id="1266799466%2FProperties%2F-1044150901" data-filterable-set=":ktor-redoc:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-redoc:dokkaHtml/main" data-filterable-set=":ktor-redoc:dokkaHtml/main">
+<a data-name="1266799466%2FProperties%2F-1891723932" anchor-label="pathInMiddlePanel" id="1266799466%2FProperties%2F-1891723932" data-filterable-set=":ktor-redoc/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-redoc/main" data-filterable-set=":ktor-redoc/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="path-in-middle-panel.html"><span>path</span><wbr></wbr><span>In</span><wbr></wbr><span>Middle</span><wbr></wbr><span><span>Panel</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1266799466%2FProperties%2F-1044150901"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1266799466%2FProperties%2F-1891723932"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="path-in-middle-panel.html">pathInMiddlePanel</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Shows the path link and HTTP verb in the middle panel instead of the right panel. https://redocly.com/docs/redoc/config#pathinmiddlepanel</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="path-in-middle-panel.html">pathInMiddlePanel</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Shows the path link and HTTP verb in the middle panel instead of the right panel. https://redocly.com/docs/redoc/config#pathinmiddlepanel</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-95065242%2FProperties%2F-1044150901" anchor-label="payloadSampleIdx" id="-95065242%2FProperties%2F-1044150901" data-filterable-set=":ktor-redoc:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-redoc:dokkaHtml/main" data-filterable-set=":ktor-redoc:dokkaHtml/main">
+<a data-name="-95065242%2FProperties%2F-1891723932" anchor-label="payloadSampleIdx" id="-95065242%2FProperties%2F-1891723932" data-filterable-set=":ktor-redoc/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-redoc/main" data-filterable-set=":ktor-redoc/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="payload-sample-idx.html"><span>payload</span><wbr></wbr><span>Sample</span><wbr></wbr><span><span>Idx</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-95065242%2FProperties%2F-1044150901"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-95065242%2FProperties%2F-1891723932"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="payload-sample-idx.html">payloadSampleIdx</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">If set, the payload sample is inserted at the specified index. If there are N payload samples and the value configured here is bigger than N, the payload sample is inserted last. Indexes start from 0. https://redocly.com/docs/redoc/config#payloadsampleidx</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="payload-sample-idx.html">payloadSampleIdx</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-int/index.html">Int</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">If set, the payload sample is inserted at the specified index. If there are N payload samples and the value configured here is bigger than N, the payload sample is inserted last. Indexes start from 0. https://redocly.com/docs/redoc/config#payloadsampleidx</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-740496436%2FProperties%2F-1044150901" anchor-label="requiredPropsFirst" id="-740496436%2FProperties%2F-1044150901" data-filterable-set=":ktor-redoc:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-redoc:dokkaHtml/main" data-filterable-set=":ktor-redoc:dokkaHtml/main">
+<a data-name="-740496436%2FProperties%2F-1891723932" anchor-label="requiredPropsFirst" id="-740496436%2FProperties%2F-1891723932" data-filterable-set=":ktor-redoc/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-redoc/main" data-filterable-set=":ktor-redoc/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="required-props-first.html"><span>required</span><wbr></wbr><span>Props</span><wbr></wbr><span><span>First</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-740496436%2FProperties%2F-1044150901"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-740496436%2FProperties%2F-1891723932"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="required-props-first.html">requiredPropsFirst</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Shows required properties in schemas first, ordered in the same order as in the required array. https://redocly.com/docs/redoc/config#requiredpropsfirst</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="required-props-first.html">requiredPropsFirst</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Shows required properties in schemas first, ordered in the same order as in the required array. https://redocly.com/docs/redoc/config#requiredpropsfirst</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="538946629%2FProperties%2F-1044150901" anchor-label="schemaExpansionLevel" id="538946629%2FProperties%2F-1044150901" data-filterable-set=":ktor-redoc:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-redoc:dokkaHtml/main" data-filterable-set=":ktor-redoc:dokkaHtml/main">
+<a data-name="538946629%2FProperties%2F-1891723932" anchor-label="schemaExpansionLevel" id="538946629%2FProperties%2F-1891723932" data-filterable-set=":ktor-redoc/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-redoc/main" data-filterable-set=":ktor-redoc/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="schema-expansion-level.html"><span>schema</span><wbr></wbr><span>Expansion</span><wbr></wbr><span><span>Level</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="538946629%2FProperties%2F-1044150901"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="538946629%2FProperties%2F-1891723932"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="schema-expansion-level.html">schemaExpansionLevel</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Specifies whether to automatically expand schemas in Reference docs. Set it to &quot;all&quot; to expand all schemas regardless of their level, or set it to a number to expand schemas up to the specified level. For example, schemaExpansionLevel: &quot;3&quot; expands schemas up to three levels deep. The default value is 0, meaning no schemas are expanded automatically. https://redocly.com/docs/redoc/config#schemaexpansionlevel</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="schema-expansion-level.html">schemaExpansionLevel</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Specifies whether to automatically expand schemas in Reference docs. Set it to &quot;all&quot; to expand all schemas regardless of their level, or set it to a number to expand schemas up to the specified level. For example, schemaExpansionLevel: &quot;3&quot; expands schemas up to three levels deep. The default value is 0, meaning no schemas are expanded automatically. https://redocly.com/docs/redoc/config#schemaexpansionlevel</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-121981307%2FProperties%2F-1044150901" anchor-label="showObjectSchemaExamples" id="-121981307%2FProperties%2F-1044150901" data-filterable-set=":ktor-redoc:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-redoc:dokkaHtml/main" data-filterable-set=":ktor-redoc:dokkaHtml/main">
+<a data-name="-121981307%2FProperties%2F-1891723932" anchor-label="showObjectSchemaExamples" id="-121981307%2FProperties%2F-1891723932" data-filterable-set=":ktor-redoc/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-redoc/main" data-filterable-set=":ktor-redoc/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="show-object-schema-examples.html"><span>show</span><wbr></wbr><span>Object</span><wbr></wbr><span>Schema</span><wbr></wbr><span><span>Examples</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-121981307%2FProperties%2F-1044150901"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-121981307%2FProperties%2F-1891723932"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="show-object-schema-examples.html">showObjectSchemaExamples</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Shows object schema example in the properties; default false. https://redocly.com/docs/redoc/config#showobjectschemaexamples</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="show-object-schema-examples.html">showObjectSchemaExamples</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Shows object schema example in the properties; default false. https://redocly.com/docs/redoc/config#showobjectschemaexamples</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="792718422%2FProperties%2F-1044150901" anchor-label="showWebhookVerb" id="792718422%2FProperties%2F-1044150901" data-filterable-set=":ktor-redoc:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-redoc:dokkaHtml/main" data-filterable-set=":ktor-redoc:dokkaHtml/main">
+<a data-name="792718422%2FProperties%2F-1891723932" anchor-label="showWebhookVerb" id="792718422%2FProperties%2F-1891723932" data-filterable-set=":ktor-redoc/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-redoc/main" data-filterable-set=":ktor-redoc/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="show-webhook-verb.html"><span>show</span><wbr></wbr><span>Webhook</span><wbr></wbr><span><span>Verb</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="792718422%2FProperties%2F-1044150901"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="792718422%2FProperties%2F-1891723932"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="show-webhook-verb.html">showWebhookVerb</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">When set to true, shows the HTTP request method for webhooks in operations and in the sidebar. https://redocly.com/docs/redoc/config#showwebhookverb</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="show-webhook-verb.html">showWebhookVerb</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">When set to true, shows the HTTP request method for webhooks in operations and in the sidebar. https://redocly.com/docs/redoc/config#showwebhookverb</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-342638948%2FProperties%2F-1044150901" anchor-label="simpleOneOfTypeLabel" id="-342638948%2FProperties%2F-1044150901" data-filterable-set=":ktor-redoc:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-redoc:dokkaHtml/main" data-filterable-set=":ktor-redoc:dokkaHtml/main">
+<a data-name="-342638948%2FProperties%2F-1891723932" anchor-label="simpleOneOfTypeLabel" id="-342638948%2FProperties%2F-1891723932" data-filterable-set=":ktor-redoc/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-redoc/main" data-filterable-set=":ktor-redoc/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="simple-one-of-type-label.html"><span>simple</span><wbr></wbr><span>One</span><wbr></wbr><span>Of</span><wbr></wbr><span>Type</span><wbr></wbr><span><span>Label</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-342638948%2FProperties%2F-1044150901"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-342638948%2FProperties%2F-1891723932"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="simple-one-of-type-label.html">simpleOneOfTypeLabel</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Shows only unique oneOf types in the label without titles. https://redocly.com/docs/redoc/config#simpleoneoftypelabel</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="simple-one-of-type-label.html">simpleOneOfTypeLabel</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Shows only unique oneOf types in the label without titles. https://redocly.com/docs/redoc/config#simpleoneoftypelabel</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-808056603%2FProperties%2F-1044150901" anchor-label="sortEnumValuesAlphabetically" id="-808056603%2FProperties%2F-1044150901" data-filterable-set=":ktor-redoc:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-redoc:dokkaHtml/main" data-filterable-set=":ktor-redoc:dokkaHtml/main">
+<a data-name="-808056603%2FProperties%2F-1891723932" anchor-label="sortEnumValuesAlphabetically" id="-808056603%2FProperties%2F-1891723932" data-filterable-set=":ktor-redoc/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-redoc/main" data-filterable-set=":ktor-redoc/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="sort-enum-values-alphabetically.html"><span>sort</span><wbr></wbr><span>Enum</span><wbr></wbr><span>Values</span><wbr></wbr><span><span>Alphabetically</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-808056603%2FProperties%2F-1044150901"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-808056603%2FProperties%2F-1891723932"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="sort-enum-values-alphabetically.html">sortEnumValuesAlphabetically</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">When set to true, sorts all enum values in all schemas alphabetically. https://redocly.com/docs/redoc/config#sortenumvaluesalphabetically</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="sort-enum-values-alphabetically.html">sortEnumValuesAlphabetically</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">When set to true, sorts all enum values in all schemas alphabetically. https://redocly.com/docs/redoc/config#sortenumvaluesalphabetically</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1200564644%2FProperties%2F-1044150901" anchor-label="sortOperationsAlphabetically" id="-1200564644%2FProperties%2F-1044150901" data-filterable-set=":ktor-redoc:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-redoc:dokkaHtml/main" data-filterable-set=":ktor-redoc:dokkaHtml/main">
+<a data-name="-1200564644%2FProperties%2F-1891723932" anchor-label="sortOperationsAlphabetically" id="-1200564644%2FProperties%2F-1891723932" data-filterable-set=":ktor-redoc/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-redoc/main" data-filterable-set=":ktor-redoc/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="sort-operations-alphabetically.html"><span>sort</span><wbr></wbr><span>Operations</span><wbr></wbr><span><span>Alphabetically</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1200564644%2FProperties%2F-1044150901"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1200564644%2FProperties%2F-1891723932"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="sort-operations-alphabetically.html">sortOperationsAlphabetically</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">When set to true, sorts operations in the navigation sidebar and in the middle panel alphabetically. https://redocly.com/docs/redoc/config#sortoperationsalphabetically</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="sort-operations-alphabetically.html">sortOperationsAlphabetically</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">When set to true, sorts operations in the navigation sidebar and in the middle panel alphabetically. https://redocly.com/docs/redoc/config#sortoperationsalphabetically</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1909948088%2FProperties%2F-1044150901" anchor-label="sortPropsAlphabetically" id="1909948088%2FProperties%2F-1044150901" data-filterable-set=":ktor-redoc:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-redoc:dokkaHtml/main" data-filterable-set=":ktor-redoc:dokkaHtml/main">
+<a data-name="1909948088%2FProperties%2F-1891723932" anchor-label="sortPropsAlphabetically" id="1909948088%2FProperties%2F-1891723932" data-filterable-set=":ktor-redoc/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-redoc/main" data-filterable-set=":ktor-redoc/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="sort-props-alphabetically.html"><span>sort</span><wbr></wbr><span>Props</span><wbr></wbr><span><span>Alphabetically</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1909948088%2FProperties%2F-1044150901"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1909948088%2FProperties%2F-1891723932"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="sort-props-alphabetically.html">sortPropsAlphabetically</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">When set to true, sorts properties in all schemas alphabetically. https://redocly.com/docs/redoc/config#sortpropsalphabetically</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="sort-props-alphabetically.html">sortPropsAlphabetically</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">When set to true, sorts properties in all schemas alphabetically. https://redocly.com/docs/redoc/config#sortpropsalphabetically</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="357526927%2FProperties%2F-1044150901" anchor-label="sortTagsAlphabetically" id="357526927%2FProperties%2F-1044150901" data-filterable-set=":ktor-redoc:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-redoc:dokkaHtml/main" data-filterable-set=":ktor-redoc:dokkaHtml/main">
+<a data-name="357526927%2FProperties%2F-1891723932" anchor-label="sortTagsAlphabetically" id="357526927%2FProperties%2F-1891723932" data-filterable-set=":ktor-redoc/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-redoc/main" data-filterable-set=":ktor-redoc/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="sort-tags-alphabetically.html"><span>sort</span><wbr></wbr><span>Tags</span><wbr></wbr><span><span>Alphabetically</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="357526927%2FProperties%2F-1044150901"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="357526927%2FProperties%2F-1891723932"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="sort-tags-alphabetically.html">sortTagsAlphabetically</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">When set to true, sorts tags in the navigation sidebar and in the middle panel alphabetically. Note that only tags are sorted alphabetically in the middle panel, not the operations associated with each tag. To sort operations alphabetically as well, you must set the sortOperationsAlphabetically setting to true. https://redocly.com/docs/redoc/config#sorttagsalphabetically</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="sort-tags-alphabetically.html">sortTagsAlphabetically</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">When set to true, sorts tags in the navigation sidebar and in the middle panel alphabetically. Note that only tags are sorted alphabetically in the middle panel, not the operations associated with each tag. To sort operations alphabetically as well, you must set the sortOperationsAlphabetically setting to true. https://redocly.com/docs/redoc/config#sorttagsalphabetically</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1730103302%2FProperties%2F-1044150901" anchor-label="theme" id="1730103302%2FProperties%2F-1044150901" data-filterable-set=":ktor-redoc:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-redoc:dokkaHtml/main" data-filterable-set=":ktor-redoc:dokkaHtml/main">
+<a data-name="1730103302%2FProperties%2F-1891723932" anchor-label="theme" id="1730103302%2FProperties%2F-1891723932" data-filterable-set=":ktor-redoc/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-redoc/main" data-filterable-set=":ktor-redoc/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="theme.html"><span><span>theme</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1730103302%2FProperties%2F-1044150901"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1730103302%2FProperties%2F-1891723932"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="theme.html">theme</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">The theme configuration setting is more complex since it represents many nested options, you can supply these as a JSON string https://redocly.com/docs/redoc/config#theme-settings</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="theme.html">theme</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">The theme configuration setting is more complex since it represents many nested options, you can supply these as a JSON string https://redocly.com/docs/redoc/config#theme-settings</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1960148766%2FProperties%2F-1044150901" anchor-label="untrustedDefinition" id="1960148766%2FProperties%2F-1044150901" data-filterable-set=":ktor-redoc:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-redoc:dokkaHtml/main" data-filterable-set=":ktor-redoc:dokkaHtml/main">
+<a data-name="1960148766%2FProperties%2F-1891723932" anchor-label="untrustedDefinition" id="1960148766%2FProperties%2F-1891723932" data-filterable-set=":ktor-redoc/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-redoc/main" data-filterable-set=":ktor-redoc/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="untrusted-definition.html"><span>untrusted</span><wbr></wbr><span><span>Definition</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1960148766%2FProperties%2F-1044150901"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1960148766%2FProperties%2F-1891723932"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="untrusted-definition.html">untrustedDefinition</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">If set to true, the API definition is considered untrusted and all HTML/Markdown is sanitized to prevent XSS. https://redocly.com/docs/redoc/config#untrusteddefinition</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-redoc/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="untrusted-definition.html">untrustedDefinition</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">If set to true, the API definition is considered untrusted and all HTML/Markdown is sanitized to prevent XSS. https://redocly.com/docs/redoc/config#untrusteddefinition</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -587,13 +648,22 @@
     </div>
   </div>
 </div>
-      <div class="footer">
-        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2026 Copyright</span><span
-                class="pull-right"><span>Generated by </span><a
-                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
-      </div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

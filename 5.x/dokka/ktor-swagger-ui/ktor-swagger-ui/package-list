@@ -9,6 +9,7 @@ $dokka.location:io.github.smiley4.ktorswaggerui.config/OperationsSort/entries/#/
 $dokka.location:io.github.smiley4.ktorswaggerui.config/OperationsSort/value/#/PointingToDeclaration/ktor-swagger-ui/io.github.smiley4.ktorswaggerui.config/-operations-sort/value.html
 $dokka.location:io.github.smiley4.ktorswaggerui.config/OperationsSort/valueOf/#kotlin.String/PointingToDeclaration/ktor-swagger-ui/io.github.smiley4.ktorswaggerui.config/-operations-sort/value-of.html
 $dokka.location:io.github.smiley4.ktorswaggerui.config/OperationsSort/values/#/PointingToDeclaration/ktor-swagger-ui/io.github.smiley4.ktorswaggerui.config/-operations-sort/values.html
+$dokka.location:io.github.smiley4.ktorswaggerui.config/SwaggerUIConfig.Companion///PointingToDeclaration/ktor-swagger-ui/io.github.smiley4.ktorswaggerui.config/-swagger-u-i-config/-companion/index.html
 $dokka.location:io.github.smiley4.ktorswaggerui.config/SwaggerUIConfig///PointingToDeclaration/ktor-swagger-ui/io.github.smiley4.ktorswaggerui.config/-swagger-u-i-config/index.html
 $dokka.location:io.github.smiley4.ktorswaggerui.config/SwaggerUIConfig/deepLinking/#/PointingToDeclaration/ktor-swagger-ui/io.github.smiley4.ktorswaggerui.config/-swagger-u-i-config/deep-linking.html
 $dokka.location:io.github.smiley4.ktorswaggerui.config/SwaggerUIConfig/defaultModelExpandDepth/#/PointingToDeclaration/ktor-swagger-ui/io.github.smiley4.ktorswaggerui.config/-swagger-u-i-config/default-model-expand-depth.html
@@ -58,4 +59,3 @@ $dokka.location:io.github.smiley4.ktorswaggerui//swaggerUI/io.ktor.server.routin
 $dokka.location:io.github.smiley4.ktorswaggerui//swaggerUI/io.ktor.server.routing.Route#kotlin.collections.Map[kotlin.String,kotlin.String]#kotlin.Function1[io.github.smiley4.ktorswaggerui.config.SwaggerUIConfig,kotlin.Unit]/PointingToDeclaration/ktor-swagger-ui/io.github.smiley4.ktorswaggerui/swagger-u-i.html
 io.github.smiley4.ktorswaggerui
 io.github.smiley4.ktorswaggerui.config
-

@@ -1,6 +1,7 @@
 $dokka.format:html-v1
 $dokka.linkExtension:html
 $dokka.location:io.github.smiley4.ktorredoc.config////PointingToDeclaration/ktor-redoc/io.github.smiley4.ktorredoc.config/index.html
+$dokka.location:io.github.smiley4.ktorredoc.config/RedocConfig.Companion///PointingToDeclaration/ktor-redoc/io.github.smiley4.ktorredoc.config/-redoc-config/-companion/index.html
 $dokka.location:io.github.smiley4.ktorredoc.config/RedocConfig///PointingToDeclaration/ktor-redoc/io.github.smiley4.ktorredoc.config/-redoc-config/index.html
 $dokka.location:io.github.smiley4.ktorredoc.config/RedocConfig/disableSearch/#/PointingToDeclaration/ktor-redoc/io.github.smiley4.ktorredoc.config/-redoc-config/disable-search.html
 $dokka.location:io.github.smiley4.ktorredoc.config/RedocConfig/expandDefaultServerVariables/#/PointingToDeclaration/ktor-redoc/io.github.smiley4.ktorredoc.config/-redoc-config/expand-default-server-variables.html
@@ -40,4 +41,3 @@ $dokka.location:io.github.smiley4.ktorredoc////PointingToDeclaration/ktor-redoc
 $dokka.location:io.github.smiley4.ktorredoc//redoc/io.ktor.server.routing.Route#kotlin.String#kotlin.Function1[io.github.smiley4.ktorredoc.config.RedocConfig,kotlin.Unit]/PointingToDeclaration/ktor-redoc/io.github.smiley4.ktorredoc/redoc.html
 io.github.smiley4.ktorredoc
 io.github.smiley4.ktorredoc.config
-

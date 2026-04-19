@@ -1,1 +1,1 @@
-sourceset_dependencies='{":ktor-redoc:dokkaHtml/main":[]}'
+sourceset_dependencies='{":ktor-redoc/main":[]}'

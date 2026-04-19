@@ -1,298 +1,340 @@
 <!DOCTYPE html>
-<html class="no-js">
+<html class="no-js" lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
     <title>ReflectionConfig</title>
     <link href="../../../../images/logo-icon.svg" rel="icon" type="image/svg">
-    <script>var pathToRoot = "../../../../";</script>
-    <script>document.documentElement.classList.replace("no-js","js");</script>
+        <script>var pathToRoot = "../../../../";</script>
+    <script>document.documentElement.classList.replace("no-js", "js");</script>
     <script>const storage = localStorage.getItem("dokka-dark-mode")
-    if (storage == null) {
+      if (storage == null) {
         const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
         if (osDarkSchemePreferred === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    } else {
+      } else {
         const savedDarkMode = JSON.parse(storage)
-        if(savedDarkMode === true) {
-            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        if (savedDarkMode === true) {
+          document.getElementsByTagName("html")[0].classList.add("theme-dark")
         }
-    }
+      }
     </script>
-<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
 <script type="text/javascript" src="../../../../scripts/sourceset_dependencies.js" async="async"></script>
 <link href="../../../../styles/style.css" rel="Stylesheet">
 <link href="../../../../styles/main.css" rel="Stylesheet">
 <link href="../../../../styles/prism.css" rel="Stylesheet">
 <link href="../../../../styles/logo-styles.css" rel="Stylesheet">
-<link href="../../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
-<script type="text/javascript" src="../../../../scripts/clipboard.js" async="async"></script>
+<link href="../../../../ui-kit/ui-kit.min.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../../scripts/safe-local-storage_blocking.js"></script>
 <script type="text/javascript" src="../../../../scripts/navigation-loader.js" async="async"></script>
 <script type="text/javascript" src="../../../../scripts/platform-content-handler.js" async="async"></script>
 <script type="text/javascript" src="../../../../scripts/main.js" defer="defer"></script>
 <script type="text/javascript" src="../../../../scripts/prism.js" async="async"></script>
-<script type="text/javascript" src="../../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+<script type="text/javascript" src="../../../../ui-kit/ui-kit.min.js" defer="defer"></script>
 </head>
 <body>
-    <div class="root">
-<nav class="navigation" id="navigation-wrapper">
-    <div class="navigation--inner">
-        <div class="navigation-title">
-            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
-            <div class="library-name">
-                    <a class="library-name--link" href="../../../../index.html">
-                            ktor-openapi
-                    </a>
+<div class="root">
+    <header class="navigation theme-dark" id="navigation-wrapper" role="banner">
+            <a class="library-name--link" href="../../../../index.html" tabindex="1">
+                    ktor-openapi
+            </a>
+        <button class="navigation-controls--btn navigation-controls--btn_toc ui-kit_mobile-only" id="toc-toggle"
+                type="button">Toggle table of contents
+        </button>
+        <div class="navigation-controls--break ui-kit_mobile-only"></div>
+        <div class="library-version" id="library-version">
+5.7.0        </div>
+        <div class="navigation-controls">
+        <ul class="filter-section filter-section_loading" id="filter-section" aria-label="Target filter">
+                <button class="platform-tag platform-selector jvm-like" data-active="" aria-pressed="true"
+                        data-filter=":ktor-openapi/main">jvm</button>
+            <div class="dropdown filter-section--dropdown" data-role="dropdown" id="filter-section-dropdown">
+                <button class="button button_dropdown filter-section--dropdown-toggle" role="combobox"
+                        data-role="dropdown-toggle"
+                        aria-controls="platform-tags-listbox"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                        aria-label="Toggle source sets"
+                ></button>
+                <ul role="listbox" id="platform-tags-listbox" class="dropdown--list" data-role="dropdown-listbox" aria-label="Target filter">
+                    <div class="dropdown--header"><span>Target filter</span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close target filter">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                        <li role="option" class="dropdown--option platform-selector-option jvm-like" tabindex="0">
+                            <label class="checkbox">
+                                <input type="checkbox" class="checkbox--input" id=":ktor-openapi/main"
+                                       data-filter=":ktor-openapi/main"/>
+                                <span class="checkbox--icon"></span>
+                                jvm
+                            </label>
+                        </li>
+                </ul>
+                <div class="dropdown--overlay"></div>
             </div>
-            <div class="library-version">
-5.6.0            </div>
-        </div>
-        <div class="filter-section" id="filter-section">
-                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":ktor-openapi:dokkaHtml/main">jvm</button>
-        </div>
-    </div>
-    <div class="navigation-controls">
-        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
-        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
-    </div>
-</nav>
-        <div id="container">
-            <div class="sidebar" id="leftColumn">
-                <div class="sidebar--inner" id="sideMenu"></div>
+        </ul>
+            <button class="navigation-controls--btn navigation-controls--btn_theme" id="theme-toggle-button"
+                    type="button">Switch theme
+            </button>
+            <div class="navigation-controls--btn navigation-controls--btn_search" id="searchBar" role="button">Search in
+                API
             </div>
-            <div id="main">
-<div class="main-content" data-page-type="classlike" id="content" pageIds="ktor-openapi::io.github.smiley4.ktoropenapi.config/SchemaGenerator.ReflectionConfig///PointingToDeclaration//2087422774">
+        </div>
+    </header>
+    <div id="container">
+        <nav id="leftColumn" class="sidebar" data-item-type="SECTION" data-item-config='{"defaultSize": 280, "minSize": 200, "maxSize": 400}'>
+            <a class="toc--skip-link" href="#main">Skip to content</a>
+            <div class="dropdown theme-dark_mobile" data-role="dropdown" id="toc-dropdown">
+                <ul role="listbox" id="toc-listbox" class="dropdown--list dropdown--list_toc-list"
+                    data-role="dropdown-listbox" aria-label="Table of contents">
+                    <div class="dropdown--header">
+                            <span>
+                                    ktor-openapi
+                            </span>
+                        <button class="button" data-role="dropdown-toggle" aria-label="Close table of contents">
+                            <i class="ui-kit-icon ui-kit-icon_cross"></i>
+                        </button>
+                    </div>
+                    <div class="sidebar--inner" id="sideMenu"></div>
+                </ul>
+                <div class="dropdown--overlay"></div>
+            </div>
+        </nav>
+        <div id="resizer" class="resizer" data-item-type="BAR"></div>
+        <div id="main" data-item-type="SECTION" role="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="ktor-openapi::io.github.smiley4.ktoropenapi.config/SchemaGenerator.ReflectionConfig///PointingToDeclaration//97952975">
   <div class="breadcrumbs"><a href="../../../../index.html">ktor-openapi</a><span class="delimiter">/</span><a href="../../index.html">io.github.smiley4.ktoropenapi.config</a><span class="delimiter">/</span><a href="../index.html">SchemaGenerator</a><span class="delimiter">/</span><span class="current">ReflectionConfig</span></div>
   <div class="cover ">
     <h1 class="cover"><span>Reflection</span><wbr></wbr><span><span>Config</span></span></h1>
-    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-openapi:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">ReflectionConfig</a></div><p class="paragraph">The configuration for a pre-built schema generator using reflection for type analysis.</p></div></div>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-openapi/main"><div class="symbol monospace"><span class="token keyword">class </span><a href="index.html">ReflectionConfig</a></div><p class="paragraph">The configuration for a pre-built schema generator using reflection for type analysis.</p></div></div>
   </div>
   <div class="tabbedcontent">
     <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
     <div class="tabs-section-body">
       <div data-togglable="PROPERTY">
-        <h2 class="">Properties</h2>
-        <div class="table"><a data-name="714264589%2FProperties%2F2087422774" anchor-label="analyzerModules" id="714264589%2FProperties%2F2087422774" data-filterable-set=":ktor-openapi:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-openapi:dokkaHtml/main" data-filterable-set=":ktor-openapi:dokkaHtml/main">
+        <h2 class="tableheader">Properties</h2>
+        <div class="table"><a data-name="714264589%2FProperties%2F97952975" anchor-label="analyzerModules" id="714264589%2FProperties%2F97952975" data-filterable-set=":ktor-openapi/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-openapi/main" data-filterable-set=":ktor-openapi/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="analyzer-modules.html"><span>analyzer</span><wbr></wbr><span><span>Modules</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="714264589%2FProperties%2F2087422774"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="714264589%2FProperties%2F97952975"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-openapi:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="analyzer-modules.html">analyzerModules</a><span class="token operator">: </span><span data-unresolved-link="/&amp;lt;Error class: unknown class&amp;gt;///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></div><div class="brief "><p class="paragraph">List of additional/custom <span data-unresolved-link="io.github.smiley4.schemakenerator.reflection.analyzer/ReflectionTypeAnalyzerModule///PointingToDeclaration/">ReflectionTypeAnalyzerModule</span> to use for analysis.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-openapi/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="analyzer-modules.html">analyzerModules</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-mutable-list/index.html">MutableList</a><span class="token operator">&lt;</span><span data-unresolved-link="io.github.smiley4.schemakenerator.reflection.analyzer/ReflectionTypeAnalyzerModule///PointingToDeclaration/">ReflectionTypeAnalyzerModule</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">List of additional/custom <span data-unresolved-link="io.github.smiley4.schemakenerator.reflection.analyzer/ReflectionTypeAnalyzerModule///PointingToDeclaration/">ReflectionTypeAnalyzerModule</span> to use for analysis.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="474286269%2FProperties%2F2087422774" anchor-label="discriminatorProperty" id="474286269%2FProperties%2F2087422774" data-filterable-set=":ktor-openapi:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-openapi:dokkaHtml/main" data-filterable-set=":ktor-openapi:dokkaHtml/main">
+<a data-name="474286269%2FProperties%2F97952975" anchor-label="discriminatorProperty" id="474286269%2FProperties%2F97952975" data-filterable-set=":ktor-openapi/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-openapi/main" data-filterable-set=":ktor-openapi/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="discriminator-property.html"><span>discriminator</span><wbr></wbr><span><span>Property</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="474286269%2FProperties%2F2087422774"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="474286269%2FProperties%2F97952975"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-openapi:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="discriminator-property.html">discriminatorProperty</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">The name of the discriminator property. Set <code class="lang-kotlin">null</code> to not include any discriminator property.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-openapi/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="discriminator-property.html">discriminatorProperty</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">The name of the discriminator property. Set <code class="lang-kotlin">null</code> to not include any discriminator property.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-1668919438%2FProperties%2F2087422774" anchor-label="enumConstType" id="-1668919438%2FProperties%2F2087422774" data-filterable-set=":ktor-openapi:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-openapi:dokkaHtml/main" data-filterable-set=":ktor-openapi:dokkaHtml/main">
+<a data-name="-1668919438%2FProperties%2F97952975" anchor-label="enumConstType" id="-1668919438%2FProperties%2F97952975" data-filterable-set=":ktor-openapi/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-openapi/main" data-filterable-set=":ktor-openapi/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="enum-const-type.html"><span>enum</span><wbr></wbr><span>Const</span><wbr></wbr><span><span>Type</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1668919438%2FProperties%2F2087422774"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1668919438%2FProperties%2F97952975"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-openapi:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="enum-const-type.html">enumConstType</a><span class="token operator">: </span><span data-unresolved-link="io.github.smiley4.schemakenerator.reflection.data/EnumConstType///PointingToDeclaration/">EnumConstType</span></div><div class="brief "><p class="paragraph">Whether to use &quot;toString&quot; for enum values or the declared &quot;name&quot;</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-openapi/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="enum-const-type.html">enumConstType</a><span class="token operator">: </span><span data-unresolved-link="io.github.smiley4.schemakenerator.reflection.data/EnumConstType///PointingToDeclaration/">EnumConstType</span></div><div class="brief "><p class="paragraph">Whether to use &quot;toString&quot; for enum values or the declared &quot;name&quot;</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-482807024%2FProperties%2F2087422774" anchor-label="explicitNullTypes" id="-482807024%2FProperties%2F2087422774" data-filterable-set=":ktor-openapi:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-openapi:dokkaHtml/main" data-filterable-set=":ktor-openapi:dokkaHtml/main">
+<a data-name="-482807024%2FProperties%2F97952975" anchor-label="explicitNullTypes" id="-482807024%2FProperties%2F97952975" data-filterable-set=":ktor-openapi/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-openapi/main" data-filterable-set=":ktor-openapi/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="explicit-null-types.html"><span>explicit</span><wbr></wbr><span>Null</span><wbr></wbr><span><span>Types</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-482807024%2FProperties%2F2087422774"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-482807024%2FProperties%2F97952975"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-openapi:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="explicit-null-types.html">explicitNullTypes</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Whether to explicitly include &quot;null&quot; types for nullable properties.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-openapi/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="explicit-null-types.html">explicitNullTypes</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Whether to explicitly include &quot;null&quot; types for nullable properties.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="3693631%2FProperties%2F2087422774" anchor-label="generationModules" id="3693631%2FProperties%2F2087422774" data-filterable-set=":ktor-openapi:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-openapi:dokkaHtml/main" data-filterable-set=":ktor-openapi:dokkaHtml/main">
+<a data-name="3693631%2FProperties%2F97952975" anchor-label="generationModules" id="3693631%2FProperties%2F97952975" data-filterable-set=":ktor-openapi/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-openapi/main" data-filterable-set=":ktor-openapi/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="generation-modules.html"><span>generation</span><wbr></wbr><span><span>Modules</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="3693631%2FProperties%2F2087422774"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="3693631%2FProperties%2F97952975"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-openapi:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="generation-modules.html">generationModules</a><span class="token operator">: </span><span data-unresolved-link="/&amp;lt;Error class: unknown class&amp;gt;///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></div><div class="brief "><p class="paragraph">List of additional/custom <span data-unresolved-link="io.github.smiley4.schemakenerator.reflection.analyzer/ReflectionTypeAnalyzerModule///PointingToDeclaration/">ReflectionTypeAnalyzerModule</span> to use for schema generation.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-openapi/main"><div class="symbol monospace"><span class="token keyword">val </span><a href="generation-modules.html">generationModules</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-mutable-list/index.html">MutableList</a><span class="token operator">&lt;</span><span data-unresolved-link="io.github.smiley4.schemakenerator.swagger.generator/SwaggerSchemaGenerationModule///PointingToDeclaration/">SwaggerSchemaGenerationModule</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">List of additional/custom <span data-unresolved-link="io.github.smiley4.schemakenerator.reflection.analyzer/ReflectionTypeAnalyzerModule///PointingToDeclaration/">ReflectionTypeAnalyzerModule</span> to use for schema generation.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-2009679815%2FProperties%2F2087422774" anchor-label="includeFunctions" id="-2009679815%2FProperties%2F2087422774" data-filterable-set=":ktor-openapi:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-openapi:dokkaHtml/main" data-filterable-set=":ktor-openapi:dokkaHtml/main">
+<a data-name="-2009679815%2FProperties%2F97952975" anchor-label="includeFunctions" id="-2009679815%2FProperties%2F97952975" data-filterable-set=":ktor-openapi/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-openapi/main" data-filterable-set=":ktor-openapi/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="include-functions.html"><span>include</span><wbr></wbr><span><span>Functions</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2009679815%2FProperties%2F2087422774"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2009679815%2FProperties%2F97952975"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-openapi:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="include-functions.html">includeFunctions</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Whether to include functions as members of classes (see <span data-unresolved-link="io.github.smiley4.schemakenerator.core.data/MemberKind.FUNCTION///PointingToDeclaration/{&amp;quot;org.jetbrains.dokka.links.EnumEntryDRIExtra&amp;quot;:{&amp;quot;key&amp;quot;:&amp;quot;org.jetbrains.dokka.links.EnumEntryDRIExtra&amp;quot;}}">io.github.smiley4.schemakenerator.core.data.MemberKind.FUNCTION</span>).</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-openapi/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="include-functions.html">includeFunctions</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Whether to include functions as members of classes (see <span data-unresolved-link="io.github.smiley4.schemakenerator.core.data/MemberKind.FUNCTION///PointingToDeclaration/{&amp;quot;org.jetbrains.dokka.links.EnumEntryDRIExtra&amp;quot;:{&amp;quot;key&amp;quot;:&amp;quot;org.jetbrains.dokka.links.EnumEntryDRIExtra&amp;quot;}}">io.github.smiley4.schemakenerator.core.data.MemberKind.FUNCTION</span>).</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-567098004%2FProperties%2F2087422774" anchor-label="includeGetters" id="-567098004%2FProperties%2F2087422774" data-filterable-set=":ktor-openapi:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-openapi:dokkaHtml/main" data-filterable-set=":ktor-openapi:dokkaHtml/main">
+<a data-name="-567098004%2FProperties%2F97952975" anchor-label="includeGetters" id="-567098004%2FProperties%2F97952975" data-filterable-set=":ktor-openapi/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-openapi/main" data-filterable-set=":ktor-openapi/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="include-getters.html"><span>include</span><wbr></wbr><span><span>Getters</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-567098004%2FProperties%2F2087422774"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-567098004%2FProperties%2F97952975"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-openapi:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="include-getters.html">includeGetters</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Whether to include getters as members of classes (see <span data-unresolved-link="io.github.smiley4.schemakenerator.core.data/MemberKind.GETTER///PointingToDeclaration/{&amp;quot;org.jetbrains.dokka.links.EnumEntryDRIExtra&amp;quot;:{&amp;quot;key&amp;quot;:&amp;quot;org.jetbrains.dokka.links.EnumEntryDRIExtra&amp;quot;}}">io.github.smiley4.schemakenerator.core.data.MemberKind.GETTER</span>).</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-openapi/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="include-getters.html">includeGetters</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Whether to include getters as members of classes (see <span data-unresolved-link="io.github.smiley4.schemakenerator.core.data/MemberKind.GETTER///PointingToDeclaration/{&amp;quot;org.jetbrains.dokka.links.EnumEntryDRIExtra&amp;quot;:{&amp;quot;key&amp;quot;:&amp;quot;org.jetbrains.dokka.links.EnumEntryDRIExtra&amp;quot;}}">io.github.smiley4.schemakenerator.core.data.MemberKind.GETTER</span>).</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="809428220%2FProperties%2F2087422774" anchor-label="includeHidden" id="809428220%2FProperties%2F2087422774" data-filterable-set=":ktor-openapi:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-openapi:dokkaHtml/main" data-filterable-set=":ktor-openapi:dokkaHtml/main">
+<a data-name="809428220%2FProperties%2F97952975" anchor-label="includeHidden" id="809428220%2FProperties%2F97952975" data-filterable-set=":ktor-openapi/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-openapi/main" data-filterable-set=":ktor-openapi/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="include-hidden.html"><span>include</span><wbr></wbr><span><span>Hidden</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="809428220%2FProperties%2F2087422774"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="809428220%2FProperties%2F97952975"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-openapi:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="include-hidden.html">includeHidden</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Whether to include hidden (e.g. private) members</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-openapi/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="include-hidden.html">includeHidden</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Whether to include hidden (e.g. private) members</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="2142853304%2FProperties%2F2087422774" anchor-label="includeStatic" id="2142853304%2FProperties%2F2087422774" data-filterable-set=":ktor-openapi:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-openapi:dokkaHtml/main" data-filterable-set=":ktor-openapi:dokkaHtml/main">
+<a data-name="2142853304%2FProperties%2F97952975" anchor-label="includeStatic" id="2142853304%2FProperties%2F97952975" data-filterable-set=":ktor-openapi/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-openapi/main" data-filterable-set=":ktor-openapi/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="include-static.html"><span>include</span><wbr></wbr><span><span>Static</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2142853304%2FProperties%2F2087422774"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2142853304%2FProperties%2F97952975"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-openapi:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="include-static.html">includeStatic</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Whether to include static members</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-openapi/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="include-static.html">includeStatic</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Whether to include static members</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1912010116%2FProperties%2F2087422774" anchor-label="includeWeakGetters" id="1912010116%2FProperties%2F2087422774" data-filterable-set=":ktor-openapi:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-openapi:dokkaHtml/main" data-filterable-set=":ktor-openapi:dokkaHtml/main">
+<a data-name="1912010116%2FProperties%2F97952975" anchor-label="includeWeakGetters" id="1912010116%2FProperties%2F97952975" data-filterable-set=":ktor-openapi/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-openapi/main" data-filterable-set=":ktor-openapi/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="include-weak-getters.html"><span>include</span><wbr></wbr><span>Weak</span><wbr></wbr><span><span>Getters</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1912010116%2FProperties%2F2087422774"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1912010116%2FProperties%2F97952975"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-openapi:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="include-weak-getters.html">includeWeakGetters</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Whether to include weak getters as members of classes (see <span data-unresolved-link="io.github.smiley4.schemakenerator.core.data/MemberKind.WEAK_GETTER///PointingToDeclaration/{&amp;quot;org.jetbrains.dokka.links.EnumEntryDRIExtra&amp;quot;:{&amp;quot;key&amp;quot;:&amp;quot;org.jetbrains.dokka.links.EnumEntryDRIExtra&amp;quot;}}">io.github.smiley4.schemakenerator.core.data.MemberKind.WEAK_GETTER</span>).</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-openapi/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="include-weak-getters.html">includeWeakGetters</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Whether to include weak getters as members of classes (see <span data-unresolved-link="io.github.smiley4.schemakenerator.core.data/MemberKind.WEAK_GETTER///PointingToDeclaration/{&amp;quot;org.jetbrains.dokka.links.EnumEntryDRIExtra&amp;quot;:{&amp;quot;key&amp;quot;:&amp;quot;org.jetbrains.dokka.links.EnumEntryDRIExtra&amp;quot;}}">io.github.smiley4.schemakenerator.core.data.MemberKind.WEAK_GETTER</span>).</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1750282428%2FProperties%2F2087422774" anchor-label="nullables" id="1750282428%2FProperties%2F2087422774" data-filterable-set=":ktor-openapi:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-openapi:dokkaHtml/main" data-filterable-set=":ktor-openapi:dokkaHtml/main">
+<a data-name="1750282428%2FProperties%2F97952975" anchor-label="nullables" id="1750282428%2FProperties%2F97952975" data-filterable-set=":ktor-openapi/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-openapi/main" data-filterable-set=":ktor-openapi/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="nullables.html"><span><span>nullables</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1750282428%2FProperties%2F2087422774"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1750282428%2FProperties%2F97952975"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-openapi:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="nullables.html">nullables</a><span class="token operator">: </span><span data-unresolved-link="io.github.smiley4.schemakenerator.swagger/SwaggerSteps.RequiredHandling///PointingToDeclaration/">SwaggerSteps.RequiredHandling</span></div><div class="brief "><p class="paragraph">Whether nullable properties are treated as &quot;required&quot;</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-openapi/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="nullables.html">nullables</a><span class="token operator">: </span><span data-unresolved-link="io.github.smiley4.schemakenerator.swagger/SwaggerSteps.RequiredHandling///PointingToDeclaration/">SwaggerSteps.RequiredHandling</span></div><div class="brief "><p class="paragraph">Whether nullable properties are treated as &quot;required&quot;</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="1685072891%2FProperties%2F2087422774" anchor-label="optionals" id="1685072891%2FProperties%2F2087422774" data-filterable-set=":ktor-openapi:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-openapi:dokkaHtml/main" data-filterable-set=":ktor-openapi:dokkaHtml/main">
+<a data-name="1685072891%2FProperties%2F97952975" anchor-label="optionals" id="1685072891%2FProperties%2F97952975" data-filterable-set=":ktor-openapi/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-openapi/main" data-filterable-set=":ktor-openapi/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="optionals.html"><span><span>optionals</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1685072891%2FProperties%2F2087422774"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1685072891%2FProperties%2F97952975"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-openapi:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="optionals.html">optionals</a><span class="token operator">: </span><span data-unresolved-link="io.github.smiley4.schemakenerator.swagger/SwaggerSteps.RequiredHandling///PointingToDeclaration/">SwaggerSteps.RequiredHandling</span></div><div class="brief "><p class="paragraph">Whether optional properties are treated as &quot;required&quot;. An optional parameter is one that has a default value specified.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-openapi/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="optionals.html">optionals</a><span class="token operator">: </span><span data-unresolved-link="io.github.smiley4.schemakenerator.swagger/SwaggerSteps.RequiredHandling///PointingToDeclaration/">SwaggerSteps.RequiredHandling</span></div><div class="brief "><p class="paragraph">Whether optional properties are treated as &quot;required&quot;. An optional parameter is one that has a default value specified.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-308834086%2FProperties%2F2087422774" anchor-label="primitiveTypes" id="-308834086%2FProperties%2F2087422774" data-filterable-set=":ktor-openapi:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-openapi:dokkaHtml/main" data-filterable-set=":ktor-openapi:dokkaHtml/main">
+<a data-name="-308834086%2FProperties%2F97952975" anchor-label="primitiveTypes" id="-308834086%2FProperties%2F97952975" data-filterable-set=":ktor-openapi/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-openapi/main" data-filterable-set=":ktor-openapi/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="primitive-types.html"><span>primitive</span><wbr></wbr><span><span>Types</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-308834086%2FProperties%2F2087422774"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-308834086%2FProperties%2F97952975"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-openapi:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="primitive-types.html">primitiveTypes</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.collections/-mutable-set/index.html">MutableSet</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.reflect/-k-class/index.html">KClass</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">The list of types that are considered &quot;primitive types&quot;</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-openapi/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="primitive-types.html">primitiveTypes</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.collections/-mutable-set/index.html">MutableSet</a><span class="token operator">&lt;</span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.reflect/-k-class/index.html">KClass</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token operator">&gt;</span></div><div class="brief "><p class="paragraph">The list of types that are considered &quot;primitive types&quot;</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="2114754846%2FProperties%2F2087422774" anchor-label="referencePath" id="2114754846%2FProperties%2F2087422774" data-filterable-set=":ktor-openapi:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-openapi:dokkaHtml/main" data-filterable-set=":ktor-openapi:dokkaHtml/main">
+<a data-name="2114754846%2FProperties%2F97952975" anchor-label="referencePath" id="2114754846%2FProperties%2F97952975" data-filterable-set=":ktor-openapi/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-openapi/main" data-filterable-set=":ktor-openapi/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="reference-path.html"><span>reference</span><wbr></wbr><span><span>Path</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2114754846%2FProperties%2F2087422774"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2114754846%2FProperties%2F97952975"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-openapi:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="reference-path.html">referencePath</a><span class="token operator">: </span><span data-unresolved-link="io.github.smiley4.schemakenerator.swagger.data/RefType///PointingToDeclaration/">RefType</span></div><div class="brief "><p class="paragraph">The format of the reference paths.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-openapi/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="reference-path.html">referencePath</a><span class="token operator">: </span><span data-unresolved-link="io.github.smiley4.schemakenerator.swagger.data/RefType///PointingToDeclaration/">RefType</span></div><div class="brief "><p class="paragraph">The format of the reference paths.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="2002277078%2FProperties%2F2087422774" anchor-label="title" id="2002277078%2FProperties%2F2087422774" data-filterable-set=":ktor-openapi:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-openapi:dokkaHtml/main" data-filterable-set=":ktor-openapi:dokkaHtml/main">
+<a data-name="2002277078%2FProperties%2F97952975" anchor-label="title" id="2002277078%2FProperties%2F97952975" data-filterable-set=":ktor-openapi/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-openapi/main" data-filterable-set=":ktor-openapi/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="title.html"><span><span>title</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2002277078%2FProperties%2F2087422774"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="2002277078%2FProperties%2F97952975"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-openapi:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="title.html">title</a><span class="token operator">: </span><span data-unresolved-link="io.github.smiley4.schemakenerator.swagger.data/TitleType///PointingToDeclaration/">TitleType</span><span class="token operator">?</span></div><div class="brief "><p class="paragraph">The format of the titles. Set <code class="lang-kotlin">null</code> to not include titles in the schemas.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-openapi/main"><div class="symbol monospace"><span class="token keyword">var </span><a href="title.html">title</a><span class="token operator">: </span><span data-unresolved-link="io.github.smiley4.schemakenerator.swagger.data/TitleType///PointingToDeclaration/">TitleType</span><span class="token operator">?</span></div><div class="brief "><p class="paragraph">The format of the titles. Set <code class="lang-kotlin">null</code> to not include titles in the schemas.</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -300,48 +342,48 @@
         </div>
       </div>
       <div data-togglable="FUNCTION">
-        <h2 class="">Functions</h2>
-        <div class="table"><a data-name="-826157161%2FFunctions%2F2087422774" anchor-label="customAnalyzer" id="-826157161%2FFunctions%2F2087422774" data-filterable-set=":ktor-openapi:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-openapi:dokkaHtml/main" data-filterable-set=":ktor-openapi:dokkaHtml/main">
+        <h2 class="tableheader">Functions</h2>
+        <div class="table"><a data-name="-1159655024%2FFunctions%2F97952975" anchor-label="customAnalyzer" id="-1159655024%2FFunctions%2F97952975" data-filterable-set=":ktor-openapi/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-openapi/main" data-filterable-set=":ktor-openapi/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="custom-analyzer.html"><span>custom</span><wbr></wbr><span><span>Analyzer</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-826157161%2FFunctions%2F2087422774"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1159655024%2FFunctions%2F97952975"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-openapi:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="custom-analyzer.html">T</a><span class="token operator">&gt; </span><a href="custom-analyzer.html"><span class="token function">customAnalyzer</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">noinline </span>provider<span class="token operator">: </span><span data-unresolved-link="/&amp;lt;Error class: unknown class&amp;gt;///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></span></span><span class="token punctuation">)</span></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="custom-analyzer.html"><span class="token function">customAnalyzer</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">clazz<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin-stdlib/kotlin.reflect/-k-class/index.html">KClass</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">provider<span class="token operator">: </span><span data-unresolved-link="/&amp;lt;Error class: unknown class&amp;gt;///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Add a custom type overwriting the given type. Modules overwrite previous modules when matching the same type.</p></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="custom-analyzer.html"><span class="token function">customAnalyzer</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">module<span class="token operator">: </span><span data-unresolved-link="io.github.smiley4.schemakenerator.reflection.analyzer/ReflectionTypeAnalyzerModule///PointingToDeclaration/">ReflectionTypeAnalyzerModule</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Adds a new <span data-unresolved-link="io.github.smiley4.schemakenerator.reflection.analyzer/ReflectionTypeAnalyzerModule///PointingToDeclaration/">ReflectionTypeAnalyzerModule</span>. Modules overwrite previous modules when matching the same type.</p></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="custom-analyzer.html"><span class="token function">customAnalyzer</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">matcher<span class="token operator">: </span><span data-unresolved-link="/&amp;lt;Error class: unknown class&amp;gt;///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">provider<span class="token operator">: </span><span data-unresolved-link="/&amp;lt;Error class: unknown class&amp;gt;///PointingToDeclaration/">&lt;Error class: unknown class&gt;</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Add a new custom analyzer for types matched by the given matcher. Modules overwrite previous modules when matching the same type.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-openapi/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="custom-analyzer.html"><span class="token function">customAnalyzer</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">module<span class="token operator">: </span><span data-unresolved-link="io.github.smiley4.schemakenerator.reflection.analyzer/ReflectionTypeAnalyzerModule///PointingToDeclaration/">ReflectionTypeAnalyzerModule</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Adds a new <span data-unresolved-link="io.github.smiley4.schemakenerator.reflection.analyzer/ReflectionTypeAnalyzerModule///PointingToDeclaration/">ReflectionTypeAnalyzerModule</span>. Modules overwrite previous modules when matching the same type.</p></div><div class="symbol monospace"><span class="token keyword">inline </span><span class="token keyword">fun </span><span class="token operator">&lt;</span><a href="custom-analyzer.html">T</a><span class="token operator">&gt; </span><a href="custom-analyzer.html"><span class="token function">customAnalyzer</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">noinline </span>provider<span class="token operator">: </span><span data-unresolved-link="io.github.smiley4.schemakenerator.reflection.analyzer/ReflectionCustomProvider///PointingToDeclaration/">ReflectionCustomProvider</span></span></span><span class="token punctuation">)</span></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="custom-analyzer.html"><span class="token function">customAnalyzer</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">clazz<span class="token operator">: </span><a href="https://kotlinlang.org/api/core/kotlin-stdlib/kotlin.reflect/-k-class/index.html">KClass</a><span class="token operator">&lt;</span><span class="token operator">*</span><span class="token operator">&gt;</span><span class="token punctuation">, </span></span><span class="parameter ">provider<span class="token operator">: </span><span data-unresolved-link="io.github.smiley4.schemakenerator.reflection.analyzer/ReflectionCustomProvider///PointingToDeclaration/">ReflectionCustomProvider</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Add a custom type overwriting the given type. Modules overwrite previous modules when matching the same type.</p></div><div class="symbol monospace"><span class="token keyword">fun </span><a href="custom-analyzer.html"><span class="token function">customAnalyzer</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">matcher<span class="token operator">: </span><span data-unresolved-link="io.github.smiley4.schemakenerator.reflection.analyzer/ReflectionTypeMatcher///PointingToDeclaration/">ReflectionTypeMatcher</span><span class="token punctuation">, </span></span><span class="parameter ">provider<span class="token operator">: </span><span data-unresolved-link="io.github.smiley4.schemakenerator.reflection.analyzer/ReflectionCustomProvider///PointingToDeclaration/">ReflectionCustomProvider</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Add a new custom analyzer for types matched by the given matcher. Modules overwrite previous modules when matching the same type.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="-770693332%2FFunctions%2F2087422774" anchor-label="customGenerator" id="-770693332%2FFunctions%2F2087422774" data-filterable-set=":ktor-openapi:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-openapi:dokkaHtml/main" data-filterable-set=":ktor-openapi:dokkaHtml/main">
+<a data-name="-770693332%2FFunctions%2F97952975" anchor-label="customGenerator" id="-770693332%2FFunctions%2F97952975" data-filterable-set=":ktor-openapi/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-openapi/main" data-filterable-set=":ktor-openapi/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="custom-generator.html"><span>custom</span><wbr></wbr><span><span>Generator</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-770693332%2FFunctions%2F2087422774"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-770693332%2FFunctions%2F97952975"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-openapi:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="custom-generator.html"><span class="token function">customGenerator</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">module<span class="token operator">: </span><span data-unresolved-link="io.github.smiley4.schemakenerator.swagger.generator/SwaggerSchemaGenerationModule///PointingToDeclaration/">SwaggerSchemaGenerationModule</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Add a custom schema generation module.</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-openapi/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="custom-generator.html"><span class="token function">customGenerator</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">module<span class="token operator">: </span><span data-unresolved-link="io.github.smiley4.schemakenerator.swagger.generator/SwaggerSchemaGenerationModule///PointingToDeclaration/">SwaggerSchemaGenerationModule</span></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Add a custom schema generation module.</p></div></div></div>
                 </div>
               </div>
             </div>
           </div>
-<a data-name="347942753%2FFunctions%2F2087422774" anchor-label="overwrite" id="347942753%2FFunctions%2F2087422774" data-filterable-set=":ktor-openapi:dokkaHtml/main"></a>
-          <div class="table-row" data-filterable-current=":ktor-openapi:dokkaHtml/main" data-filterable-set=":ktor-openapi:dokkaHtml/main">
+<a data-name="347942753%2FFunctions%2F97952975" anchor-label="overwrite" id="347942753%2FFunctions%2F97952975" data-filterable-set=":ktor-openapi/main"></a>
+          <div class="table-row table-row_content" data-filterable-current=":ktor-openapi/main" data-filterable-set=":ktor-openapi/main">
             <div class="main-subrow keyValue ">
               <div class=""><span class="inline-flex">
                   <div><a href="overwrite.html"><span><span>overwrite</span></span></a></div>
-<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="347942753%2FFunctions%2F2087422774"></span>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="347942753%2FFunctions%2F97952975"></span>
                     <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
                   </span></span></div>
               <div>
                 <div class="title">
-                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-openapi:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="overwrite.html"><span class="token function">overwrite</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">module<span class="token operator">: </span><a href="../../-schema-overwrite-module/index.html">SchemaOverwriteModule</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Specify the schema for the matching type. Overwrites default schema generation</p></div></div></div>
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":ktor-openapi/main"><div class="symbol monospace"><span class="token keyword">fun </span><a href="overwrite.html"><span class="token function">overwrite</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">module<span class="token operator">: </span><a href="../../-schema-overwrite-module/index.html">SchemaOverwriteModule</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Specify the schema for the matching type. Overwrites default schema generation</p></div></div></div>
                 </div>
               </div>
             </div>
@@ -351,13 +393,22 @@
     </div>
   </div>
 </div>
-      <div class="footer">
-        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2026 Copyright</span><span
-                class="pull-right"><span>Generated by </span><a
-                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
-      </div>
+    <div class="footer">
+        <div class="footer--container">
+            <a href="#content" id="go-to-top-link" class="footer--button footer--button_go-to-top"></a>
+            <div class="footer--content">
+                <div>
+                    <span>Generated by </span>
+                    <a class="footer--link footer--link_external" href="https://github.com/Kotlin/dokka">
+                        Dokka
+                    </a>
+                    <div>© 2026 Copyright</div>
+                </div>
             </div>
         </div>
     </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

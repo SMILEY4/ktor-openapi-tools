@@ -1,1 +1,1 @@
-sourceset_dependencies='{":ktor-swagger-ui:dokkaHtml/main":[]}'
+sourceset_dependencies='{":ktor-swagger-ui/main":[]}'
