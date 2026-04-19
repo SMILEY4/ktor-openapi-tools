@@ -55,11 +55,16 @@ subprojects {
         useJUnitPlatform()
     }
 
+
+    pluginManager.withPlugin("io.gitlab.arturbosch.detekt") {
+        extensions.configure<io.gitlab.arturbosch.detekt.extensions.DetektExtension> {
+            config.setFrom(rootProject.file("detekt/detekt.yml"))
+            ignoreFailures = false
+            buildUponDefaultConfig = true
+            allRules = false
+        }
+    }
     tasks.withType<Detekt>().configureEach {
-        ignoreFailures = false
-        buildUponDefaultConfig = true
-        allRules = false
-        config.setFrom("$rootDir/detekt/detekt.yml")
         reports {
             html.required.set(true)
             md.required.set(true)

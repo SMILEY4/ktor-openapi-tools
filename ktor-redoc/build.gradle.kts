@@ -1,3 +1,6 @@
+import io.gitlab.arturbosch.detekt.Detekt
+import org.gradle.kotlin.dsl.withType
+
 plugins {
     alias(libs.plugins.kotlin.jvm)
     alias(libs.plugins.dependencycheck)
