@@ -1,16 +1,36 @@
 package io.github.smiley4.ktorredoc.config
 
+import kotlin.jvm.java
+
 /**
  * Configuration for redoc.
  * See https://redocly.com/docs/redoc/config
  */
 class RedocConfig internal constructor() {
 
+    companion object {
+        private val defaultStaticResourcesPath: String by lazy {
+            val stream = RedocConfig::class.java.classLoader
+                .getResourceAsStream("META-INF/maven/org.webjars/redoc/pom.properties")
+                ?: error("Could not find META-INF/maven/org.webjars/swagger-ui/pom.properties in classpath")
+            val props = java.util.Properties().apply { load(stream) }
+            val version = props.getProperty("version")
+                ?: error("Could not extract redoc version from pom.properties")
+            
+            val path = "/META-INF/resources/webjars/redoc/$version"
+
+            RedocConfig::class.java.getResource("$path/redoc.lib.js")
+                ?: error("Could not find $path/redoc.lib.js in classpath. Check your redoc webjars dependency.")
+
+            path
+        }
+    }
+
     /**
      * Path to the static resources for redoc in the jar-file.
      * Version must match the version of the redoc-webjars dependency.
      */
-    internal val staticResourcesPath: String = "/META-INF/resources/webjars/redoc/2.5.1"
+    internal val staticResourcesPath: String = defaultStaticResourcesPath
 
 
     /**
