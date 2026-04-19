@@ -16,7 +16,7 @@ class RedocConfig internal constructor() {
             val props = java.util.Properties().apply { load(stream) }
             val version = props.getProperty("version")
                 ?: error("Could not extract redoc version from pom.properties")
-            
+
             val path = "/META-INF/resources/webjars/redoc/$version"
 
             RedocConfig::class.java.getResource("$path/redoc.lib.js")
