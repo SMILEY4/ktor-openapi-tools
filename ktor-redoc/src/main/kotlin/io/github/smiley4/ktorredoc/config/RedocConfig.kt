@@ -10,7 +10,7 @@ class RedocConfig internal constructor() {
      * Path to the static resources for redoc in the jar-file.
      * Version must match the version of the redoc-webjars dependency.
      */
-    internal val staticResourcesPath: String = "/META-INF/resources/webjars/redoc/2.1.5"
+    internal val staticResourcesPath: String = "/META-INF/resources/webjars/redoc/2.5.1"
 
 
     /**
